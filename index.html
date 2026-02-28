@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AltDünya – Retro Hub</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  
+</head>
+<body>
+  <div class="stars"></div>
+
+  <header>
+    <div class="topbar">
+      <a class="brand" href="index.html" aria-label="AltDünya ana sayfa">
+        <div class="ufo" aria-hidden="true"></div>
+        <div>
+          <h1>ALTDÜNYA – Retro Hub</h1>
+          <small>Neon Retro Uzay • Arşiv • Kurulum Rehberleri</small>
+        </div>
+      </a>
+      <nav aria-label="Site menüsü">
+        <a class="navlink" href="index.html">Ana Sayfa</a>
+        <a class="navlink" href="free/index.html">Freeware / Abandonware</a>
+        <a class="navlink" href="openbor/index.html">OpenBOR</a>
+        <a class="navlink" href="originals/index.html">Originals</a>
+        <a class="navlink" href="https://www.youtube.com/@altdunya" target="_blank" rel="noopener">YouTube</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    
+<section class="hero" aria-label="Tanıtım">
+  <div class="heroCard">
+    <div class="heroInner">
+      <div>
+        <h2 class="heroTitle">AltDünya’nın Resmi Arşiv Merkezi</h2>
+        <p class="heroSub">
+          Freeware/Abandonware oyunlar, OpenBOR projeleri ve AltDünya Originals içerikleri.
+          Her oyunun sayfasında kurulum rehberi ve Archive.org indirme bağlantısı.
+        </p>
+        <div class="pillRow" aria-label="Öne çıkanlar">
+          <span class="pill cyan">✅ Kurulum Rehberleri</span>
+          <span class="pill purple">🛸 Neon AltDünya UI</span>
+          <span class="pill pink">📦 İndirmeler Archive.org</span>
+        </div>
+      </div>
+
+      <div class="panel">
+        <p class="searchLabel">Site İçi Arama</p>
+        <div class="searchRow">
+          <input id="q" class="search" type="search" placeholder="Oyun, içerik, etiket... (örn: Marvel, beat'em up)" autocomplete="off" />
+          <select id="scope" class="select" aria-label="Arama kapsamı">
+            <option value="all">Tümü</option>
+            <option value="free">Freeware</option>
+            <option value="openbor">OpenBOR</option>
+            <option value="originals">Originals</option>
+          </select>
+        </div>
+        <p class="helper">Arama: <strong>isim + kısa özet + etiketler</strong>.</p>
+
+        <div id="results" class="results" aria-live="polite">
+          <div class="resultsHeader">
+            <strong>Sonuçlar</strong>
+            <span id="count" class="muted"></span>
+          </div>
+          <div id="list" class="list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-label="Kategoriler">
+  <h2>Kategoriler</h2>
+  <div class="grid3">
+    <a class="card" href="free/index.html">
+      <p class="kicker">Freeware / Abandonware</p>
+      <h3>Freeware/Abandonware Games</h3>
+      <p>Ücretsiz veya abandonware oyunların sayfaları. Kurulum rehberi + Archive indirme.</p>
+      <div class="ctaRow">
+        <span class="btn primary">Keşfet →</span>
+        <span class="tag">Arşiv</span>
+        <span class="tag">Kurulum</span>
+      </div>
+    </a>
+
+    <a class="card" href="openbor/index.html">
+      <p class="kicker">OpenBOR</p>
+      <h3>OpenBOR Games</h3>
+      <p>OpenBOR oyunları ve projeler. Her oyun için ayrı sayfa: video + özet + indir.</p>
+      <div class="ctaRow">
+        <span class="btn purple">Keşfet →</span>
+        <span class="tag">Beat’em up</span>
+        <span class="tag">Fan Game</span>
+      </div>
+    </a>
+
+    <a class="card" href="originals/index.html">
+      <p class="kicker">AltDünya Originals</p>
+      <h3>AltDünya Originals</h3>
+      <p>Developer Tools + AltDünya Inventory: logo pack, wallpaper, araçlar, şablonlar.</p>
+      <div class="ctaRow">
+        <span class="btn pink">Keşfet →</span>
+        <span class="tag">Tools</span>
+        <span class="tag">Inventory</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section class="section" aria-label="Son eklenenler">
+  <h2>Son Eklenenler</h2>
+  <div id="latest" class="gridLatest"></div>
+</section>
+
+<section class="section" aria-label="Katıl">
+  <h2>Destek</h2>
+  <div class="join">
+    <div class="joinInner">
+      <div>
+        <h3>🛸 AltDünya’ya Katıl</h3>
+        <p>Üyelik sistemiyle kanalı destekleyebilir, rozet ve emoji ayrıcalıklarına erişebilirsin.</p>
+      </div>
+      <a class="btn primary" href="https://www.youtube.com/@altdunya" target="_blank" rel="noopener">Katıl Sayfası →</a>
+    </div>
+  </div>
+</section>
+
+  </main>
+
+  <footer>
+    <div class="foot">
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a href="legal.html">Telif Politikası</a>
+        <a href="contact.html">İletişim</a>
+        <a href="https://www.youtube.com/@altdunya" target="_blank" rel="noopener">YouTube</a>
+        <a href="originals/index.html">Originals</a>
+      </div>
+      <small>© AltDünya • Retro Hub</small>
+    </div>
+  </footer>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
