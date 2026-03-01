@@ -30,44 +30,96 @@
 
   <main class="wrap">
 
-<section class="section">
-  <div class="breadcrumb">
-    <a href="../index.html">Anasayfa</a> <span>›</span> <span>Originals</span>
-  </div>
+    <section class="section">
+      <div class="breadcrumb">
+        <a href="../index.html">Anasayfa</a> <span>›</span> <span>Originals</span>
+      </div>
 
-  <div class="contentCard">
-    <h2 class="h1">AltDünya Originals</h2>
-    <p class="lead">
-      Özgün formatlarımız ve yayın araçlarımız. Buradaki sayfalar yayın sırasında <strong>tam ekran</strong> açılıp OBS’e alınacak şekilde tasarlanır.
-    </p>
+      <div class="contentCard">
+        <h2 class="h1">AltDünya Originals</h2>
+        <p class="lead">
+          AltDünya’nın <strong>özgün formatları</strong> ve yayın araçları burada.
+          Bazı sayfalar “<strong>tam ekran / OBS</strong>” için hazırlanır; bazıları da “şablon / araç” olarak kullanılır.
+        </p>
 
-    <div class="metaRow">
-      <span class="chip">OBS uyumlu</span>
-      <span class="chip">Tam ekran</span>
-      <span class="chip">Reklamsız</span>
-      <span class="chip">AltDünya UI</span>
-    </div>
+        <div class="metaRow">
+          <span class="chip">OBS uyumlu</span>
+          <span class="chip">Tam ekran</span>
+          <span class="chip">Reklamsız</span>
+          <span class="chip">AltDünya UI</span>
+        </div>
 
-    <a class="btn primary" href="./omubumu/index.html">O Mu Bu Mu? Hub →</a>
-    <a class="btn" href="../index.html" style="margin-left:8px">Anasayfa →</a>
-  </div>
-</section>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
+          <a class="btn primary" href="./omubumu/index.html">O Mu Bu Mu? →</a>
+          <a class="btn" href="../index.html">Ana Sayfa →</a>
+        </div>
 
-<section class="section" aria-label="Originals Arama">
-  <h2>Originals İçinde Ara</h2>
-  <div class="panel">
-    <p class="searchLabel">Filtre</p>
-    <div class="searchRow">
-      <input id="catq" class="search" type="search" placeholder="Format, araç, şablon... (örn: turnuva, overlay, logo)" autocomplete="off" />
-    </div>
-    <p class="helper">Not: Bu filtre, <strong>assets/js/data.js</strong> içindeki “originals” kayıtlarını listeler. (İstersen O Mu Bu Mu turnuvalarını da buraya ekleriz.)</p>
-  </div>
-</section>
+        <p class="helper" style="margin-top:12px">
+          İpucu: “O Mu Bu Mu?” gibi bazı içerikler yayın sırasında ayrı sekmede açılır ve <strong>F11</strong> ile tam ekran yapılır.
+        </p>
+      </div>
+    </section>
 
-<section class="section" aria-label="Originals İçerikler">
-  <h2>İçerikler</h2>
-  <div class="grid3" id="catgrid"></div>
-</section>
+    <section class="section" aria-label="Öne çıkan Originals">
+      <h2>Öne Çıkan</h2>
+      <div class="grid3">
+        <a class="card" href="./omubumu/index.html">
+          <p class="kicker">AltDünya Originals</p>
+          <h3>O Mu Bu Mu?</h3>
+          <p>
+            Turnuva formatı: 32/64/128 seçenekli bracket.
+            Random eşleşmeler, eleme usulü, yayın için ideal.
+          </p>
+          <div class="ctaRow">
+            <span class="btn primary">Keşfet →</span>
+            <span class="tag">turnuva</span>
+            <span class="tag">obs</span>
+            <span class="tag">fullscreen</span>
+          </div>
+        </a>
+
+        <a class="card" href="#" onclick="alert('Yakında: Maceranı Seç hub sayfası.'); return false;">
+          <p class="kicker">Yakında</p>
+          <h3>Maceranı Seç</h3>
+          <p>Seçim tabanlı interaktif hikaye formatı (hub + bölümler).</p>
+          <div class="ctaRow">
+            <span class="btn pink">Yakında</span>
+            <span class="tag">interaktif</span>
+            <span class="tag">hikaye</span>
+          </div>
+        </a>
+
+        <a class="card" href="#" onclick="alert('Yakında: şablonlar, overlay ve araçlar.'); return false;">
+          <p class="kicker">Yakında</p>
+          <h3>Şablonlar & Araçlar</h3>
+          <p>Skorboard, overlay, logo pack, yayın şablonları.</p>
+          <div class="ctaRow">
+            <span class="btn pink">Yakında</span>
+            <span class="tag">tools</span>
+            <span class="tag">inventory</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Originals Arama">
+      <h2>Originals İçinde Ara</h2>
+      <div class="panel">
+        <p class="searchLabel">Filtre</p>
+        <div class="searchRow">
+          <input id="catq" class="search" type="search" placeholder="Format, araç, şablon... (örn: turnuva, overlay, logo)" autocomplete="off" />
+        </div>
+        <p class="helper">
+          Not: Bu filtre, <strong>assets/js/data.js</strong> içindeki “originals” kayıtlarını listeler.
+          (İstersen O Mu Bu Mu turnuvalarını da data.js'e ekleyip buradan aratırız.)
+        </p>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Originals İçerikler">
+      <h2>İçerikler</h2>
+      <div class="grid3" id="catgrid"></div>
+    </section>
 
   </main>
 
