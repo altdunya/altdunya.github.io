@@ -4,8 +4,98 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Abuse (1996) – AltDünya</title>
-  <meta name="description" content="Abuse (1996) AltDünya Pack v1.0. DOSBox ile tek tık çalışan klasik retro aksiyon oyunu. Kurulum rehberi ve Archive.org indirme bağlantısı." />
+  <meta name="description" content="Abuse (1996) için AltDünya oyun sayfası: kapak görseli, teknik bilgiler, hikâye özeti, önemli detaylar ve Archive.org indirme bağlantısı." />
   <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .gameHero{
+      display:grid;
+      grid-template-columns: 300px 1fr;
+      gap:22px;
+      align-items:start;
+      margin:18px 0 8px;
+    }
+    .coverCard,.panelCard,.sectionBlock{
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.03);
+      box-shadow:0 12px 30px rgba(0,0,0,.24);
+    }
+    .coverCard{
+      overflow:hidden;
+      background:rgba(0,0,0,.22);
+    }
+    .coverCard img{
+      width:100%;
+      display:block;
+      aspect-ratio:3/4;
+      object-fit:cover;
+    }
+    .panelCard{ padding:16px; }
+    .infoGrid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:10px;
+      margin-top:12px;
+    }
+    .infoItem{
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.07);
+      background:rgba(0,0,0,.14);
+    }
+    .infoItem strong{
+      display:block;
+      margin-bottom:4px;
+      font-size:12px;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+      color:rgba(233,239,255,.65);
+    }
+    .infoItem span{
+      color:rgba(233,239,255,.92);
+      line-height:1.45;
+      font-size:14px;
+    }
+    .sectionBlock{
+      padding:18px;
+      margin-top:16px;
+    }
+    .sectionBlock h3{
+      margin:0 0 10px;
+      font-size:18px;
+    }
+    .sectionBlock p{
+      margin:0;
+      color:rgba(233,239,255,.84);
+      line-height:1.75;
+    }
+    .factsList{
+      margin:0;
+      padding-left:20px;
+      color:rgba(233,239,255,.84);
+      line-height:1.8;
+    }
+    .factsList li+li{ margin-top:6px; }
+    .downloadBar{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-top:14px;
+    }
+    .smallVideo{
+      max-width:720px;
+      margin:0 auto;
+    }
+    .smallVideo iframe{
+      min-height:405px;
+    }
+    @media (max-width: 900px){
+      .gameHero{ grid-template-columns:1fr; }
+      .infoGrid{ grid-template-columns:1fr; }
+      .smallVideo iframe{ min-height:240px; }
+    }
+  </style>
 </head>
 <body>
   <div class="stars"></div>
@@ -16,7 +106,7 @@
         <div class="ufo" aria-hidden="true"></div>
         <div>
           <h1>ALTDÜNYA – Retro Hub</h1>
-          <small>Neon Retro Uzay • Arşiv • Kurulum Rehberleri</small>
+          <small>Retro oyunlar, kolay kurulum, tek tık deneyim</small>
         </div>
       </a>
       <nav aria-label="Site menüsü">
@@ -38,46 +128,102 @@
       </div>
 
       <div class="contentCard">
-        <h2 class="h1">Abuse (1996)</h2>
-
         <div class="metaRow">
-          <span class="chip">v1.0</span>
           <span class="chip">1996</span>
-          <span class="chip">freeware</span>
-          <span class="chip">dos</span>
-          <span class="chip">kurulum rehberi</span>
+          <span class="chip">run and gun</span>
+          <span class="chip">platform shooter</span>
+          <span class="chip">kült klasik</span>
         </div>
 
-        <div class="embed">
-          <iframe
-            src="https://www.youtube.com/embed/VIDEO_ID_BURAYA"
-            title="Abuse (1996) Kurulum Rehberi"
-            allowfullscreen>
-          </iframe>
-        </div>
-
+        <h2 class="h1">Abuse (1996)</h2>
         <p class="lead">
-          Abuse, 1996 yılında çıkan ve platform yapısını hızlı silahlı aksiyonla birleştiren
-          kült bir PC oyunudur. Karanlık atmosferi, akıcı oynanışı ve dönemine göre güçlü
-          görsel tarzıyla retro PC oyuncuları arasında özel bir yere sahiptir.
+          Abuse, karanlık bilim kurgu atmosferi ile hızlı platform aksiyonunu birleştiren ve
+          fareyle nişan alma hissini merkezine koyarak döneminde farklılaşan bir PC klasiği.
+          AltDünya Pack sürümüyle modern sistemlerde tek tıkla çalışacak şekilde hazırlanmıştır.
         </p>
 
-        <p style="color:rgba(233,239,255,.78); line-height:1.7; max-width:74ch;">
-          Bu sayfadaki sürüm, <strong>AltDünya Pack v1.0</strong> olarak hazırlanmıştır.
-          Paket içinde oyun dosyaları ve DOSBox yer alır. ZIP dosyasını çıkardıktan sonra
-          <strong>START.bat</strong> dosyasını çalıştırarak oyunu tek tıkla açabilirsiniz.
-        </p>
+        <div class="gameHero">
+          <div class="coverCard">
+            <img src="../assets/img/cover-abuse.jpg" alt="Abuse kapak görseli">
+          </div>
 
-        <div class="ctaRow">
-          <a class="btn primary" href="https://archive.org/details/abuse-1996-alt-dunya-pack-v-1.0" target="_blank" rel="noopener">
-            İndir (Archive.org) ↗
-          </a>
+          <div style="display:grid; gap:16px;">
+            <div class="panelCard">
+              <h3 style="margin:0 0 8px;">Oyun Künyesi</h3>
+              <div class="infoGrid">
+                <div class="infoItem"><strong>Geliştirici</strong><span>Crack dot Com</span></div>
+                <div class="infoItem"><strong>Yayıncı</strong><span>Electronic Arts (K. Amerika), Origin Systems (Avrupa)</span></div>
+                <div class="infoItem"><strong>İlk Çıkış</strong><span>MS-DOS için 1996</span></div>
+                <div class="infoItem"><strong>Tür</strong><span>Run and gun / platform shooter</span></div>
+                <div class="infoItem"><strong>Oynanış Yapısı</strong><span>Tek oyunculu, ağ üzerinden çok oyunculu destek</span></div>
+                <div class="infoItem"><strong>Kontrol Farkı</strong><span>Klavye ile hareket, fare ile nişan alma</span></div>
+                <div class="infoItem"><strong>Ana Karakter</strong><span>Nick Vrenna</span></div>
+                <div class="infoItem"><strong>AltDünya Pack</strong><span>DOSBox ile tek tık çalışan kurulum paketi</span></div>
+              </div>
+
+              <div class="downloadBar">
+                <a class="btn primary" href="https://archive.org/details/abuse-1996-alt-dunya-pack-v-1.0" target="_blank" rel="noopener">İndir (Archive.org) ↗</a>
+                <span class="tag">AltDünya Pack v1.0</span>
+                <span class="tag">Kolay kurulum</span>
+              </div>
+            </div>
+
+            <div class="panelCard">
+              <h3 style="margin:0 0 8px;">AltDünya Yorumu</h3>
+              <p style="margin:0; color:rgba(233,239,255,.84); line-height:1.75;">
+                Abuse bugün hâlâ ilgi çekici çünkü sadece nostaljik bir ad değil; kontrol hissi,
+                tempo duygusu ve yoğun atmosferiyle kendi döneminde gerçekten farklı bir şey denemiş bir oyun.
+                Bu yüzden Kurulum Rehberi serisine hem teknik olarak temiz hem de içerik değeri yüksek bir açılış yapıyor.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sectionBlock">
+          <h3>Kurulum Rehberi Videosu</h3>
+          <div class="embed smallVideo">
+            <iframe
+              src="https://www.youtube.com/embed/VIDEO_ID_BURAYA"
+              title="Abuse Kurulum Rehberi"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+
+        <div class="sectionBlock">
+          <h3>Hikâye Özeti</h3>
+          <p>
+            Oyunun merkezinde Nick Vrenna bulunur. Haksız yere hapsedildiği bir cezaevi kompleksinde, personelin
+            mahkûmlar üzerinde etik dışı tıbbi deneyler yürüttüğü ortaya çıkar. Deneylerden biri kontrolden çıkar ve
+            “Abuse” adı verilen madde içerideki insanları canavarlara dönüştürür. Nick ise bu etkiden bağışık görünür.
+            Su kaynaklarının da kirlenme riski doğunca eline silahını alır ve hem hayatta kalmak hem de tesisten kaçmak için
+            mutant sürülerinin içinden ilerler.
+          </p>
+        </div>
+
+        <div class="sectionBlock">
+          <h3>Oyunun Önemi</h3>
+          <ul class="factsList">
+            <li>Platform yapısını fareyle nişan alma mekanikleriyle birleştirerek dönemi için alışılmadık bir kontrol anlayışı sundu.</li>
+            <li>Karanlık bilim kurgu tonu, endüstriyel bölüm tasarımı ve baskı hissi veren tempoyla kült statü kazandı.</li>
+            <li>Kaynak kodunun ve bazı içeriklerinin daha sonra serbest bırakılması sayesinde uzun yıllar topluluk tarafından yaşatıldı.</li>
+            <li>Modern sistemlere uyarlanan sürümleri sayesinde bugün de rahatça oynanabilen retro klasiklerden biri oldu.</li>
+          </ul>
+        </div>
+
+        <div class="sectionBlock">
+          <h3>Kısa Fact Köşesi</h3>
+          <ul class="factsList">
+            <li>Oyun küçük bir ekip ve sınırlı bütçeyle geliştirildi, ama oynanış kimliği sayesinde kalıcı oldu.</li>
+            <li>İlk planlanan hikâye daha farklıydı; geliştirme sürecinde bugün bilinen cezaevi/mutasyon kurgusuna geçildi.</li>
+            <li>Topluluk çalışmaları sayesinde yıllar içinde SDL tabanlı sürümler ve yeni platform portları ortaya çıktı.</li>
+            <li>Retro içerik açısından hem oynanış hem de tasarım dili hakkında konuşulabilecek bol malzeme sunuyor.</li>
+          </ul>
         </div>
 
         <a class="backLink" href="index.html">← Freeware / Abandonware Games sayfasına dön</a>
       </div>
     </section>
-
   </main>
 
   <footer>
