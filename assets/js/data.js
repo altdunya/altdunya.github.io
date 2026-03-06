@@ -1,5 +1,21 @@
 window.ALT_ITEMS = [
   {
+    "id": "free-abuse",
+    "type": "free",
+    "title": "Abuse (1996) – AltDünya Pack v1.0",
+    "desc": "DOSBox ile tek tık çalışan klasik aksiyon/platform oyunu. Kurulum rehberi ve Archive.org indirme bağlantısı.",
+    "tags": [
+      "freeware",
+      "dos",
+      "kurulum",
+      "action"
+    ],
+    "url": "free/abuse.html",
+    "added": "2026-03-06",
+    "version": "v1.0",
+    "thumb": "assets/img/thumb-free-a.svg"
+  },
+  {
     "id": "free-a",
     "type": "free",
     "title": "Örnek Freeware Oyun A",
