@@ -3,12 +3,12 @@ window.ALT_ITEMS = [
     "id": "free-abuse",
     "type": "free",
     "title": "Abuse (1996)",
-    "desc": "Kült platform‑shooter klasiği. AltDünya Pack v1.0 ile tek tık çalışır.",
+    "desc": "Karanlık atmosferi ve hızlı oynanışıyla öne çıkan kült platform-shooter klasiği. AltDünya Pack v1.0 ile tek tık çalışır.",
     "tags": [
       "freeware",
       "retro",
       "dos",
-      "kurulum"
+      "aksiyon"
     ],
     "url": "free/abuse.html",
     "added": "2026-03-07",
