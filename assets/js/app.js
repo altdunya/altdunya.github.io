@@ -73,6 +73,11 @@
 
   renderLatest();
 
+  // Brand slogan
+  document.querySelectorAll(".brand small").forEach(el=>{
+    el.textContent = "Retro oyunlar, kolay kurulum, tek tık deneyim";
+  });
+
   // Category page filtering
   const cq = document.getElementById("catq");
   const cgrid = document.getElementById("catgrid");
