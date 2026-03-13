@@ -31,5 +31,16 @@ window.ALT_ITEMS = [
     "added": "2026-03-13",
     "version": "v1.0",
     "thumb": "assets/img/thumb-omf-2097.webp"
+  },
+  {
+    "id": "console-tekken3",
+    "type": "console",
+    "title": "Tekken 3 (1997)",
+    "desc": "PlayStation klasiği Tekken 3, DuckStation ile modern sistemlerde tek tık çalışır. AltDünya Pack v1.0.",
+    "tags": ["playstation", "ps1", "fighting", "tekken", "konsol port"],
+    "url": "console/tekken3.html",
+    "added": "2026-03-14",
+    "version": "v1.0",
+    "thumb": "assets/img/thumb-tekken3.webp"
   }
 ];
