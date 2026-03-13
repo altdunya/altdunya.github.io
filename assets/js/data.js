@@ -20,5 +20,16 @@ window.ALT_ITEMS = [
     "added": "2026-03-07",
     "version": "v1.0",
     "thumb": "assets/img/thumb-heman-clean.jpg"
+  },
+  {
+    "id": "free-omf-2097",
+    "type": "free",
+    "title": "One Must Fall 2097 (1994)",
+    "desc": "Efsane robot dövüş oyunu. AltDünya Pack v1.0 ile modern sistemlerde tek tık çalışır.",
+    "tags": ["freeware", "retro", "dos", "fighting", "robot"],
+    "url": "free/omf-2097.html",
+    "added": "2026-03-13",
+    "version": "v1.0",
+    "thumb": "assets/img/thumb-omf-2097.webp"
   }
 ];
