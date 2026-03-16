@@ -3,11 +3,36 @@
     "title": "AltDünya",
     "tagline": "Retro oyun vitrini, video merkezi ve AltDünya pack arşivi",
     "categories": [
-      {"id": "freeware", "name": "Freeware", "subtitle": "Ücretsiz klasik PC oyunları", "hero": "Ücretsiz klasikler, modern arayüz."},
-      {"id": "arcade", "name": "Arcade", "subtitle": "Salon efsaneleri", "hero": "Arcade ruhunu PC'de yeniden yaşa."},
-      {"id": "konsol", "name": "Konsol", "subtitle": "Konsol klasiklerinin AltDünya seçkisi", "hero": "PS1 ve diğer klasik konsol deneyimleri."},
-      {"id": "openbor", "name": "OpenBOR", "subtitle": "Beat 'em up mod dünyası", "hero": "Topluluk yapımı dövüş maceraları."},
-      {"id": "videolar", "name": "Videolar", "subtitle": "AltDünya oynanış ve inceleme videoları", "hero": "Site merkez, video vitrin."}
+      {
+        "id": "freeware",
+        "name": "Freeware",
+        "subtitle": "Ücretsiz klasik PC oyunları",
+        "hero": "Ücretsiz klasikler, modern arayüz."
+      },
+      {
+        "id": "arcade",
+        "name": "Arcade",
+        "subtitle": "Salon efsaneleri",
+        "hero": "Arcade ruhunu PC'de yeniden yaşa."
+      },
+      {
+        "id": "konsol",
+        "name": "Konsol",
+        "subtitle": "Konsol klasiklerinin AltDünya seçkisi",
+        "hero": "PS1 ve diğer klasik konsol deneyimleri."
+      },
+      {
+        "id": "openbor",
+        "name": "OpenBOR",
+        "subtitle": "Beat 'em up mod dünyası",
+        "hero": "Topluluk yapımı dövüş maceraları."
+      },
+      {
+        "id": "videolar",
+        "name": "Videolar",
+        "subtitle": "AltDünya oynanış ve inceleme videoları",
+        "hero": "Site merkez, video vitrin."
+      }
     ]
   },
   "games": [
@@ -25,17 +50,23 @@
       "metacritic": 96,
       "players": "1-2",
       "series": "Tekken",
-      "tags": ["Retro Port", "Dövüş", "90'lar", "Arcade", "Klasik"],
       "heroTitle": "PS1 / Dövüş Efsanesi",
       "shortDescription": "Tekken 3, hızlı dövüş temposu ve unutulmaz karakter kadrosuyla hâlâ ayakta duran bir klasik.",
-      "story": "Tekken 3, seriyi 3D dövüş arenasında zirveye taşıyan oyunlardan biri. Hızlı animasyonları, karakter çeşitliliği ve arcade hissiyle bugün bile açıp oynaması keyifli. AltDünya tarafında bu oyunu vitrin yapan şey, kısa sürede eğlence vermesi ve videoda izlenebilirliğinin yüksek olması.",
-      "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
       "cover": "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80",
+      "videoUrl": "https://www.youtube.com/embed/qC4kocKOW2c?si=9KA2RMNblkBf33-Z",
+      "tags": [
+        "Retro Port",
+        "Dövüş",
+        "90'lar",
+        "Arcade",
+        "Klasik"
+      ],
       "screenshots": [
         "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=80",
         "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?auto=format&fit=crop&w=1200&q=80",
         "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80"
       ],
+      "story": "Tekken 3, seriyi 3D dövüş arenasında zirveye taşıyan oyunlardan biri. Hızlı animasyonları, karakter çeşitliliği ve arcade hissiyle bugün bile açıp oynaması keyifli. AltDünya tarafında bu oyunu vitrin yapan şey, kısa sürede eğlence vermesi ve videoda izlenebilirliğinin yüksek olması.",
       "pack": {
         "version": "AltDünya Pack v1.0",
         "size": "620 MB",
@@ -63,7 +94,13 @@
       "metacritic": null,
       "players": "1-4",
       "series": "Re-Volt",
-      "tags": ["Freeware", "Yarış", "90'lar", "RC", "Klasik"],
+      "tags": [
+        "Freeware",
+        "Yarış",
+        "90'lar",
+        "RC",
+        "Klasik"
+      ],
       "heroTitle": "RC araçlarla saf eğlence",
       "shortDescription": "Re-Volt, minik arabaları dev hissettiren pist tasarımıyla hâlâ çok eğlenceli.",
       "story": "Re-Volt, yarış türünde farklı hissiyle öne çıkan oyunlardan biri. Ev içi ve mahalle ortamı pistleri sayesinde sıradan bir araba oyunu gibi değil, küçük oyuncakların büyük macerası gibi oynanıyor.",
@@ -97,7 +134,13 @@
       "metacritic": null,
       "players": "1-3",
       "series": "Cadillacs and Dinosaurs",
-      "tags": ["Arcade", "Beat 'em up", "90'lar", "Ko-op", "Retro Port"],
+      "tags": [
+        "Arcade",
+        "Beat 'em up",
+        "90'lar",
+        "Ko-op",
+        "Retro Port"
+      ],
       "heroTitle": "Salon efsanesinin güçlü geri dönüşü",
       "shortDescription": "Dinozorlar, yumruklar ve hızlı aksiyon. İzlemesi de oynaması da keyifli bir arcade klasiği.",
       "story": "Cadillacs and Dinosaurs, Capcom'un en ikonik beat 'em up oyunlarından biri. Güçlü animasyonları ve akıcı vuruş hissi sayesinde izleyici tarafında da çok iyi çalışıyor.",
@@ -118,74 +161,6 @@
       }
     },
     {
-      "id": "doom",
-      "title": "Doom",
-      "slug": "doom",
-      "category": "freeware",
-      "segment": "Freeware",
-      "platform": "DOS",
-      "genre": "FPS",
-      "year": 1993,
-      "developer": "id Software",
-      "publisher": "id Software",
-      "metacritic": null,
-      "players": "1",
-      "series": "Doom",
-      "tags": ["Freeware", "FPS", "DOS", "90'lar", "Klasik"],
-      "heroTitle": "FPS tarihini değiştiren oyun",
-      "shortDescription": "Doom, temposu ve akıcılığıyla bugün bile açıldığında yaşını çok hissettirmeyen bir klasik.",
-      "story": "Doom, sadece bir nostalji oyunu değil; türü tanımlayan başlıklardan biri. Kısa sürede aksiyona sokması sayesinde video formatı için de güçlü adaylardan.",
-      "videoUrl": null,
-      "cover": "https://images.unsplash.com/photo-1547394765-185e1e68f34e?auto=format&fit=crop&w=1200&q=80",
-      "screenshots": [],
-      "pack": {
-        "version": "AltDünya Pack v1.0",
-        "size": "95 MB",
-        "controls": "Klavye",
-        "notes": "DOSBox ile hazır yapılandırma içerir.",
-        "steps": [
-          "Zip'i çıkart.",
-          "start.bat ile başlat.",
-          "ESC ile menüye dön."
-        ],
-        "archiveUrl": "https://archive.org/details/doom-alt-dunya-pack"
-      }
-    },
-    {
-      "id": "prince-of-persia",
-      "title": "Prince of Persia",
-      "slug": "prince-of-persia",
-      "category": "freeware",
-      "segment": "Freeware",
-      "platform": "DOS",
-      "genre": "Platform",
-      "year": 1989,
-      "developer": "Broderbund",
-      "publisher": "Broderbund",
-      "metacritic": null,
-      "players": "1",
-      "series": "Prince of Persia",
-      "tags": ["Freeware", "Platform", "Klasik", "80'ler", "DOS"],
-      "heroTitle": "Animasyon kalitesiyle zamansız klasik",
-      "shortDescription": "Prince of Persia, akıcı animasyonu ve atmosferiyle yaşını aşan bir platform macerası.",
-      "story": "Tek mekaniğiyle bile akılda kalan nadir klasiklerden. Site tarafında özellikle keşif odaklı bir oyun vitrini olarak iyi durur.",
-      "videoUrl": null,
-      "cover": "https://images.unsplash.com/photo-1511882150382-421056c89033?auto=format&fit=crop&w=1200&q=80",
-      "screenshots": [],
-      "pack": {
-        "version": "AltDünya Pack v1.0",
-        "size": "40 MB",
-        "controls": "Klavye",
-        "notes": "DOSBox yapılandırması hazırdır.",
-        "steps": [
-          "Arşivi çıkart.",
-          "start.bat dosyasını çalıştır.",
-          "İstersen tam ekranı ALT+ENTER ile aç."
-        ],
-        "archiveUrl": "https://archive.org/details/prince-of-persia-alt-dunya-pack"
-      }
-    },
-    {
       "id": "he-man-openbor",
       "title": "He-Man OpenBOR",
       "slug": "he-man-openbor",
@@ -199,7 +174,12 @@
       "metacritic": null,
       "players": "1-2",
       "series": "OpenBOR",
-      "tags": ["OpenBOR", "Beat 'em up", "Fan Game", "Ko-op"],
+      "tags": [
+        "OpenBOR",
+        "Beat 'em up",
+        "Fan Game",
+        "Ko-op"
+      ],
       "heroTitle": "Topluluk yapımı aksiyon şöleni",
       "shortDescription": "OpenBOR sahnesinden öne çıkan bir uyarlama; kısa videolarda çok iyi durur.",
       "story": "OpenBOR oyunları AltDünya'nın yan segmentlerinden biri için güzel içerik alanı açıyor. Buradaki vitrin yaklaşımı oyuncuyu direkt kurcalamaya iter.",
