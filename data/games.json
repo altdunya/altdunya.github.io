@@ -37,6 +37,47 @@
   },
   "games": [
     {
+      "id": "c083f16f-11c5-45af-a893-7b49df32cf58",
+      "title": "Abuse",
+      "slug": "abuse",
+      "category": "freeware",
+      "segment": "Freeware",
+      "platform": "DOS",
+      "genre": "Platform / Shooter",
+      "year": 1996,
+      "developer": "Crack dot Com",
+      "publisher": "Electronic Arts",
+      "metacritic": 85,
+      "players": "1",
+      "series": "Abuse",
+      "heroTitle": "90'ların En Farklı Platform Shooter Oyunlarından Biri",
+      "shortDescription": "Abuse, karanlık atmosferi, akıcı oynanışı ve mouse destekli nişan alma sistemiyle döneminin en farklı platform shooter oyunlarından biri.",
+      "cover": "https://altdunya.github.io/assets/images/abuse-hero.jpg",
+      "videoUrl": "https://www.youtube.com/embed/_3qW4NXwS5A?si=1EAR-5c6wz-Xmc3W",
+      "tags": [
+        "Freeware",
+        "Platform Shooter",
+        "PC",
+        "90lar",
+        "Retro",
+        "Crack dot Com"
+      ],
+      "screenshots": [],
+      "story": "Abuse, 1996 yılında Crack dot Com tarafından geliştirilen ve döneminin en özgün platform shooter oyunlarından biri olarak kabul edilen bir yapım. Oyunda mahkûm karakter Nick Vrenna'yı kontrol ederek genetik deneyler sonucu ortaya çıkan yaratıkların istila ettiği bir hapishaneden kaçmaya çalışıyoruz.\n\nAbuse'u benzer oyunlardan ayıran en önemli özelliklerden biri, platform oyunlarında nadir görülen mouse ile nişan alma sistemi. Bu sayede karakter hareket ederken aynı anda farklı yönlere ateş edebilmek mümkün oluyor ve oyun oldukça akıcı bir aksiyon deneyimi sunuyor.\n\nKaranlık atmosferi, hızlı tempolu oynanışı ve özgün kontrol sistemi sayesinde Abuse bugün bile açıp oynanabilecek retro PC klasiklerinden biri olarak görülüyor. AltDünya'da bu oyun, Freeware statüsünde olması ve kolay kurulumuyla yeni nesil sistemlerde rahatça deneyimlenebildiği için öne çıkan yapımlardan biri.",
+      "pack": {
+        "version": "AltDünya Freeware Pack v1.0",
+        "size": "4.4 MB",
+        "controls": "Klavye + Mouse",
+        "notes": "Freeware sürümüdür. Modern Windows sistemlerinde sorunsuz çalışır. Mouse ile nişan alma özelliği sayesinde oynanışı oldukça akıcıdır.",
+        "steps": [
+          "Zip dosyasını indirip klasöre çıkartın.",
+          "start.bat dosyasını çalıştırın.",
+          "Oyun doğrudan başlayacaktır."
+        ],
+        "archiveUrl": "https://archive.org/details/abuse-1996-alt-dunya-pack-v-1.0"
+      }
+    },
+    {
       "id": "tekken-3",
       "title": "Tekken 3",
       "slug": "tekken-3",
@@ -51,31 +92,34 @@
       "players": "1-2",
       "series": "Tekken",
       "heroTitle": "PS1 / Dövüş Efsanesi",
-      "shortDescription": "Tekken 3, hızlı dövüş temposu ve unutulmaz karakter kadrosuyla hâlâ ayakta duran bir klasik.",
+      "shortDescription": "Tekken 3, hızlı dövüş temposu, ikonik karakterleri ve hâlâ keyif veren oynanışıyla bugün bile gücünü koruyan bir klasik.",
       "cover": "https://altdunya.github.io/assets/images/tekken3-hero.jpg",
       "videoUrl": "https://www.youtube.com/embed/qC4kocKOW2c?si=9KA2RMNblkBf33-Z",
       "tags": [
         "Retro Port",
         "Dövüş",
+        "PS1",
         "90'lar",
         "Arcade",
-        "Klasik"
+        "Klasik",
+        "Namco"
       ],
       "screenshots": [
         "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=80",
         "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?auto=format&fit=crop&w=1200&q=80",
         "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80"
       ],
-      "story": "Tekken 3, seriyi 3D dövüş arenasında zirveye taşıyan oyunlardan biri. Hızlı animasyonları, karakter çeşitliliği ve arcade hissiyle bugün bile açıp oynaması keyifli. AltDünya tarafında bu oyunu vitrin yapan şey, kısa sürede eğlence vermesi ve videoda izlenebilirliğinin yüksek olması.",
+      "story": "Tekken 3, sadece serinin değil, tüm dövüş oyunu tarihinin en önemli yapımlarından biri olarak kabul ediliyor. PlayStation döneminde ulaştığı popülerlik, akıcı oynanışı, güçlü karakter kadrosu ve arcade hissini eve taşıyan yapısıyla boşuna değil. Jin Kazama, Hwoarang, Xiaoyu, Eddy ve daha birçok karakter sayesinde oyun her maçta farklı bir tat veriyor.\n\nBugün dönüp bakıldığında bile Tekken 3’ün temposu hâlâ güçlü. Komboların akıcılığı, karakter animasyonları ve kısa sürede eğlence vermesi onu sadece nostaljik değil, aynı zamanda hâlâ oynanabilir bir klasik hâline getiriyor. AltDünya tarafında bu oyunu öne çıkaran şey de tam olarak bu: kısa sürede aksiyona sokması, videoda iyi akması ve Retro Port formatına çok uygun olması.",
       "pack": {
         "version": "AltDünya Pack v1.0",
-        "size": "620 MB",
+        "size": "507 MB",
         "controls": "Gamepad / Klavye",
-        "notes": "DuckStation tabanlı kolay açılır paket. İlk açılışta shader cache oluşabilir.",
+        "notes": "DuckStation tabanlı kolay açılır paket sürümüdür. İlk açılışta shader cache oluşumu nedeniyle kısa bir bekleme olabilir. Daha iyi deneyim için gamepad önerilir.",
         "steps": [
-          "Zip dosyasını çıkart.",
-          "start.bat dosyasını çalıştır.",
-          "Oyun otomatik olarak başlar. Gerekirse gamepad ayarlarını kontrol et."
+          "Zip dosyasını çıkartın.",
+          "Klasör içindeki start.bat dosyasını çalıştırın.",
+          "Oyun otomatik olarak başlayacaktır.",
+          "Gerekirse ilk açılıştan sonra kontrol ayarlarını düzenleyin."
         ],
         "archiveUrl": "https://archive.org/details/tekken-3-pc-alt-dunya-pack-v1.0"
       }
