@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AltDünya Admin</title>
+  <meta name="description" content="AltDünya oyun ekleme ve düzenleme paneli." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="admin-body">
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="brand">AltDünya</div>
+      <div class="admin-note">Bu panel GitHub Pages mantığına uygun hazırlandı. Kaydettiğin içerik tarayıcıda localStorage içine yazılır. İşin bitince <strong>JSON Dışa Aktar</strong> ile yeni <code>games.json</code> dosyasını indirip repodaki <code>data/games.json</code> ile değiştirmen yeterli.</div>
+      <button class="primary-btn" id="newGameBtn">Yeni Oyun</button>
+      <button class="secondary-btn" id="exportBtn">JSON Dışa Aktar</button>
+      <label class="import-label">JSON İçe Aktar
+        <input id="importInput" type="file" accept="application/json" />
+      </label>
+      <a class="secondary-btn" href="index.html">Siteye Dön</a>
+    </aside>
+
+    <section class="admin-main">
+      <div class="admin-list-card">
+        <div class="section-head">
+          <h2>Oyun Kayıtları</h2>
+        </div>
+        <input id="gameSearch" type="search" placeholder="Oyun ara..." />
+        <div id="gameList" class="game-list"></div>
+      </div>
+
+      <div class="admin-form-card">
+        <div class="section-head">
+          <h2 id="formTitle">Yeni Oyun</h2>
+          <button type="button" class="danger-btn" id="deleteBtn" style="visibility:hidden">Sil</button>
+        </div>
+
+        <form id="gameForm" class="admin-form">
+          <div class="form-grid">
+            <label>Oyun Adı
+              <input name="title" required />
+            </label>
+            <label>Slug
+              <input name="slug" placeholder="tekken-3" required />
+            </label>
+            <label>Kategori
+              <select name="category">
+                <option value="freeware">Freeware</option>
+                <option value="arcade">Arcade</option>
+                <option value="konsol">Konsol</option>
+                <option value="openbor">OpenBOR</option>
+                <option value="videolar">Videolar</option>
+              </select>
+            </label>
+            <label>Segment
+              <input name="segment" placeholder="Retro Port" />
+            </label>
+            <label>Platform
+              <input name="platform" placeholder="PS1 / DOS / PC" />
+            </label>
+            <label>Tür
+              <input name="genre" placeholder="Dövüş / FPS / Yarış" />
+            </label>
+            <label>Çıkış Yılı
+              <input name="year" type="number" min="1970" max="2100" />
+            </label>
+            <label>Metacritic
+              <input name="metacritic" type="number" min="0" max="100" />
+            </label>
+            <label>Geliştirici
+              <input name="developer" />
+            </label>
+            <label>Dağıtıcı
+              <input name="publisher" />
+            </label>
+            <label>Oyuncu Sayısı
+              <input name="players" placeholder="1-2" />
+            </label>
+            <label>Seri
+              <input name="series" placeholder="Tekken" />
+            </label>
+            <label class="full">Hero Alt Başlığı
+              <input name="heroTitle" placeholder="PS1 / Dövüş Efsanesi" />
+            </label>
+            <label class="full">Kısa Açıklama
+              <textarea name="shortDescription" rows="3"></textarea>
+            </label>
+            <label class="full">Uzun Açıklama / Hikâye
+              <textarea name="story" rows="8"></textarea>
+            </label>
+            <label class="full">Kapak Görseli URL
+              <input name="cover" placeholder="https://..." />
+            </label>
+            <label class="full">YouTube Embed Linki
+              <input name="videoUrl" placeholder="https://www.youtube.com/embed/..." />
+            </label>
+            <label class="full">Etiketler
+              <input name="tags" placeholder="Retro Port, Dövüş, 90'lar" />
+            </label>
+            <label class="full">Screenshot URL'leri (her satıra bir tane)
+              <textarea name="screenshots" rows="6"></textarea>
+            </label>
+          </div>
+
+          <div class="section-head"><h3>Pack Detayları</h3></div>
+          <div class="form-grid">
+            <label>Pack Sürümü
+              <input name="packVersion" />
+            </label>
+            <label>Boyut
+              <input name="packSize" />
+            </label>
+            <label class="full">Kontroller
+              <input name="packControls" placeholder="Gamepad / Klavye" />
+            </label>
+            <label class="full">Notlar
+              <textarea name="packNotes" rows="4"></textarea>
+            </label>
+            <label class="full">Kurulum Adımları (her satıra bir adım)
+              <textarea name="packSteps" rows="6"></textarea>
+            </label>
+            <label class="full">Archive.org Linki
+              <input name="archiveUrl" placeholder="https://archive.org/details/..." />
+            </label>
+          </div>
+
+          <div class="admin-actions">
+            <button class="primary-btn" type="submit">Kaydet</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>

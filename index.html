@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AltDünya</title>
+  <meta name="description" content="AltDünya retro oyun vitrini, kategori sayfaları, oyun sayfaları ve pack detayları." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <div class="brand" aria-label="AltDünya ana sayfa">AltDünya</div>
+      <nav id="mainNav" class="main-nav" aria-label="Ana gezinme"></nav>
+      <div class="topbar-actions">
+        <button class="icon-btn" id="menuBtn" aria-label="Menüyü aç">☰</button>
+      </div>
+    </header>
+
+    <main class="content-area">
+      <div id="app"></div>
+    </main>
+  </div>
+
+  <aside id="slidePanel" class="slide-panel" aria-hidden="true">
+    <div class="slide-panel-header">
+      <div>
+        <div class="kicker">AltDünya</div>
+        <strong>Hızlı Menü</strong>
+      </div>
+      <button class="icon-btn" id="closePanelBtn" aria-label="Menüyü kapat">✕</button>
+    </div>
+    <div class="slide-panel-content">
+      <a href="#/home">Ana Sayfa</a>
+      <a href="#/games">Tüm Oyunlar</a>
+      <a href="#/category/freeware">Freeware</a>
+      <a href="#/category/arcade">Arcade</a>
+      <a href="#/category/konsol">Konsol</a>
+      <a href="#/category/openbor">OpenBOR</a>
+      <a href="#/category/videolar">Videolar</a>
+      <a href="admin.html">Admin Paneli</a>
+    </div>
+  </aside>
+  <div id="panelBackdrop" class="panel-backdrop"></div>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
