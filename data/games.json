@@ -52,7 +52,7 @@
       "series": "Tekken",
       "heroTitle": "PS1 / Dövüş Efsanesi",
       "shortDescription": "Tekken 3, hızlı dövüş temposu ve unutulmaz karakter kadrosuyla hâlâ ayakta duran bir klasik.",
-      "cover": "https://github.com/altdunya/altdunya.github.io/blob/main/assets/images/tekken-3-pc-altdunya-thumbnail.jpg",
+      "cover": "https://altdunya.github.io/assets/images/tekken-3-pc-altdunya-thumbnail.jpg",
       "videoUrl": "https://www.youtube.com/embed/qC4kocKOW2c?si=9KA2RMNblkBf33-Z",
       "tags": [
         "Retro Port",
@@ -78,125 +78,6 @@
           "Oyun otomatik olarak başlar. Gerekirse gamepad ayarlarını kontrol et."
         ],
         "archiveUrl": "https://archive.org/details/tekken-3-pc-alt-dunya-pack-v1.0"
-      }
-    },
-    {
-      "id": "re-volt",
-      "title": "Re-Volt",
-      "slug": "re-volt",
-      "category": "freeware",
-      "segment": "Freeware",
-      "platform": "PC",
-      "genre": "Yarış",
-      "year": 1999,
-      "developer": "Acclaim Studios London",
-      "publisher": "Acclaim Entertainment",
-      "metacritic": null,
-      "players": "1-4",
-      "series": "Re-Volt",
-      "tags": [
-        "Freeware",
-        "Yarış",
-        "90'lar",
-        "RC",
-        "Klasik"
-      ],
-      "heroTitle": "RC araçlarla saf eğlence",
-      "shortDescription": "Re-Volt, minik arabaları dev hissettiren pist tasarımıyla hâlâ çok eğlenceli.",
-      "story": "Re-Volt, yarış türünde farklı hissiyle öne çıkan oyunlardan biri. Ev içi ve mahalle ortamı pistleri sayesinde sıradan bir araba oyunu gibi değil, küçük oyuncakların büyük macerası gibi oynanıyor.",
-      "videoUrl": null,
-      "cover": "https://images.unsplash.com/photo-1486572788966-cfd3df1f5b42?auto=format&fit=crop&w=1200&q=80",
-      "screenshots": [],
-      "pack": {
-        "version": "AltDünya Pack v1.2",
-        "size": "340 MB",
-        "controls": "Klavye / Gamepad",
-        "notes": "Widescreen düzeltmesi ve kolay başlatma eklendi.",
-        "steps": [
-          "Zip'i çıkart.",
-          "start.bat ile oyunu başlat.",
-          "İstersen controller profili seç."
-        ],
-        "archiveUrl": "https://archive.org/details/re-volt-alt-dunya-pack"
-      }
-    },
-    {
-      "id": "cadillacs-and-dinosaurs",
-      "title": "Cadillacs and Dinosaurs",
-      "slug": "cadillacs-and-dinosaurs",
-      "category": "arcade",
-      "segment": "Retro Port",
-      "platform": "Arcade",
-      "genre": "Beat 'em up",
-      "year": 1993,
-      "developer": "Capcom",
-      "publisher": "Capcom",
-      "metacritic": null,
-      "players": "1-3",
-      "series": "Cadillacs and Dinosaurs",
-      "tags": [
-        "Arcade",
-        "Beat 'em up",
-        "90'lar",
-        "Ko-op",
-        "Retro Port"
-      ],
-      "heroTitle": "Salon efsanesinin güçlü geri dönüşü",
-      "shortDescription": "Dinozorlar, yumruklar ve hızlı aksiyon. İzlemesi de oynaması da keyifli bir arcade klasiği.",
-      "story": "Cadillacs and Dinosaurs, Capcom'un en ikonik beat 'em up oyunlarından biri. Güçlü animasyonları ve akıcı vuruş hissi sayesinde izleyici tarafında da çok iyi çalışıyor.",
-      "videoUrl": null,
-      "cover": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1200&q=80",
-      "screenshots": [],
-      "pack": {
-        "version": "AltDünya Pack v1.0",
-        "size": "180 MB",
-        "controls": "Klavye / Gamepad",
-        "notes": "Arcade çekirdek ayarları optimize edildi.",
-        "steps": [
-          "Zip'i çıkart.",
-          "start.bat dosyasını aç.",
-          "İstersen tam ekran modunu F11 ile değiştir."
-        ],
-        "archiveUrl": "https://archive.org/details/cadillacs-and-dinosaurs-alt-dunya-pack"
-      }
-    },
-    {
-      "id": "he-man-openbor",
-      "title": "He-Man OpenBOR",
-      "slug": "he-man-openbor",
-      "category": "openbor",
-      "segment": "OpenBOR",
-      "platform": "PC",
-      "genre": "Beat 'em up",
-      "year": 2020,
-      "developer": "Topluluk Yapımı",
-      "publisher": "OpenBOR Community",
-      "metacritic": null,
-      "players": "1-2",
-      "series": "OpenBOR",
-      "tags": [
-        "OpenBOR",
-        "Beat 'em up",
-        "Fan Game",
-        "Ko-op"
-      ],
-      "heroTitle": "Topluluk yapımı aksiyon şöleni",
-      "shortDescription": "OpenBOR sahnesinden öne çıkan bir uyarlama; kısa videolarda çok iyi durur.",
-      "story": "OpenBOR oyunları AltDünya'nın yan segmentlerinden biri için güzel içerik alanı açıyor. Buradaki vitrin yaklaşımı oyuncuyu direkt kurcalamaya iter.",
-      "videoUrl": null,
-      "cover": "https://images.unsplash.com/photo-1518002171953-a080ee817e1f?auto=format&fit=crop&w=1200&q=80",
-      "screenshots": [],
-      "pack": {
-        "version": "AltDünya Pack v1.0",
-        "size": "280 MB",
-        "controls": "Klavye / Gamepad",
-        "notes": "OpenBOR motoru dahil paketlenmiştir.",
-        "steps": [
-          "Zip'i aç.",
-          "Oyunu başlatmak için start.bat kullan.",
-          "Kontrolleri Options menüsünden değiştir."
-        ],
-        "archiveUrl": "https://archive.org/details/he-man-openbor-alt-dunya-pack"
       }
     }
   ]
