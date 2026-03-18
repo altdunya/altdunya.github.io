@@ -106,7 +106,12 @@
         "Tek Tık",
         "AltDünya Pack"
       ],
-      "screenshots": [],
+      "screenshots": [
+        "https://altdunya.github.io/assets/images/dino-01.png",
+        "https://altdunya.github.io/assets/images/dino-02.png",
+        "https://altdunya.github.io/assets/images/dino-03.png",
+        "https://altdunya.github.io/assets/images/dino-04.png"
+      ],
       "story": "Cadillacs and Dinosaurs, Capcom’un 1993 yılında arcade salonları için geliştirdiği ve döneminin en sevilen beat ‘em up oyunlarından biridir.\n\nXenozoik Çağ’da geçen oyunda, insanlar ve dinazorlar aynı dünyayı paylaşmaktadır. Ancak kaçak avcılar ve suç örgütleri bu dengeyi tehdit eder. Jack Tenrec ve ekibi, bu tehditlere karşı savaşarak hem insanları hem de dinazorları korumaya çalışır.\n\nOyun; akıcı dövüş mekanikleri, çevre etkileşimleri ve araç kullanımı gibi detaylarıyla türünün en dikkat çeken yapımlarından biri olmuştur. Özellikle Cadillac araçları kullanabildiğimiz sahneler, oyunu benzerlerinden ayıran en ikonik özelliklerden biridir.\n\nAltDünya pack ile bu klasik oyunu modern sistemlerde tek tıkla çalıştırabilir ve nostaljiyi sorunsuz şekilde yaşayabilirsiniz.",
       "pack": {
         "version": "AltDunya Pack v1.0 (PC Portable Version)",
