@@ -6,13 +6,86 @@ const mainNav = document.getElementById('mainNav');
 const slidePanel = document.getElementById('slidePanel');
 const panelBackdrop = document.getElementById('panelBackdrop');
 
+const STATIC_PAGES = {
+  about: {
+    title: 'Hakkında',
+    kicker: 'AltDünya',
+    intro: 'AltDünya, retro oyunları tek yerde toplamak; oyun sayfası, video ve kolay açılır pack mantığını sade biçimde sunmak için oluşturulmuş bir arşivdir.',
+    body: `
+      <div class="panel">
+        <h2>Bu site ne yapar?</h2>
+        <p>Amacı karmaşık bir veri tabanı olmak değil; ziyaretçinin sevdiği oyunu bulup hızlıca oyun sayfasına gitmesini sağlamaktır. Her oyunda özet bilgi, varsa oynanış videosu, pack detayları ve benzer öneriler yer alır.</p>
+      </div>
+      <div class="panel">
+        <h2>Odak noktası</h2>
+        <ul class="legal-list">
+          <li>Retro klasikler için sade vitrin yapısı</li>
+          <li>Kolay açılır pack mantığı</li>
+          <li>Video ve oyun sayfasını aynı merkezde toplama</li>
+          <li>Kategori bazlı dolaşımı kolaylaştırma</li>
+        </ul>
+      </div>
+    `
+  },
+  contact: {
+    title: 'İletişim',
+    kicker: 'AltDünya',
+    intro: 'İletişim bilgilerini burada yayınlayabilirsin. Şimdilik yer tutucu bir alan hazırladım.',
+    body: `
+      <div class="panel">
+        <h2>İletişim Bilgileri</h2>
+        <p>Bu alana e-posta adresi, YouTube kanal linki, sosyal medya hesapları veya iş birliği iletişim bilgileri eklenebilir.</p>
+        <ul class="legal-list">
+          <li>E-posta: <strong>iletisim@ornek.com</strong></li>
+          <li>YouTube: <strong>AltDünya</strong></li>
+          <li>İş birlikleri ve geri bildirimler için ayrı bir adres de eklenebilir.</li>
+        </ul>
+      </div>
+    `
+  },
+  legal: {
+    title: 'Legal',
+    kicker: 'AltDünya',
+    intro: 'Legal sayfası, sitenin içerik yaklaşımını ve sorumluluk sınırlarını netleştirmek için önemlidir.',
+    body: `
+      <div class="legal-card">
+        <h2>Yasal Notlar</h2>
+        <ul class="legal-list">
+          <li>Bu sitedeki açıklamalar bilgilendirme ve arşivleme amaçlı hazırlanır.</li>
+          <li>Üçüncü taraf bağlantılar kendi platformlarının koşullarına tabidir.</li>
+          <li>Telif hakkı sahiplerinden gelecek haklı kaldırma talepleri doğrultusunda içerikler gözden geçirilebilir.</li>
+          <li>Marka ve oyun adları ilgili hak sahiplerine aittir.</li>
+        </ul>
+      </div>
+    `
+  },
+  privacy: {
+    title: 'Gizlilik',
+    kicker: 'AltDünya',
+    intro: 'Gizlilik sayfası kullanıcıya güven verir. Şimdilik temel bir taslak ekledim.',
+    body: `
+      <div class="legal-card">
+        <h2>Gizlilik Politikası Taslağı</h2>
+        <ul class="legal-list">
+          <li>Site, temel gezinme deneyimi dışında kullanıcıdan ek veri toplamayı hedeflemez.</li>
+          <li>Üçüncü taraf gömüler ve bağlantılar kendi veri politikalarına sahip olabilir.</li>
+          <li>İleride analitik ya da yorum sistemi eklenecekse bu sayfa güncellenmelidir.</li>
+        </ul>
+      </div>
+    `
+  }
+};
+
 document.getElementById('menuBtn')?.addEventListener('click', () => {
   slidePanel.classList.add('open');
   panelBackdrop.classList.add('show');
 });
 document.getElementById('closePanelBtn')?.addEventListener('click', closePanel);
 panelBackdrop?.addEventListener('click', closePanel);
-document.querySelector('.brand')?.addEventListener('click', () => location.hash = '#/home');
+
+document.querySelectorAll('.brand-link')?.forEach(el => {
+  el.addEventListener('click', () => location.hash = '#/home');
+});
 
 function closePanel() {
   slidePanel.classList.remove('open');
@@ -35,7 +108,9 @@ function buildNav() {
   const links = [
     { id: 'home', label: 'Ana Sayfa', href: '#/home' },
     { id: 'games', label: 'Oyunlar', href: '#/games' },
-    ...siteData.site.categories.filter(c => ['konsol', 'arcade', 'freeware', 'openbor'].includes(c.id)).map(c => ({ id: c.id, label: c.name, href: `#/category/${c.id}` })),
+    ...siteData.site.categories
+      .filter(c => ['konsol', 'arcade', 'freeware'].includes(c.id))
+      .map(c => ({ id: c.id, label: c.name, href: `#/category/${c.id}` })),
     { id: 'videolar', label: 'Videolar', href: '#/category/videolar' },
   ];
   mainNav.innerHTML = links.map(link => `<a class="nav-link" data-id="${link.id}" href="${link.href}">${link.label}</a>`).join('');
@@ -59,6 +134,7 @@ function renderRoute() {
   if (parts[0] === 'games') return renderGames();
   if (parts[0] === 'category' && parts[1]) return renderCategory(parts[1]);
   if (parts[0] === 'game' && parts[1]) return renderGame(parts[1]);
+  if (STATIC_PAGES[parts[0]]) return renderStaticPage(parts[0]);
   return renderHome();
 }
 
@@ -69,18 +145,17 @@ function getGameBySlug(slug) {
 function gameCard(game) {
   return `
     <article class="game-card">
-      <div class="game-thumb" style="background-image:url('${game.cover}')"></div>
-      <div class="game-body">
-        <h3>${game.title}</h3>
-        <div class="meta-row">
-          <span class="badge">${game.platform || '—'}</span>
-          <span class="badge">${game.segment || '—'}</span>
-          <span class="badge">${game.genre || '—'}</span>
+      <a class="game-card-link" href="#/game/${game.slug}">
+        <div class="game-thumb" style="background-image:url('${game.cover}')"></div>
+        <div class="game-body">
+          <h3>${game.title}</h3>
+          <div class="meta-row">
+            <span class="badge">${game.platform || '—'}</span>
+            <span class="badge">${game.segment || '—'}</span>
+            <span class="badge">${game.genre || '—'}</span>
+          </div>
         </div>
-        <div class="cta-row">
-          <a class="secondary-btn" href="#/game/${game.slug}">İncele</a>
-        </div>
-      </div>
+      </a>
     </article>
   `;
 }
@@ -102,6 +177,7 @@ function renderHome() {
   const featured = siteData.games[0];
   const latest = [...siteData.games].slice(0, 4);
   const popular = [...siteData.games].slice(0, 4);
+  const videoGames = siteData.games.filter(g => g.videoUrl).slice(0,4);
 
   app.innerHTML = `
     <section class="hero-card">
@@ -115,7 +191,7 @@ function renderHome() {
         </div>
         <p>${featured.shortDescription}</p>
         <div class="cta-row">
-          <a class="primary-btn" href="#/game/${featured.slug}">Detaylı İncele</a>
+          <a class="primary-btn" href="#/game/${featured.slug}">Oyuna Git</a>
           <a class="secondary-btn" href="#/category/${featured.category}">${labelForCategory(featured.category)}</a>
         </div>
       </div>
@@ -131,7 +207,7 @@ function renderHome() {
       <div class="section">
         <div class="section-head"><h2>Kategoriler</h2></div>
         <div class="segment-grid">
-          ${siteData.site.categories.filter(c => ['freeware','arcade','konsol','openbor'].includes(c.id)).map(c => `
+          ${siteData.site.categories.filter(c => ['freeware','arcade','konsol'].includes(c.id)).map(c => `
             <a class="segment-card" href="#/category/${c.id}">
               <div>
                 <div class="kicker">Kategori</div>
@@ -150,12 +226,16 @@ function renderHome() {
         <aside class="side-stack">
           <div class="side-card">
             <h3>Son Videolar</h3>
-            <p class="muted">Video linki eklenen oyunlar burada öne çıkar. Video eklenmeyen oyunlarda placeholder gösterilir.</p>
-            <div class="mini-list">${siteData.games.filter(g => g.videoUrl).slice(0,4).map(miniGame).join('') || '<div class="search-empty">Henüz video eklenmedi.</div>'}</div>
+            <p class="muted">Video bağlantısı eklenen oyunlar burada öne çıkar.</p>
+            <div class="mini-list">${videoGames.map(miniGame).join('') || '<div class="search-empty">Henüz video eklenmedi.</div>'}</div>
           </div>
           <div class="side-card">
-            <h3>Site Mantığı</h3>
-            <p class="muted">Üst bar sabit kalır. Orta alan kategori veya oyun sayfasına göre değişir. Sağ slide menü ileride ayrı tasarlanabilir.</p>
+            <h3>Neden AltDünya?</h3>
+            <ul class="trust-list">
+              <li>Oyun kartlarının tamamı doğrudan oyun sayfasına gider.</li>
+              <li>Her oyun için sade pack bilgisi ve kurulum adımı sunulur.</li>
+              <li>Benzer oyun sistemiyle sitede dolaşım güçlenir.</li>
+            </ul>
           </div>
         </aside>
       </div>
@@ -217,7 +297,7 @@ function renderCategory(categoryId) {
           <div class="tags">${allTags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
         </div>
         <div class="side-card">
-          <h3>Popüler Oyunlar</h3>
+          <h3>Öne Çıkan Oyunlar</h3>
           <div class="mini-list">${popular.map(miniGame).join('')}</div>
         </div>
       </aside>
@@ -349,6 +429,21 @@ function renderGame(slug) {
   document.getElementById('packJumpBtn')?.addEventListener('click', () => document.getElementById('packSection').scrollIntoView({behavior:'smooth'}));
   document.getElementById('packJumpBtnSide')?.addEventListener('click', () => document.getElementById('packSection').scrollIntoView({behavior:'smooth'}));
   bindGallery();
+}
+
+function renderStaticPage(pageId) {
+  setActiveNav('');
+  const page = STATIC_PAGES[pageId];
+  app.innerHTML = `
+    <section class="simple-page">
+      <section class="category-hero">
+        <div class="kicker">${page.kicker}</div>
+        <h1>${page.title}</h1>
+        <p>${page.intro}</p>
+      </section>
+      ${page.body}
+    </section>
+  `;
 }
 
 function renderGallery(game) {
