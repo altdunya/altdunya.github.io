@@ -13,7 +13,13 @@
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <div class="brand" aria-label="AltDünya ana sayfa">AltDünya</div>
+      <a href="#/home" class="brand brand-link" aria-label="AltDünya ana sayfa">
+        <span class="brand-mark" aria-hidden="true">AD</span>
+        <span class="brand-text-wrap">
+          <span class="brand-text">AltDünya</span>
+          <span class="brand-subtext">Retro Oyun Arşivi</span>
+        </span>
+      </a>
       <nav id="mainNav" class="main-nav" aria-label="Ana gezinme"></nav>
       <div class="topbar-actions">
         <button class="icon-btn" id="menuBtn" aria-label="Menüyü aç">☰</button>
@@ -23,6 +29,37 @@
     <main class="content-area">
       <div id="app"></div>
     </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-mark small" aria-hidden="true">AD</div>
+          <div>
+            <strong>AltDünya</strong>
+            <p class="muted">Retro oyun arşivi, oynanış videoları ve kolay açılır pack sayfaları.</p>
+          </div>
+        </div>
+        <div>
+          <h4>Site</h4>
+          <div class="footer-links">
+            <a href="#/games">Tüm Oyunlar</a>
+            <a href="#/category/freeware">Freeware</a>
+            <a href="#/category/arcade">Arcade</a>
+            <a href="#/category/konsol">Konsol</a>
+            <a href="#/category/videolar">Videolar</a>
+          </div>
+        </div>
+        <div>
+          <h4>Bilgi</h4>
+          <div class="footer-links">
+            <a href="#/about">Hakkında</a>
+            <a href="#/contact">İletişim</a>
+            <a href="#/legal">Legal</a>
+            <a href="#/privacy">Gizlilik</a>
+          </div>
+        </div>
+      </div>
+    </footer>
   </div>
 
   <aside id="slidePanel" class="slide-panel" aria-hidden="true">
@@ -39,8 +76,10 @@
       <a href="#/category/freeware">Freeware</a>
       <a href="#/category/arcade">Arcade</a>
       <a href="#/category/konsol">Konsol</a>
-      <a href="#/category/openbor">OpenBOR</a>
       <a href="#/category/videolar">Videolar</a>
+      <a href="#/about">Hakkında</a>
+      <a href="#/contact">İletişim</a>
+      <a href="#/legal">Legal</a>
     </div>
   </aside>
   <div id="panelBackdrop" class="panel-backdrop"></div>
