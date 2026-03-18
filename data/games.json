@@ -37,6 +37,48 @@
   },
   "games": [
     {
+      "id": "66bfe5ec-cbfb-4775-a125-de2891fa6b2d",
+      "title": "One Must Fall: 2097",
+      "slug": "one-must-fall-2097",
+      "category": "freeware",
+      "segment": "Freeware",
+      "platform": "DOS",
+      "genre": "Dövüş",
+      "year": 1994,
+      "developer": "Diversions Entertainment",
+      "publisher": "Epic MegaGames",
+      "metacritic": 85,
+      "players": "1-2",
+      "series": "One Must Fall",
+      "heroTitle": "1994’ten Robot Arenası",
+      "shortDescription": "One Must Fall: 2097, dev savaş robotlarını kontrol ettiğin, hızlı oynanışı ve turnuva sistemiyle öne çıkan kült bir DOS dövüş oyunudur.",
+      "cover": "https://altdunya.github.io/assets/images/one-must-fall-2097-hero.jpg",
+      "videoUrl": null,
+      "tags": [
+        "Freeware",
+        "Dövüş",
+        "DOS",
+        "90'lar",
+        "Robot",
+        "Mecha",
+        "Retro"
+      ],
+      "screenshots": [],
+      "story": "One Must Fall: 2097, klasik dövüş oyunu formülünü dev savaş robotlarıyla birleştiren, 90’ların en özgün DOS yapımlarından biridir. Oyunda farklı pilotlar ve HAR adı verilen robotlarla arenaya çıkıp rakiplerini alt etmeye çalışırsın. Özellikle turnuva modu, para kazanıp robotunu geliştirebilmen sayesinde oyuna ayrı bir derinlik katar.\n\nDönemine göre çok akıcı animasyonları, güçlü müzikleri ve 1’e 1 rekabet hissiyle dikkat çeken yapım, bugün hâlâ retro dövüş oyunu sevenler için keyifli bir deneyim sunuyor. Oyun 1999’da freeware olarak yayımlandığı için retro arşiv mantığına da çok iyi uyuyor.",
+      "pack": {
+        "version": "v1.0",
+        "size": "8.2 MB",
+        "controls": "Klavye / Gamepad",
+        "notes": "Bu paket, One Must Fall: 2097'nin tamamen çalışır DOS sürümünü içerir.\nHerhangi bir ek kurulum gerektirmez, tek tık ile oynanabilir.\n\nOyun freeware olarak yayınlandığı için güvenle indirilebilir.",
+        "steps": [
+          "İndirilen .zip dosyasını çıkart",
+          "Klasör içindeki START.bat dosyasını çalıştır",
+          "Oyun otomatik olarak açılacaktır"
+        ],
+        "archiveUrl": "https://archive.org/details/omf-2097-alt-dunya-pack-v-1.0"
+      }
+    },
+    {
       "id": "8e4c6f94-4aeb-4fab-b450-6596b03443cf",
       "title": "Cadillacs and Dinosaurs",
       "slug": "cadillacs-and-dinosaurs",
