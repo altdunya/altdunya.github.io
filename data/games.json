@@ -37,6 +37,49 @@
   },
   "games": [
     {
+      "id": "8e4c6f94-4aeb-4fab-b450-6596b03443cf",
+      "title": "Cadillacs and Dinosaurs",
+      "slug": "cadillacs-and-dinosaurs",
+      "category": "arcade",
+      "segment": "Retro Port",
+      "platform": "Arcade",
+      "genre": "Beat ‘em up / Aksiyon",
+      "year": 1993,
+      "developer": "Capcom",
+      "publisher": "Capcom",
+      "metacritic": 85,
+      "players": "1-3",
+      "series": "Cadillacs and Dinosaurs",
+      "heroTitle": "Arcade Efsanesi Geri Döndü",
+      "shortDescription": "90’ların en efsane arcade beat ‘em up oyunlarından biri!\nCadillacs, dinazorlar ve kaos dolu aksiyon bu klasik yapımda birleşiyor.",
+      "cover": "https://altdunya.github.io/assets/images/cadillacs-dinosaurs-hero.jpg",
+      "videoUrl": null,
+      "tags": [
+        "Retro Port",
+        "Beat 'em up",
+        "Arcade",
+        "90'lar",
+        "Capcom",
+        "Nostalji",
+        "Tek Tık",
+        "AltDünya Pack"
+      ],
+      "screenshots": [],
+      "story": "Cadillacs and Dinosaurs, Capcom’un 1993 yılında arcade salonları için geliştirdiği ve döneminin en sevilen beat ‘em up oyunlarından biridir.\n\nXenozoik Çağ’da geçen oyunda, insanlar ve dinazorlar aynı dünyayı paylaşmaktadır. Ancak kaçak avcılar ve suç örgütleri bu dengeyi tehdit eder. Jack Tenrec ve ekibi, bu tehditlere karşı savaşarak hem insanları hem de dinazorları korumaya çalışır.\n\nOyun; akıcı dövüş mekanikleri, çevre etkileşimleri ve araç kullanımı gibi detaylarıyla türünün en dikkat çeken yapımlarından biri olmuştur. Özellikle Cadillac araçları kullanabildiğimiz sahneler, oyunu benzerlerinden ayıran en ikonik özelliklerden biridir.\n\nAltDünya pack ile bu klasik oyunu modern sistemlerde tek tıkla çalıştırabilir ve nostaljiyi sorunsuz şekilde yaşayabilirsiniz.",
+      "pack": {
+        "version": "AltDunya Pack v1.0 (PC Portable Version)",
+        "size": "18.3 MB",
+        "controls": "Gamepad / Klavye",
+        "notes": "Bu paket, oyunu modern sistemlerde sorunsuz çalıştırmak için optimize edilmiştir.\nHerhangi bir kurulum gerektirmez, doğrudan çalıştırılabilir.",
+        "steps": [
+          "İndirdiğiniz .zip dosyasını çıkartın",
+          "Klasör içindeki start.bat dosyasını çalıştırın",
+          "Oyun otomatik olarak açılacaktır"
+        ],
+        "archiveUrl": "https://archive.org/details/cadillacs-and-dinosaurs-alt-dunya-pack-v-1.0"
+      }
+    },
+    {
       "id": "c083f16f-11c5-45af-a893-7b49df32cf58",
       "title": "Abuse",
       "slug": "abuse",
