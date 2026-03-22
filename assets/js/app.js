@@ -97,7 +97,13 @@ async function loadData() {
   if (local) {
     siteData = JSON.parse(local);
   } else {
-    const res = await fetch('data/games.json');
+    let res;
+    try {
+      res = await fetch('data/games.json');
+      if (!res.ok) throw new Error('data/games.json bulunamadı');
+    } catch (err) {
+      res = await fetch('games.json');
+    }
     siteData = await res.json();
   }
   buildNav();
@@ -175,8 +181,8 @@ function miniGame(game) {
 function renderHome() {
   setActiveNav('home');
   const featured = siteData.games[0];
-  const latest = [...siteData.games].slice(0, 4);
-  const popular = [...siteData.games].slice(0, 4);
+  const latest = [...siteData.games].slice(0, 5);
+  const popular = [...siteData.games].slice(0, 10);
   const videoGames = siteData.games.filter(g => g.videoUrl).slice(0,4);
 
   app.innerHTML = `
@@ -224,6 +230,11 @@ function renderHome() {
           <div class="card-grid">${popular.map(gameCard).join('')}</div>
         </section>
         <aside class="side-stack">
+          <div class="side-card">
+            <h3>Popüler Oyunlar</h3>
+            <p class="muted">Hızlı erişim için ilk 10 oyun burada listelenir.</p>
+            <div class="link-list">${popular.map(game => `<a class="text-link-item" href="#/game/${game.slug}">${game.title}</a>`).join('')}</div>
+          </div>
           <div class="side-card">
             <h3>Son Videolar</h3>
             <p class="muted">Video bağlantısı eklenen oyunlar burada öne çıkar.</p>
