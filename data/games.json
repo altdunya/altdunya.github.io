@@ -37,6 +37,47 @@
   },
   "games": [
     {
+      "id": "ed06f1fc-30d9-4582-a291-54075fe9d5ad",
+      "title": "Alien Carnage",
+      "slug": "alien-carnage",
+      "category": "freeware",
+      "segment": "Freeware",
+      "platform": "DOS",
+      "genre": "Aksiyon / Platform",
+      "year": 1993,
+      "developer": "Apogee Software",
+      "publisher": "Apogee Software",
+      "metacritic": 70,
+      "players": "1",
+      "series": "Alien Carnage",
+      "heroTitle": "DOS / Aksiyon Platform Klasiği",
+      "shortDescription": "Alien Carnage, 1993 yılında çıkan hızlı tempolu bir DOS aksiyon-platform oyunudur. Uzaylı istilasına karşı farklı silahlar ve güçlendirmelerle mücadele ettiğiniz bu klasik, döneminin en eğlenceli arcade tarzı oyunlarından biridir.",
+      "cover": "https://altdunya.github.io/assets/images/alien-carnage-hero.jpg",
+      "videoUrl": null,
+      "tags": [
+        "DOS",
+        "Aksiyon",
+        "Platform",
+        "Retro",
+        "90'lar",
+        "Arcade",
+        "Freeware"
+      ],
+      "screenshots": [],
+      "story": "Alien Carnage, 90’lı yılların unutulmaz DOS oyunlarından biridir. Apogee Software tarafından yayınlanan bu yapım, hızlı tempolu oynanışı ve arcade hissiyatıyla öne çıkar.\n\nOyunda, uzaylıların istila ettiği bölgelerde ilerleyerek farklı silahlar ve güçlendirmelerle düşmanları alt etmeye çalışırsınız. Bölümler ilerledikçe oyun temposu artar ve refleksleriniz daha fazla önem kazanır.\n\nBasit ama akıcı mekanikleri sayesinde Alien Carnage, bugün bile kısa sürede eğlenceli bir deneyim sunabilen klasiklerden biridir.\n\nAltDünya’da bu tarz oyunları tekrar deneyimleyip şu soruya cevap arıyoruz:\n👉 Bugün hâlâ oynanır mı?",
+      "pack": {
+        "version": "v1.0",
+        "size": "7 MB",
+        "controls": "Klavye",
+        "notes": "Bu paket modern sistemlerde sorunsuz çalışacak şekilde hazırlanmıştır.\n\nOyun DOSBox ile birlikte gelir ve herhangi bir ek kurulum gerektirmez.\n\nBazı sistemlerde oyun hızı farklılık gösterebilir.",
+        "steps": [
+          "ZIP dosyasını bir klasöre çıkar",
+          "start.bat dosyasını çalıştır"
+        ],
+        "archiveUrl": "https://archive.org/details/alien-carnage-alt-dunya-pack-v-1.0"
+      }
+    },
+    {
       "id": "66bfe5ec-cbfb-4775-a125-de2891fa6b2d",
       "title": "One Must Fall: 2097",
       "slug": "one-must-fall-2097",
