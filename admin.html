@@ -9,37 +9,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
-
-  <style id="admin-critical-css">
-    body.admin-body{margin:0;background:linear-gradient(180deg,#0a0d1d,#0b1228);color:#eef2ff;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-    .admin-shell{min-height:100vh;padding:20px;display:grid;gap:20px}
-    .admin-topbar{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;padding:22px 24px;border:1px solid rgba(255,255,255,.08);border-radius:24px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));box-shadow:0 18px 40px rgba(0,0,0,.35)}
-    .admin-topbar-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
-    .admin-workspace{display:grid;grid-template-columns:360px minmax(0,1fr);gap:20px;align-items:start}
-    .admin-left{display:grid;gap:20px;position:sticky;top:20px}
-    .admin-panel{padding:20px;border:1px solid rgba(255,255,255,.08);border-radius:24px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));box-shadow:0 18px 40px rgba(0,0,0,.35)}
-    .settings-stack,.admin-list-panel,.game-list,.admin-form{display:grid;gap:14px}
-    .popular-grid,.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-    .form-grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
-    .editor-shell{padding:26px}
-    .editor-header{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.08)}
-    .editor-block{border:1px solid rgba(255,255,255,.08);border-radius:20px;background:rgba(255,255,255,.03);overflow:hidden}
-    .editor-block summary{cursor:pointer;padding:18px 20px;font-size:1.1rem;font-weight:800}
-    .editor-block .form-grid{padding:18px}
-    input,select,textarea,button,a.secondary-btn,a.primary-btn{font:inherit}
-    input,select,textarea{width:100%;box-sizing:border-box;background:#0e1530;color:#fff;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:12px 14px}
-    .game-list-item{width:100%;text-align:left;padding:14px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid transparent;color:#eef2ff;cursor:pointer}
-    .game-list-item.active{border-color:rgba(255,140,47,.45);background:rgba(255,140,47,.08)}
-    .primary-btn,.secondary-btn,.danger-btn{border:none;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;border-radius:14px;padding:12px 16px}
-    .primary-btn{background:linear-gradient(90deg,#ff8c2f,#ffb359);color:#1b1206;font-weight:800}
-    .secondary-btn{background:rgba(255,255,255,.08);color:#fff}
-    .danger-btn{background:#5f1d22;color:#ffd7dc}
-    .brand{font-size:2rem;font-weight:900;letter-spacing:-.03em}
-    .kicker,.muted,.small{color:#a8b3d5}.small{font-size:.9rem}
-    .section-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px}.section-head h2{margin:0}
-    @media (max-width:1200px){.admin-workspace{grid-template-columns:1fr}.admin-left{position:static}.form-grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}}
-    @media (max-width:760px){.admin-shell{padding:12px}.admin-topbar{padding:18px;flex-direction:column}.admin-topbar-actions{justify-content:flex-start}.popular-grid,.form-grid-3,.form-grid{grid-template-columns:1fr}.editor-header{flex-direction:column;align-items:flex-start}}
-  </style>
 </head>
 <body class="admin-body">
   <div class="admin-shell">
@@ -164,6 +133,278 @@
     </main>
   </div>
 
+<script id="embeddedGamesData" type="application/json">
+{
+  "site": {
+    "title": "AltDünya",
+    "tagline": "Retro oyun vitrini, video merkezi ve AltDünya pack arşivi",
+    "categories": [
+      {
+        "id": "freeware",
+        "name": "Freeware",
+        "subtitle": "Ücretsiz klasik PC oyunları",
+        "hero": "Ücretsiz klasikler, modern arayüz."
+      },
+      {
+        "id": "arcade",
+        "name": "Arcade",
+        "subtitle": "Salon efsaneleri",
+        "hero": "Arcade ruhunu PC'de yeniden yaşa."
+      },
+      {
+        "id": "konsol",
+        "name": "Konsol",
+        "subtitle": "Konsol klasiklerinin AltDünya seçkisi",
+        "hero": "PS1 ve diğer klasik konsol deneyimleri."
+      },
+      {
+        "id": "openbor",
+        "name": "OpenBOR",
+        "subtitle": "Beat 'em up mod dünyası",
+        "hero": "Topluluk yapımı dövüş maceraları."
+      },
+      {
+        "id": "videolar",
+        "name": "Videolar",
+        "subtitle": "AltDünya oynanış ve inceleme videoları",
+        "hero": "Site merkez, video vitrin."
+      }
+    ],
+    "home": {
+      "heroSlug": "alien-carnage",
+      "popularSlugs": [
+        "alien-carnage",
+        "one-must-fall-2097",
+        "cadillacs-and-dinosaurs",
+        "abuse",
+        "tekken-3"
+      ]
+    }
+  },
+  "games": [
+    {
+      "id": "ed06f1fc-30d9-4582-a291-54075fe9d5ad",
+      "title": "Alien Carnage",
+      "slug": "alien-carnage",
+      "category": "freeware",
+      "segment": "Freeware",
+      "platform": "DOS",
+      "genre": "Aksiyon / Platform",
+      "year": 1993,
+      "developer": "Apogee Software",
+      "publisher": "Apogee Software",
+      "metacritic": 70,
+      "players": "1",
+      "series": "Alien Carnage",
+      "heroTitle": "DOS / Aksiyon Platform Klasiği",
+      "shortDescription": "Alien Carnage, 1993 yılında çıkan hızlı tempolu bir DOS aksiyon-platform oyunudur. Uzaylı istilasına karşı farklı silahlar ve güçlendirmelerle mücadele ettiğiniz bu klasik, döneminin en eğlenceli arcade tarzı oyunlarından biridir.",
+      "cover": "https://altdunya.github.io/assets/images/alien-carnage-hero.jpg",
+      "videoUrl": null,
+      "tags": [
+        "DOS",
+        "Aksiyon",
+        "Platform",
+        "Retro",
+        "90'lar",
+        "Arcade",
+        "Freeware"
+      ],
+      "screenshots": [],
+      "story": "Alien Carnage, 90’lı yılların unutulmaz DOS oyunlarından biridir. Apogee Software tarafından yayınlanan bu yapım, hızlı tempolu oynanışı ve arcade hissiyatıyla öne çıkar.\n\nOyunda, uzaylıların istila ettiği bölgelerde ilerleyerek farklı silahlar ve güçlendirmelerle düşmanları alt etmeye çalışırsınız. Bölümler ilerledikçe oyun temposu artar ve refleksleriniz daha fazla önem kazanır.\n\nBasit ama akıcı mekanikleri sayesinde Alien Carnage, bugün bile kısa sürede eğlenceli bir deneyim sunabilen klasiklerden biridir.\n\nAltDünya’da bu tarz oyunları tekrar deneyimleyip şu soruya cevap arıyoruz:\n👉 Bugün hâlâ oynanır mı?",
+      "pack": {
+        "version": "v1.0",
+        "size": "7 MB",
+        "controls": "Klavye",
+        "notes": "Bu paket modern sistemlerde sorunsuz çalışacak şekilde hazırlanmıştır.\n\nOyun DOSBox ile birlikte gelir ve herhangi bir ek kurulum gerektirmez.\n\nBazı sistemlerde oyun hızı farklılık gösterebilir.",
+        "steps": [
+          "ZIP dosyasını bir klasöre çıkar",
+          "start.bat dosyasını çalıştır"
+        ],
+        "archiveUrl": "https://archive.org/details/alien-carnage-alt-dunya-pack-v-1.0"
+      }
+    },
+    {
+      "id": "66bfe5ec-cbfb-4775-a125-de2891fa6b2d",
+      "title": "One Must Fall: 2097",
+      "slug": "one-must-fall-2097",
+      "category": "freeware",
+      "segment": "Freeware",
+      "platform": "DOS",
+      "genre": "Dövüş",
+      "year": 1994,
+      "developer": "Diversions Entertainment",
+      "publisher": "Epic MegaGames",
+      "metacritic": 85,
+      "players": "1-2",
+      "series": "One Must Fall",
+      "heroTitle": "1994’ten Robot Arenası",
+      "shortDescription": "One Must Fall: 2097, dev savaş robotlarını kontrol ettiğin, hızlı oynanışı ve turnuva sistemiyle öne çıkan kült bir DOS dövüş oyunudur.",
+      "cover": "https://altdunya.github.io/assets/images/one-must-fall-2097-hero.jpg",
+      "videoUrl": null,
+      "tags": [
+        "Freeware",
+        "Dövüş",
+        "DOS",
+        "90'lar",
+        "Robot",
+        "Mecha",
+        "Retro"
+      ],
+      "screenshots": [],
+      "story": "One Must Fall: 2097, klasik dövüş oyunu formülünü dev savaş robotlarıyla birleştiren, 90’ların en özgün DOS yapımlarından biridir. Oyunda farklı pilotlar ve HAR adı verilen robotlarla arenaya çıkıp rakiplerini alt etmeye çalışırsın. Özellikle turnuva modu, para kazanıp robotunu geliştirebilmen sayesinde oyuna ayrı bir derinlik katar.\n\nDönemine göre çok akıcı animasyonları, güçlü müzikleri ve 1’e 1 rekabet hissiyle dikkat çeken yapım, bugün hâlâ retro dövüş oyunu sevenler için keyifli bir deneyim sunuyor. Oyun 1999’da freeware olarak yayımlandığı için retro arşiv mantığına da çok iyi uyuyor.",
+      "pack": {
+        "version": "v1.0",
+        "size": "8.2 MB",
+        "controls": "Klavye / Gamepad",
+        "notes": "Bu paket, One Must Fall: 2097'nin tamamen çalışır DOS sürümünü içerir.\nHerhangi bir ek kurulum gerektirmez, tek tık ile oynanabilir.\n\nOyun freeware olarak yayınlandığı için güvenle indirilebilir.",
+        "steps": [
+          "İndirilen .zip dosyasını çıkart",
+          "Klasör içindeki START.bat dosyasını çalıştır",
+          "Oyun otomatik olarak açılacaktır"
+        ],
+        "archiveUrl": "https://archive.org/details/omf-2097-alt-dunya-pack-v-1.0"
+      }
+    },
+    {
+      "id": "8e4c6f94-4aeb-4fab-b450-6596b03443cf",
+      "title": "Cadillacs and Dinosaurs",
+      "slug": "cadillacs-and-dinosaurs",
+      "category": "arcade",
+      "segment": "Retro Port",
+      "platform": "Arcade",
+      "genre": "Beat ‘em up / Aksiyon",
+      "year": 1993,
+      "developer": "Capcom",
+      "publisher": "Capcom",
+      "metacritic": 85,
+      "players": "1-3",
+      "series": "Cadillacs and Dinosaurs",
+      "heroTitle": "Arcade Efsanesi Geri Döndü",
+      "shortDescription": "90’ların en efsane arcade beat ‘em up oyunlarından biri!\nCadillacs, dinazorlar ve kaos dolu aksiyon bu klasik yapımda birleşiyor.",
+      "cover": "https://altdunya.github.io/assets/images/cadillacs-dinosaurs-hero.jpg",
+      "videoUrl": "https://www.youtube.com/embed/a1XQQJ477-c?si=vONWVAq7jirTJib6",
+      "tags": [
+        "Retro Port",
+        "Beat 'em up",
+        "Arcade",
+        "90'lar",
+        "Capcom",
+        "Nostalji",
+        "Tek Tık",
+        "AltDünya Pack"
+      ],
+      "screenshots": [
+        "https://altdunya.github.io/assets/images/dino-01.png",
+        "https://altdunya.github.io/assets/images/dino-02.png",
+        "https://altdunya.github.io/assets/images/dino-03.png",
+        "https://altdunya.github.io/assets/images/dino-04.png"
+      ],
+      "story": "Cadillacs and Dinosaurs, Capcom’un 1993 yılında arcade salonları için geliştirdiği ve döneminin en sevilen beat ‘em up oyunlarından biridir.\n\nXenozoik Çağ’da geçen oyunda, insanlar ve dinazorlar aynı dünyayı paylaşmaktadır. Ancak kaçak avcılar ve suç örgütleri bu dengeyi tehdit eder. Jack Tenrec ve ekibi, bu tehditlere karşı savaşarak hem insanları hem de dinazorları korumaya çalışır.\n\nOyun; akıcı dövüş mekanikleri, çevre etkileşimleri ve araç kullanımı gibi detaylarıyla türünün en dikkat çeken yapımlarından biri olmuştur. Özellikle Cadillac araçları kullanabildiğimiz sahneler, oyunu benzerlerinden ayıran en ikonik özelliklerden biridir.\n\nAltDünya pack ile bu klasik oyunu modern sistemlerde tek tıkla çalıştırabilir ve nostaljiyi sorunsuz şekilde yaşayabilirsiniz.",
+      "pack": {
+        "version": "AltDunya Pack v1.0 (PC Portable Version)",
+        "size": "18.3 MB",
+        "controls": "Gamepad / Klavye",
+        "notes": "Bu paket, oyunu modern sistemlerde sorunsuz çalıştırmak için optimize edilmiştir.\nHerhangi bir kurulum gerektirmez, doğrudan çalıştırılabilir.",
+        "steps": [
+          "İndirdiğiniz .zip dosyasını çıkartın",
+          "Klasör içindeki start.bat dosyasını çalıştırın",
+          "Oyun otomatik olarak açılacaktır"
+        ],
+        "archiveUrl": "https://archive.org/details/cadillacs-and-dinosaurs-alt-dunya-pack-v-1.0"
+      }
+    },
+    {
+      "id": "c083f16f-11c5-45af-a893-7b49df32cf58",
+      "title": "Abuse",
+      "slug": "abuse",
+      "category": "freeware",
+      "segment": "Freeware",
+      "platform": "DOS",
+      "genre": "Platform / Shooter",
+      "year": 1996,
+      "developer": "Crack dot Com",
+      "publisher": "Electronic Arts",
+      "metacritic": 85,
+      "players": "1",
+      "series": "Abuse",
+      "heroTitle": "90'ların En Farklı Platform Shooter Oyunlarından Biri",
+      "shortDescription": "Abuse, karanlık atmosferi, akıcı oynanışı ve mouse destekli nişan alma sistemiyle döneminin en farklı platform shooter oyunlarından biri.",
+      "cover": "https://altdunya.github.io/assets/images/abuse-hero.jpg",
+      "videoUrl": "https://www.youtube.com/embed/_3qW4NXwS5A?si=1EAR-5c6wz-Xmc3W",
+      "tags": [
+        "Freeware",
+        "Platform Shooter",
+        "PC",
+        "90lar",
+        "Retro",
+        "Crack dot Com"
+      ],
+      "screenshots": [],
+      "story": "Abuse, 1996 yılında Crack dot Com tarafından geliştirilen ve döneminin en özgün platform shooter oyunlarından biri olarak kabul edilen bir yapım. Oyunda mahkûm karakter Nick Vrenna'yı kontrol ederek genetik deneyler sonucu ortaya çıkan yaratıkların istila ettiği bir hapishaneden kaçmaya çalışıyoruz.\n\nAbuse'u benzer oyunlardan ayıran en önemli özelliklerden biri, platform oyunlarında nadir görülen mouse ile nişan alma sistemi. Bu sayede karakter hareket ederken aynı anda farklı yönlere ateş edebilmek mümkün oluyor ve oyun oldukça akıcı bir aksiyon deneyimi sunuyor.\n\nKaranlık atmosferi, hızlı tempolu oynanışı ve özgün kontrol sistemi sayesinde Abuse bugün bile açıp oynanabilecek retro PC klasiklerinden biri olarak görülüyor. AltDünya'da bu oyun, Freeware statüsünde olması ve kolay kurulumuyla yeni nesil sistemlerde rahatça deneyimlenebildiği için öne çıkan yapımlardan biri.",
+      "pack": {
+        "version": "AltDünya Freeware Pack v1.0",
+        "size": "4.4 MB",
+        "controls": "Klavye + Mouse",
+        "notes": "Freeware sürümüdür. Modern Windows sistemlerinde sorunsuz çalışır. Mouse ile nişan alma özelliği sayesinde oynanışı oldukça akıcıdır.",
+        "steps": [
+          "Zip dosyasını indirip klasöre çıkartın.",
+          "start.bat dosyasını çalıştırın.",
+          "Oyun doğrudan başlayacaktır."
+        ],
+        "archiveUrl": "https://archive.org/details/abuse-1996-alt-dunya-pack-v-1.0"
+      }
+    },
+    {
+      "id": "tekken-3",
+      "title": "Tekken 3",
+      "slug": "tekken-3",
+      "category": "konsol",
+      "segment": "Retro Port",
+      "platform": "PS1",
+      "genre": "Dövüş",
+      "year": 1998,
+      "developer": "Namco",
+      "publisher": "Namco",
+      "metacritic": 96,
+      "players": "1-2",
+      "series": "Tekken",
+      "heroTitle": "PS1 / Dövüş Efsanesi",
+      "shortDescription": "Tekken 3, hızlı dövüş temposu, ikonik karakterleri ve hâlâ keyif veren oynanışıyla bugün bile gücünü koruyan bir klasik.",
+      "cover": "https://altdunya.github.io/assets/images/tekken3-hero.jpg",
+      "videoUrl": "https://www.youtube.com/embed/qC4kocKOW2c?si=9KA2RMNblkBf33-Z",
+      "tags": [
+        "Retro Port",
+        "Dövüş",
+        "PS1",
+        "90'lar",
+        "Arcade",
+        "Klasik",
+        "Namco"
+      ],
+      "screenshots": [
+        "https://altdunya.github.io/assets/images/tekken-01.png",
+        "https://altdunya.github.io/assets/images/tekken-02.png",
+        "https://altdunya.github.io/assets/images/tekken-03.png",
+        "https://altdunya.github.io/assets/images/tekken-04.png"
+      ],
+      "story": "Tekken 3, sadece serinin değil, tüm dövüş oyunu tarihinin en önemli yapımlarından biri olarak kabul ediliyor. PlayStation döneminde ulaştığı popülerlik, akıcı oynanışı, güçlü karakter kadrosu ve arcade hissini eve taşıyan yapısıyla boşuna değil. Jin Kazama, Hwoarang, Xiaoyu, Eddy ve daha birçok karakter sayesinde oyun her maçta farklı bir tat veriyor.\n\nBugün dönüp bakıldığında bile Tekken 3’ün temposu hâlâ güçlü. Komboların akıcılığı, karakter animasyonları ve kısa sürede eğlence vermesi onu sadece nostaljik değil, aynı zamanda hâlâ oynanabilir bir klasik hâline getiriyor. AltDünya tarafında bu oyunu öne çıkaran şey de tam olarak bu: kısa sürede aksiyona sokması, videoda iyi akması ve Retro Port formatına çok uygun olması.",
+      "pack": {
+        "version": "AltDünya Pack v1.0",
+        "size": "507 MB",
+        "controls": "Gamepad / Klavye",
+        "notes": "DuckStation tabanlı kolay açılır paket sürümüdür. İlk açılışta shader cache oluşumu nedeniyle kısa bir bekleme olabilir. Daha iyi deneyim için gamepad önerilir.",
+        "steps": [
+          "Zip dosyasını çıkartın.",
+          "Klasör içindeki start.bat dosyasını çalıştırın.",
+          "Oyun otomatik olarak başlayacaktır.",
+          "Gerekirse ilk açılıştan sonra kontrol ayarlarını düzenleyin."
+        ],
+        "archiveUrl": "https://archive.org/details/tekken-3-pc-alt-dunya-pack-v1.0"
+      }
+    }
+  ]
+}
+</script>
   <script src="admin.js"></script>
 </body>
 </html>
