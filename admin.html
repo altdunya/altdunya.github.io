@@ -24,6 +24,25 @@
     </aside>
 
     <section class="admin-main">
+
+      <div class="admin-list-card">
+        <div class="section-head">
+          <h2>Site Ayarları</h2>
+        </div>
+        <form id="siteSettingsForm" class="admin-form compact-form">
+          <label>Hero Oyunu
+            <select id="featuredGameSelect" name="featuredSlug"></select>
+          </label>
+          <div>
+            <h3 style="margin:14px 0 10px">Popüler Oyunlar Sırası</h3>
+            <div id="popularSlots" class="form-grid"></div>
+          </div>
+          <div class="admin-actions">
+            <button class="primary-btn" type="submit">Site Ayarlarını Kaydet</button>
+          </div>
+        </form>
+      </div>
+
       <div class="admin-list-card">
         <div class="section-head">
           <h2>Oyun Kayıtları</h2>
