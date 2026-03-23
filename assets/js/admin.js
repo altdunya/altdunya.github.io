@@ -1,3 +1,4 @@
+
 const STORAGE_KEY = 'altdunyaSiteData';
 let db = null;
 let currentId = null;
@@ -11,36 +12,65 @@ const heroSelect = document.getElementById('heroSelect');
 const popularSlots = document.getElementById('popularSlots');
 const gameCount = document.getElementById('gameCount');
 
-async function init() {
-  const local = localStorage.getItem(STORAGE_KEY);
-  if (local) {
-    db = JSON.parse(local);
-  } else {
-    db = await loadRemoteData();
-    persist();
-  }
-  normalizeDb();
-  renderSettings();
-  renderList();
-  selectGame(db.games[0]?.id || null);
+function safeParse(jsonText) {
+  try { return JSON.parse(jsonText); } catch { return null; }
+}
+
+function isUsableDb(value) {
+  return !!(value && typeof value === 'object' && Array.isArray(value.games));
+}
+
+function getEmbeddedData() {
+  const el = document.getElementById('embeddedGamesData');
+  if (!el) return null;
+  return safeParse(el.textContent);
+}
+
+async function fetchJson(path) {
+  const res = await fetch(path, { cache: 'no-store' });
+  if (!res.ok) throw new Error(`Fetch failed: ${path}`);
+  return await res.json();
 }
 
 async function loadRemoteData() {
-  try {
-    const res = await fetch('games.json');
-    if (res.ok) return await res.json();
-  } catch (e) {}
-  try {
-    const res = await fetch('data/games.json');
-    if (res.ok) return await res.json();
-  } catch (e) {}
-  return { site: { home: {}, categories: [] }, games: [] };
+  try { return await fetchJson('games.json'); } catch {}
+  try { return await fetchJson('data/games.json'); } catch {}
+  return null;
+}
+
+async function init() {
+  const local = safeParse(localStorage.getItem(STORAGE_KEY) || '');
+  const embedded = getEmbeddedData();
+  const remote = await loadRemoteData();
+
+  db = isUsableDb(local) && local.games.length ? local
+     : isUsableDb(embedded) && embedded.games.length ? embedded
+     : isUsableDb(remote) ? remote
+     : { site: { home: { heroSlug: '', popularSlugs: [] } }, games: [] };
+
+  normalizeDb();
+  persist();
+  renderSettings();
+  renderList();
+  selectGame(db.games[0]?.id || null);
 }
 
 function normalizeDb() {
   db.site ||= {};
   db.site.home ||= {};
   db.games ||= [];
+
+  db.games = db.games.map((g, i) => ({
+    id: g.id || g.slug || `game-${i + 1}`,
+    title: '', slug: '', category: 'freeware', segment: '', platform: '', genre: '', year: '', developer: '', publisher: '', metacritic: '', players: '', series: '', heroTitle: '', shortDescription: '', cover: '', videoUrl: '', tags: [], screenshots: [], story: '',
+    pack: { version: '', size: '', controls: '', notes: '', steps: [], archiveUrl: '' },
+    ...g,
+    pack: {
+      version: '', size: '', controls: '', notes: '', steps: [], archiveUrl: '',
+      ...(g.pack || {})
+    }
+  }));
+
   if (!db.site.home.heroSlug) db.site.home.heroSlug = db.games[0]?.slug || '';
   if (!Array.isArray(db.site.home.popularSlugs)) db.site.home.popularSlugs = [];
   db.site.home.popularSlugs = db.site.home.popularSlugs.filter(Boolean).slice(0, 10);
@@ -52,16 +82,14 @@ function persist() {
 }
 
 function renderSettings() {
-  const options = ['<option value="">— Seçiniz —</option>'] + db.games.map(g => `<option value="${g.slug}">${g.title}</option>`);
-  heroSelect.innerHTML = options.join('');
+  const options = ['<option value="">— Seçiniz —</option>', ...db.games.map(g => `<option value="${escapeHtml(g.slug)}">${escapeHtml(g.title)}</option>`)].join('');
+  heroSelect.innerHTML = options;
   heroSelect.value = db.site.home.heroSlug || '';
 
   popularSlots.innerHTML = Array.from({ length: 10 }).map((_, i) => `
     <label>
       <span>Popüler #${i + 1}</span>
-      <select data-slot="${i}">
-        ${options.join('')}
-      </select>
+      <select data-slot="${i}">${options}</select>
     </label>
   `).join('');
 
@@ -74,12 +102,13 @@ function renderSettings() {
 }
 
 function renderList(filter = '') {
-  const items = db.games.filter(g => g.title.toLowerCase().includes(filter.toLowerCase()));
+  const q = filter.toLowerCase().trim();
+  const items = db.games.filter(g => g.title.toLowerCase().includes(q));
   gameCount.textContent = `${items.length} oyun`;
   gameList.innerHTML = items.length ? items.map(game => `
-    <button type="button" class="game-list-item ${game.id === currentId ? 'active' : ''}" data-id="${game.id}">
-      <strong>${game.title}</strong>
-      <div class="muted">${labelize(game.category)} · ${game.platform || '—'}</div>
+    <button type="button" class="game-list-item ${game.id === currentId ? 'active' : ''}" data-id="${escapeHtml(game.id)}">
+      <strong>${escapeHtml(game.title)}</strong>
+      <div class="muted">${escapeHtml(labelize(game.category))} · ${escapeHtml(game.platform || '—')}</div>
     </button>
   `).join('') : '<div class="search-empty">Kayıt bulunamadı.</div>';
   document.querySelectorAll('.game-list-item').forEach(item => item.addEventListener('click', () => selectGame(item.dataset.id)));
@@ -103,7 +132,7 @@ function selectGame(id) {
 }
 
 function fillForm(game) {
-  const set = (name, value) => form.elements[name].value = value ?? '';
+  const set = (name, value) => { if (form.elements[name]) form.elements[name].value = value ?? ''; };
   set('title', game.title); set('slug', game.slug); set('category', game.category); set('segment', game.segment);
   set('platform', game.platform); set('genre', game.genre); set('year', game.year); set('developer', game.developer);
   set('publisher', game.publisher); set('metacritic', game.metacritic); set('players', game.players); set('series', game.series);
@@ -219,7 +248,12 @@ document.getElementById('importInput').addEventListener('change', async (e) => {
   const file = e.target.files?.[0];
   if (!file) return;
   const text = await file.text();
-  db = JSON.parse(text);
+  const imported = safeParse(text);
+  if (!isUsableDb(imported)) {
+    alert('Geçerli bir JSON dosyası seçilmedi.');
+    return;
+  }
+  db = imported;
   normalizeDb();
   persist();
   renderSettings();
@@ -230,6 +264,15 @@ document.getElementById('importInput').addEventListener('change', async (e) => {
 
 function labelize(value) {
   return ({ freeware: 'Freeware', arcade: 'Arcade', konsol: 'Konsol', videolar: 'Videolar' })[value] || value;
+}
+
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
 }
 
 init();
