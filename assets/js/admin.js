@@ -7,76 +7,77 @@ const form = document.getElementById('gameForm');
 const formTitle = document.getElementById('formTitle');
 const deleteBtn = document.getElementById('deleteBtn');
 const searchInput = document.getElementById('gameSearch');
-const siteSettingsForm = document.getElementById('siteSettingsForm');
-const featuredGameSelect = document.getElementById('featuredGameSelect');
+const heroSelect = document.getElementById('heroSelect');
 const popularSlots = document.getElementById('popularSlots');
+const gameCount = document.getElementById('gameCount');
 
 async function init() {
   const local = localStorage.getItem(STORAGE_KEY);
   if (local) {
     db = JSON.parse(local);
   } else {
-    let res;
-    try {
-      res = await fetch('data/games.json');
-      if (!res.ok) throw new Error('data/games.json bulunamadı');
-    } catch (err) {
-      res = await fetch('games.json');
-    }
-    db = await res.json();
+    db = await loadRemoteData();
     persist();
   }
-  db.site = db.site || {};
-  db.site.popularSlugs = Array.isArray(db.site.popularSlugs) ? db.site.popularSlugs : [];
-  renderSiteSettings();
+  normalizeDb();
+  renderSettings();
   renderList();
   selectGame(db.games[0]?.id || null);
+}
+
+async function loadRemoteData() {
+  try {
+    const res = await fetch('games.json');
+    if (res.ok) return await res.json();
+  } catch (e) {}
+  const res = await fetch('data/games.json');
+  return await res.json();
+}
+
+function normalizeDb() {
+  db.site ||= {};
+  db.site.home ||= {};
+  db.games ||= [];
+  if (!db.site.home.heroSlug) db.site.home.heroSlug = db.games[0]?.slug || '';
+  if (!Array.isArray(db.site.home.popularSlugs)) db.site.home.popularSlugs = [];
+  db.site.home.popularSlugs = db.site.home.popularSlugs.filter(Boolean).slice(0, 10);
+  while (db.site.home.popularSlugs.length < 10) db.site.home.popularSlugs.push('');
 }
 
 function persist() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
 }
 
-function renderSiteSettings() {
-  const featuredSlug = db.site?.featuredSlug || db.games[0]?.slug || '';
-  featuredGameSelect.innerHTML = db.games.map(game => `
-    <option value="${game.slug}" ${game.slug === featuredSlug ? 'selected' : ''}>${game.title}</option>
-  `).join('');
+function renderSettings() {
+  const options = ['<option value="">— Seçiniz —</option>'] + db.games.map(g => `<option value="${g.slug}">${g.title}</option>`);
+  heroSelect.innerHTML = options.join('');
+  heroSelect.value = db.site.home.heroSlug || '';
 
-  const selectedPopular = Array.isArray(db.site?.popularSlugs) ? db.site.popularSlugs : [];
-  const slots = Array.from({ length: 10 }, (_, i) => selectedPopular[i] || '');
-
-  popularSlots.innerHTML = slots.map((slug, i) => `
-    <label>Popüler #${i + 1}
-      <select data-popular-index="${i}">
-        <option value="">— Seçiniz —</option>
-        ${db.games.map(game => `<option value="${game.slug}" ${game.slug === slug ? 'selected' : ''}>${game.title}</option>`).join('')}
+  popularSlots.innerHTML = Array.from({ length: 10 }).map((_, i) => `
+    <label>
+      <span>Popüler #${i + 1}</span>
+      <select data-slot="${i}">
+        ${options.join('')}
       </select>
     </label>
   `).join('');
+
+  [...popularSlots.querySelectorAll('select')].forEach((select, i) => {
+    select.value = db.site.home.popularSlugs[i] || '';
+    select.addEventListener('change', (e) => {
+      db.site.home.popularSlugs[i] = e.target.value;
+    });
+  });
 }
-
-function collectSiteSettings() {
-  const popularSlugs = [...popularSlots.querySelectorAll('select[data-popular-index]')]
-    .map(select => select.value)
-    .filter(Boolean)
-    .filter((slug, index, arr) => arr.indexOf(slug) === index);
-
-  db.site = {
-    ...db.site,
-    featuredSlug: featuredGameSelect.value || db.games[0]?.slug || '',
-    popularSlugs
-  };
-}
-
 
 function renderList(filter = '') {
   const items = db.games.filter(g => g.title.toLowerCase().includes(filter.toLowerCase()));
+  gameCount.textContent = `${items.length} oyun`;
   gameList.innerHTML = items.length ? items.map(game => `
-    <div class="game-list-item ${game.id === currentId ? 'active' : ''}" data-id="${game.id}">
+    <button type="button" class="game-list-item ${game.id === currentId ? 'active' : ''}" data-id="${game.id}">
       <strong>${game.title}</strong>
-      <div class="muted">${game.category} · ${game.platform || '—'}</div>
-    </div>
+      <div class="muted">${labelize(game.category)} · ${game.platform || '—'}</div>
+    </button>
   `).join('') : '<div class="search-empty">Kayıt bulunamadı.</div>';
   document.querySelectorAll('.game-list-item').forEach(item => item.addEventListener('click', () => selectGame(item.dataset.id)));
 }
@@ -92,8 +93,8 @@ function emptyGame() {
 function selectGame(id) {
   currentId = id;
   const game = db.games.find(g => g.id === id) || emptyGame();
-  formTitle.textContent = game.title ? `Düzenle: ${game.title}` : 'Yeni Oyun';
-  deleteBtn.style.visibility = game.title ? 'visible' : 'hidden';
+  formTitle.textContent = game.title ? game.title : 'Yeni Oyun';
+  deleteBtn.style.display = game.title ? 'inline-flex' : 'none';
   fillForm(game);
   renderList(searchInput.value);
 }
@@ -142,34 +143,36 @@ function collectForm() {
   };
 }
 
+function syncSelectionsAfterGameSave(payload, previousSlug = '') {
+  if (db.site.home.heroSlug === previousSlug) db.site.home.heroSlug = payload.slug;
+  db.site.home.popularSlugs = db.site.home.popularSlugs.map(slug => slug === previousSlug ? payload.slug : slug);
+  if (!db.site.home.heroSlug) db.site.home.heroSlug = payload.slug;
+}
+
 form.addEventListener('submit', (e) => {
   e.preventDefault();
+  const previous = db.games.find(g => g.id === currentId);
+  const previousSlug = previous?.slug || '';
   const payload = collectForm();
   const idx = db.games.findIndex(g => g.id === payload.id);
   if (idx > -1) db.games[idx] = payload;
   else db.games.unshift(payload);
   currentId = payload.id;
+  syncSelectionsAfterGameSave(payload, previousSlug);
   persist();
+  renderSettings();
   renderList(searchInput.value);
   selectGame(currentId);
-  alert('Kaydedildi. Site ön yüzde bu kayıt localStorage üzerinden hemen güncellenecek.');
-});
-
-siteSettingsForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  collectSiteSettings();
-  persist();
-  renderSiteSettings();
-  alert('Hero ve popüler oyun ayarları kaydedildi.');
+  alert('Oyun kaydedildi.');
 });
 
 document.getElementById('newGameBtn').addEventListener('click', () => {
   currentId = null;
   form.reset();
   formTitle.textContent = 'Yeni Oyun';
-  deleteBtn.style.visibility = 'hidden';
+  deleteBtn.style.display = 'none';
   renderList(searchInput.value);
-  renderSiteSettings();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 deleteBtn.addEventListener('click', () => {
@@ -178,15 +181,28 @@ deleteBtn.addEventListener('click', () => {
   if (!game) return;
   if (!confirm(`${game.title} silinsin mi?`)) return;
   db.games = db.games.filter(g => g.id !== currentId);
+  if (db.site.home.heroSlug === game.slug) db.site.home.heroSlug = db.games[0]?.slug || '';
+  db.site.home.popularSlugs = db.site.home.popularSlugs.map(slug => slug === game.slug ? '' : slug);
   persist();
   currentId = db.games[0]?.id || null;
+  renderSettings();
   renderList(searchInput.value);
   if (currentId) selectGame(currentId); else form.reset();
 });
 
 searchInput.addEventListener('input', () => renderList(searchInput.value));
 
+heroSelect.addEventListener('change', (e) => {
+  db.site.home.heroSlug = e.target.value;
+});
+
+document.getElementById('saveSettingsBtn').addEventListener('click', () => {
+  persist();
+  alert('Site ayarları kaydedildi.');
+});
+
 document.getElementById('exportBtn').addEventListener('click', () => {
+  persist();
   const blob = new Blob([JSON.stringify(db, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
@@ -201,13 +217,16 @@ document.getElementById('importInput').addEventListener('change', async (e) => {
   if (!file) return;
   const text = await file.text();
   db = JSON.parse(text);
-  db.site = db.site || {};
-  db.site.popularSlugs = Array.isArray(db.site.popularSlugs) ? db.site.popularSlugs : [];
+  normalizeDb();
   persist();
-  renderSiteSettings();
+  renderSettings();
   renderList();
   selectGame(db.games[0]?.id || null);
   alert('JSON içeri aktarıldı.');
 });
+
+function labelize(value) {
+  return ({ freeware: 'Freeware', arcade: 'Arcade', konsol: 'Konsol', videolar: 'Videolar' })[value] || value;
+}
 
 init();
