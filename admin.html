@@ -5,10 +5,170 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AltDünya Admin</title>
   <meta name="description" content="AltDünya oyun ekleme ve düzenleme paneli." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <style>
+:root{
+  --bg:#090b18;
+  --bg2:#10162d;
+  --panel:#111932;
+  --panel2:#171f3c;
+  --text:#eef2ff;
+  --muted:#a8b3d5;
+  --line:rgba(255,255,255,.08);
+  --accent:#ff8c2f;
+  --accent2:#7f5cff;
+  --good:#7cc5ff;
+  --shadow:0 18px 40px rgba(0,0,0,.35);
+  --radius:20px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:radial-gradient(circle at top,#17234a 0,#090b18 45%);color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+.site-shell{min-height:100vh;display:flex;flex-direction:column}
+.topbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 28px;background:rgba(8,10,20,.86);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.brand-link{display:flex;align-items:center;gap:12px}
+.brand{font-size:2rem;font-weight:900;letter-spacing:-.03em;cursor:pointer}
+.brand-text-wrap{display:grid;gap:2px}
+.brand-text{background:linear-gradient(90deg,#cfe0ff,#ffb56c);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1}
+.brand-subtext{font-size:.72rem;color:#c5d0f5;letter-spacing:.14em;text-transform:uppercase}
+.brand-mark{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font-size:1rem;font-weight:900;color:#fff;background:linear-gradient(135deg,#7f5cff,#ff8c2f);box-shadow:0 10px 30px rgba(127,92,255,.25)}
+.brand-mark.small{width:42px;height:42px;border-radius:14px;font-size:.9rem}
+.main-nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;flex:1}
+.nav-link{padding:10px 14px;border-radius:999px;color:var(--muted);font-weight:600;transition:.2s}
+.nav-link:hover,.nav-link.active{color:#fff;background:rgba(127,92,255,.16)}
+.topbar-actions{display:flex;gap:10px}
+.icon-btn,.primary-btn,.secondary-btn,.danger-btn{border:none;cursor:pointer}
+.icon-btn{width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.06);color:#fff}
+.content-area{max-width:1400px;width:100%;margin:0 auto;padding:24px;flex:1}
+.site-footer{margin-top:36px;padding:28px;border-top:1px solid var(--line);background:rgba(8,10,20,.45)}
+.footer-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:24px}
+.footer-brand{display:flex;gap:14px;align-items:flex-start}
+.footer-links{display:grid;gap:10px}
+.site-footer h4{margin:0 0 12px}
+.hero-card,.panel,.game-card,.side-card,.video-card,.info-card,.comment-card,.admin-list-card,.admin-form-card,.legal-card{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border:1px solid var(--line);box-shadow:var(--shadow);border-radius:var(--radius)}
+.hero-card{overflow:hidden;position:relative;min-height:320px;display:grid;grid-template-columns:1.1fr .9fr}
+.hero-copy{padding:40px;display:flex;flex-direction:column;justify-content:center;gap:16px;background:linear-gradient(90deg,rgba(8,10,20,.92),rgba(8,10,20,.55),transparent)}
+.hero-copy h1{margin:0;font-size:clamp(2rem,4vw,4rem)}
+.hero-copy p{margin:0;color:#d7ddf7;max-width:680px;line-height:1.6}
+.hero-badges,.meta-row,.tags{display:flex;gap:10px;flex-wrap:wrap}
+.badge,.tag{padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.06);font-size:.92rem;color:#e6ebff}
+.tag{cursor:pointer}
+.primary-btn{background:linear-gradient(90deg,var(--accent),#ffb359);color:#1b1206;padding:14px 18px;border-radius:14px;font-weight:800}
+.secondary-btn{background:rgba(255,255,255,.08);color:#fff;padding:12px 16px;border-radius:14px}
+.danger-btn{background:#5f1d22;color:#ffd7dc;padding:12px 16px;border-radius:14px}
+.hero-image{min-height:320px;background-size:cover;background-position:center}
+.section{margin-top:24px}
+.section-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px}
+.section-head h2,.section-head h3{margin:0}
+.grid-home{display:grid;grid-template-columns:2fr 1fr;gap:24px}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:20px}
+.game-card{overflow:hidden;transition:transform .2s,border-color .2s;display:block}
+.game-card:hover{transform:translateY(-3px);border-color:rgba(255,140,47,.45)}
+.game-card-link{display:block;height:100%}
+.game-thumb{aspect-ratio:16/10;background-size:cover;background-position:center}
+.game-body{padding:16px}
+.game-body h3{margin:0 0 8px;font-size:1.2rem}
+.muted{color:var(--muted)}
+.cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.kicker{font-size:.92rem;text-transform:uppercase;letter-spacing:.12em;color:#f6b37c}
+.layout-game{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:24px}
+.sticky-col{position:sticky;top:92px;height:fit-content}
+.info-list{display:grid;gap:12px}
+.info-item{display:flex;justify-content:space-between;gap:16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.info-item span:last-child{text-align:right}
+.embed-wrap{position:relative;padding-top:56.25%;overflow:hidden;border-radius:18px;border:1px solid var(--line);background:#000}
+.embed-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.placeholder{display:flex;align-items:center;justify-content:center;min-height:260px;border:1px dashed rgba(255,255,255,.2);border-radius:18px;color:var(--muted);background:rgba(255,255,255,.02);padding:24px;text-align:center}
+.gallery-main{aspect-ratio:16/9;background-size:cover;background-position:center;border-radius:18px;border:1px solid var(--line)}
+.gallery-thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:10px;margin-top:12px}
+.gallery-thumbs button{aspect-ratio:16/10;border-radius:12px;border:1px solid var(--line);background-size:cover;background-position:center;background-color:#10162d;cursor:pointer}
+.pack-box ol{margin:12px 0 0;padding-left:20px;color:#d8ddf2;line-height:1.7}
+.disqus-placeholder{padding:20px;border-radius:18px;background:rgba(255,255,255,.04);border:1px dashed rgba(255,255,255,.14)}
+.category-hero{padding:32px;border-radius:24px;background:linear-gradient(110deg,rgba(12,16,31,.95),rgba(12,16,31,.45)),linear-gradient(135deg,#3b195a,#b64d17 55%,#151a33);border:1px solid var(--line);box-shadow:var(--shadow)}
+.breadcrumb{margin-top:14px;color:var(--muted)}
+.filters-bar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;margin-top:18px;padding:16px 18px;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:18px}
+.filter-group{display:flex;gap:10px;flex-wrap:wrap}
+.filter-chip{padding:9px 13px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid var(--line);cursor:pointer;color:#dbe3ff}
+.filter-chip.active{background:rgba(127,92,255,.18);border-color:rgba(127,92,255,.4)}
+.category-layout{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:24px;margin-top:20px}
+.side-stack{display:grid;gap:18px}
+.side-card{padding:18px}
+.side-card h3{margin-top:0}
+.mini-list{display:grid;gap:12px}
+.mini-item{display:grid;grid-template-columns:70px 1fr;gap:12px;align-items:center}
+.mini-thumb{width:70px;height:70px;border-radius:12px;background-size:cover;background-position:center}
+.home-sections{display:grid;gap:24px}
+.segment-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}
+.segment-card{padding:22px;border-radius:18px;background:linear-gradient(135deg,rgba(127,92,255,.2),rgba(255,140,47,.18));border:1px solid var(--line);font-weight:800;min-height:120px;display:flex;align-items:end}
+.slide-panel{position:fixed;top:0;right:-360px;width:340px;max-width:92vw;height:100vh;background:#0e1530;border-left:1px solid var(--line);z-index:60;padding:20px;transition:right .25s ease;box-shadow:var(--shadow)}
+.slide-panel.open{right:0}
+.slide-panel-header{display:flex;justify-content:space-between;align-items:center}
+.slide-panel-content{display:grid;gap:12px;margin-top:20px}
+.slide-panel-content a{padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.05)}
+.panel-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:.2s;z-index:55}
+.panel-backdrop.show{opacity:1;pointer-events:auto}
+.trust-list,.legal-list{display:grid;gap:12px;padding:0;margin:0;list-style:none}
+.trust-list li,.legal-list li{padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid var(--line)}
+.simple-page{max-width:920px;margin:0 auto;display:grid;gap:20px}
+.simple-page .panel,.simple-page .legal-card{padding:24px}
+.simple-page p,.simple-page li{line-height:1.8;color:#d7ddf7}
+.admin-body{background:linear-gradient(180deg,#0a0d1d,#0b1228)}
+.admin-layout{display:grid;grid-template-columns:300px 1fr;min-height:100vh}
+.admin-sidebar{padding:24px;border-right:1px solid var(--line);display:grid;align-content:start;gap:14px;background:rgba(255,255,255,.02)}
+.admin-main{padding:24px;display:grid;grid-template-columns:350px 1fr;gap:24px}
+.admin-list-card,.admin-form-card{padding:20px}
+.admin-note{color:var(--muted);font-size:.95rem;line-height:1.5}
+.import-label{display:grid;gap:8px;padding:12px 14px;background:rgba(255,255,255,.05);border-radius:14px;border:1px dashed rgba(255,255,255,.14)}
+.import-label input{width:100%}
+.game-list{display:grid;gap:10px;max-height:calc(100vh - 200px);overflow:auto}
+.game-list-item{padding:14px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid transparent;cursor:pointer}
+.game-list-item.active{border-color:rgba(255,140,47,.45);background:rgba(255,140,47,.08)}
+.admin-form{display:grid;gap:20px}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.form-grid label{display:grid;gap:8px;color:#d8dff8}
+.form-grid label.full{grid-column:1/-1}
+input,select,textarea{background:#0e1530;color:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.admin-actions{display:flex;justify-content:flex-end}
+.search-empty{padding:20px;color:var(--muted)}
+@media (max-width:1100px){.grid-home,.layout-game,.category-layout,.admin-main,.footer-grid{grid-template-columns:1fr}.sticky-col{position:static}}
+@media (max-width:800px){.hero-card{grid-template-columns:1fr}.hero-image{min-height:240px;order:-1}.topbar{padding:16px 18px}.content-area{padding:18px}.main-nav{display:none}.admin-layout{grid-template-columns:1fr}.admin-sidebar{border-right:none;border-bottom:1px solid var(--line)}.form-grid{grid-template-columns:1fr}.brand-subtext{display:none}.brand-mark{width:44px;height:44px}}
+
+
+/* --- Admin v2 --- */
+.admin-shell{min-height:100vh;padding:20px;display:grid;gap:20px}
+.admin-topbar{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;padding:22px 24px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));box-shadow:var(--shadow)}
+.admin-topbar h1,.admin-topbar p{margin:0}
+.admin-topbar-text{max-width:680px;color:var(--muted);line-height:1.6;margin-top:8px}
+.admin-topbar-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.admin-workspace{display:grid;grid-template-columns:360px minmax(0,1fr);gap:20px;align-items:start}
+.admin-left{display:grid;gap:20px;position:sticky;top:20px}
+.admin-panel{padding:20px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));box-shadow:var(--shadow)}
+.compact-head{margin-bottom:12px}
+.compact-head h2{font-size:1.8rem}
+.settings-stack{display:grid;gap:16px}
+.settings-title-row{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:10px}
+.small{font-size:.9rem}
+.popular-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.popular-grid label,.settings-stack label{display:grid;gap:8px;color:#d8dff8}
+.admin-list-panel{display:grid;gap:14px}
+.editor-shell{padding:26px}
+.editor-header{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.editor-header h1{margin:6px 0 0;font-size:2.1rem;line-height:1.1}
+.editor-actions{display:flex;gap:10px;align-items:center}
+.modern-form{gap:14px}
+.editor-block{border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.03);overflow:hidden}
+.editor-block summary{list-style:none;cursor:pointer;padding:18px 20px;font-size:1.1rem;font-weight:800}
+.editor-block summary::-webkit-details-marker{display:none}
+.editor-block[open] summary{border-bottom:1px solid var(--line);background:rgba(255,255,255,.03)}
+.editor-block .form-grid{padding:18px}
+.form-grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.game-list-item{width:100%;text-align:left;border:none}
+.import-label.compact{display:flex;align-items:center;gap:8px;padding:12px 14px}
+.import-label.compact input{max-width:210px}
+@media (max-width:1200px){.admin-workspace{grid-template-columns:1fr}.admin-left{position:static}.form-grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.admin-shell{padding:12px}.admin-topbar{padding:18px}.admin-topbar-actions{justify-content:flex-start}.popular-grid,.form-grid-3,.form-grid{grid-template-columns:1fr}.editor-header{flex-direction:column;align-items:flex-start}.editor-actions{width:100%;justify-content:flex-start}}
+
+  </style>
 </head>
 <body class="admin-body">
   <div class="admin-shell">
@@ -210,12 +370,23 @@
         "Freeware"
       ],
       "screenshots": [],
-      "story": "Alien Carnage, 90’lı yılların unutulmaz DOS oyunlarından biridir. Apogee Software tarafından yayınlanan bu yapım, hızlı tempolu oynanışı ve arcade hissiyatıyla öne çıkar.\n\nOyunda, uzaylıların istila ettiği bölgelerde ilerleyerek farklı silahlar ve güçlendirmelerle düşmanları alt etmeye çalışırsınız. Bölümler ilerledikçe oyun temposu artar ve refleksleriniz daha fazla önem kazanır.\n\nBasit ama akıcı mekanikleri sayesinde Alien Carnage, bugün bile kısa sürede eğlenceli bir deneyim sunabilen klasiklerden biridir.\n\nAltDünya’da bu tarz oyunları tekrar deneyimleyip şu soruya cevap arıyoruz:\n👉 Bugün hâlâ oynanır mı?",
+      "story": "Alien Carnage, 90’lı yılların unutulmaz DOS oyunlarından biridir. Apogee Software tarafından yayınlanan bu yapım, hızlı tempolu oynanışı ve arcade hissiyatıyla öne çıkar.
+
+Oyunda, uzaylıların istila ettiği bölgelerde ilerleyerek farklı silahlar ve güçlendirmelerle düşmanları alt etmeye çalışırsınız. Bölümler ilerledikçe oyun temposu artar ve refleksleriniz daha fazla önem kazanır.
+
+Basit ama akıcı mekanikleri sayesinde Alien Carnage, bugün bile kısa sürede eğlenceli bir deneyim sunabilen klasiklerden biridir.
+
+AltDünya’da bu tarz oyunları tekrar deneyimleyip şu soruya cevap arıyoruz:
+👉 Bugün hâlâ oynanır mı?",
       "pack": {
         "version": "v1.0",
         "size": "7 MB",
         "controls": "Klavye",
-        "notes": "Bu paket modern sistemlerde sorunsuz çalışacak şekilde hazırlanmıştır.\n\nOyun DOSBox ile birlikte gelir ve herhangi bir ek kurulum gerektirmez.\n\nBazı sistemlerde oyun hızı farklılık gösterebilir.",
+        "notes": "Bu paket modern sistemlerde sorunsuz çalışacak şekilde hazırlanmıştır.
+
+Oyun DOSBox ile birlikte gelir ve herhangi bir ek kurulum gerektirmez.
+
+Bazı sistemlerde oyun hızı farklılık gösterebilir.",
         "steps": [
           "ZIP dosyasını bir klasöre çıkar",
           "start.bat dosyasını çalıştır"
@@ -251,12 +422,17 @@
         "Retro"
       ],
       "screenshots": [],
-      "story": "One Must Fall: 2097, klasik dövüş oyunu formülünü dev savaş robotlarıyla birleştiren, 90’ların en özgün DOS yapımlarından biridir. Oyunda farklı pilotlar ve HAR adı verilen robotlarla arenaya çıkıp rakiplerini alt etmeye çalışırsın. Özellikle turnuva modu, para kazanıp robotunu geliştirebilmen sayesinde oyuna ayrı bir derinlik katar.\n\nDönemine göre çok akıcı animasyonları, güçlü müzikleri ve 1’e 1 rekabet hissiyle dikkat çeken yapım, bugün hâlâ retro dövüş oyunu sevenler için keyifli bir deneyim sunuyor. Oyun 1999’da freeware olarak yayımlandığı için retro arşiv mantığına da çok iyi uyuyor.",
+      "story": "One Must Fall: 2097, klasik dövüş oyunu formülünü dev savaş robotlarıyla birleştiren, 90’ların en özgün DOS yapımlarından biridir. Oyunda farklı pilotlar ve HAR adı verilen robotlarla arenaya çıkıp rakiplerini alt etmeye çalışırsın. Özellikle turnuva modu, para kazanıp robotunu geliştirebilmen sayesinde oyuna ayrı bir derinlik katar.
+
+Dönemine göre çok akıcı animasyonları, güçlü müzikleri ve 1’e 1 rekabet hissiyle dikkat çeken yapım, bugün hâlâ retro dövüş oyunu sevenler için keyifli bir deneyim sunuyor. Oyun 1999’da freeware olarak yayımlandığı için retro arşiv mantığına da çok iyi uyuyor.",
       "pack": {
         "version": "v1.0",
         "size": "8.2 MB",
         "controls": "Klavye / Gamepad",
-        "notes": "Bu paket, One Must Fall: 2097'nin tamamen çalışır DOS sürümünü içerir.\nHerhangi bir ek kurulum gerektirmez, tek tık ile oynanabilir.\n\nOyun freeware olarak yayınlandığı için güvenle indirilebilir.",
+        "notes": "Bu paket, One Must Fall: 2097'nin tamamen çalışır DOS sürümünü içerir.
+Herhangi bir ek kurulum gerektirmez, tek tık ile oynanabilir.
+
+Oyun freeware olarak yayınlandığı için güvenle indirilebilir.",
         "steps": [
           "İndirilen .zip dosyasını çıkart",
           "Klasör içindeki START.bat dosyasını çalıştır",
@@ -280,7 +456,8 @@
       "players": "1-3",
       "series": "Cadillacs and Dinosaurs",
       "heroTitle": "Arcade Efsanesi Geri Döndü",
-      "shortDescription": "90’ların en efsane arcade beat ‘em up oyunlarından biri!\nCadillacs, dinazorlar ve kaos dolu aksiyon bu klasik yapımda birleşiyor.",
+      "shortDescription": "90’ların en efsane arcade beat ‘em up oyunlarından biri!
+Cadillacs, dinazorlar ve kaos dolu aksiyon bu klasik yapımda birleşiyor.",
       "cover": "https://altdunya.github.io/assets/images/cadillacs-dinosaurs-hero.jpg",
       "videoUrl": "https://www.youtube.com/embed/a1XQQJ477-c?si=vONWVAq7jirTJib6",
       "tags": [
@@ -299,12 +476,19 @@
         "https://altdunya.github.io/assets/images/dino-03.png",
         "https://altdunya.github.io/assets/images/dino-04.png"
       ],
-      "story": "Cadillacs and Dinosaurs, Capcom’un 1993 yılında arcade salonları için geliştirdiği ve döneminin en sevilen beat ‘em up oyunlarından biridir.\n\nXenozoik Çağ’da geçen oyunda, insanlar ve dinazorlar aynı dünyayı paylaşmaktadır. Ancak kaçak avcılar ve suç örgütleri bu dengeyi tehdit eder. Jack Tenrec ve ekibi, bu tehditlere karşı savaşarak hem insanları hem de dinazorları korumaya çalışır.\n\nOyun; akıcı dövüş mekanikleri, çevre etkileşimleri ve araç kullanımı gibi detaylarıyla türünün en dikkat çeken yapımlarından biri olmuştur. Özellikle Cadillac araçları kullanabildiğimiz sahneler, oyunu benzerlerinden ayıran en ikonik özelliklerden biridir.\n\nAltDünya pack ile bu klasik oyunu modern sistemlerde tek tıkla çalıştırabilir ve nostaljiyi sorunsuz şekilde yaşayabilirsiniz.",
+      "story": "Cadillacs and Dinosaurs, Capcom’un 1993 yılında arcade salonları için geliştirdiği ve döneminin en sevilen beat ‘em up oyunlarından biridir.
+
+Xenozoik Çağ’da geçen oyunda, insanlar ve dinazorlar aynı dünyayı paylaşmaktadır. Ancak kaçak avcılar ve suç örgütleri bu dengeyi tehdit eder. Jack Tenrec ve ekibi, bu tehditlere karşı savaşarak hem insanları hem de dinazorları korumaya çalışır.
+
+Oyun; akıcı dövüş mekanikleri, çevre etkileşimleri ve araç kullanımı gibi detaylarıyla türünün en dikkat çeken yapımlarından biri olmuştur. Özellikle Cadillac araçları kullanabildiğimiz sahneler, oyunu benzerlerinden ayıran en ikonik özelliklerden biridir.
+
+AltDünya pack ile bu klasik oyunu modern sistemlerde tek tıkla çalıştırabilir ve nostaljiyi sorunsuz şekilde yaşayabilirsiniz.",
       "pack": {
         "version": "AltDunya Pack v1.0 (PC Portable Version)",
         "size": "18.3 MB",
         "controls": "Gamepad / Klavye",
-        "notes": "Bu paket, oyunu modern sistemlerde sorunsuz çalıştırmak için optimize edilmiştir.\nHerhangi bir kurulum gerektirmez, doğrudan çalıştırılabilir.",
+        "notes": "Bu paket, oyunu modern sistemlerde sorunsuz çalıştırmak için optimize edilmiştir.
+Herhangi bir kurulum gerektirmez, doğrudan çalıştırılabilir.",
         "steps": [
           "İndirdiğiniz .zip dosyasını çıkartın",
           "Klasör içindeki start.bat dosyasını çalıştırın",
@@ -340,7 +524,11 @@
         "Crack dot Com"
       ],
       "screenshots": [],
-      "story": "Abuse, 1996 yılında Crack dot Com tarafından geliştirilen ve döneminin en özgün platform shooter oyunlarından biri olarak kabul edilen bir yapım. Oyunda mahkûm karakter Nick Vrenna'yı kontrol ederek genetik deneyler sonucu ortaya çıkan yaratıkların istila ettiği bir hapishaneden kaçmaya çalışıyoruz.\n\nAbuse'u benzer oyunlardan ayıran en önemli özelliklerden biri, platform oyunlarında nadir görülen mouse ile nişan alma sistemi. Bu sayede karakter hareket ederken aynı anda farklı yönlere ateş edebilmek mümkün oluyor ve oyun oldukça akıcı bir aksiyon deneyimi sunuyor.\n\nKaranlık atmosferi, hızlı tempolu oynanışı ve özgün kontrol sistemi sayesinde Abuse bugün bile açıp oynanabilecek retro PC klasiklerinden biri olarak görülüyor. AltDünya'da bu oyun, Freeware statüsünde olması ve kolay kurulumuyla yeni nesil sistemlerde rahatça deneyimlenebildiği için öne çıkan yapımlardan biri.",
+      "story": "Abuse, 1996 yılında Crack dot Com tarafından geliştirilen ve döneminin en özgün platform shooter oyunlarından biri olarak kabul edilen bir yapım. Oyunda mahkûm karakter Nick Vrenna'yı kontrol ederek genetik deneyler sonucu ortaya çıkan yaratıkların istila ettiği bir hapishaneden kaçmaya çalışıyoruz.
+
+Abuse'u benzer oyunlardan ayıran en önemli özelliklerden biri, platform oyunlarında nadir görülen mouse ile nişan alma sistemi. Bu sayede karakter hareket ederken aynı anda farklı yönlere ateş edebilmek mümkün oluyor ve oyun oldukça akıcı bir aksiyon deneyimi sunuyor.
+
+Karanlık atmosferi, hızlı tempolu oynanışı ve özgün kontrol sistemi sayesinde Abuse bugün bile açıp oynanabilecek retro PC klasiklerinden biri olarak görülüyor. AltDünya'da bu oyun, Freeware statüsünde olması ve kolay kurulumuyla yeni nesil sistemlerde rahatça deneyimlenebildiği için öne çıkan yapımlardan biri.",
       "pack": {
         "version": "AltDünya Freeware Pack v1.0",
         "size": "4.4 MB",
@@ -387,7 +575,9 @@
         "https://altdunya.github.io/assets/images/tekken-03.png",
         "https://altdunya.github.io/assets/images/tekken-04.png"
       ],
-      "story": "Tekken 3, sadece serinin değil, tüm dövüş oyunu tarihinin en önemli yapımlarından biri olarak kabul ediliyor. PlayStation döneminde ulaştığı popülerlik, akıcı oynanışı, güçlü karakter kadrosu ve arcade hissini eve taşıyan yapısıyla boşuna değil. Jin Kazama, Hwoarang, Xiaoyu, Eddy ve daha birçok karakter sayesinde oyun her maçta farklı bir tat veriyor.\n\nBugün dönüp bakıldığında bile Tekken 3’ün temposu hâlâ güçlü. Komboların akıcılığı, karakter animasyonları ve kısa sürede eğlence vermesi onu sadece nostaljik değil, aynı zamanda hâlâ oynanabilir bir klasik hâline getiriyor. AltDünya tarafında bu oyunu öne çıkaran şey de tam olarak bu: kısa sürede aksiyona sokması, videoda iyi akması ve Retro Port formatına çok uygun olması.",
+      "story": "Tekken 3, sadece serinin değil, tüm dövüş oyunu tarihinin en önemli yapımlarından biri olarak kabul ediliyor. PlayStation döneminde ulaştığı popülerlik, akıcı oynanışı, güçlü karakter kadrosu ve arcade hissini eve taşıyan yapısıyla boşuna değil. Jin Kazama, Hwoarang, Xiaoyu, Eddy ve daha birçok karakter sayesinde oyun her maçta farklı bir tat veriyor.
+
+Bugün dönüp bakıldığında bile Tekken 3’ün temposu hâlâ güçlü. Komboların akıcılığı, karakter animasyonları ve kısa sürede eğlence vermesi onu sadece nostaljik değil, aynı zamanda hâlâ oynanabilir bir klasik hâline getiriyor. AltDünya tarafında bu oyunu öne çıkaran şey de tam olarak bu: kısa sürede aksiyona sokması, videoda iyi akması ve Retro Port formatına çok uygun olması.",
       "pack": {
         "version": "AltDünya Pack v1.0",
         "size": "507 MB",
@@ -405,6 +595,290 @@
   ]
 }
 </script>
-  <script src="admin.js"></script>
+  <script>
+
+const STORAGE_KEY = 'altdunyaSiteData';
+let db = null;
+let currentId = null;
+
+const gameList = document.getElementById('gameList');
+const form = document.getElementById('gameForm');
+const formTitle = document.getElementById('formTitle');
+const deleteBtn = document.getElementById('deleteBtn');
+const searchInput = document.getElementById('gameSearch');
+const heroSelect = document.getElementById('heroSelect');
+const popularSlots = document.getElementById('popularSlots');
+const gameCount = document.getElementById('gameCount');
+
+function safeParse(jsonText) {
+  try { return JSON.parse(jsonText); } catch { return null; }
+}
+
+function isUsableDb(value) {
+  return !!(value && typeof value === 'object' && Array.isArray(value.games));
+}
+
+function getEmbeddedData() {
+  const el = document.getElementById('embeddedGamesData');
+  if (!el) return null;
+  return safeParse(el.textContent);
+}
+
+async function fetchJson(path) {
+  const res = await fetch(path, { cache: 'no-store' });
+  if (!res.ok) throw new Error(`Fetch failed: ${path}`);
+  return await res.json();
+}
+
+async function loadRemoteData() {
+  try { return await fetchJson('games.json'); } catch {}
+  try { return await fetchJson('data/games.json'); } catch {}
+  return null;
+}
+
+async function init() {
+  const local = safeParse(localStorage.getItem(STORAGE_KEY) || '');
+  const embedded = getEmbeddedData();
+  const remote = await loadRemoteData();
+
+  db = isUsableDb(local) && local.games.length ? local
+     : isUsableDb(embedded) && embedded.games.length ? embedded
+     : isUsableDb(remote) ? remote
+     : { site: { home: { heroSlug: '', popularSlugs: [] } }, games: [] };
+
+  normalizeDb();
+  persist();
+  renderSettings();
+  renderList();
+  selectGame(db.games[0]?.id || null);
+}
+
+function normalizeDb() {
+  db.site ||= {};
+  db.site.home ||= {};
+  db.games ||= [];
+
+  db.games = db.games.map((g, i) => ({
+    id: g.id || g.slug || `game-${i + 1}`,
+    title: '', slug: '', category: 'freeware', segment: '', platform: '', genre: '', year: '', developer: '', publisher: '', metacritic: '', players: '', series: '', heroTitle: '', shortDescription: '', cover: '', videoUrl: '', tags: [], screenshots: [], story: '',
+    pack: { version: '', size: '', controls: '', notes: '', steps: [], archiveUrl: '' },
+    ...g,
+    pack: {
+      version: '', size: '', controls: '', notes: '', steps: [], archiveUrl: '',
+      ...(g.pack || {})
+    }
+  }));
+
+  if (!db.site.home.heroSlug) db.site.home.heroSlug = db.games[0]?.slug || '';
+  if (!Array.isArray(db.site.home.popularSlugs)) db.site.home.popularSlugs = [];
+  db.site.home.popularSlugs = db.site.home.popularSlugs.filter(Boolean).slice(0, 10);
+  while (db.site.home.popularSlugs.length < 10) db.site.home.popularSlugs.push('');
+}
+
+function persist() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
+}
+
+function renderSettings() {
+  const options = ['<option value="">— Seçiniz —</option>', ...db.games.map(g => `<option value="${escapeHtml(g.slug)}">${escapeHtml(g.title)}</option>`)].join('');
+  heroSelect.innerHTML = options;
+  heroSelect.value = db.site.home.heroSlug || '';
+
+  popularSlots.innerHTML = Array.from({ length: 10 }).map((_, i) => `
+    <label>
+      <span>Popüler #${i + 1}</span>
+      <select data-slot="${i}">${options}</select>
+    </label>
+  `).join('');
+
+  [...popularSlots.querySelectorAll('select')].forEach((select, i) => {
+    select.value = db.site.home.popularSlugs[i] || '';
+    select.addEventListener('change', (e) => {
+      db.site.home.popularSlugs[i] = e.target.value;
+    });
+  });
+}
+
+function renderList(filter = '') {
+  const q = filter.toLowerCase().trim();
+  const items = db.games.filter(g => g.title.toLowerCase().includes(q));
+  gameCount.textContent = `${items.length} oyun`;
+  gameList.innerHTML = items.length ? items.map(game => `
+    <button type="button" class="game-list-item ${game.id === currentId ? 'active' : ''}" data-id="${escapeHtml(game.id)}">
+      <strong>${escapeHtml(game.title)}</strong>
+      <div class="muted">${escapeHtml(labelize(game.category))} · ${escapeHtml(game.platform || '—')}</div>
+    </button>
+  `).join('') : '<div class="search-empty">Kayıt bulunamadı.</div>';
+  document.querySelectorAll('.game-list-item').forEach(item => item.addEventListener('click', () => selectGame(item.dataset.id)));
+}
+
+function emptyGame() {
+  return {
+    id: crypto.randomUUID(),
+    title: '', slug: '', category: 'freeware', segment: '', platform: '', genre: '', year: '', developer: '', publisher: '', metacritic: '', players: '', series: '', heroTitle: '', shortDescription: '', cover: '', videoUrl: '', tags: [], screenshots: [], story: '',
+    pack: { version: '', size: '', controls: '', notes: '', steps: [], archiveUrl: '' }
+  };
+}
+
+function selectGame(id) {
+  currentId = id;
+  const game = db.games.find(g => g.id === id) || emptyGame();
+  formTitle.textContent = game.title ? game.title : 'Yeni Oyun';
+  deleteBtn.style.display = game.title ? 'inline-flex' : 'none';
+  fillForm(game);
+  renderList(searchInput.value);
+}
+
+function fillForm(game) {
+  const set = (name, value) => { if (form.elements[name]) form.elements[name].value = value ?? ''; };
+  set('title', game.title); set('slug', game.slug); set('category', game.category); set('segment', game.segment);
+  set('platform', game.platform); set('genre', game.genre); set('year', game.year); set('developer', game.developer);
+  set('publisher', game.publisher); set('metacritic', game.metacritic); set('players', game.players); set('series', game.series);
+  set('heroTitle', game.heroTitle); set('shortDescription', game.shortDescription); set('cover', game.cover); set('videoUrl', game.videoUrl);
+  set('tags', (game.tags || []).join(', ')); set('screenshots', (game.screenshots || []).join('
+')); set('story', game.story);
+  set('packVersion', game.pack?.version); set('packSize', game.pack?.size); set('packControls', game.pack?.controls); set('packNotes', game.pack?.notes);
+  set('packSteps', (game.pack?.steps || []).join('
+')); set('archiveUrl', game.pack?.archiveUrl);
+}
+
+function collectForm() {
+  return {
+    id: currentId || crypto.randomUUID(),
+    title: form.elements.title.value.trim(),
+    slug: form.elements.slug.value.trim(),
+    category: form.elements.category.value,
+    segment: form.elements.segment.value.trim(),
+    platform: form.elements.platform.value.trim(),
+    genre: form.elements.genre.value.trim(),
+    year: form.elements.year.value ? Number(form.elements.year.value) : null,
+    developer: form.elements.developer.value.trim(),
+    publisher: form.elements.publisher.value.trim(),
+    metacritic: form.elements.metacritic.value ? Number(form.elements.metacritic.value) : null,
+    players: form.elements.players.value.trim(),
+    series: form.elements.series.value.trim(),
+    heroTitle: form.elements.heroTitle.value.trim(),
+    shortDescription: form.elements.shortDescription.value.trim(),
+    cover: form.elements.cover.value.trim(),
+    videoUrl: form.elements.videoUrl.value.trim() || null,
+    tags: form.elements.tags.value.split(',').map(v => v.trim()).filter(Boolean),
+    screenshots: form.elements.screenshots.value.split('
+').map(v => v.trim()).filter(Boolean),
+    story: form.elements.story.value.trim(),
+    pack: {
+      version: form.elements.packVersion.value.trim(),
+      size: form.elements.packSize.value.trim(),
+      controls: form.elements.packControls.value.trim(),
+      notes: form.elements.packNotes.value.trim(),
+      steps: form.elements.packSteps.value.split('
+').map(v => v.trim()).filter(Boolean),
+      archiveUrl: form.elements.archiveUrl.value.trim()
+    }
+  };
+}
+
+function syncSelectionsAfterGameSave(payload, previousSlug = '') {
+  if (db.site.home.heroSlug === previousSlug) db.site.home.heroSlug = payload.slug;
+  db.site.home.popularSlugs = db.site.home.popularSlugs.map(slug => slug === previousSlug ? payload.slug : slug);
+  if (!db.site.home.heroSlug) db.site.home.heroSlug = payload.slug;
+}
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const previous = db.games.find(g => g.id === currentId);
+  const previousSlug = previous?.slug || '';
+  const payload = collectForm();
+  const idx = db.games.findIndex(g => g.id === payload.id);
+  if (idx > -1) db.games[idx] = payload;
+  else db.games.unshift(payload);
+  currentId = payload.id;
+  syncSelectionsAfterGameSave(payload, previousSlug);
+  persist();
+  renderSettings();
+  renderList(searchInput.value);
+  selectGame(currentId);
+  alert('Oyun kaydedildi.');
+});
+
+document.getElementById('newGameBtn').addEventListener('click', () => {
+  currentId = null;
+  form.reset();
+  formTitle.textContent = 'Yeni Oyun';
+  deleteBtn.style.display = 'none';
+  renderList(searchInput.value);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+deleteBtn.addEventListener('click', () => {
+  if (!currentId) return;
+  const game = db.games.find(g => g.id === currentId);
+  if (!game) return;
+  if (!confirm(`${game.title} silinsin mi?`)) return;
+  db.games = db.games.filter(g => g.id !== currentId);
+  if (db.site.home.heroSlug === game.slug) db.site.home.heroSlug = db.games[0]?.slug || '';
+  db.site.home.popularSlugs = db.site.home.popularSlugs.map(slug => slug === game.slug ? '' : slug);
+  persist();
+  currentId = db.games[0]?.id || null;
+  renderSettings();
+  renderList(searchInput.value);
+  if (currentId) selectGame(currentId); else form.reset();
+});
+
+searchInput.addEventListener('input', () => renderList(searchInput.value));
+
+heroSelect.addEventListener('change', (e) => {
+  db.site.home.heroSlug = e.target.value;
+});
+
+document.getElementById('saveSettingsBtn').addEventListener('click', () => {
+  persist();
+  alert('Site ayarları kaydedildi.');
+});
+
+document.getElementById('exportBtn').addEventListener('click', () => {
+  persist();
+  const blob = new Blob([JSON.stringify(db, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'games.json';
+  a.click();
+  URL.revokeObjectURL(url);
+});
+
+document.getElementById('importInput').addEventListener('change', async (e) => {
+  const file = e.target.files?.[0];
+  if (!file) return;
+  const text = await file.text();
+  const imported = safeParse(text);
+  if (!isUsableDb(imported)) {
+    alert('Geçerli bir JSON dosyası seçilmedi.');
+    return;
+  }
+  db = imported;
+  normalizeDb();
+  persist();
+  renderSettings();
+  renderList();
+  selectGame(db.games[0]?.id || null);
+  alert('JSON içeri aktarıldı.');
+});
+
+function labelize(value) {
+  return ({ freeware: 'Freeware', arcade: 'Arcade', konsol: 'Konsol', videolar: 'Videolar' })[value] || value;
+}
+
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
+}
+
+init();
+
+</script>
 </body>
 </html>
