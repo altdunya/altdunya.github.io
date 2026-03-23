@@ -30,8 +30,11 @@ async function loadRemoteData() {
     const res = await fetch('games.json');
     if (res.ok) return await res.json();
   } catch (e) {}
-  const res = await fetch('data/games.json');
-  return await res.json();
+  try {
+    const res = await fetch('data/games.json');
+    if (res.ok) return await res.json();
+  } catch (e) {}
+  return { site: { home: {}, categories: [] }, games: [] };
 }
 
 function normalizeDb() {
