@@ -34,14 +34,16 @@
         "hero": "Site merkez, video vitrin."
       }
     ],
-    "popularSlugs": [
-      "tekken-3",
-      "cadillacs-and-dinosaurs",
-      "abuse",
-      "alien-carnage",
-      "one-must-fall-2097"
-    ],
-    "featuredSlug": "tekken-3"
+    "home": {
+      "heroSlug": "alien-carnage",
+      "popularSlugs": [
+        "alien-carnage",
+        "one-must-fall-2097",
+        "cadillacs-and-dinosaurs",
+        "abuse",
+        "tekken-3"
+      ]
+    }
   },
   "games": [
     {
