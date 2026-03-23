@@ -178,11 +178,26 @@ function miniGame(game) {
   `;
 }
 
+
+function getFeaturedGame() {
+  const featuredSlug = siteData.site?.featuredSlug;
+  return siteData.games.find(g => g.slug === featuredSlug) || siteData.games[0];
+}
+
+function getPopularGames(limit = 10) {
+  const configured = siteData.site?.popularSlugs || [];
+  const ordered = configured
+    .map(slug => siteData.games.find(g => g.slug === slug))
+    .filter(Boolean);
+  const rest = siteData.games.filter(g => !configured.includes(g.slug));
+  return [...ordered, ...rest].slice(0, limit);
+}
+
 function renderHome() {
   setActiveNav('home');
-  const featured = siteData.games[0];
+  const featured = getFeaturedGame();
   const latest = [...siteData.games].slice(0, 5);
-  const popular = [...siteData.games].slice(0, 10);
+  const popular = getPopularGames(10);
   const videoGames = siteData.games.filter(g => g.videoUrl).slice(0,4);
 
   app.innerHTML = `

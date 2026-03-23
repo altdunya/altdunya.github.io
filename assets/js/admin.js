@@ -7,16 +7,28 @@ const form = document.getElementById('gameForm');
 const formTitle = document.getElementById('formTitle');
 const deleteBtn = document.getElementById('deleteBtn');
 const searchInput = document.getElementById('gameSearch');
+const siteSettingsForm = document.getElementById('siteSettingsForm');
+const featuredGameSelect = document.getElementById('featuredGameSelect');
+const popularSlots = document.getElementById('popularSlots');
 
 async function init() {
   const local = localStorage.getItem(STORAGE_KEY);
   if (local) {
     db = JSON.parse(local);
   } else {
-    const res = await fetch('data/games.json');
+    let res;
+    try {
+      res = await fetch('data/games.json');
+      if (!res.ok) throw new Error('data/games.json bulunamadı');
+    } catch (err) {
+      res = await fetch('games.json');
+    }
     db = await res.json();
     persist();
   }
+  db.site = db.site || {};
+  db.site.popularSlugs = Array.isArray(db.site.popularSlugs) ? db.site.popularSlugs : [];
+  renderSiteSettings();
   renderList();
   selectGame(db.games[0]?.id || null);
 }
@@ -24,6 +36,39 @@ async function init() {
 function persist() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
 }
+
+function renderSiteSettings() {
+  const featuredSlug = db.site?.featuredSlug || db.games[0]?.slug || '';
+  featuredGameSelect.innerHTML = db.games.map(game => `
+    <option value="${game.slug}" ${game.slug === featuredSlug ? 'selected' : ''}>${game.title}</option>
+  `).join('');
+
+  const selectedPopular = Array.isArray(db.site?.popularSlugs) ? db.site.popularSlugs : [];
+  const slots = Array.from({ length: 10 }, (_, i) => selectedPopular[i] || '');
+
+  popularSlots.innerHTML = slots.map((slug, i) => `
+    <label>Popüler #${i + 1}
+      <select data-popular-index="${i}">
+        <option value="">— Seçiniz —</option>
+        ${db.games.map(game => `<option value="${game.slug}" ${game.slug === slug ? 'selected' : ''}>${game.title}</option>`).join('')}
+      </select>
+    </label>
+  `).join('');
+}
+
+function collectSiteSettings() {
+  const popularSlugs = [...popularSlots.querySelectorAll('select[data-popular-index]')]
+    .map(select => select.value)
+    .filter(Boolean)
+    .filter((slug, index, arr) => arr.indexOf(slug) === index);
+
+  db.site = {
+    ...db.site,
+    featuredSlug: featuredGameSelect.value || db.games[0]?.slug || '',
+    popularSlugs
+  };
+}
+
 
 function renderList(filter = '') {
   const items = db.games.filter(g => g.title.toLowerCase().includes(filter.toLowerCase()));
@@ -110,12 +155,21 @@ form.addEventListener('submit', (e) => {
   alert('Kaydedildi. Site ön yüzde bu kayıt localStorage üzerinden hemen güncellenecek.');
 });
 
+siteSettingsForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  collectSiteSettings();
+  persist();
+  renderSiteSettings();
+  alert('Hero ve popüler oyun ayarları kaydedildi.');
+});
+
 document.getElementById('newGameBtn').addEventListener('click', () => {
   currentId = null;
   form.reset();
   formTitle.textContent = 'Yeni Oyun';
   deleteBtn.style.visibility = 'hidden';
   renderList(searchInput.value);
+  renderSiteSettings();
 });
 
 deleteBtn.addEventListener('click', () => {
@@ -147,7 +201,10 @@ document.getElementById('importInput').addEventListener('change', async (e) => {
   if (!file) return;
   const text = await file.text();
   db = JSON.parse(text);
+  db.site = db.site || {};
+  db.site.popularSlugs = Array.isArray(db.site.popularSlugs) ? db.site.popularSlugs : [];
   persist();
+  renderSiteSettings();
   renderList();
   selectGame(db.games[0]?.id || null);
   alert('JSON içeri aktarıldı.');
