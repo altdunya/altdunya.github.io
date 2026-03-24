@@ -97,18 +97,8 @@ async function loadData() {
   if (local) {
     siteData = JSON.parse(local);
   } else {
-    try {
-      const res = await fetch('games.json');
-      if (res.ok) {
-        siteData = await res.json();
-      } else {
-        const fallback = await fetch('data/games.json');
-        siteData = await fallback.json();
-      }
-    } catch (e) {
-      const fallback = await fetch('data/games.json');
-      siteData = await fallback.json();
-    }
+    const res = await fetch('data/games.json');
+    siteData = await res.json();
   }
   buildNav();
   renderRoute();
@@ -184,13 +174,9 @@ function miniGame(game) {
 
 function renderHome() {
   setActiveNav('home');
-  const heroSlug = siteData.site?.home?.heroSlug;
-  const popularSlugs = siteData.site?.home?.popularSlugs || [];
-  const featured = siteData.games.find(g => g.slug === heroSlug) || siteData.games[0];
-  const latest = [...siteData.games].slice(0, 5);
-  const popular = popularSlugs.map(slug => siteData.games.find(g => g.slug === slug)).filter(Boolean);
-  const fallbackPopular = [...siteData.games].slice(0, 10);
-  const finalPopular = popular.length ? popular : fallbackPopular;
+  const featured = siteData.games[0];
+  const latest = [...siteData.games].slice(0, 4);
+  const popular = [...siteData.games].slice(0, 4);
   const videoGames = siteData.games.filter(g => g.videoUrl).slice(0,4);
 
   app.innerHTML = `
@@ -235,14 +221,9 @@ function renderHome() {
       <div class="grid-home">
         <section class="panel section" style="padding:20px">
           <div class="section-head"><h2>Popüler Oyunlar</h2></div>
-          <div class="card-grid">${finalPopular.map(gameCard).join('')}</div>
+          <div class="card-grid">${popular.map(gameCard).join('')}</div>
         </section>
         <aside class="side-stack">
-          <div class="side-card">
-            <h3>Popüler Oyunlar</h3>
-            <p class="muted">Hızlı geçiş listesi.</p>
-            <div class="mini-list">${finalPopular.map(game => `<a href="#/game/${game.slug}">${game.title}</a>`).join('') || '<div class="search-empty">Henüz oyun yok.</div>'}</div>
-          </div>
           <div class="side-card">
             <h3>Son Videolar</h3>
             <p class="muted">Video bağlantısı eklenen oyunlar burada öne çıkar.</p>
