@@ -33,7 +33,22 @@
         "subtitle": "AltDünya oynanış ve inceleme videoları",
         "hero": "Site merkez, video vitrin."
       }
-    ]
+    ],
+    "home": {
+      "heroSlug": "tekken-3",
+      "popularSlugs": [
+        "tekken-3",
+        "cadillacs-and-dinosaurs",
+        "abuse",
+        "alien-carnage",
+        "one-must-fall-2097",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    }
   },
   "games": [
     {
