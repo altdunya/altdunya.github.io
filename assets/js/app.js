@@ -97,8 +97,13 @@ async function loadData() {
   if (local) {
     siteData = JSON.parse(local);
   } else {
-    const res = await fetch('data/games.json');
-    siteData = await res.json();
+    try {
+      let res = await fetch('games.json', { cache: 'no-store' });
+      if (!res.ok) res = await fetch('data/games.json', { cache: 'no-store' });
+      siteData = await res.json();
+    } catch (e) {
+      siteData = { site: { categories: [], home: { heroSlug: '', popularSlugs: [] } }, games: [] };
+    }
   }
   buildNav();
   renderRoute();
@@ -142,6 +147,18 @@ function getGameBySlug(slug) {
   return siteData.games.find(g => g.slug === slug);
 }
 
+function getHomeHero() {
+  return getGameBySlug(siteData.site?.home?.heroSlug) || siteData.games[0];
+}
+
+function getHomePopular() {
+  const selected = (siteData.site?.home?.popularSlugs || [])
+    .map(getGameBySlug)
+    .filter(Boolean);
+  const fallback = siteData.games.filter(g => !selected.some(s => s.slug === g.slug));
+  return [...selected, ...fallback].slice(0, 10);
+}
+
 function gameCard(game) {
   return `
     <article class="game-card">
@@ -174,9 +191,9 @@ function miniGame(game) {
 
 function renderHome() {
   setActiveNav('home');
-  const featured = siteData.games[0];
-  const latest = [...siteData.games].slice(0, 4);
-  const popular = [...siteData.games].slice(0, 4);
+  const featured = getHomeHero();
+  const latest = [...siteData.games].slice(0, 5);
+  const popular = getHomePopular();
   const videoGames = siteData.games.filter(g => g.videoUrl).slice(0,4);
 
   app.innerHTML = `
@@ -185,11 +202,11 @@ function renderHome() {
         <div class="kicker">AltDünya</div>
         <h1>${featured.title}</h1>
         <div class="hero-badges">
-          <span class="badge">${featured.platform}</span>
-          <span class="badge">${featured.genre}</span>
-          <span class="badge">${featured.segment}</span>
+          <span class="badge">${featured.platform || '—'}</span>
+          <span class="badge">${featured.genre || '—'}</span>
+          <span class="badge">${featured.segment || '—'}</span>
         </div>
-        <p>${featured.shortDescription}</p>
+        <p>${featured.shortDescription || ''}</p>
         <div class="cta-row">
           <a class="primary-btn" href="#/game/${featured.slug}">Oyuna Git</a>
           <a class="secondary-btn" href="#/category/${featured.category}">${labelForCategory(featured.category)}</a>
@@ -218,23 +235,29 @@ function renderHome() {
         </div>
       </div>
 
+      <section class="panel section" style="padding:20px">
+        <div class="section-head"><h2>Popüler Oyunlar</h2></div>
+        <div class="popular-layout">
+          <aside class="side-card compact-side-card">
+            <h3>Hızlı Liste</h3>
+            <div class="mini-list link-list">${popular.map(game => `<a href="#/game/${game.slug}">${game.title}</a>`).join('')}</div>
+          </aside>
+          <div class="card-grid">${popular.map(gameCard).join('')}</div>
+        </div>
+      </section>
+
       <div class="grid-home">
         <section class="panel section" style="padding:20px">
-          <div class="section-head"><h2>Popüler Oyunlar</h2></div>
-          <div class="card-grid">${popular.map(gameCard).join('')}</div>
+          <div class="section-head"><h2>Son Videolar</h2></div>
+          <div class="mini-list">${videoGames.map(miniGame).join('') || '<div class="search-empty">Henüz video eklenmedi.</div>'}</div>
         </section>
         <aside class="side-stack">
-          <div class="side-card">
-            <h3>Son Videolar</h3>
-            <p class="muted">Video bağlantısı eklenen oyunlar burada öne çıkar.</p>
-            <div class="mini-list">${videoGames.map(miniGame).join('') || '<div class="search-empty">Henüz video eklenmedi.</div>'}</div>
-          </div>
           <div class="side-card">
             <h3>Neden AltDünya?</h3>
             <ul class="trust-list">
               <li>Oyun kartlarının tamamı doğrudan oyun sayfasına gider.</li>
               <li>Her oyun için sade pack bilgisi ve kurulum adımı sunulur.</li>
-              <li>Benzer oyun sistemiyle sitede dolaşım güçlenir.</li>
+              <li>Hero ve popüler alanları artık ayrı ayarlardan yönetilir.</li>
             </ul>
           </div>
         </aside>
@@ -263,7 +286,7 @@ function renderCategory(categoryId) {
   let games = siteData.games.filter(g => g.category === categoryId);
   if (categoryId === 'videolar') games = siteData.games.filter(g => g.videoUrl);
   const allTags = [...new Set(games.flatMap(g => g.tags || []))].slice(0, 10);
-  const popular = siteData.games.slice(0, 5);
+  const popular = getHomePopular().slice(0, 5);
 
   app.innerHTML = `
     <section class="category-hero">
