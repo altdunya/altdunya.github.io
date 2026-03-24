@@ -84,6 +84,26 @@
   </aside>
   <div id="panelBackdrop" class="panel-backdrop"></div>
 
+  <!-- Google Analytics (AltDünya) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M9JW02GHWJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-M9JW02GHWJ', {
+      page_path: location.pathname + location.hash
+    });
+
+    // SPA route tracking
+    window.addEventListener('hashchange', function () {
+      gtag('config', 'G-M9JW02GHWJ', {
+        page_path: location.pathname + location.hash
+      });
+    });
+  </script>
+
   <script src="assets/js/app.js"></script>
 </body>
 </html>
