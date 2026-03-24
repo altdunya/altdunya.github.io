@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AltDünya Admin - Site Ayarları</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="admin-body">
+  <div class="admin-layout clean-admin-layout">
+    <aside class="admin-sidebar clean-admin-sidebar">
+      <div>
+        <div class="brand">AltDünya</div>
+        <div class="admin-note">Yönetim paneli</div>
+      </div>
+      <nav class="admin-menu">
+        <a class="admin-menu-link" href="admin.html">Oyun Ekle / Düzenle</a>
+        <a class="admin-menu-link active" href="settings.html">Site Ayarları</a>
+        <a class="admin-menu-link" href="index.html">Siteye Dön</a>
+      </nav>
+      <div class="admin-note">Hero ve popüler sıralaması burada yönetilir.</div>
+    </aside>
+
+    <main class="admin-main single-admin-main">
+      <section class="admin-form-card clean-card">
+        <div class="admin-toolbar">
+          <div>
+            <h1>Site Ayarları</h1>
+            <div class="muted">Hero oyunu ve popüler oyun sıralamasını ayrı ekrandan yönet.</div>
+          </div>
+        </div>
+
+        <form id="settingsForm" class="admin-form">
+          <div class="form-grid">
+            <label class="full">
+              <span>Hero Oyunu</span>
+              <select id="heroSelect"></select>
+            </label>
+          </div>
+
+          <details open class="editor-block">
+            <summary>Popüler Oyunlar (10)</summary>
+            <div id="popularSlots" class="popular-grid"></div>
+          </details>
+
+          <div class="admin-bottom-bar">
+            <div class="top-actions">
+              <button class="primary-btn" id="saveSettingsBtn" type="button">Ayarları Kaydet</button>
+              <button class="secondary-btn" id="exportBtn" type="button">JSON Dışa Aktar</button>
+              <label class="import-label compact">JSON İçe Aktar <input id="importInput" type="file" accept="application/json" /></label>
+            </div>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+  <script src="settings.js"></script>
+</body>
+</html>
