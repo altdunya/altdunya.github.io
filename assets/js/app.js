@@ -10,68 +10,198 @@ const STATIC_PAGES = {
   about: {
     title: 'Hakkında',
     kicker: 'AltDünya',
-    intro: 'AltDünya, retro oyunları tek yerde toplamak; oyun sayfası, video ve kolay açılır pack mantığını sade biçimde sunmak için oluşturulmuş bir arşivdir.',
+    intro: 'AltDünya, retro oyunları daha düzenli, daha güvenli ve daha kolay erişilebilir hale getirmek için kurulmuş bir arşiv ve içerik platformudur.',
     body: `
-      <div class="panel">
-        <h2>Bu site ne yapar?</h2>
-        <p>Amacı karmaşık bir veri tabanı olmak değil; ziyaretçinin sevdiği oyunu bulup hızlıca oyun sayfasına gitmesini sağlamaktır. Her oyunda özet bilgi, varsa oynanış videosu, pack detayları ve benzer öneriler yer alır.</p>
-      </div>
-      <div class="panel">
-        <h2>Odak noktası</h2>
-        <ul class="legal-list">
-          <li>Retro klasikler için sade vitrin yapısı</li>
-          <li>Kolay açılır pack mantığı</li>
-          <li>Video ve oyun sayfasını aynı merkezde toplama</li>
-          <li>Kategori bazlı dolaşımı kolaylaştırma</li>
-        </ul>
-      </div>
+      <section class="premium-stack">
+        <div class="brand-story-card">
+          <div class="section-head"><h2>AltDünya Nedir?</h2></div>
+          <p>AltDünya; retro oyunları dağınık kaynaklar arasında kaybolmadan keşfetmek, oyunlara ait temel bilgileri tek yerde görmek ve mümkün olduğunca sade bir deneyim yaşamak isteyenler için oluşturuldu.</p>
+          <p>Buradaki amaç sadece bir liste sunmak değil; geçmişin oyunlarını bugünün şartlarında yeniden ulaşılabilir kılmak. Oyun sayfaları, video içerikleri, pack detayları ve kategori yapısı aynı çatı altında buluşur.</p>
+        </div>
+
+        <div class="premium-feature-grid">
+          <article class="premium-feature-card">
+            <div class="premium-icon">🎮</div>
+            <h3>Retro odaklı seçki</h3>
+            <p>Buradaki oyunlar rastgele değil; nostalji değeri, oynanabilirlik ve ilgi çekicilik düşünülerek seçilir.</p>
+          </article>
+          <article class="premium-feature-card">
+            <div class="premium-icon">⚖️</div>
+            <h3>Daha güvenli yaklaşım</h3>
+            <p>AltDünya içerikleri mümkün olduğunca güvenli, sürdürülebilir ve daha temiz bir yayın mantığıyla sunar.</p>
+          </article>
+          <article class="premium-feature-card">
+            <div class="premium-icon">⚡</div>
+            <h3>Kolay deneyim</h3>
+            <p>Amaç karmaşık teknik anlatılar değil; oyunu, bilgiyi ve yönlendirmeyi sade biçimde sunmaktır.</p>
+          </article>
+        </div>
+
+        <div class="premium-split">
+          <div class="panel">
+            <h2>AltDünya Ne Sunar?</h2>
+            <ul class="legal-list">
+              <li>Oyunlara özel sade ve düzenli sayfalar</li>
+              <li>Video, pack detayı ve temel bilgiyi tek merkezde toplama</li>
+              <li>Freeware, arcade ve konsol klasiklerini kategori bazlı keşfetme</li>
+              <li>Zamanla büyüyen, nostalji odaklı bir retro arşiv</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h2>Yaklaşımımız</h2>
+            <ul class="legal-list">
+              <li>Gereksiz karmaşa yerine sade sunum</li>
+              <li>Riskli yönlendirmeler yerine daha kontrollü yapı</li>
+              <li>Tek seferlik değil, sürdürülebilir içerik mantığı</li>
+              <li>Sadece eski olduğu için değil, bugün de ilgi çektiği için seçilen oyunlar</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="cta-banner">
+          <div>
+            <div class="kicker">AltDünya Manifestosu</div>
+            <h2>Geçmişin oyunlarını bugünün şartlarında yeniden keşfet.</h2>
+            <p>AltDünya'nın hedefi, retro oyunları sadece hatırlatmak değil; onları yeniden erişilebilir, anlaşılır ve keyifli hale getirmektir.</p>
+          </div>
+          <div class="cta-row">
+            <a class="primary-btn" href="#/games">Oyun Arşivine Git</a>
+            <a class="secondary-btn" href="#/category/freeware">Freeware Oyunlar</a>
+          </div>
+        </div>
+      </section>
     `
   },
   contact: {
     title: 'İletişim',
     kicker: 'AltDünya',
-    intro: 'İletişim bilgilerini burada yayınlayabilirsin. Şimdilik yer tutucu bir alan hazırladım.',
+    intro: 'Geri bildirim, iş birliği, düzeltme talepleri ve genel iletişim için bu sayfa kullanılabilir.',
     body: `
-      <div class="panel">
-        <h2>İletişim Bilgileri</h2>
-        <p>Bu alana e-posta adresi, YouTube kanal linki, sosyal medya hesapları veya iş birliği iletişim bilgileri eklenebilir.</p>
-        <ul class="legal-list">
-          <li>E-posta: <strong>iletisim@ornek.com</strong></li>
-          <li>YouTube: <strong>AltDünya</strong></li>
-          <li>İş birlikleri ve geri bildirimler için ayrı bir adres de eklenebilir.</li>
-        </ul>
-      </div>
+      <section class="premium-stack">
+        <div class="premium-split">
+          <div class="panel">
+            <h2>Bize Nasıl Ulaşabilirsiniz?</h2>
+            <p>AltDünya ile ilgili görüş, öneri, hata bildirimi veya iş birliği taleplerinizi aşağıdaki iletişim kanalları üzerinden iletebilirsiniz.</p>
+            <ul class="legal-list">
+              <li>E-posta: <strong>altdunyadan@gmail.com</strong></li>
+              <li>YouTube: <strong>AltDünya</strong></li>
+              <li>Site ile ilgili teknik geri bildirimler için e-posta tercih edilir.</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h2>Hangi Konular İçin Yazabilirsiniz?</h2>
+            <ul class="legal-list">
+              <li>İçerik önerileri ve retro oyun tavsiyeleri</li>
+              <li>Bozuk bağlantı, hatalı bilgi veya eksik sayfa bildirimleri</li>
+              <li>İş birlikleri ve iletişim talepleri</li>
+              <li>Telif veya içerik kaldırma başvuruları</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="cta-banner">
+          <div>
+            <div class="kicker">İletişim</div>
+            <h2>AltDünya büyürken geri bildirim önemli.</h2>
+            <p>Sitede gördüğünüz hataları, eksik bilgileri veya eklenmesini istediğiniz oyunları paylaşmanız arşivin gelişmesine katkı sağlar.</p>
+          </div>
+          <div class="cta-row">
+            <a class="primary-btn" href="mailto:altdunyadan@gmail.com">E-posta Gönder</a>
+            <a class="secondary-btn" href="#/about">Hakkında Sayfası</a>
+          </div>
+        </div>
+      </section>
     `
   },
   legal: {
     title: 'Legal',
     kicker: 'AltDünya',
-    intro: 'Legal sayfası, sitenin içerik yaklaşımını ve sorumluluk sınırlarını netleştirmek için önemlidir.',
+    intro: 'Bu sayfa, sitedeki içeriklerin nasıl konumlandığını ve yasal sorumluluk sınırlarını genel hatlarıyla açıklar.',
     body: `
-      <div class="legal-card">
-        <h2>Yasal Notlar</h2>
-        <ul class="legal-list">
-          <li>Bu sitedeki açıklamalar bilgilendirme ve arşivleme amaçlı hazırlanır.</li>
-          <li>Üçüncü taraf bağlantılar kendi platformlarının koşullarına tabidir.</li>
-          <li>Telif hakkı sahiplerinden gelecek haklı kaldırma talepleri doğrultusunda içerikler gözden geçirilebilir.</li>
-          <li>Marka ve oyun adları ilgili hak sahiplerine aittir.</li>
-        </ul>
-      </div>
+      <section class="premium-stack">
+        <div class="premium-split">
+          <div class="legal-card">
+            <h2>İçerik Yaklaşımı</h2>
+            <ul class="legal-list">
+              <li>AltDünya; arşivleme, bilgilendirme ve içerik yönlendirme odaklı bir platformdur.</li>
+              <li>Sitede yer alan açıklamalar, görseller ve tanıtım metinleri bilgilendirme amacı taşır.</li>
+              <li>Oyun adları, marka adları ve ilgili materyaller kendi hak sahiplerine aittir.</li>
+            </ul>
+          </div>
+          <div class="legal-card">
+            <h2>Üçüncü Taraf Bağlantılar</h2>
+            <ul class="legal-list">
+              <li>Site içinde yer alan dış bağlantılar, ilgili üçüncü taraf platformların kendi kurallarına tabidir.</li>
+              <li>AltDünya, üçüncü taraf sitelerin içerik politikalarından ve güncel durumundan doğrudan sorumlu değildir.</li>
+              <li>Bağlantılar zaman içinde değişebilir, kaldırılabilir veya geçerliliğini yitirebilir.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="legal-card">
+          <h2>Telif ve Kaldırma Talepleri</h2>
+          <ul class="legal-list">
+            <li>Hak sahiplerinden gelecek makul ve doğrulanabilir talepler değerlendirmeye alınır.</li>
+            <li>Gerekli görülen durumlarda içerik kaldırılabilir, düzenlenebilir veya erişimden çekilebilir.</li>
+            <li>Bu tür talepler için iletişim sayfasındaki e-posta kanalı kullanılabilir.</li>
+          </ul>
+        </div>
+
+        <div class="cta-banner">
+          <div>
+            <div class="kicker">Legal Çerçeve</div>
+            <h2>Hedefimiz daha güvenli ve sürdürülebilir bir retro arşiv oluşturmaktır.</h2>
+            <p>Bu nedenle AltDünya, içeriklerini mümkün olduğunca kontrollü ve şeffaf bir yaklaşımla sunar.</p>
+          </div>
+          <div class="cta-row">
+            <a class="secondary-btn" href="#/contact">İletişime Geç</a>
+          </div>
+        </div>
+      </section>
     `
   },
   privacy: {
     title: 'Gizlilik',
     kicker: 'AltDünya',
-    intro: 'Gizlilik sayfası kullanıcıya güven verir. Şimdilik temel bir taslak ekledim.',
+    intro: 'Bu sayfa, siteyi ziyaret eden kullanıcıların gizliliğine dair temel yaklaşımı açıklar.',
     body: `
-      <div class="legal-card">
-        <h2>Gizlilik Politikası Taslağı</h2>
-        <ul class="legal-list">
-          <li>Site, temel gezinme deneyimi dışında kullanıcıdan ek veri toplamayı hedeflemez.</li>
-          <li>Üçüncü taraf gömüler ve bağlantılar kendi veri politikalarına sahip olabilir.</li>
-          <li>İleride analitik ya da yorum sistemi eklenecekse bu sayfa güncellenmelidir.</li>
-        </ul>
-      </div>
+      <section class="premium-stack">
+        <div class="premium-split">
+          <div class="legal-card">
+            <h2>Toplanan Veriler</h2>
+            <ul class="legal-list">
+              <li>AltDünya, temel gezinme deneyimi dışında kullanıcıdan doğrudan kişisel veri toplamayı hedeflemez.</li>
+              <li>İletişim kurulması halinde paylaşılan bilgiler yalnızca ilgili iletişim amacı doğrultusunda değerlendirilir.</li>
+            </ul>
+          </div>
+          <div class="legal-card">
+            <h2>Üçüncü Taraf İçerikler</h2>
+            <ul class="legal-list">
+              <li>Site içinde yer alan gömülü videolar veya dış bağlantılar, kendi platformlarının veri politikalarına tabi olabilir.</li>
+              <li>Kullanıcı, üçüncü taraf bir hizmete geçtiğinde ilgili hizmetin gizlilik koşulları geçerli olur.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="legal-card">
+          <h2>Gelecekteki Güncellemeler</h2>
+          <ul class="legal-list">
+            <li>İleride analitik, yorum sistemi veya ek kullanıcı özellikleri eklenirse bu sayfa güncellenir.</li>
+            <li>Gizlilik yaklaşımında önemli bir değişiklik olduğunda metin revize edilerek sitede yayınlanır.</li>
+          </ul>
+        </div>
+
+        <div class="cta-banner">
+          <div>
+            <div class="kicker">Gizlilik</div>
+            <h2>Basit yaklaşım: mümkün olduğunca az veri, mümkün olduğunca net bilgi.</h2>
+            <p>AltDünya'da amaç kullanıcıyı takip etmek değil; retro içerikleri sade ve güven veren bir yapıda sunmaktır.</p>
+          </div>
+          <div class="cta-row">
+            <a class="secondary-btn" href="#/legal">Legal Sayfası</a>
+          </div>
+        </div>
+      </section>
     `
   }
 };
@@ -255,9 +385,9 @@ function renderHome() {
           <div class="side-card">
             <h3>Neden AltDünya?</h3>
             <ul class="trust-list">
-              <li>🎮 Retro oyunları modern sistemlerde kolayca oynayabilirsin.</li>
-              <li>⚖️ İçerikler güvenli ve sürdürülebilir şekilde hazırlanır.</li>
-              <li>⚡ Tek tıkla çalışan paketlerle uğraşmadan direkt oyuna girersin.</li>
+              <li>Oyun kartlarının tamamı doğrudan oyun sayfasına gider.</li>
+              <li>Her oyun için sade pack bilgisi ve kurulum adımı sunulur.</li>
+              <li>Hero ve popüler alanları artık ayrı ayarlardan yönetilir.</li>
             </ul>
           </div>
         </aside>
