@@ -385,9 +385,9 @@ function renderHome() {
           <div class="side-card">
             <h3>Neden AltDünya?</h3>
             <ul class="trust-list">
-              <li>Oyun kartlarının tamamı doğrudan oyun sayfasına gider.</li>
-              <li>Her oyun için sade pack bilgisi ve kurulum adımı sunulur.</li>
-              <li>Hero ve popüler alanları artık ayrı ayarlardan yönetilir.</li>
+              <li>🎮 Retro oyunları modern sistemlerde kolayca oynayabilirsin.</li>
+              <li>⚖️ İçerikler güvenli ve sürdürülebilir şekilde hazırlanır.</li>
+              <li>⚡ Tek tıkla çalışan paketlerle uğraşmadan direkt oyuna girersin.</li>
             </ul>
           </div>
         </aside>
