@@ -33,22 +33,7 @@
         "subtitle": "AltDünya oynanış ve inceleme videoları",
         "hero": "Site merkez, video vitrin."
       }
-    ],
-    "home": {
-      "heroSlug": "alien-carnage",
-      "popularSlugs": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
-      ]
-    }
+    ]
   },
   "games": [
     {
