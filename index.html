@@ -9,6 +9,26 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- Google Analytics (AltDünya) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M9JW02GHWJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-M9JW02GHWJ', {
+      page_path: location.pathname + location.hash
+    });
+
+    // SPA route tracking
+    window.addEventListener('hashchange', function () {
+      gtag('config', 'G-M9JW02GHWJ', {
+        page_path: location.pathname + location.hash
+      });
+    });
+  </script>
 </head>
 <body>
   <div class="site-shell">
@@ -83,26 +103,6 @@
     </div>
   </aside>
   <div id="panelBackdrop" class="panel-backdrop"></div>
-
-  <!-- Google Analytics (AltDünya) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M9JW02GHWJ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-
-    gtag('js', new Date());
-
-    gtag('config', 'G-M9JW02GHWJ', {
-      page_path: location.pathname + location.hash
-    });
-
-    // SPA route tracking
-    window.addEventListener('hashchange', function () {
-      gtag('config', 'G-M9JW02GHWJ', {
-        page_path: location.pathname + location.hash
-      });
-    });
-  </script>
 
   <script src="assets/js/app.js"></script>
 </body>
