@@ -4,51 +4,73 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AltDünya Admin - Oyunlar</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root{--bg:#090b18;--bg2:#10162d;--panel:#111932;--panel2:#171f3c;--text:#eef2ff;--muted:#a8b3d5;--line:rgba(255,255,255,.08);--accent:#ff9b45;--shadow:0 18px 40px rgba(0,0,0,.35);--radius:20px}
+    *{box-sizing:border-box} html,body{margin:0;padding:0;background:radial-gradient(circle at top,#17234a 0,#090b18 45%);color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    a{color:inherit;text-decoration:none} button,input,select,textarea{font:inherit}
+    .layout{display:grid;grid-template-columns:260px 340px minmax(0,1fr);min-height:100vh}
+    .sidebar,.list-panel,.editor{padding:24px}.sidebar{border-right:1px solid var(--line);background:rgba(255,255,255,.02);display:grid;align-content:start;gap:18px}
+    .brand{font-size:2rem;font-weight:900}.note{color:var(--muted);line-height:1.5}.menu{display:grid;gap:10px}
+    .menu a{padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid transparent;font-weight:700}.menu a.active,.menu a:hover{background:rgba(255,155,69,.12);border-color:rgba(255,155,69,.35)}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border:1px solid var(--line);box-shadow:var(--shadow);border-radius:24px}
+    .list-wrap,.editor-wrap{display:grid;gap:16px}.list-panel{border-right:1px solid var(--line);background:rgba(255,255,255,.01)}
+    .toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.toolbar h1,.toolbar h2{margin:0}.muted{color:var(--muted)}
+    .btn,.btn-secondary,.btn-danger{border:none;cursor:pointer;border-radius:14px;padding:12px 16px;font-weight:800}
+    .btn{background:linear-gradient(90deg,var(--accent),#ffb970);color:#1d1204}.btn-secondary{background:rgba(255,255,255,.08);color:#fff}.btn-danger{background:#5f1d22;color:#ffd7dc}
+    .search,input,select,textarea{width:100%;background:#0e1530;color:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+    textarea{min-height:110px;resize:vertical}
+    .list{display:grid;gap:10px;max-height:calc(100vh - 180px);overflow:auto}
+    .game-item{width:100%;text-align:left;background:rgba(255,255,255,.04);border:1px solid transparent;color:#fff;padding:14px;border-radius:14px;cursor:pointer}
+    .game-item.active{border-color:rgba(255,155,69,.45);background:rgba(255,155,69,.08)}
+    .editor{padding:24px}.editor-wrap{padding:24px}.form{display:grid;gap:18px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.full{grid-column:1/-1}
+    label{display:grid;gap:8px;color:#d8dff8}.section{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:rgba(255,255,255,.03)} .section summary{cursor:pointer;padding:16px 18px;font-weight:800;list-style:none} .section[open] summary{border-bottom:1px solid var(--line)} .section-body{padding:18px}
+    .bottom{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}.actions{display:flex;gap:10px;flex-wrap:wrap}
+    .hidden{display:none!important}
+    @media (max-width:1200px){.layout{grid-template-columns:240px 1fr}.editor{grid-column:2}.list-panel{grid-column:2;border-right:none}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media (max-width:860px){.layout{grid-template-columns:1fr}.sidebar,.list-panel{border-right:none;border-bottom:1px solid var(--line)}.grid{grid-template-columns:1fr}}
+  </style>
 </head>
-<body class="admin-body">
-  <div class="admin-layout clean-admin-layout">
-    <aside class="admin-sidebar clean-admin-sidebar">
+<body>
+  <div class="layout">
+    <aside class="sidebar">
       <div>
         <div class="brand">AltDünya</div>
-        <div class="admin-note">Yönetim paneli</div>
+        <div class="note">Yönetim paneli</div>
       </div>
-      <nav class="admin-menu">
-        <a class="admin-menu-link active" href="admin.html">Oyun Ekle / Düzenle</a>
-        <a class="admin-menu-link" href="settings.html">Site Ayarları</a>
-        <a class="admin-menu-link" href="index.html">Siteye Dön</a>
+      <nav class="menu">
+        <a class="active" href="admin.html">Oyun Ekle / Düzenle</a>
+        <a href="settings.html">Site Ayarları</a>
+        <a href="index.html">Siteye Dön</a>
       </nav>
-      <div class="admin-note">Bu sayfa sadece oyunları yönetir. Hero ve popüler ayarları ayrı sayfada tutulur.</div>
+      <div class="note">Bu sayfa sadece oyun kayıtlarını yönetir. Hero ve popüler sıralama ayrı sayfadadır.</div>
     </aside>
 
-    <main class="admin-main clean-admin-main">
-      <section class="admin-list-card clean-card">
-        <div class="admin-toolbar">
-          <h1>Oyunlar</h1>
-          <button id="newGameBtn" class="primary-btn" type="button">Yeni Oyun</button>
+    <aside class="list-panel">
+      <div class="list-wrap">
+        <div class="toolbar">
+          <h2>Oyunlar</h2>
+          <button id="newGameBtn" class="btn" type="button">Yeni Oyun</button>
         </div>
-        <div class="admin-row-gap">
-          <input id="gameSearch" class="search" type="search" placeholder="Oyun ara..." />
-          <div id="gameCount" class="muted"></div>
-          <div id="gameList" class="game-list"></div>
-        </div>
-      </section>
+        <input id="gameSearch" class="search" type="search" placeholder="Oyun ara..." />
+        <div id="gameCount" class="muted"></div>
+        <div id="gameList" class="list"></div>
+      </div>
+    </aside>
 
-      <section class="admin-form-card clean-card">
-        <div class="admin-toolbar">
+    <main class="editor">
+      <section class="card editor-wrap">
+        <div class="toolbar">
           <div>
             <h1 id="formTitle">Yeni Oyun</h1>
-            <div class="muted">Oyun bilgilerini burada düzenle.</div>
+            <div class="muted">Oyunu ekle ya da mevcut kaydı düzenle.</div>
           </div>
-          <div class="admin-actions-row">
-            <button id="deleteBtn" class="danger-btn" type="button" style="display:none">Sil</button>
-          </div>
+          <button id="deleteBtn" class="btn-danger hidden" type="button">Sil</button>
         </div>
 
-        <form id="gameForm" class="admin-form">
-          <div class="form-grid form-grid-3">
-            <label><span>Başlık</span><input name="title" required /></label>
-            <label><span>Slug</span><input name="slug" required /></label>
+        <form id="gameForm" class="form">
+          <div class="grid">
+            <label><span>Başlık</span><input name="title" required></label>
+            <label><span>Slug</span><input name="slug" required></label>
             <label><span>Kategori</span>
               <select name="category">
                 <option value="freeware">Freeware</option>
@@ -58,47 +80,102 @@
                 <option value="videolar">Videolar</option>
               </select>
             </label>
-            <label><span>Segment</span><input name="segment" /></label>
-            <label><span>Platform</span><input name="platform" /></label>
-            <label><span>Tür</span><input name="genre" /></label>
-            <label><span>Yıl</span><input name="year" type="number" /></label>
-            <label><span>Geliştirici</span><input name="developer" /></label>
-            <label><span>Yayıncı</span><input name="publisher" /></label>
-            <label><span>Metacritic</span><input name="metacritic" type="number" /></label>
-            <label><span>Oyuncu</span><input name="players" /></label>
-            <label><span>Seri</span><input name="series" /></label>
-            <label class="full"><span>Hero Alt Başlık</span><input name="heroTitle" /></label>
+            <label><span>Segment</span><input name="segment"></label>
+            <label><span>Platform</span><input name="platform"></label>
+            <label><span>Tür</span><input name="genre"></label>
+            <label><span>Yıl</span><input name="year" type="number"></label>
+            <label><span>Geliştirici</span><input name="developer"></label>
+            <label><span>Yayıncı</span><input name="publisher"></label>
+            <label><span>Metacritic</span><input name="metacritic" type="number"></label>
+            <label><span>Oyuncu</span><input name="players"></label>
+            <label><span>Seri</span><input name="series"></label>
+            <label class="full"><span>Hero Alt Başlık</span><input name="heroTitle"></label>
             <label class="full"><span>Kısa Açıklama</span><textarea name="shortDescription"></textarea></label>
-            <label class="full"><span>Kapak Görseli</span><input name="cover" /></label>
-            <label class="full"><span>YouTube / Embed URL</span><input name="videoUrl" /></label>
-            <label class="full"><span>Etiketler (virgülle)</span><input name="tags" /></label>
+            <label class="full"><span>Kapak Görseli</span><input name="cover"></label>
+            <label class="full"><span>YouTube / Embed URL</span><input name="videoUrl"></label>
+            <label class="full"><span>Etiketler (virgülle)</span><input name="tags"></label>
             <label class="full"><span>Ekran Görüntüleri (satır satır)</span><textarea name="screenshots"></textarea></label>
             <label class="full"><span>Hikâye / Açıklama</span><textarea name="story"></textarea></label>
           </div>
 
-          <details open class="editor-block">
+          <details class="section" open>
             <summary>Pack Bilgileri</summary>
-            <div class="form-grid form-grid-3">
-              <label><span>Sürüm</span><input name="packVersion" /></label>
-              <label><span>Boyut</span><input name="packSize" /></label>
-              <label><span>Kontroller</span><input name="packControls" /></label>
-              <label class="full"><span>Notlar</span><input name="packNotes" /></label>
+            <div class="section-body grid">
+              <label><span>Sürüm</span><input name="packVersion"></label>
+              <label><span>Boyut</span><input name="packSize"></label>
+              <label><span>Kontroller</span><input name="packControls"></label>
+              <label class="full"><span>Notlar</span><input name="packNotes"></label>
               <label class="full"><span>Adımlar (satır satır)</span><textarea name="packSteps"></textarea></label>
-              <label class="full"><span>İndirme URL</span><input name="archiveUrl" /></label>
+              <label class="full"><span>İndirme URL</span><input name="archiveUrl"></label>
             </div>
           </details>
 
-          <div class="admin-bottom-bar">
-            <div class="top-actions">
-              <button class="primary-btn" type="submit">Kaydet</button>
-              <button class="secondary-btn" id="exportBtn" type="button">JSON Dışa Aktar</button>
-              <label class="import-label compact">JSON İçe Aktar <input id="importInput" type="file" accept="application/json" /></label>
+          <div class="bottom">
+            <div class="actions">
+              <button class="btn" type="submit">Kaydet</button>
+              <button class="btn-secondary" id="exportBtn" type="button">JSON Dışa Aktar</button>
             </div>
+            <label class="btn-secondary" style="display:inline-flex;align-items:center;gap:10px;cursor:pointer;">
+              JSON İçe Aktar
+              <input id="importInput" type="file" accept="application/json" style="display:none">
+            </label>
           </div>
         </form>
       </section>
     </main>
   </div>
-  <script src="admin.js"></script>
+
+  <script id="embeddedData" type="application/json"></script>
+  <script>
+    document.getElementById('embeddedData').textContent = "{\n  \"site\": {\n    \"title\": \"AltD\u00fcnya\",\n    \"tagline\": \"Retro oyun vitrini, video merkezi ve AltD\u00fcnya pack ar\u015fivi\",\n    \"categories\": [\n      {\n        \"id\": \"freeware\",\n        \"name\": \"Freeware\",\n        \"subtitle\": \"\u00dccretsiz klasik PC oyunlar\u0131\",\n        \"hero\": \"\u00dccretsiz klasikler, modern aray\u00fcz.\"\n      },\n      {\n        \"id\": \"arcade\",\n        \"name\": \"Arcade\",\n        \"subtitle\": \"Salon efsaneleri\",\n        \"hero\": \"Arcade ruhunu PC'de yeniden ya\u015fa.\"\n      },\n      {\n        \"id\": \"konsol\",\n        \"name\": \"Konsol\",\n        \"subtitle\": \"Konsol klasiklerinin AltD\u00fcnya se\u00e7kisi\",\n        \"hero\": \"PS1 ve di\u011fer klasik konsol deneyimleri.\"\n      },\n      {\n        \"id\": \"openbor\",\n        \"name\": \"OpenBOR\",\n        \"subtitle\": \"Beat 'em up mod d\u00fcnyas\u0131\",\n        \"hero\": \"Topluluk yap\u0131m\u0131 d\u00f6v\u00fc\u015f maceralar\u0131.\"\n      },\n      {\n        \"id\": \"videolar\",\n        \"name\": \"Videolar\",\n        \"subtitle\": \"AltD\u00fcnya oynan\u0131\u015f ve inceleme videolar\u0131\",\n        \"hero\": \"Site merkez, video vitrin.\"\n      }\n    ]\n  },\n  \"games\": [\n    {\n      \"id\": \"ed06f1fc-30d9-4582-a291-54075fe9d5ad\",\n      \"title\": \"Alien Carnage\",\n      \"slug\": \"alien-carnage\",\n      \"category\": \"freeware\",\n      \"segment\": \"Freeware\",\n      \"platform\": \"DOS\",\n      \"genre\": \"Aksiyon / Platform\",\n      \"year\": 1993,\n      \"developer\": \"Apogee Software\",\n      \"publisher\": \"Apogee Software\",\n      \"metacritic\": 70,\n      \"players\": \"1\",\n      \"series\": \"Alien Carnage\",\n      \"heroTitle\": \"DOS / Aksiyon Platform Klasi\u011fi\",\n      \"shortDescription\": \"Alien Carnage, 1993 y\u0131l\u0131nda \u00e7\u0131kan h\u0131zl\u0131 tempolu bir DOS aksiyon-platform oyunudur. Uzayl\u0131 istilas\u0131na kar\u015f\u0131 farkl\u0131 silahlar ve g\u00fc\u00e7lendirmelerle m\u00fccadele etti\u011finiz bu klasik, d\u00f6neminin en e\u011flenceli arcade tarz\u0131 oyunlar\u0131ndan biridir.\",\n      \"cover\": \"https://altdunya.github.io/assets/images/alien-carnage-hero.jpg\",\n      \"videoUrl\": null,\n      \"tags\": [\n        \"DOS\",\n        \"Aksiyon\",\n        \"Platform\",\n        \"Retro\",\n        \"90'lar\",\n        \"Arcade\",\n        \"Freeware\"\n      ],\n      \"screenshots\": [],\n      \"story\": \"Alien Carnage, 90\u2019l\u0131 y\u0131llar\u0131n unutulmaz DOS oyunlar\u0131ndan biridir. Apogee Software taraf\u0131ndan yay\u0131nlanan bu yap\u0131m, h\u0131zl\u0131 tempolu oynan\u0131\u015f\u0131 ve arcade hissiyat\u0131yla \u00f6ne \u00e7\u0131kar.\\n\\nOyunda, uzayl\u0131lar\u0131n istila etti\u011fi b\u00f6lgelerde ilerleyerek farkl\u0131 silahlar ve g\u00fc\u00e7lendirmelerle d\u00fc\u015fmanlar\u0131 alt etmeye \u00e7al\u0131\u015f\u0131rs\u0131n\u0131z. B\u00f6l\u00fcmler ilerledik\u00e7e oyun temposu artar ve refleksleriniz daha fazla \u00f6nem kazan\u0131r.\\n\\nBasit ama ak\u0131c\u0131 mekanikleri sayesinde Alien Carnage, bug\u00fcn bile k\u0131sa s\u00fcrede e\u011flenceli bir deneyim sunabilen klasiklerden biridir.\\n\\nAltD\u00fcnya\u2019da bu tarz oyunlar\u0131 tekrar deneyimleyip \u015fu soruya cevap ar\u0131yoruz:\\n\ud83d\udc49 Bug\u00fcn h\u00e2l\u00e2 oynan\u0131r m\u0131?\",\n      \"pack\": {\n        \"version\": \"v1.0\",\n        \"size\": \"7 MB\",\n        \"controls\": \"Klavye\",\n        \"notes\": \"Bu paket modern sistemlerde sorunsuz \u00e7al\u0131\u015facak \u015fekilde haz\u0131rlanm\u0131\u015ft\u0131r.\\n\\nOyun DOSBox ile birlikte gelir ve herhangi bir ek kurulum gerektirmez.\\n\\nBaz\u0131 sistemlerde oyun h\u0131z\u0131 farkl\u0131l\u0131k g\u00f6sterebilir.\",\n        \"steps\": [\n          \"ZIP dosyas\u0131n\u0131 bir klas\u00f6re \u00e7\u0131kar\",\n          \"start.bat dosyas\u0131n\u0131 \u00e7al\u0131\u015ft\u0131r\"\n        ],\n        \"archiveUrl\": \"https://archive.org/details/alien-carnage-alt-dunya-pack-v-1.0\"\n      }\n    },\n    {\n      \"id\": \"66bfe5ec-cbfb-4775-a125-de2891fa6b2d\",\n      \"title\": \"One Must Fall: 2097\",\n      \"slug\": \"one-must-fall-2097\",\n      \"category\": \"freeware\",\n      \"segment\": \"Freeware\",\n      \"platform\": \"DOS\",\n      \"genre\": \"D\u00f6v\u00fc\u015f\",\n      \"year\": 1994,\n      \"developer\": \"Diversions Entertainment\",\n      \"publisher\": \"Epic MegaGames\",\n      \"metacritic\": 85,\n      \"players\": \"1-2\",\n      \"series\": \"One Must Fall\",\n      \"heroTitle\": \"1994\u2019ten Robot Arenas\u0131\",\n      \"shortDescription\": \"One Must Fall: 2097, dev sava\u015f robotlar\u0131n\u0131 kontrol etti\u011fin, h\u0131zl\u0131 oynan\u0131\u015f\u0131 ve turnuva sistemiyle \u00f6ne \u00e7\u0131kan k\u00fclt bir DOS d\u00f6v\u00fc\u015f oyunudur.\",\n      \"cover\": \"https://altdunya.github.io/assets/images/one-must-fall-2097-hero.jpg\",\n      \"videoUrl\": null,\n      \"tags\": [\n        \"Freeware\",\n        \"D\u00f6v\u00fc\u015f\",\n        \"DOS\",\n        \"90'lar\",\n        \"Robot\",\n        \"Mecha\",\n        \"Retro\"\n      ],\n      \"screenshots\": [],\n      \"story\": \"One Must Fall: 2097, klasik d\u00f6v\u00fc\u015f oyunu form\u00fcl\u00fcn\u00fc dev sava\u015f robotlar\u0131yla birle\u015ftiren, 90\u2019lar\u0131n en \u00f6zg\u00fcn DOS yap\u0131mlar\u0131ndan biridir. Oyunda farkl\u0131 pilotlar ve HAR ad\u0131 verilen robotlarla arenaya \u00e7\u0131k\u0131p rakiplerini alt etmeye \u00e7al\u0131\u015f\u0131rs\u0131n. \u00d6zellikle turnuva modu, para kazan\u0131p robotunu geli\u015ftirebilmen sayesinde oyuna ayr\u0131 bir derinlik katar.\\n\\nD\u00f6nemine g\u00f6re \u00e7ok ak\u0131c\u0131 animasyonlar\u0131, g\u00fc\u00e7l\u00fc m\u00fczikleri ve 1\u2019e 1 rekabet hissiyle dikkat \u00e7eken yap\u0131m, bug\u00fcn h\u00e2l\u00e2 retro d\u00f6v\u00fc\u015f oyunu sevenler i\u00e7in keyifli bir deneyim sunuyor. Oyun 1999\u2019da freeware olarak yay\u0131mland\u0131\u011f\u0131 i\u00e7in retro ar\u015fiv mant\u0131\u011f\u0131na da \u00e7ok iyi uyuyor.\",\n      \"pack\": {\n        \"version\": \"v1.0\",\n        \"size\": \"8.2 MB\",\n        \"controls\": \"Klavye / Gamepad\",\n        \"notes\": \"Bu paket, One Must Fall: 2097'nin tamamen \u00e7al\u0131\u015f\u0131r DOS s\u00fcr\u00fcm\u00fcn\u00fc i\u00e7erir.\\nHerhangi bir ek kurulum gerektirmez, tek t\u0131k ile oynanabilir.\\n\\nOyun freeware olarak yay\u0131nland\u0131\u011f\u0131 i\u00e7in g\u00fcvenle indirilebilir.\",\n        \"steps\": [\n          \"\u0130ndirilen .zip dosyas\u0131n\u0131 \u00e7\u0131kart\",\n          \"Klas\u00f6r i\u00e7indeki START.bat dosyas\u0131n\u0131 \u00e7al\u0131\u015ft\u0131r\",\n          \"Oyun otomatik olarak a\u00e7\u0131lacakt\u0131r\"\n        ],\n        \"archiveUrl\": \"https://archive.org/details/omf-2097-alt-dunya-pack-v-1.0\"\n      }\n    },\n    {\n      \"id\": \"8e4c6f94-4aeb-4fab-b450-6596b03443cf\",\n      \"title\": \"Cadillacs and Dinosaurs\",\n      \"slug\": \"cadillacs-and-dinosaurs\",\n      \"category\": \"arcade\",\n      \"segment\": \"Retro Port\",\n      \"platform\": \"Arcade\",\n      \"genre\": \"Beat \u2018em up / Aksiyon\",\n      \"year\": 1993,\n      \"developer\": \"Capcom\",\n      \"publisher\": \"Capcom\",\n      \"metacritic\": 85,\n      \"players\": \"1-3\",\n      \"series\": \"Cadillacs and Dinosaurs\",\n      \"heroTitle\": \"Arcade Efsanesi Geri D\u00f6nd\u00fc\",\n      \"shortDescription\": \"90\u2019lar\u0131n en efsane arcade beat \u2018em up oyunlar\u0131ndan biri!\\nCadillacs, dinazorlar ve kaos dolu aksiyon bu klasik yap\u0131mda birle\u015fiyor.\",\n      \"cover\": \"https://altdunya.github.io/assets/images/cadillacs-dinosaurs-hero.jpg\",\n      \"videoUrl\": \"https://www.youtube.com/embed/a1XQQJ477-c?si=vONWVAq7jirTJib6\",\n      \"tags\": [\n        \"Retro Port\",\n        \"Beat 'em up\",\n        \"Arcade\",\n        \"90'lar\",\n        \"Capcom\",\n        \"Nostalji\",\n        \"Tek T\u0131k\",\n        \"AltD\u00fcnya Pack\"\n      ],\n      \"screenshots\": [\n        \"https://altdunya.github.io/assets/images/dino-01.png\",\n        \"https://altdunya.github.io/assets/images/dino-02.png\",\n        \"https://altdunya.github.io/assets/images/dino-03.png\",\n        \"https://altdunya.github.io/assets/images/dino-04.png\"\n      ],\n      \"story\": \"Cadillacs and Dinosaurs, Capcom\u2019un 1993 y\u0131l\u0131nda arcade salonlar\u0131 i\u00e7in geli\u015ftirdi\u011fi ve d\u00f6neminin en sevilen beat \u2018em up oyunlar\u0131ndan biridir.\\n\\nXenozoik \u00c7a\u011f\u2019da ge\u00e7en oyunda, insanlar ve dinazorlar ayn\u0131 d\u00fcnyay\u0131 payla\u015fmaktad\u0131r. Ancak ka\u00e7ak avc\u0131lar ve su\u00e7 \u00f6rg\u00fctleri bu dengeyi tehdit eder. Jack Tenrec ve ekibi, bu tehditlere kar\u015f\u0131 sava\u015farak hem insanlar\u0131 hem de dinazorlar\u0131 korumaya \u00e7al\u0131\u015f\u0131r.\\n\\nOyun; ak\u0131c\u0131 d\u00f6v\u00fc\u015f mekanikleri, \u00e7evre etkile\u015fimleri ve ara\u00e7 kullan\u0131m\u0131 gibi detaylar\u0131yla t\u00fcr\u00fcn\u00fcn en dikkat \u00e7eken yap\u0131mlar\u0131ndan biri olmu\u015ftur. \u00d6zellikle Cadillac ara\u00e7lar\u0131 kullanabildi\u011fimiz sahneler, oyunu benzerlerinden ay\u0131ran en ikonik \u00f6zelliklerden biridir.\\n\\nAltD\u00fcnya pack ile bu klasik oyunu modern sistemlerde tek t\u0131kla \u00e7al\u0131\u015ft\u0131rabilir ve nostaljiyi sorunsuz \u015fekilde ya\u015fayabilirsiniz.\",\n      \"pack\": {\n        \"version\": \"AltDunya Pack v1.0 (PC Portable Version)\",\n        \"size\": \"18.3 MB\",\n        \"controls\": \"Gamepad / Klavye\",\n        \"notes\": \"Bu paket, oyunu modern sistemlerde sorunsuz \u00e7al\u0131\u015ft\u0131rmak i\u00e7in optimize edilmi\u015ftir.\\nHerhangi bir kurulum gerektirmez, do\u011frudan \u00e7al\u0131\u015ft\u0131r\u0131labilir.\",\n        \"steps\": [\n          \"\u0130ndirdi\u011finiz .zip dosyas\u0131n\u0131 \u00e7\u0131kart\u0131n\",\n          \"Klas\u00f6r i\u00e7indeki start.bat dosyas\u0131n\u0131 \u00e7al\u0131\u015ft\u0131r\u0131n\",\n          \"Oyun otomatik olarak a\u00e7\u0131lacakt\u0131r\"\n        ],\n        \"archiveUrl\": \"https://archive.org/details/cadillacs-and-dinosaurs-alt-dunya-pack-v-1.0\"\n      }\n    },\n    {\n      \"id\": \"c083f16f-11c5-45af-a893-7b49df32cf58\",\n      \"title\": \"Abuse\",\n      \"slug\": \"abuse\",\n      \"category\": \"freeware\",\n      \"segment\": \"Freeware\",\n      \"platform\": \"DOS\",\n      \"genre\": \"Platform / Shooter\",\n      \"year\": 1996,\n      \"developer\": \"Crack dot Com\",\n      \"publisher\": \"Electronic Arts\",\n      \"metacritic\": 85,\n      \"players\": \"1\",\n      \"series\": \"Abuse\",\n      \"heroTitle\": \"90'lar\u0131n En Farkl\u0131 Platform Shooter Oyunlar\u0131ndan Biri\",\n      \"shortDescription\": \"Abuse, karanl\u0131k atmosferi, ak\u0131c\u0131 oynan\u0131\u015f\u0131 ve mouse destekli ni\u015fan alma sistemiyle d\u00f6neminin en farkl\u0131 platform shooter oyunlar\u0131ndan biri.\",\n      \"cover\": \"https://altdunya.github.io/assets/images/abuse-hero.jpg\",\n      \"videoUrl\": \"https://www.youtube.com/embed/_3qW4NXwS5A?si=1EAR-5c6wz-Xmc3W\",\n      \"tags\": [\n        \"Freeware\",\n        \"Platform Shooter\",\n        \"PC\",\n        \"90lar\",\n        \"Retro\",\n        \"Crack dot Com\"\n      ],\n      \"screenshots\": [],\n      \"story\": \"Abuse, 1996 y\u0131l\u0131nda Crack dot Com taraf\u0131ndan geli\u015ftirilen ve d\u00f6neminin en \u00f6zg\u00fcn platform shooter oyunlar\u0131ndan biri olarak kabul edilen bir yap\u0131m. Oyunda mahk\u00fbm karakter Nick Vrenna'y\u0131 kontrol ederek genetik deneyler sonucu ortaya \u00e7\u0131kan yarat\u0131klar\u0131n istila etti\u011fi bir hapishaneden ka\u00e7maya \u00e7al\u0131\u015f\u0131yoruz.\\n\\nAbuse'u benzer oyunlardan ay\u0131ran en \u00f6nemli \u00f6zelliklerden biri, platform oyunlar\u0131nda nadir g\u00f6r\u00fclen mouse ile ni\u015fan alma sistemi. Bu sayede karakter hareket ederken ayn\u0131 anda farkl\u0131 y\u00f6nlere ate\u015f edebilmek m\u00fcmk\u00fcn oluyor ve oyun olduk\u00e7a ak\u0131c\u0131 bir aksiyon deneyimi sunuyor.\\n\\nKaranl\u0131k atmosferi, h\u0131zl\u0131 tempolu oynan\u0131\u015f\u0131 ve \u00f6zg\u00fcn kontrol sistemi sayesinde Abuse bug\u00fcn bile a\u00e7\u0131p oynanabilecek retro PC klasiklerinden biri olarak g\u00f6r\u00fcl\u00fcyor. AltD\u00fcnya'da bu oyun, Freeware stat\u00fcs\u00fcnde olmas\u0131 ve kolay kurulumuyla yeni nesil sistemlerde rahat\u00e7a deneyimlenebildi\u011fi i\u00e7in \u00f6ne \u00e7\u0131kan yap\u0131mlardan biri.\",\n      \"pack\": {\n        \"version\": \"AltD\u00fcnya Freeware Pack v1.0\",\n        \"size\": \"4.4 MB\",\n        \"controls\": \"Klavye + Mouse\",\n        \"notes\": \"Freeware s\u00fcr\u00fcm\u00fcd\u00fcr. Modern Windows sistemlerinde sorunsuz \u00e7al\u0131\u015f\u0131r. Mouse ile ni\u015fan alma \u00f6zelli\u011fi sayesinde oynan\u0131\u015f\u0131 olduk\u00e7a ak\u0131c\u0131d\u0131r.\",\n        \"steps\": [\n          \"Zip dosyas\u0131n\u0131 indirip klas\u00f6re \u00e7\u0131kart\u0131n.\",\n          \"start.bat dosyas\u0131n\u0131 \u00e7al\u0131\u015ft\u0131r\u0131n.\",\n          \"Oyun do\u011frudan ba\u015flayacakt\u0131r.\"\n        ],\n        \"archiveUrl\": \"https://archive.org/details/abuse-1996-alt-dunya-pack-v-1.0\"\n      }\n    },\n    {\n      \"id\": \"tekken-3\",\n      \"title\": \"Tekken 3\",\n      \"slug\": \"tekken-3\",\n      \"category\": \"konsol\",\n      \"segment\": \"Retro Port\",\n      \"platform\": \"PS1\",\n      \"genre\": \"D\u00f6v\u00fc\u015f\",\n      \"year\": 1998,\n      \"developer\": \"Namco\",\n      \"publisher\": \"Namco\",\n      \"metacritic\": 96,\n      \"players\": \"1-2\",\n      \"series\": \"Tekken\",\n      \"heroTitle\": \"PS1 / D\u00f6v\u00fc\u015f Efsanesi\",\n      \"shortDescription\": \"Tekken 3, h\u0131zl\u0131 d\u00f6v\u00fc\u015f temposu, ikonik karakterleri ve h\u00e2l\u00e2 keyif veren oynan\u0131\u015f\u0131yla bug\u00fcn bile g\u00fcc\u00fcn\u00fc koruyan bir klasik.\",\n      \"cover\": \"https://altdunya.github.io/assets/images/tekken3-hero.jpg\",\n      \"videoUrl\": \"https://www.youtube.com/embed/qC4kocKOW2c?si=9KA2RMNblkBf33-Z\",\n      \"tags\": [\n        \"Retro Port\",\n        \"D\u00f6v\u00fc\u015f\",\n        \"PS1\",\n        \"90'lar\",\n        \"Arcade\",\n        \"Klasik\",\n        \"Namco\"\n      ],\n      \"screenshots\": [\n        \"https://altdunya.github.io/assets/images/tekken-01.png\",\n        \"https://altdunya.github.io/assets/images/tekken-02.png\",\n        \"https://altdunya.github.io/assets/images/tekken-03.png\",\n        \"https://altdunya.github.io/assets/images/tekken-04.png\"\n      ],\n      \"story\": \"Tekken 3, sadece serinin de\u011fil, t\u00fcm d\u00f6v\u00fc\u015f oyunu tarihinin en \u00f6nemli yap\u0131mlar\u0131ndan biri olarak kabul ediliyor. PlayStation d\u00f6neminde ula\u015ft\u0131\u011f\u0131 pop\u00fclerlik, ak\u0131c\u0131 oynan\u0131\u015f\u0131, g\u00fc\u00e7l\u00fc karakter kadrosu ve arcade hissini eve ta\u015f\u0131yan yap\u0131s\u0131yla bo\u015funa de\u011fil. Jin Kazama, Hwoarang, Xiaoyu, Eddy ve daha bir\u00e7ok karakter sayesinde oyun her ma\u00e7ta farkl\u0131 bir tat veriyor.\\n\\nBug\u00fcn d\u00f6n\u00fcp bak\u0131ld\u0131\u011f\u0131nda bile Tekken 3\u2019\u00fcn temposu h\u00e2l\u00e2 g\u00fc\u00e7l\u00fc. Kombolar\u0131n ak\u0131c\u0131l\u0131\u011f\u0131, karakter animasyonlar\u0131 ve k\u0131sa s\u00fcrede e\u011flence vermesi onu sadece nostaljik de\u011fil, ayn\u0131 zamanda h\u00e2l\u00e2 oynanabilir bir klasik h\u00e2line getiriyor. AltD\u00fcnya taraf\u0131nda bu oyunu \u00f6ne \u00e7\u0131karan \u015fey de tam olarak bu: k\u0131sa s\u00fcrede aksiyona sokmas\u0131, videoda iyi akmas\u0131 ve Retro Port format\u0131na \u00e7ok uygun olmas\u0131.\",\n      \"pack\": {\n        \"version\": \"AltD\u00fcnya Pack v1.0\",\n        \"size\": \"507 MB\",\n        \"controls\": \"Gamepad / Klavye\",\n        \"notes\": \"DuckStation tabanl\u0131 kolay a\u00e7\u0131l\u0131r paket s\u00fcr\u00fcm\u00fcd\u00fcr. \u0130lk a\u00e7\u0131l\u0131\u015fta shader cache olu\u015fumu nedeniyle k\u0131sa bir bekleme olabilir. Daha iyi deneyim i\u00e7in gamepad \u00f6nerilir.\",\n        \"steps\": [\n          \"Zip dosyas\u0131n\u0131 \u00e7\u0131kart\u0131n.\",\n          \"Klas\u00f6r i\u00e7indeki start.bat dosyas\u0131n\u0131 \u00e7al\u0131\u015ft\u0131r\u0131n.\",\n          \"Oyun otomatik olarak ba\u015flayacakt\u0131r.\",\n          \"Gerekirse ilk a\u00e7\u0131l\u0131\u015ftan sonra kontrol ayarlar\u0131n\u0131 d\u00fczenleyin.\"\n        ],\n        \"archiveUrl\": \"https://archive.org/details/tekken-3-pc-alt-dunya-pack-v1.0\"\n      }\n    }\n  ]\n}";
+  </script>
+  <script>
+    const STORAGE_KEY = 'altdunyaSiteData';
+    let db = null; let currentId = null;
+    const gameList = document.getElementById('gameList');
+    const form = document.getElementById('gameForm');
+    const formTitle = document.getElementById('formTitle');
+    const deleteBtn = document.getElementById('deleteBtn');
+    const searchInput = document.getElementById('gameSearch');
+    const gameCount = document.getElementById('gameCount');
+
+    function fallbackDb(){ return { site:{ categories:[], home:{ heroSlug:'', popularSlugs:[] }}, games:[] }; }
+    async function loadData(){
+      const local = localStorage.getItem(STORAGE_KEY);
+      if (local) { try { return JSON.parse(local); } catch(e){} }
+      const embedded = document.getElementById('embeddedData').textContent.trim();
+      if (embedded) { try { return JSON.parse(embedded); } catch(e){} }
+      try { const r = await fetch('games.json',{cache:'no-store'}); if (r.ok) return await r.json(); } catch(e){}
+      try { const r = await fetch('data/games.json',{cache:'no-store'}); if (r.ok) return await r.json(); } catch(e){}
+      return fallbackDb();
+    }
+    function normalizeDb(){
+      db ||= fallbackDb(); db.site ||= {}; db.site.home ||= {}; db.site.categories ||= []; db.games ||= [];
+      if (!Array.isArray(db.site.home.popularSlugs)) db.site.home.popularSlugs = [];
+      while (db.site.home.popularSlugs.length < 10) db.site.home.popularSlugs.push('');
+      if (!db.site.home.heroSlug) db.site.home.heroSlug = db.games[0]?.slug || '';
+    }
+    function persist(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(db)); }
+    function labelize(v){ return ({freeware:'Freeware',arcade:'Arcade',konsol:'Konsol',openbor:'OpenBOR',videolar:'Videolar'})[v] || v || '—'; }
+    function emptyGame(){ return { id:(crypto.randomUUID?crypto.randomUUID():String(Date.now())), title:'', slug:'', category:'freeware', segment:'', platform:'', genre:'', year:'', developer:'', publisher:'', metacritic:'', players:'', series:'', heroTitle:'', shortDescription:'', cover:'', videoUrl:'', tags:[], screenshots:[], story:'', pack:{version:'', size:'', controls:'', notes:'', steps:[], archiveUrl:''} }; }
+    function setField(name,val){ if(form.elements[name]) form.elements[name].value = val ?? ''; }
+    function fillForm(g){ setField('title',g.title); setField('slug',g.slug); setField('category',g.category); setField('segment',g.segment); setField('platform',g.platform); setField('genre',g.genre); setField('year',g.year); setField('developer',g.developer); setField('publisher',g.publisher); setField('metacritic',g.metacritic); setField('players',g.players); setField('series',g.series); setField('heroTitle',g.heroTitle); setField('shortDescription',g.shortDescription); setField('cover',g.cover); setField('videoUrl',g.videoUrl); setField('tags',(g.tags||[]).join(', ')); setField('screenshots',(g.screenshots||[]).join('\n')); setField('story',g.story); setField('packVersion',g.pack?.version); setField('packSize',g.pack?.size); setField('packControls',g.pack?.controls); setField('packNotes',g.pack?.notes); setField('packSteps',(g.pack?.steps||[]).join('\n')); setField('archiveUrl',g.pack?.archiveUrl); }
+    function renderList(filter=''){
+      const q = filter.toLowerCase();
+      const items = db.games.filter(g => (g.title||'').toLowerCase().includes(q));
+      gameCount.textContent = items.length + ' oyun';
+      gameList.innerHTML = items.length ? items.map(g => `<button type="button" class="game-item ${g.id===currentId?'active':''}" data-id="${g.id}"><strong>${g.title || 'İsimsiz Oyun'}</strong><div class="muted">${labelize(g.category)} · ${g.platform || '—'}</div></button>`).join('') : '<div class="muted">Kayıt bulunamadı.</div>';
+      gameList.querySelectorAll('.game-item').forEach(btn => btn.addEventListener('click', () => selectGame(btn.dataset.id)));
+    }
+    function selectGame(id){ currentId = id; const g = db.games.find(x => x.id===id) || emptyGame(); formTitle.textContent = g.title || 'Yeni Oyun'; deleteBtn.classList.toggle('hidden', !g.title); fillForm(g); renderList(searchInput.value); }
+    function collectForm(){ const n=form.elements; return { id: currentId || (crypto.randomUUID?crypto.randomUUID():String(Date.now())), title:n.title.value.trim(), slug:n.slug.value.trim(), category:n.category.value, segment:n.segment.value.trim(), platform:n.platform.value.trim(), genre:n.genre.value.trim(), year:n.year.value?Number(n.year.value):null, developer:n.developer.value.trim(), publisher:n.publisher.value.trim(), metacritic:n.metacritic.value?Number(n.metacritic.value):null, players:n.players.value.trim(), series:n.series.value.trim(), heroTitle:n.heroTitle.value.trim(), shortDescription:n.shortDescription.value.trim(), cover:n.cover.value.trim(), videoUrl:n.videoUrl.value.trim()||null, tags:n.tags.value.split(',').map(v=>v.trim()).filter(Boolean), screenshots:n.screenshots.value.split('\n').map(v=>v.trim()).filter(Boolean), story:n.story.value.trim(), pack:{ version:n.packVersion.value.trim(), size:n.packSize.value.trim(), controls:n.packControls.value.trim(), notes:n.packNotes.value.trim(), steps:n.packSteps.value.split('\n').map(v=>v.trim()).filter(Boolean), archiveUrl:n.archiveUrl.value.trim() } }; }
+    form.addEventListener('submit', e => { e.preventDefault(); const prev = db.games.find(g=>g.id===currentId); const prevSlug = prev?.slug || ''; const payload = collectForm(); const i = db.games.findIndex(g=>g.id===payload.id); if (i>-1) db.games[i]=payload; else db.games.unshift(payload); if (db.site.home.heroSlug===prevSlug || !db.site.home.heroSlug) db.site.home.heroSlug = payload.slug; db.site.home.popularSlugs = (db.site.home.popularSlugs||[]).map(s => s===prevSlug ? payload.slug : s); currentId=payload.id; persist(); selectGame(currentId); alert('Oyun kaydedildi.'); });
+    document.getElementById('newGameBtn').addEventListener('click', ()=>{ currentId=null; form.reset(); formTitle.textContent='Yeni Oyun'; deleteBtn.classList.add('hidden'); renderList(searchInput.value); });
+    deleteBtn.addEventListener('click', ()=>{ if(!currentId) return; const g = db.games.find(x=>x.id===currentId); if(!g) return; if(!confirm(g.title + ' silinsin mi?')) return; db.games = db.games.filter(x=>x.id!==currentId); if(db.site.home.heroSlug===g.slug) db.site.home.heroSlug = db.games[0]?.slug || ''; db.site.home.popularSlugs = (db.site.home.popularSlugs||[]).map(s => s===g.slug ? '' : s); persist(); currentId = db.games[0]?.id || null; currentId ? selectGame(currentId) : (form.reset(), formTitle.textContent='Yeni Oyun', deleteBtn.classList.add('hidden')); renderList(searchInput.value); });
+    searchInput.addEventListener('input', ()=>renderList(searchInput.value));
+    document.getElementById('exportBtn').addEventListener('click', ()=>{ persist(); const blob = new Blob([JSON.stringify(db,null,2)], {type:'application/json'}); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = 'games.json'; a.click(); URL.revokeObjectURL(url); });
+    document.getElementById('importInput').addEventListener('change', async e => { const file = e.target.files?.[0]; if(!file) return; const text = await file.text(); db = JSON.parse(text); normalizeDb(); persist(); renderList(); selectGame(db.games[0]?.id || null); alert('JSON içe aktarıldı.'); });
+    loadData().then(data => { db = data; normalizeDb(); renderList(); selectGame(db.games[0]?.id || null); }).catch(()=>{ db=fallbackDb(); normalizeDb(); renderList(); selectGame(null); });
+  </script>
 </body>
 </html>
