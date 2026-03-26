@@ -163,6 +163,21 @@ input,select,textarea{background:#0e1530;color:#fff;border:1px solid var(--line)
 @media (max-width:1100px){.premium-feature-grid,.premium-split,.cta-banner{grid-template-columns:1fr;display:grid}}
 
 
-.comments-intro{margin-bottom:16px}
-.comments-intro strong{display:block;font-size:1.05rem;margin-bottom:6px}
-#disqus_thread{min-height:160px}
+/* Disqus */
+.comment-card {
+  background: #f7f8fc;
+}
+
+.comment-card .section-head h2,
+.comment-card .muted,
+.disqus-live,
+#disqus_thread {
+  color: #666 !important;
+}
+
+#disqus_thread {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 18px;
+  box-sizing: border-box;
+}
