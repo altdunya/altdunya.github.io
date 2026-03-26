@@ -543,9 +543,8 @@ function renderGame(slug) {
 
         <div class="comment-card section" style="padding:20px">
           <div class="section-head"><h2>AltDünya Yorumları</h2></div>
-          <div class="disqus-placeholder">
-            <strong>Disqus alanı burada yer alacak.</strong>
-            <p class="muted">Kurulum için Disqus shortname bilgini eklediğinde gerçek yorum alanı aktif olur.</p>
+          <div>
+            <p class="muted">Bu oyun hakkında ne düşünüyorsun? Yorum bırak 👇</p>
             <div id="disqus_thread"></div>
           </div>
         </div>
@@ -582,6 +581,7 @@ function renderGame(slug) {
   document.getElementById('packJumpBtn')?.addEventListener('click', () => document.getElementById('packSection').scrollIntoView({behavior:'smooth'}));
   document.getElementById('packJumpBtnSide')?.addEventListener('click', () => document.getElementById('packSection').scrollIntoView({behavior:'smooth'}));
   bindGallery();
+  loadDisqus(slug);
 }
 
 function renderStaticPage(pageId) {
@@ -639,3 +639,32 @@ function labelForCategory(id) {
 
 window.addEventListener('hashchange', renderRoute);
 loadData();
+
+
+function loadDisqus(slug) {
+  document.body.setAttribute("data-game", slug);
+
+  if (window.DISQUS) {
+    DISQUS.reset({
+      reload: true,
+      config: function () {
+        this.page.url = window.location.href;
+        this.page.identifier = slug;
+      }
+    });
+  } else {
+    var d = document, s = d.createElement('script');
+
+    var disqus_config = function () {
+      this.page.url = window.location.href;
+      this.page.identifier = slug;
+    };
+
+    window.disqus_config = disqus_config;
+
+    s.src = 'https://altdunyadan.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+
+    (d.head || d.body).appendChild(s);
+  }
+}
