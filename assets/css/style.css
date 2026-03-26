@@ -161,3 +161,8 @@ input,select,textarea{background:#0e1530;color:#fff;border:1px solid var(--line)
 .cta-banner h2{margin:4px 0 10px}
 .cta-banner p{margin:0;color:#d7ddf7;line-height:1.7;max-width:760px}
 @media (max-width:1100px){.premium-feature-grid,.premium-split,.cta-banner{grid-template-columns:1fr;display:grid}}
+
+
+.comments-intro{margin-bottom:16px}
+.comments-intro strong{display:block;font-size:1.05rem;margin-bottom:6px}
+#disqus_thread{min-height:160px}
