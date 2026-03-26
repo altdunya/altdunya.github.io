@@ -544,7 +544,7 @@ function renderGame(slug) {
         <div class="comment-card section" style="padding:20px">
           <div class="section-head"><h2>AltDünya Yorumları</h2></div>
           <div>
-            <p class="muted">Bu oyun hakkında ne düşünüyorsun? Yorum bırak 👇</p>
+            <p class="muted">Bu oyun hakkında ne düşünüyorsun? Çalıştırabildin mi yoksa çocukluğun geri mi geldi? 👇</p>
             <div id="disqus_thread"></div>
           </div>
         </div>
@@ -637,34 +637,32 @@ function labelForCategory(id) {
   return siteData.site.categories.find(c => c.id === id)?.name || id;
 }
 
-window.addEventListener('hashchange', renderRoute);
-loadData();
 
 
 function loadDisqus(slug) {
-  document.body.setAttribute("data-game", slug);
+  document.body.setAttribute('data-game', slug);
 
   if (window.DISQUS) {
-    DISQUS.reset({
+    window.DISQUS.reset({
       reload: true,
       config: function () {
         this.page.url = window.location.href;
         this.page.identifier = slug;
       }
     });
-  } else {
-    var d = document, s = d.createElement('script');
-
-    var disqus_config = function () {
-      this.page.url = window.location.href;
-      this.page.identifier = slug;
-    };
-
-    window.disqus_config = disqus_config;
-
-    s.src = 'https://altdunyadan.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-
-    (d.head || d.body).appendChild(s);
+    return;
   }
+
+  window.disqus_config = function () {
+    this.page.url = window.location.href;
+    this.page.identifier = slug;
+  };
+
+  var d = document, s = d.createElement('script');
+  s.src = 'https://altdunyadan.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', String(+new Date()));
+  (d.head || d.body).appendChild(s);
 }
+
+window.addEventListener('hashchange', renderRoute);
+loadData();
