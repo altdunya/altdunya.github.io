@@ -302,10 +302,16 @@
         "Retro",
         "Crack dot Com"
       ],
-      "screenshots": [],
+      "screenshots": [
+        "https://altdunya.github.io/assets/images/abuse 1.png",
+        "https://altdunya.github.io/assets/images/abuse 2.png",
+        "https://altdunya.github.io/assets/images/abuse 3.png",
+        "https://altdunya.github.io/assets/images/abuse 4.png",
+        "https://altdunya.github.io/assets/images/abuse 5.png"
+      ],
       "story": "Abuse, 1996 yılında Crack dot Com tarafından geliştirilen ve döneminin en özgün platform shooter oyunlarından biri olarak kabul edilen bir yapım. Oyunda mahkûm karakter Nick Vrenna'yı kontrol ederek genetik deneyler sonucu ortaya çıkan yaratıkların istila ettiği bir hapishaneden kaçmaya çalışıyoruz.\n\nAbuse'u benzer oyunlardan ayıran en önemli özelliklerden biri, platform oyunlarında nadir görülen mouse ile nişan alma sistemi. Bu sayede karakter hareket ederken aynı anda farklı yönlere ateş edebilmek mümkün oluyor ve oyun oldukça akıcı bir aksiyon deneyimi sunuyor.\n\nKaranlık atmosferi, hızlı tempolu oynanışı ve özgün kontrol sistemi sayesinde Abuse bugün bile açıp oynanabilecek retro PC klasiklerinden biri olarak görülüyor. AltDünya'da bu oyun, Freeware statüsünde olması ve kolay kurulumuyla yeni nesil sistemlerde rahatça deneyimlenebildiği için öne çıkan yapımlardan biri.",
       "pack": {
-        "version": "AltDünya Freeware Pack v1.0",
+        "version": "v1.0",
         "size": "4.4 MB",
         "controls": "Klavye + Mouse",
         "notes": "Freeware sürümüdür. Modern Windows sistemlerinde sorunsuz çalışır. Mouse ile nişan alma özelliği sayesinde oynanışı oldukça akıcıdır.",
