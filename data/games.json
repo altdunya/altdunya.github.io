@@ -42,15 +42,62 @@
         "abuse",
         "alien-carnage",
         "one-must-fall-2097",
-        "",
-        "",
-        "",
-        ""
+        "punisher-1993",
+        "punisher-1993",
+        "punisher-1993",
+        "punisher-1993"
       ],
       "heroSlug": "tekken-3"
     }
   },
   "games": [
+    {
+      "id": "6964af9e-6620-46bb-b5b4-7c81cbac2e74",
+      "title": "The Punisher (1993)",
+      "slug": "punisher-1993",
+      "category": "arcade",
+      "segment": "Retro Port",
+      "platform": "Arcade",
+      "genre": "Beat ‘em up / Aksiyon",
+      "year": 1993,
+      "developer": "Capcom",
+      "publisher": "Capcom",
+      "metacritic": 95,
+      "players": "1-2",
+      "series": "Marvel / The Punisher",
+      "heroTitle": "90’ların en sert arcade beat 'em up deneyimlerinden biri",
+      "shortDescription": "The Punisher (1993), Capcom tarafından geliştirilen ve Marvel evreninin en karanlık karakterlerinden biri olan Frank Castle’ı konu alan klasik bir arcade beat 'em up oyunudur.\n\nOyuncular, The Punisher (ve co-op modda Nick Fury) ile suç örgütlerine karşı savaşırken yakın dövüş, silahlar ve çevresel nesneleri kullanarak ilerler. Sert atmosferi, akıcı oynanışı ve tatmin edici combat yapısıyla 90’ların en unutulmaz arcade deneyimlerinden biri olarak öne çıkar.\n\nBu AltDünya Pack, oyunu modern sistemlerde tek tıkla çalıştırılabilir hale getirir.",
+      "cover": "",
+      "videoUrl": null,
+      "tags": [
+        "punisher",
+        "the punisher 1993",
+        "arcade",
+        "beat em up",
+        "capcom",
+        "retro",
+        "arcade game",
+        "marvel",
+        "nick fury",
+        "alt dunya",
+        "retro oyun",
+        "eski oyun"
+      ],
+      "screenshots": [],
+      "story": "The Punisher’da Frank Castle, suç dünyasını tek başına yok etmeye ant içmiş bir vigilante olarak karşımıza çıkar. Mafya liderlerinden sokak çetelerine kadar uzanan bu savaşta, her bölümde daha tehlikeli düşmanlarla yüzleşir.\n\nOyun boyunca metro istasyonları, limanlar, depolar ve suçla dolu şehir sokaklarında ilerlerken; hem yakın dövüş hem de ateşli silahlar kullanarak düşmanları alt edersin. Co-op modda Nick Fury’nin de katılmasıyla aksiyon daha da kaotik ve eğlenceli hale gelir.\n\nKaranlık atmosferi, sert animasyonları ve hızlı temposuyla The Punisher, klasik arcade ruhunu en iyi yansıtan beat 'em up oyunlarından biridir.",
+      "pack": {
+        "version": "v1.0",
+        "size": "18.2 MB",
+        "controls": "Gamepad / Klavye",
+        "notes": "FBNeo emulatorü ile tam uyumlu şekilde yapılandırılmıştır.  Ek ayar yapmadan doğrudan oynayabilirsiniz.",
+        "steps": [
+          "ZIP dosyasını çıkar",
+          "START.bat dosyasını çalıştır",
+          "Oyun otomatik olarak başlayacaktır"
+        ],
+        "archiveUrl": "https://archive.org/details/punisher-alt-dunya-pack-v-1.0"
+      }
+    },
     {
       "id": "af769a1b-db86-4e67-bad9-f0c1c16f3f03",
       "title": "Championship Manager 01/02",
