@@ -52,6 +52,53 @@
   },
   "games": [
     {
+      "id": "049b1707-3d26-4af8-bab1-e033a72634bd",
+      "title": "Alien vs Predator",
+      "slug": "alien-vs-predator-1994",
+      "category": "arcade",
+      "segment": "Retro Port",
+      "platform": "Arcade",
+      "genre": "Beat 'em up",
+      "year": 1994,
+      "developer": "Capcom",
+      "publisher": "Capcom",
+      "metacritic": 95,
+      "players": "1-3",
+      "series": "Alien vs Predator",
+      "heroTitle": "Arcade efsanesi geri döndü: Alien vs Predator",
+      "shortDescription": "1994 yılında Capcom tarafından geliştirilen Alien vs Predator, arcade döneminin en efsane beat 'em up oyunlarından biridir. İnsan, Predator ve Alien karakterleriyle oynanabilen bu klasik yapım, hızlı oynanışı ve co-op desteğiyle öne çıkar. AltDünya versiyonu ile modern sistemlerde sorunsuz şekilde deneyimleyebilirsiniz.",
+      "cover": "",
+      "videoUrl": null,
+      "tags": [
+        "alien vs predator",
+        "avp arcade",
+        "capcom",
+        "retro oyun",
+        "arcade oyun",
+        "beat em up",
+        "altdunya",
+        "retro gaming",
+        "90lar oyun",
+        "eski oyunlar",
+        "arcade klasik"
+      ],
+      "screenshots": [],
+      "story": "Alien vs Predator, Capcom’un 1994 yılında arcade salonları için geliştirdiği ve beat ‘em up türünün zirvelerinden biri olarak kabul edilen efsane bir oyundur.\n\nOyuncular; insan askerler, Predator savaşçıları ve Alien tehdidine karşı mücadele eden karakterler arasından seçim yaparak aksiyon dolu bir maceraya atılır. Akıcı animasyonları, tatmin edici dövüş mekanikleri ve 3 kişiye kadar co-op desteği ile döneminin en çok oynanan arcade oyunlarından biri olmuştur.\n\nÖzellikle arcade salonlarında jeton yediren yapısıyla Türkiye’de de büyük bir nostaljik değere sahiptir.\n\nAltDünya versiyonu sayesinde bu klasik deneyimi modern bilgisayarlarda sorunsuz şekilde oynayabilirsiniz. Kurulum gerektirmeden, tek tıkla çalışacak şekilde hazırlanmıştır.",
+      "pack": {
+        "version": "v1.0",
+        "size": "22.9 MB",
+        "controls": "Gamepad / Klavye",
+        "notes": "Bu paket, oyunun modern sistemlerde kolayca çalıştırılabilmesi için optimize edilmiştir. Herhangi bir ek kurulum gerektirmez.",
+        "steps": [
+          "Oyunu indir",
+          "Zip dosyasını çıkart",
+          "START.bat dosyasını çalıştır",
+          "Oyuna başla"
+        ],
+        "archiveUrl": "https://archive.org/details/alien-vs-predator-alt-dunya-pack-v-1.0"
+      }
+    },
+    {
       "id": "6964af9e-6620-46bb-b5b4-7c81cbac2e74",
       "title": "The Punisher (1993)",
       "slug": "punisher-1993",
