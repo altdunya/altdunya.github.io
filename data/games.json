@@ -52,6 +52,50 @@
   },
   "games": [
     {
+      "id": "ba297c21-f54f-4f69-898d-071eb27febf4",
+      "title": "Mystic Warriors",
+      "slug": "mystic-warriors",
+      "category": "arcade",
+      "segment": "Retro Port",
+      "platform": "Arcade",
+      "genre": "Run and Gun, Arcade Action",
+      "year": 1993,
+      "developer": "Konami",
+      "publisher": "Konami",
+      "metacritic": 90,
+      "players": "1-3",
+      "series": "Mystic Warriors",
+      "heroTitle": "Konami’nin 1993 tarihli arcade ninja aksiyonu.",
+      "shortDescription": "Mystic Warriors, Konami tarafından 1993 yılında geliştirilen arcade türünde hızlı tempolu bir aksiyon oyunudur. Farklı oynanabilir ninja karakterleri, co-op desteği ve renkli görsel tarzıyla dönemin dikkat çeken yapımlarından biridir. AltDünya arşivinde modern sistemlerde kolayca deneyimlenebilecek klasik arcade oyunları arasında yer alır.",
+      "cover": "https://altdunya.github.io/assets/images/mystic_warriors_hero.jpg",
+      "videoUrl": null,
+      "tags": [
+        "mystic warriors",
+        "konami",
+        "arcade",
+        "retro gaming",
+        "ninja",
+        "run and gun",
+        "1993",
+        "klasik arcade",
+        "altdunya"
+      ],
+      "screenshots": [],
+      "story": "Mystic Warriors, Konami tarafından 1993 yılında geliştirilen klasik bir arcade aksiyon oyunudur. \nOyuncular, farklı yeteneklere sahip ninja karakterlerden birini seçerek terör örgütlerine karşı mücadele eder.\n\nHızlı oynanışı, co-op desteği ve renkli görsel tarzıyla dikkat çeken oyun, Sunset Riders benzeri yapısıyla \narcade döneminin en eğlenceli run and gun deneyimlerinden biri olarak kabul edilir.\n\nAltDünya Pack ile Mystic Warriors, modern sistemlerde sorunsuz ve kolay bir şekilde oynanabilir hale getirilmiştir.",
+      "pack": {
+        "version": "v1.0",
+        "size": "20.5 MB",
+        "controls": "Gamepad / Klavye",
+        "notes": "Bu pack, oyunu modern sistemlerde kolay erişilebilir hale getirmek amacıyla hazırlanmıştır. Orijinal arcade deneyimi korunarak optimize edilmiştir.",
+        "steps": [
+          "İndirilen dosyayı çıkartın",
+          "START.bat dosyasını çalıştırın",
+          "Oyun otomatik olarak başlayacaktır"
+        ],
+        "archiveUrl": "https://archive.org/details/mystic-warriors-arcade-1993-alt-dunya-pack-v-1.0"
+      }
+    },
+    {
       "id": "e572fd76-fa2f-4e88-b680-37b8f5e091a9",
       "title": "Command & Conquer: Tiberian Sun",
       "slug": "tiberian-sun",
