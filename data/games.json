@@ -52,6 +52,52 @@
   },
   "games": [
     {
+      "id": "e572fd76-fa2f-4e88-b680-37b8f5e091a9",
+      "title": "Command & Conquer: Tiberian Sun",
+      "slug": "tiberian-sun",
+      "category": "freeware",
+      "segment": "Freeware",
+      "platform": "Windows",
+      "genre": "Real-Time Strategy (RTS)",
+      "year": 1999,
+      "developer": "Westwood Studios",
+      "publisher": "Electronic Arts",
+      "metacritic": 85,
+      "players": "Singleplayer, Multiplayer (LAN/Online modlanabilir)",
+      "series": "Command & Conquer",
+      "heroTitle": "Tiberium savaşları geri döndü — klasik RTS deneyiminin zirvesi.",
+      "shortDescription": "Command & Conquer: Tiberian Sun, Westwood Studios tarafından geliştirilen ve 1999 yılında yayınlanan efsanevi bir gerçek zamanlı strateji (RTS) oyunudur.\n\nGDI ve Nod arasındaki savaşın devam ettiği bu yapım, karanlık atmosferi, gelişmiş birim çeşitliliği ve hikaye odaklı görev yapısıyla serinin en sevilen oyunlarından biri olmuştur.\n\nModern sistemlerde bile hâlâ oynanabilirliğiyle dikkat çeken Tiberian Sun, nostaljik RTS deneyimi arayanlar için vazgeçilmez bir klasik.",
+      "cover": "https://altdunya.github.io/assets/images/tiberian_sun_hero.jpg",
+      "videoUrl": null,
+      "tags": [
+        "command and conquer",
+        "tiberian sun",
+        "cnc",
+        "rts",
+        "retro rts",
+        "westwood studios",
+        "nostalji oyunlar",
+        "eski pc oyunları",
+        "strategy games",
+        "gdi vs nod"
+      ],
+      "screenshots": [],
+      "story": "Command & Conquer: Tiberian Sun, GDI ve Nod arasındaki savaşın yeniden alevlendiği karanlık bir gelecekte geçer.\n\nDünya, hızla yayılan ve her şeyi dönüştüren gizemli Tiberium maddesiyle kaplanmıştır. Bu tehlikeli kaynak, bir yandan insanlık için büyük bir tehdit oluştururken diğer yandan büyük bir güç vaat eder.\n\nGDI, düzeni korumaya ve Tiberium yayılımını durdurmaya çalışırken; Nod ise Kane liderliğinde bu gücü kontrol altına alarak yeni bir dünya düzeni kurmayı hedefler.\n\nHikâye boyunca iki tarafın da perspektifinden ilerler, farklı görevler ve sinematik ara sahnelerle bu savaşın derinliğini deneyimlersin.\n\nKaranlık atmosferi, unutulmaz müzikleri ve stratejik derinliğiyle Tiberian Sun, RTS türünün en ikonik oyunlarından biri olarak kabul edilir.",
+      "pack": {
+        "version": "v1.0",
+        "size": "1.3 GB",
+        "controls": "Klavye + Mouse",
+        "notes": "• Oyun modern sistemler için uyumlu hale getirilmiştir • Ekstra kurulum gerektirmez (portable yapı) • Uyumluluk ayarları pack içinde otomatik uygulanır • Windows 10 / 11 üzerinde sorunsuz çalışır • Orijinal oyun deneyimine sadık kalınmıştır",
+        "steps": [
+          "Arşivi indir",
+          "Zip dosyasını klasöre çıkar",
+          "START.bat dosyasını çalıştır",
+          "Oyunu başlat ve keyfini çıkar"
+        ],
+        "archiveUrl": "https://archive.org/details/tiberian-sun-alt-dunya-pack-v-1.0"
+      }
+    },
+    {
       "id": "049b1707-3d26-4af8-bab1-e033a72634bd",
       "title": "Alien vs Predator",
       "slug": "alien-vs-predator-1994",
