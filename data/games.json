@@ -36,18 +36,18 @@
     ],
     "home": {
       "popularSlugs": [
+        "tiberian-sun",
         "tekken-3",
-        "cadillacs-and-dinosaurs",
         "championship-manager-01-02",
-        "abuse",
-        "alien-carnage",
-        "one-must-fall-2097",
         "punisher-1993",
         "alien-vs-predator-1994",
-        "tiberian-sun",
-        "mystic-warriors"
+        "abuse",
+        "mystic-warriors",
+        "one-must-fall-2097",
+        "alien-vs-predator-1994",
+        "alien-carnage"
       ],
-      "heroSlug": "tekken-3"
+      "heroSlug": "punisher-1993"
     }
   },
   "games": [
