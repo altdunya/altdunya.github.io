@@ -220,7 +220,12 @@
         "retro oyun",
         "eski oyun"
       ],
-      "screenshots": [],
+      "screenshots": [
+        "https://altdunya.github.io/assets/images/punisher-1.png",
+        "https://altdunya.github.io/assets/images/punisher-2.png",
+        "https://altdunya.github.io/assets/images/punisher-3.png",
+        "https://altdunya.github.io/assets/images/punisher-4.png"
+      ],
       "story": "The Punisher’da Frank Castle, suç dünyasını tek başına yok etmeye ant içmiş bir vigilante olarak karşımıza çıkar. Mafya liderlerinden sokak çetelerine kadar uzanan bu savaşta, her bölümde daha tehlikeli düşmanlarla yüzleşir.\n\nOyun boyunca metro istasyonları, limanlar, depolar ve suçla dolu şehir sokaklarında ilerlerken; hem yakın dövüş hem de ateşli silahlar kullanarak düşmanları alt edersin. Co-op modda Nick Fury’nin de katılmasıyla aksiyon daha da kaotik ve eğlenceli hale gelir.\n\nKaranlık atmosferi, sert animasyonları ve hızlı temposuyla The Punisher, klasik arcade ruhunu en iyi yansıtan beat 'em up oyunlarından biridir.",
       "pack": {
         "version": "v1.0",
