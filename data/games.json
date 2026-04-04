@@ -52,6 +52,56 @@
   },
   "games": [
     {
+      "id": "456eff67-e621-49ff-99f9-8d513bff6af4",
+      "title": "Bloody Roar - Hyper Beast Duel",
+      "slug": "bloody-roar-hyper-beast-duel",
+      "category": "konsol",
+      "segment": "Retro Port",
+      "platform": "PlayStation (PS1)",
+      "genre": "Dövüş",
+      "year": 1997,
+      "developer": "Eighting / Raizing",
+      "publisher": "Hudson Soft",
+      "metacritic": 90,
+      "players": "1-2",
+      "series": "Bloody Roar",
+      "heroTitle": "İnsan mı? Hayvan mı? Dönüşüm mekaniklerinin doğduğu dövüş efsanesi!",
+      "shortDescription": "Bloody Roar, klasik dövüş oyunlarından farklı olarak karakterlerin dövüş sırasında hayvan formuna dönüşebildiği özgün bir mekanik sunar.\n1997 yılında PlayStation için çıkan bu yapım, hızlı oynanışı, agresif komboları ve “beast mode” sistemiyle döneminin en farklı fighting oyunlarından biri olmayı başarmıştır.\n\nYugo’nun kurda, Alice’in tavşana, Fox’un tilkiye dönüşmesi gibi karakter bazlı dönüşümler, her dövüşü dinamik ve stratejik hale getirir.\n\nBugün bile açıp oynadığında hâlâ akıcı, hâlâ eğlenceli ve hâlâ kaotik.",
+      "cover": "https://altdunya.github.io/assets/images/bloody_roar_hero.jpg",
+      "videoUrl": null,
+      "tags": [
+        "bloody roar",
+        "bloody roar 1",
+        "hyper beast duel",
+        "ps1 fighting game",
+        "retro fighting game",
+        "bloody roar gameplay",
+        "beast mode fighting game",
+        "ps1 klasik oyunlar",
+        "retro oyun",
+        "altdunya retro",
+        "bloody roar dönüşüm",
+        "fighting game 90lar",
+        "playstation 1 oyunları"
+      ],
+      "screenshots": [],
+      "story": "Bloody Roar, klasik dövüş turnuvalarının ötesine geçen, genetik deneyler ve insan-hayvan dönüşümleri üzerine kurulu karanlık bir hikâyeye sahiptir.\n\nZoanthrope adı verilen bu özel insanlar, içlerindeki hayvani gücü ortaya çıkararak dövüş sırasında bambaşka bir forma bürünebilir. Ancak bu güç, beraberinde kontrol kaybı ve yıkım riskini de getirir.\n\nHikâyenin merkezinde, geçmişini ve kimliğini sorgulayan Yugo yer alır. İçindeki kurt gücünü keşfeden Yugo, hem kendi doğasını anlamaya hem de bu dönüşümlerin ardındaki gizemi çözmeye çalışır.\n\nOnun yolculuğu sırasında karşılaştığı Alice, Fox, Mitsuko ve diğer savaşçılar, bu dünyanın farklı yüzlerini temsil eder. Her biri kendi amacıyla dövüşür: kimisi hayatta kalmak, kimisi gerçeği öğrenmek, kimisi ise gücünü kanıtlamak için.\n\nBloody Roar’ın hikâyesi derin bir anlatım sunmasa da, karakterlerin arka planı ve dönüşüm teması oyuna güçlü bir atmosfer kazandırır.",
+      "pack": {
+        "version": "v1.0",
+        "size": "404 MB",
+        "controls": "Gamepad / Klavye",
+        "notes": "DuckStation tabanlı kolay açılır paket sürümüdür. İlk açılışta shader cache oluşumu nedeniyle kısa bir bekleme olabilir. Açılışta güncelleme gelirse atlayabilirsiniz. Daha iyi deneyim için gamepad önerilir.",
+        "steps": [
+          "Oyunu indir",
+          "Zip dosyasını çıkart",
+          "Klasör içindeki START.bat dosyasını çalıştır",
+          "Oyun otomatik olarak açılacaktır",
+          "Gamepad kullanıyorsan direkt tanınır"
+        ],
+        "archiveUrl": "https://archive.org/details/bloody-roar-hyper-beast-duel-alt-dunya-pack-v-1.0"
+      }
+    },
+    {
       "id": "ba297c21-f54f-4f69-898d-071eb27febf4",
       "title": "Mystic Warriors",
       "slug": "mystic-warriors",
