@@ -52,6 +52,53 @@
   },
   "games": [
     {
+      "id": "26a9aa8a-29e9-45c9-80cd-76463b6ed28b",
+      "title": "Dead or Alive (1996)",
+      "slug": "dead-or-alive-1996",
+      "category": "konsol",
+      "segment": "Retro Port",
+      "platform": "PlayStation (PS1)",
+      "genre": "Dövüş",
+      "year": 1996,
+      "developer": "Tecmo",
+      "publisher": "Tecmo",
+      "metacritic": 93,
+      "players": "1-2",
+      "series": "Dead or Alive",
+      "heroTitle": "Dövüş oyunlarında fizik sistemini tartışmaya açan efsane.",
+      "shortDescription": "Dead or Alive, 1996 yılında Tecmo tarafından geliştirilen ve PlayStation döneminin en dikkat çeken dövüş oyunlarından biridir.\n\nHızlı oynanışı, akıcı animasyonları ve özellikle fizik tabanlı dövüş sistemi ile türüne farklı bir yaklaşım getirmiştir. Kasumi, Lei Fang ve Tina gibi karakterleriyle öne çıkan yapım, dönemine göre oldukça iddialı bir deneyim sunar.\n\nBu AltDünya Pack sayesinde oyun, modern Windows sistemlerde tek tıkla sorunsuz şekilde çalışır.",
+      "cover": "https://altdunya.github.io/assets/images/dead_or_alive_hero.jpg",
+      "videoUrl": null,
+      "tags": [
+        "dead or alive",
+        "doa",
+        "ps1",
+        "playstation 1",
+        "fighting game",
+        "dövüş oyunu",
+        "retro gaming",
+        "kasumi",
+        "lei fang",
+        "tina armstrong",
+        "tecmo",
+        "ps1 oyunları"
+      ],
+      "screenshots": [],
+      "story": "Dead or Alive, 1996 yılında Tecmo tarafından geliştirilen ve PlayStation döneminin en dikkat çeken dövüş oyunlarından biridir.\n\nKlasik dövüş oyunlarından farklı olarak karşı saldırı (counter) sistemi ve fizik tabanlı mekanikleriyle öne çıkan yapım, oyuncuya daha taktiksel ve akıcı bir dövüş deneyimi sunar. Hızlı oynanışı ve karakter çeşitliliği sayesinde döneminde rakiplerinden ayrılmıştır.\n\nKasumi, Lei Fang ve Tina gibi karakterlerle öne çıkan oyun, bugün hâlâ PlayStation döneminin en kendine özgü dövüş oyunlarından biri olarak kabul edilir.\n\nAltDünya Pack ile oyun, modern Windows sistemlerde tek tıkla çalışacak şekilde hazırlanmıştır.",
+      "pack": {
+        "version": "v1.0",
+        "size": "423,1 MB",
+        "controls": "Gamepad / Klavye",
+        "notes": "• Oyun DuckStation emülatörü ile çalışır • Tüm ayarlar önceden yapılandırılmıştır • Tam ekran ve performans ayarları optimize edilmiştir • Ek kurulum gerektirmez",
+        "steps": [
+          "1. İndirdiğiniz dosyayı klasöre çıkarın",
+          "2. \"START.bat\" dosyasını çalıştırın",
+          "3. Oyun otomatik olarak başlayacaktır"
+        ],
+        "archiveUrl": "https://archive.org/details/dead-or-alive-alt-dunya-pack-v-1.0"
+      }
+    },
+    {
       "id": "456eff67-e621-49ff-99f9-8d513bff6af4",
       "title": "Bloody Roar - Hyper Beast Duel",
       "slug": "bloody-roar-hyper-beast-duel",
@@ -521,7 +568,7 @@
       "slug": "tekken-3",
       "category": "konsol",
       "segment": "Retro Port",
-      "platform": "PS1",
+      "platform": "PlayStation (PS1)",
       "genre": "Dövüş",
       "year": 1998,
       "developer": "Namco",
