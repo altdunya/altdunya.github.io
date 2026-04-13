@@ -52,6 +52,51 @@
   },
   "games": [
     {
+      "id": "d04e3762-427e-4291-9fa4-466aff107bef",
+      "title": "Gaia Crusaders",
+      "slug": "gaia-crusaders",
+      "category": "arcade",
+      "segment": "Retro Port",
+      "platform": "Arcade",
+      "genre": "Beat ‘em up / Aksiyon",
+      "year": 1999,
+      "developer": "Noise Factory",
+      "publisher": "Noise Factory / Atlus (Arcade dağıtım)",
+      "metacritic": 85,
+      "players": "1-2",
+      "series": "Gaia Crusaders",
+      "heroTitle": "90’ların unutulmuş beat’em up efsanesi",
+      "shortDescription": "Gaia Crusaders, 90’ların arcade döneminden kalma hızlı tempolu bir beat’em up oyunudur. Renkli karakterleri, akıcı dövüş sistemi ve co-op oynanışıyla dönemin gizli kalmış yapımlarından biridir.\n\nBu versiyon, modern sistemlerde tek tıkla çalışacak şekilde hazırlanmıştır.",
+      "cover": "https://altdunya.github.io/assets/images/gaia_crusaders_hero.jpg",
+      "videoUrl": null,
+      "tags": [
+        "gaia crusaders",
+        "arcade",
+        "beat em up",
+        "retro oyun",
+        "arcade oyunları",
+        "eski oyunlar",
+        "alt dunya",
+        "retro gaming",
+        "nostalji oyun",
+        "beat em up oyunları"
+      ],
+      "screenshots": [],
+      "story": "Gaia Crusaders, 90’ların son dönem arcade oyunlarından biri olup beat’em up türünün gizli kalmış yapımlarından biridir. Noise Factory tarafından geliştirilen oyun, hızlı tempolu dövüş sistemi, renkli karakter tasarımları ve co-op oynanışıyla dikkat çeker.\n\nOyunda farklı yeteneklere sahip karakterler arasından seçim yaparak düşman dalgalarına karşı mücadele edersiniz. Her karakterin kendine özgü dövüş stili ve özel hareketleri bulunur.\n\nArcade salonlarında çok yaygın olmasa da, türü seven oyuncular için keşfedilmeyi bekleyen bir klasik olarak öne çıkar.\n\nBu AltDünya Pack, oyunu modern sistemlerde sorunsuz çalıştırmak için özel olarak hazırlanmıştır.",
+      "pack": {
+        "version": "v1.0",
+        "size": "32.7 MB",
+        "controls": "Gamepad / Klavye",
+        "notes": "Oyun, emülatör ile çalışmaktadır. Antivirüs bazı dosyaları yanlış pozitif olarak algılayabilir, bu normaldir.  İlk açılışta tam ekran ayarı otomatik yapılır. Performans sorunu yaşanmaz.  Herhangi bir kurulum gerektirmez.",
+        "steps": [
+          "1. İndirdiğiniz zip dosyasını çıkarın.",
+          "2. Klasör içindeki START dosyasını çalıştırın.",
+          "3. Oyun otomatik olarak açılacaktır."
+        ],
+        "archiveUrl": "https://archive.org/details/gaia-crusaders-alt-dunya-pack-v-1.0"
+      }
+    },
+    {
       "id": "26a9aa8a-29e9-45c9-80cd-76463b6ed28b",
       "title": "Dead or Alive",
       "slug": "dead-or-alive-1996",
