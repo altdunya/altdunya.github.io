@@ -81,7 +81,15 @@
         "nostalji oyun",
         "beat em up oyunları"
       ],
-      "screenshots": [],
+      "screenshots": [
+        "https://altdunya.github.io/assets/images/gaia1.png",
+        "https://altdunya.github.io/assets/images/gaia2.png",
+        "https://altdunya.github.io/assets/images/gaia3.png",
+        "https://altdunya.github.io/assets/images/gaia4.png",
+        "https://altdunya.github.io/assets/images/gaia5.png",
+        "https://altdunya.github.io/assets/images/gaia6.png",
+        "https://altdunya.github.io/assets/images/gaia7.png"
+      ],
       "story": "Gaia Crusaders, 90’ların son dönem arcade oyunlarından biri olup beat’em up türünün gizli kalmış yapımlarından biridir. Noise Factory tarafından geliştirilen oyun, hızlı tempolu dövüş sistemi, renkli karakter tasarımları ve co-op oynanışıyla dikkat çeker.\n\nOyunda farklı yeteneklere sahip karakterler arasından seçim yaparak düşman dalgalarına karşı mücadele edersiniz. Her karakterin kendine özgü dövüş stili ve özel hareketleri bulunur.\n\nArcade salonlarında çok yaygın olmasa da, türü seven oyuncular için keşfedilmeyi bekleyen bir klasik olarak öne çıkar.\n\nBu AltDünya Pack, oyunu modern sistemlerde sorunsuz çalıştırmak için özel olarak hazırlanmıştır.",
       "pack": {
         "version": "v1.0",
