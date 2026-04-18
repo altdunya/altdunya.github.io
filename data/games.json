@@ -329,7 +329,16 @@
         "eski oyunlar",
         "arcade klasik"
       ],
-      "screenshots": [],
+      "screenshots": [
+        "https://altdunya.github.io/assets/images/avsp1.png",
+        "https://altdunya.github.io/assets/images/avsp2.png",
+        "https://altdunya.github.io/assets/images/avsp3.png",
+        "https://altdunya.github.io/assets/images/avsp4.png",
+        "https://altdunya.github.io/assets/images/avsp5.png",
+        "https://altdunya.github.io/assets/images/avsp6.png",
+        "https://altdunya.github.io/assets/images/avsp7.png",
+        "https://altdunya.github.io/assets/images/avsp8.png"
+      ],
       "story": "Alien vs Predator, Capcom’un 1994 yılında arcade salonları için geliştirdiği ve beat ‘em up türünün zirvelerinden biri olarak kabul edilen efsane bir oyundur.\n\nOyuncular; insan askerler, Predator savaşçıları ve Alien tehdidine karşı mücadele eden karakterler arasından seçim yaparak aksiyon dolu bir maceraya atılır. Akıcı animasyonları, tatmin edici dövüş mekanikleri ve 3 kişiye kadar co-op desteği ile döneminin en çok oynanan arcade oyunlarından biri olmuştur.\n\nÖzellikle arcade salonlarında jeton yediren yapısıyla Türkiye’de de büyük bir nostaljik değere sahiptir.\n\nAltDünya versiyonu sayesinde bu klasik deneyimi modern bilgisayarlarda sorunsuz şekilde oynayabilirsiniz. Kurulum gerektirmeden, tek tıkla çalışacak şekilde hazırlanmıştır.",
       "pack": {
         "version": "v1.0",
