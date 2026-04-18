@@ -230,7 +230,14 @@
         "klasik arcade",
         "altdunya"
       ],
-      "screenshots": [],
+      "screenshots": [
+        "https://altdunya.github.io/assets/images/mystwar1.png",
+        "https://altdunya.github.io/assets/images/mystwar2.png",
+        "https://altdunya.github.io/assets/images/mystwar3.png",
+        "https://altdunya.github.io/assets/images/mystwar4.png",
+        "https://altdunya.github.io/assets/images/mystwar5.png",
+        "https://altdunya.github.io/assets/images/mystwar6.png"
+      ],
       "story": "Mystic Warriors, Konami tarafından 1993 yılında geliştirilen klasik bir arcade aksiyon oyunudur. \nOyuncular, farklı yeteneklere sahip ninja karakterlerden birini seçerek terör örgütlerine karşı mücadele eder.\n\nHızlı oynanışı, co-op desteği ve renkli görsel tarzıyla dikkat çeken oyun, Sunset Riders benzeri yapısıyla \narcade döneminin en eğlenceli run and gun deneyimlerinden biri olarak kabul edilir.\n\nAltDünya Pack ile Mystic Warriors, modern sistemlerde sorunsuz ve kolay bir şekilde oynanabilir hale getirilmiştir.",
       "pack": {
         "version": "v1.0",
