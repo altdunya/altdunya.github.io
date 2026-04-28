@@ -5,9 +5,9 @@ const app = document.getElementById('app');
 const mainNav = document.getElementById('mainNav');
 const slidePanel = document.getElementById('slidePanel');
 const panelBackdrop = document.getElementById('panelBackdrop');
-const globalSearchInput = document.getElementById('globalSearchInput');
-const globalSearchResults = document.getElementById('globalSearchResults');
 const siteSearch = document.getElementById('siteSearch');
+const searchResults = document.getElementById('searchResults');
+let homeHeroTimer = null;
 
 const STATIC_PAGES = {
   about: {
@@ -238,9 +238,42 @@ async function loadData() {
       siteData = { site: { categories: [], home: { heroSlug: '', popularSlugs: [] } }, games: [] };
     }
   }
+  normalizeSiteData();
   buildNav();
-  setupGlobalSearch();
+  initSiteSearch();
   renderRoute();
+}
+
+
+function normalizeSiteData() {
+  siteData ||= { site: {}, games: [] };
+  siteData.site ||= {};
+  siteData.site.home ||= {};
+  siteData.site.categories ||= [];
+  siteData.games ||= [];
+
+  if (!Array.isArray(siteData.site.home.popularSlugs)) siteData.site.home.popularSlugs = [];
+  siteData.site.home.popularSlugs = siteData.site.home.popularSlugs.filter(Boolean).slice(0, 12);
+  while (siteData.site.home.popularSlugs.length < 12) siteData.site.home.popularSlugs.push('');
+
+  if (!Array.isArray(siteData.site.home.featuredSlugs)) siteData.site.home.featuredSlugs = [];
+  siteData.site.home.featuredSlugs = siteData.site.home.featuredSlugs.filter(Boolean).slice(0, 4);
+  while (siteData.site.home.featuredSlugs.length < 4) siteData.site.home.featuredSlugs.push('');
+
+  if (!siteData.site.home.heroSlug) siteData.site.home.heroSlug = siteData.games[0]?.slug || '';
+}
+
+function esc(value) {
+  return String(value ?? '').replace(/[&<>'"]/g, ch => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', "'":'&#39;', '"':'&quot;' }[ch]));
+}
+
+function uniqueGames(games) {
+  const seen = new Set();
+  return games.filter(game => {
+    if (!game || !game.slug || seen.has(game.slug)) return false;
+    seen.add(game.slug);
+    return true;
+  });
 }
 
 function buildNav() {
@@ -285,25 +318,20 @@ function getHomeHero() {
   return getGameBySlug(siteData.site?.home?.heroSlug) || siteData.games[0];
 }
 
+function getHomeHeroSlides() {
+  const latest = siteData.games[0];
+  const manual = (siteData.site?.home?.featuredSlugs || []).map(getGameBySlug).filter(Boolean);
+  const oldHero = getHomeHero();
+  const fallback = getHomePopular();
+  return uniqueGames([latest, ...manual, oldHero, ...fallback]).slice(0, 5);
+}
+
 function getHomePopular() {
   const selected = (siteData.site?.home?.popularSlugs || [])
     .map(getGameBySlug)
     .filter(Boolean);
   const fallback = siteData.games.filter(g => !selected.some(s => s.slug === g.slug));
   return [...selected, ...fallback].slice(0, 12);
-}
-
-function getHeroSlides() {
-  const latest = siteData.games[0];
-  const manual = [
-    getGameBySlug(siteData.site?.home?.heroSlug),
-    ...(siteData.site?.home?.popularSlugs || []).map(getGameBySlug)
-  ].filter(Boolean);
-  const unique = [];
-  [latest, ...manual, ...siteData.games].filter(Boolean).forEach(game => {
-    if (!unique.some(item => item.slug === game.slug)) unique.push(game);
-  });
-  return unique.slice(0, 5);
 }
 
 function gameCard(game) {
@@ -336,84 +364,44 @@ function miniGame(game) {
   `;
 }
 
-function searchText(game) {
-  return [game.title, game.platform, game.genre, game.segment, game.category, ...(game.tags || [])].filter(Boolean).join(' ').toLowerCase();
-}
-
-function renderSearchResults(query) {
-  if (!globalSearchResults) return;
-  const q = (query || '').trim().toLowerCase();
-  if (!q) {
-    globalSearchResults.innerHTML = '';
-    siteSearch?.classList.remove('open');
-    return;
-  }
-  const results = siteData.games.filter(game => searchText(game).includes(q)).slice(0, 7);
-  siteSearch?.classList.add('open');
-  globalSearchResults.innerHTML = results.length ? results.map(game => `
-    <a class="search-result-item" href="#/game/${game.slug}">
-      <span class="search-result-thumb" style="background-image:url('${game.cover}')"></span>
-      <span><strong>${game.title}</strong><small>${game.platform || '—'} · ${game.genre || game.segment || '—'}</small></span>
-    </a>`).join('') : '<div class="search-result-empty">Sonuç bulunamadı.</div>';
-}
-
-function setupGlobalSearch() {
-  if (!globalSearchInput || globalSearchInput.dataset.ready === '1') return;
-  globalSearchInput.dataset.ready = '1';
-  globalSearchInput.addEventListener('input', e => renderSearchResults(e.target.value));
-  globalSearchInput.addEventListener('keydown', e => {
-    if (e.key !== 'Enter') return;
-    const q = globalSearchInput.value.trim().toLowerCase();
-    const first = siteData.games.find(game => searchText(game).includes(q));
-    if (first) {
-      location.hash = `#/game/${first.slug}`;
-      globalSearchInput.value = '';
-      globalSearchInput.blur();
-      renderSearchResults('');
-    }
-  });
-  document.addEventListener('click', e => {
-    if (!siteSearch?.contains(e.target)) renderSearchResults('');
-  });
-  globalSearchResults?.addEventListener('click', () => {
-    globalSearchInput.value = '';
-    renderSearchResults('');
-  });
-}
-
 function renderHome() {
   setActiveNav('home');
-  const heroSlides = getHeroSlides();
+  clearInterval(homeHeroTimer);
+  const slides = getHomeHeroSlides();
   const latest = [...siteData.games].slice(0, 5);
   const popular = getHomePopular();
   const videoGames = siteData.games.filter(g => g.videoUrl).slice(0,4);
-  const firstSlide = heroSlides[0] || siteData.games[0] || {};
+
+  const heroSlidesHtml = slides.map((game, idx) => `
+    <article class="hero-slide ${idx === 0 ? 'active' : ''}" data-hero-slide="${idx}">
+      <div class="hero-copy">
+        <div class="kicker">AltDünya Featured</div>
+        <h1>${esc(game.title)}</h1>
+        <div class="hero-badges">
+          <span class="badge">${esc(game.platform || '—')}</span>
+          <span class="badge">${esc(game.genre || '—')}</span>
+          <span class="badge">${esc(game.segment || '—')}</span>
+        </div>
+        <p>${esc(game.shortDescription || '')}</p>
+        <div class="cta-row">
+          <a class="primary-btn" href="#/game/${esc(game.slug)}">Oyuna Git</a>
+          <a class="secondary-btn" href="#/category/${esc(game.category)}">${esc(labelForCategory(game.category))}</a>
+        </div>
+      </div>
+      <div class="hero-image" style="background-image:linear-gradient(90deg,rgba(9,11,24,.1),rgba(9,11,24,.05)),url('${esc(game.cover)}')"></div>
+    </article>
+  `).join('');
 
   app.innerHTML = `
-    <section class="featured-hero-slider" data-hero-slider>
-      <div class="featured-hero-bg" data-hero-bg style="background-image:url('${firstSlide.cover || ''}')"></div>
-      <div class="featured-hero-inner">
-        <button class="hero-arrow hero-prev" type="button" data-hero-prev aria-label="Önceki oyun">‹</button>
-        <div class="featured-hero-copy">
-          <div class="kicker">AltDünya Featured</div>
-          <h1 data-hero-title>${firstSlide.title || 'AltDünya'}</h1>
-          <div class="hero-badges" data-hero-badges>
-            <span class="badge">${firstSlide.platform || '—'}</span>
-            <span class="badge">${firstSlide.genre || '—'}</span>
-            <span class="badge">${firstSlide.segment || '—'}</span>
-          </div>
-          <p data-hero-description>${firstSlide.shortDescription || ''}</p>
-          <div class="cta-row">
-            <a class="primary-btn" data-hero-link href="#/game/${firstSlide.slug || ''}">Oyuna Git</a>
-            <a class="secondary-btn" data-hero-category href="#/category/${firstSlide.category || 'arcade'}">${labelForCategory(firstSlide.category)}</a>
-          </div>
+    <section class="hero-card hero-slider" data-active-slide="0">
+      <div class="hero-slider-stage">${heroSlidesHtml}</div>
+      ${slides.length > 1 ? `
+        <button class="hero-arrow hero-prev" type="button" aria-label="Önceki oyun">‹</button>
+        <button class="hero-arrow hero-next" type="button" aria-label="Sonraki oyun">›</button>
+        <div class="hero-dots">
+          ${slides.map((_, idx) => `<button type="button" class="hero-dot ${idx === 0 ? 'active' : ''}" data-hero-dot="${idx}" aria-label="Hero ${idx+1}"></button>`).join('')}
         </div>
-        <div class="featured-hero-poster" data-hero-poster style="background-image:url('${firstSlide.cover || ''}')"></div>
-        <button class="hero-arrow hero-next" type="button" data-hero-next aria-label="Sonraki oyun">›</button>
-      </div>
-      <div class="hero-dots" data-hero-dots>
-        ${heroSlides.map((_, i) => `<button type="button" class="hero-dot ${i === 0 ? 'active' : ''}" data-hero-dot="${i}" aria-label="Hero ${i+1}"></button>`).join('')}
-      </div>
+      ` : ''}
     </section>
 
     <div class="section home-sections">
@@ -426,17 +414,24 @@ function renderHome() {
         <div class="section-head"><h2>Kategoriler</h2></div>
         <div class="segment-grid">
           ${siteData.site.categories.filter(c => ['freeware','arcade','konsol'].includes(c.id)).map(c => `
-            <a class="segment-card" href="#/category/${c.id}"><div><div class="kicker">Kategori</div><div>${c.name}</div></div></a>
+            <a class="segment-card" href="#/category/${c.id}">
+              <div>
+                <div class="kicker">Kategori</div>
+                <div>${c.name}</div>
+              </div>
+            </a>
           `).join('')}
         </div>
       </div>
 
-      <section class="panel section selection-panel">
-        <div class="section-head selection-head">
-          <div><div class="kicker">AltDünya</div><h2>AltDünya Seçkisi</h2></div>
-          <a class="secondary-btn" href="#/games">Tüm Oyunlar</a>
+      <section class="panel section showcase-section">
+        <div class="section-head">
+          <div>
+            <h2>AltDünya Seçkisi</h2>
+            <p class="muted">AltDünya arşivinden öne çıkan seçilmiş oyunlar.</p>
+          </div>
         </div>
-        <div class="selection-grid">${popular.map(gameCard).join('')}</div>
+        <div class="card-grid showcase-grid">${popular.map(gameCard).join('')}</div>
       </section>
 
       <div class="grid-home">
@@ -453,52 +448,266 @@ function renderHome() {
               <li>⚡ Tek tıkla çalışan paketlerle uğraşmadan direkt oyuna girersin.</li>
             </ul>
           </div>
-          <div class="side-card">
-            <h3>AltDünya Pack Nedir?</h3>
-            <p class="muted">Seçili oyunlar için hazırlanmış, modern sistemlerde daha kolay çalışacak şekilde düzenlenmiş paket sayfalarıdır.</p>
-          </div>
         </aside>
       </div>
     </div>
   `;
-  setupHeroSlider(heroSlides);
+
+  bindHeroSlider(slides.length);
 }
 
-function setupHeroSlider(slides) {
-  if (!slides || slides.length <= 1) return;
-  const root = document.querySelector('[data-hero-slider]');
-  if (!root) return;
-  let index = 0;
-  let timer = null;
-  const bg = root.querySelector('[data-hero-bg]');
-  const poster = root.querySelector('[data-hero-poster]');
-  const title = root.querySelector('[data-hero-title]');
-  const badges = root.querySelector('[data-hero-badges]');
-  const desc = root.querySelector('[data-hero-description]');
-  const link = root.querySelector('[data-hero-link]');
-  const cat = root.querySelector('[data-hero-category]');
-  const dots = [...root.querySelectorAll('[data-hero-dot]')];
-  function paint(nextIndex) {
-    index = (nextIndex + slides.length) % slides.length;
-    const game = slides[index];
-    bg.style.backgroundImage = `url('${game.cover}')`;
-    poster.style.backgroundImage = `url('${game.cover}')`;
-    title.textContent = game.title || 'AltDünya';
-    badges.innerHTML = `<span class="badge">${game.platform || '—'}</span><span class="badge">${game.genre || '—'}</span><span class="badge">${game.segment || '—'}</span>`;
-    desc.textContent = game.shortDescription || '';
-    link.href = `#/game/${game.slug}`;
-    cat.href = `#/category/${game.category}`;
-    cat.textContent = labelForCategory(game.category);
-    dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+function bindHeroSlider(count) {
+  if (count <= 1) return;
+  const slider = document.querySelector('.hero-slider');
+  if (!slider) return;
+  let active = 0;
+  const setSlide = idx => {
+    active = (idx + count) % count;
+    slider.dataset.activeSlide = String(active);
+    slider.querySelectorAll('.hero-slide').forEach((el, i) => el.classList.toggle('active', i === active));
+    slider.querySelectorAll('.hero-dot').forEach((el, i) => el.classList.toggle('active', i === active));
+  };
+  slider.querySelector('.hero-prev')?.addEventListener('click', () => setSlide(active - 1));
+  slider.querySelector('.hero-next')?.addEventListener('click', () => setSlide(active + 1));
+  slider.querySelectorAll('.hero-dot').forEach(btn => btn.addEventListener('click', () => setSlide(Number(btn.dataset.heroDot || 0))));
+  homeHeroTimer = setInterval(() => setSlide(active + 1), 7000);
+}
+
+function renderGames() {
+  setActiveNav('games');
+  app.innerHTML = `
+    <section class="category-hero">
+      <div class="kicker">AltDünya Kütüphanesi</div>
+      <h1>Tüm Oyunlar</h1>
+      <p class="muted">Kategoriler, etiketler ve benzer oyun sistemiyle büyüyebilen oyun vitrini.</p>
+    </section>
+    <section class="section">
+      <div class="card-grid">${siteData.games.map(gameCard).join('')}</div>
+    </section>
+  `;
+}
+
+function renderCategory(categoryId) {
+  setActiveNav(categoryId);
+  const category = siteData.site.categories.find(c => c.id === categoryId) || { name: 'Kategori', subtitle: '', hero: '' };
+  let games = siteData.games.filter(g => g.category === categoryId);
+  if (categoryId === 'videolar') games = siteData.games.filter(g => g.videoUrl);
+  const allTags = [...new Set(games.flatMap(g => g.tags || []))].slice(0, 10);
+  const popular = getHomePopular().slice(0, 5);
+
+  app.innerHTML = `
+    <section class="category-hero">
+      <div class="kicker">Kategori</div>
+      <h1>${category.name}</h1>
+      <p>${category.subtitle || category.hero}</p>
+      <div class="breadcrumb">Ana Sayfa / ${category.name} / Toplam ${games.length} oyun</div>
+    </section>
+
+    <section class="filters-bar">
+      <div class="filter-group">
+        ${allTags.map(tag => `<button class="filter-chip" data-tag="${tag}">${tag}</button>`).join('') || '<span class="muted">Etiket yok.</span>'}
+      </div>
+      <div class="filter-group">
+        <select id="sortSelect">
+          <option value="new">Sırala: En Yeniler</option>
+          <option value="old">Eskiler</option>
+          <option value="az">A-Z</option>
+          <option value="mc">Metacritic</option>
+        </select>
+      </div>
+    </section>
+
+    <div class="category-layout">
+      <section>
+        <div id="categoryGrid" class="card-grid">${games.map(gameCard).join('')}</div>
+      </section>
+      <aside class="side-stack">
+        <div class="side-card">
+          <h3>Popüler Etiketler</h3>
+          <div class="tags">${allTags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
+        </div>
+        <div class="side-card">
+          <h3>Öne Çıkan Oyunlar</h3>
+          <div class="mini-list">${popular.map(miniGame).join('')}</div>
+        </div>
+      </aside>
+    </div>
+  `;
+
+  const grid = document.getElementById('categoryGrid');
+  const chips = [...document.querySelectorAll('.filter-chip')];
+  const sortSelect = document.getElementById('sortSelect');
+  let activeTag = null;
+
+  function draw() {
+    let filtered = [...games];
+    if (activeTag) filtered = filtered.filter(g => (g.tags || []).includes(activeTag));
+    const sort = sortSelect.value;
+    if (sort === 'new') filtered.sort((a,b) => (b.year || 0) - (a.year || 0));
+    if (sort === 'old') filtered.sort((a,b) => (a.year || 0) - (b.year || 0));
+    if (sort === 'az') filtered.sort((a,b) => a.title.localeCompare(b.title, 'tr'));
+    if (sort === 'mc') filtered.sort((a,b) => (b.metacritic || -1) - (a.metacritic || -1));
+    grid.innerHTML = filtered.length ? filtered.map(gameCard).join('') : '<div class="search-empty">Sonuç bulunamadı.</div>';
   }
-  function restart() {
-    clearInterval(timer);
-    timer = setInterval(() => paint(index + 1), 7000);
+
+  chips.forEach(chip => chip.addEventListener('click', () => {
+    const tag = chip.dataset.tag;
+    activeTag = activeTag === tag ? null : tag;
+    chips.forEach(c => c.classList.toggle('active', c.dataset.tag === activeTag));
+    draw();
+  }));
+  sortSelect.addEventListener('change', draw);
+}
+
+function renderGame(slug) {
+  const game = getGameBySlug(slug);
+  if (!game) {
+    app.innerHTML = '<div class="search-empty">Oyun bulunamadı.</div>';
+    return;
   }
-  root.querySelector('[data-hero-prev]')?.addEventListener('click', () => { paint(index - 1); restart(); });
-  root.querySelector('[data-hero-next]')?.addEventListener('click', () => { paint(index + 1); restart(); });
-  dots.forEach(dot => dot.addEventListener('click', () => { paint(Number(dot.dataset.heroDot)); restart(); }));
-  restart();
+  setActiveNav(game.category);
+  const similar = getSimilarGames(game).slice(0,4);
+
+  app.innerHTML = `
+    <section class="hero-card">
+      <div class="hero-copy">
+        <div class="kicker">${game.segment || 'AltDünya'}</div>
+        <h1>${game.title}</h1>
+        <div class="hero-badges">
+          <span class="badge">${game.platform || '—'}</span>
+          <span class="badge">${game.genre || '—'}</span>
+          <span class="badge">${game.year || '—'}</span>
+        </div>
+        <p>${game.shortDescription || 'Açıklama yakında eklenecek.'}</p>
+        <div class="cta-row">
+          <button class="primary-btn" id="packJumpBtn">Pack Detayları</button>
+          <a class="secondary-btn" href="#/category/${game.category}">${labelForCategory(game.category)}</a>
+        </div>
+      </div>
+      <div class="hero-image" style="background-image:linear-gradient(90deg,rgba(9,11,24,.15),rgba(9,11,24,.1)),url('${game.cover}')"></div>
+    </section>
+
+    <section class="section layout-game">
+      <div>
+        <div class="panel" style="padding:20px">
+          <div class="section-head"><h2>Oynanış Videosu</h2></div>
+          ${game.videoUrl ? `<div class="embed-wrap"><iframe src="${game.videoUrl}" title="${game.title} video" allowfullscreen></iframe></div>` : `<div class="placeholder">Bu oyun için oynanış videosu yakında gelecek.</div>`}
+        </div>
+
+        <div class="panel section" style="padding:20px">
+          <div class="section-head"><h2>Oyun Hakkında</h2></div>
+          <p style="line-height:1.8;color:#d7ddf7">${game.story || 'Bu oyunun açıklaması yakında eklenecek.'}</p>
+        </div>
+
+        <div class="panel section" style="padding:20px">
+          <div class="section-head"><h2>Ekran Görüntüleri</h2></div>
+          ${renderGallery(game)}
+        </div>
+
+        <div class="panel section pack-box" id="packSection" style="padding:20px">
+          <div class="section-head"><h2>Pack Detayları</h2></div>
+          <div class="info-list">
+            <div class="info-item"><span>Sürüm</span><span>${game.pack?.version || '—'}</span></div>
+            <div class="info-item"><span>Boyut</span><span>${game.pack?.size || '—'}</span></div>
+            <div class="info-item"><span>Kontroller</span><span>${game.pack?.controls || '—'}</span></div>
+            <div class="info-item"><span>Notlar</span><span>${game.pack?.notes || 'Pack bilgileri güncelleniyor.'}</span></div>
+          </div>
+          <ol>${(game.pack?.steps?.length ? game.pack.steps : ['Pack adımları yakında eklenecek.']).map(s => `<li>${s}</li>`).join('')}</ol>
+          <div class="cta-row">
+            ${game.pack?.archiveUrl ? `<a class="primary-btn" href="${game.pack.archiveUrl}" target="_blank" rel="noopener noreferrer">Archive.org Üzerinden İndir</a>` : `<span class="secondary-btn">İndirme bağlantısı yakında</span>`}
+          </div>
+        </div>
+
+        <div class="comment-card section" style="padding:20px">
+          <div class="section-head"><h2>AltDünya Yorumları</h2></div>
+          <div class="disqus-live">
+            <p class="muted">Bu oyun hakkında ne düşünüyorsun? Çalıştırabildin mi yoksa çocukluğun geri mi geldi? 👇</p>
+            <div id="disqus_thread"></div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-head"><h2>Benzer Oyunlar</h2></div>
+          <div class="card-grid">${similar.map(gameCard).join('')}</div>
+        </div>
+      </div>
+
+      <aside class="sticky-col side-stack">
+        <div class="info-card side-card">
+          <h3>Oyun Künyesi</h3>
+          <div class="info-list">
+            <div class="info-item"><span>Platform</span><span>${game.platform || '—'}</span></div>
+            <div class="info-item"><span>Tür</span><span>${game.genre || '—'}</span></div>
+            <div class="info-item"><span>Çıkış Yılı</span><span>${game.year || '—'}</span></div>
+            <div class="info-item"><span>Geliştirici</span><span>${game.developer || '—'}</span></div>
+            <div class="info-item"><span>Dağıtıcı</span><span>${game.publisher || '—'}</span></div>
+            <div class="info-item"><span>Metacritic</span><span>${game.metacritic ?? '—'}</span></div>
+            <div class="info-item"><span>Oyuncu</span><span>${game.players || '—'}</span></div>
+            <div class="info-item"><span>Seri</span><span>${game.series || '—'}</span></div>
+          </div>
+          <div class="section" style="margin-top:16px">
+            <div class="muted" style="margin-bottom:10px">Etiketler</div>
+            <div class="tags">${(game.tags?.length ? game.tags : ['Bilgi eklenecek']).map(tag => `<a class="tag" href="#/category/${game.category}">${tag}</a>`).join('')}</div>
+          </div>
+          <div class="cta-row"><button class="primary-btn" id="packJumpBtnSide">Pack Detayları</button></div>
+        </div>
+      </aside>
+    </section>
+  `;
+
+  document.getElementById('packJumpBtn')?.addEventListener('click', () => document.getElementById('packSection').scrollIntoView({behavior:'smooth'}));
+  document.getElementById('packJumpBtnSide')?.addEventListener('click', () => document.getElementById('packSection').scrollIntoView({behavior:'smooth'}));
+  bindGallery();
+  loadDisqus(slug);
+}
+
+function renderStaticPage(pageId) {
+  setActiveNav('');
+  const page = STATIC_PAGES[pageId];
+  app.innerHTML = `
+    <section class="simple-page">
+      <section class="category-hero">
+        <div class="kicker">${page.kicker}</div>
+        <h1>${page.title}</h1>
+        <p>${page.intro}</p>
+      </section>
+      ${page.body}
+    </section>
+  `;
+}
+
+function renderGallery(game) {
+  if (!game.screenshots || !game.screenshots.length) {
+    return '<div class="placeholder">Ekran görüntüleri yakında eklenecek.</div>';
+  }
+  return `
+    <div class="gallery-main" id="galleryMain" style="background-image:url('${game.screenshots[0]}')"></div>
+    <div class="gallery-thumbs">${game.screenshots.map((src, idx) => `<button class="gallery-thumb" data-src="${src}" aria-label="Ekran görüntüsü ${idx+1}" style="background-image:url('${src}')"></button>`).join('')}</div>
+  `;
+}
+
+function bindGallery() {
+  const main = document.getElementById('galleryMain');
+  document.querySelectorAll('.gallery-thumb').forEach(btn => btn.addEventListener('click', () => {
+    main.style.backgroundImage = `url('${btn.dataset.src}')`;
+  }));
+}
+
+function getSimilarGames(game) {
+  return siteData.games
+    .filter(other => other.slug !== game.slug)
+    .map(other => {
+      let score = 0;
+      if (other.category === game.category) score += 4;
+      if (other.genre === game.genre) score += 5;
+      if (other.platform === game.platform) score += 3;
+      if (other.series && other.series === game.series) score += 6;
+      const sharedTags = (other.tags || []).filter(tag => (game.tags || []).includes(tag)).length;
+      score += sharedTags * 2;
+      return { other, score };
+    })
+    .sort((a,b) => b.score - a.score)
+    .map(entry => entry.other);
 }
 
 function labelForCategory(id) {
@@ -506,6 +715,53 @@ function labelForCategory(id) {
 }
 
 
+
+
+
+function initSiteSearch() {
+  if (!siteSearch || !searchResults) return;
+  const renderResults = (query) => {
+    const q = query.trim().toLowerCase();
+    if (!q) {
+      searchResults.classList.remove('open');
+      searchResults.innerHTML = '';
+      return;
+    }
+    const results = siteData.games.filter(game => {
+      const haystack = [game.title, game.platform, game.genre, game.segment, game.category, ...(game.tags || [])]
+        .join(' ')
+        .toLowerCase();
+      return haystack.includes(q);
+    }).slice(0, 8);
+
+    searchResults.innerHTML = results.length ? results.map(game => `
+      <a class="site-search-item" href="#/game/${esc(game.slug)}">
+        <span class="site-search-thumb" style="background-image:url('${esc(game.cover)}')"></span>
+        <span>
+          <strong>${esc(game.title)}</strong>
+          <small>${esc(game.platform || '—')} · ${esc(game.genre || '—')}</small>
+        </span>
+      </a>
+    `).join('') : '<div class="site-search-empty">Sonuç bulunamadı.</div>';
+    searchResults.classList.add('open');
+  };
+
+  siteSearch.addEventListener('input', e => renderResults(e.target.value));
+  siteSearch.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      siteSearch.value = '';
+      renderResults('');
+      siteSearch.blur();
+    }
+  });
+  searchResults.addEventListener('click', () => {
+    siteSearch.value = '';
+    renderResults('');
+  });
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.site-search')) searchResults.classList.remove('open');
+  });
+}
 
 function loadDisqus(slug) {
   const canonicalUrl = `${window.location.origin}/game/${slug}`;

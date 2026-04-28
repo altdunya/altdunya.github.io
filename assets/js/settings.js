@@ -1,9 +1,14 @@
 const STORAGE_KEY = 'altdunyaSiteData';
 let db = null;
-const featuredHeroSlots = document.getElementById('featuredHeroSlots');
+const heroSelect = document.getElementById('heroSelect');
+const featuredSlots = document.getElementById('featuredSlots');
 const popularSlots = document.getElementById('popularSlots');
 
 async function loadRemoteData() {
+  try {
+    const local = localStorage.getItem(STORAGE_KEY);
+    if (local) return JSON.parse(local);
+  } catch (e) {}
   try {
     const res = await fetch('games.json', { cache: 'no-store' });
     if (res.ok) return await res.json();
@@ -12,7 +17,7 @@ async function loadRemoteData() {
     const res = await fetch('data/games.json', { cache: 'no-store' });
     if (res.ok) return await res.json();
   } catch (e) {}
-  return { site: { home: { featuredHeroSlugs: [], popularSlugs: [] }, categories: [] }, games: [] };
+  return { site: { home: { heroSlug: '', featuredSlugs: [], popularSlugs: [] }, categories: [] }, games: [] };
 }
 
 function normalizeDb() {
@@ -20,16 +25,13 @@ function normalizeDb() {
   db.site ||= {};
   db.site.home ||= {};
   db.games ||= [];
-
-  if (!Array.isArray(db.site.home.featuredHeroSlugs)) {
-    db.site.home.featuredHeroSlugs = db.site.home.heroSlug ? [db.site.home.heroSlug] : [];
-  }
-  db.site.home.featuredHeroSlugs = db.site.home.featuredHeroSlugs.filter(Boolean).slice(0, 4);
-  while (db.site.home.featuredHeroSlugs.length < 4) db.site.home.featuredHeroSlugs.push('');
-
+  if (!db.site.home.heroSlug) db.site.home.heroSlug = db.games[0]?.slug || '';
+  if (!Array.isArray(db.site.home.featuredSlugs)) db.site.home.featuredSlugs = [];
+  db.site.home.featuredSlugs = db.site.home.featuredSlugs.filter(Boolean).slice(0, 4);
+  while (db.site.home.featuredSlugs.length < 4) db.site.home.featuredSlugs.push('');
   if (!Array.isArray(db.site.home.popularSlugs)) db.site.home.popularSlugs = [];
-  db.site.home.popularSlugs = db.site.home.popularSlugs.filter(Boolean).slice(0,10);
-  while (db.site.home.popularSlugs.length < 10) db.site.home.popularSlugs.push('');
+  db.site.home.popularSlugs = db.site.home.popularSlugs.filter(Boolean).slice(0, 12);
+  while (db.site.home.popularSlugs.length < 12) db.site.home.popularSlugs.push('');
 }
 
 function persist() {
@@ -42,44 +44,40 @@ function optionsHtml() {
     .join('');
 }
 
-function renderSettings() {
+function renderSlotGroup(container, key, count, label) {
   const options = optionsHtml();
-
-  featuredHeroSlots.innerHTML = Array.from({ length: 4 }).map((_, i) => `
+  container.innerHTML = Array.from({ length: count }).map((_, i) => `
     <label>
-      <span>Featured Hero #${i+1}</span>
-      <select data-featured-slot="${i}">${options}</select>
-    </label>
-  `).join('');
-
-  [...featuredHeroSlots.querySelectorAll('select')].forEach((el, i) => {
-    el.value = db.site.home.featuredHeroSlugs[i] || '';
-    el.addEventListener('change', e => {
-      db.site.home.featuredHeroSlugs[i] = e.target.value;
-    });
-  });
-
-  popularSlots.innerHTML = Array.from({ length: 10 }).map((_, i) => `
-    <label>
-      <span>Popüler #${i+1}</span>
+      <span>${label} #${i+1}</span>
       <select data-slot="${i}">${options}</select>
     </label>
   `).join('');
-
-  [...popularSlots.querySelectorAll('select')].forEach((el, i) => {
-    el.value = db.site.home.popularSlugs[i] || '';
+  [...container.querySelectorAll('select')].forEach((el, i) => {
+    el.value = db.site.home[key][i] || '';
     el.addEventListener('change', e => {
-      db.site.home.popularSlugs[i] = e.target.value;
+      db.site.home[key][i] = e.target.value;
     });
   });
 }
 
+function renderSettings() {
+  const options = optionsHtml();
+  heroSelect.innerHTML = options;
+  heroSelect.value = db.site.home.heroSlug || '';
+  renderSlotGroup(featuredSlots, 'featuredSlugs', 4, 'Featured Hero');
+  renderSlotGroup(popularSlots, 'popularSlugs', 12, 'AltDünya Seçkisi');
+}
+
+heroSelect.addEventListener('change', e => { db.site.home.heroSlug = e.target.value; });
+
 document.getElementById('saveSettingsBtn').addEventListener('click', () => {
+  normalizeDb();
   persist();
-  alert('Site ayarları kaydedildi. JSON dışa aktararak games.json dosyasını güncellemeyi unutma.');
+  alert('Site ayarları kaydedildi. JSON dışa aktararak games.json dosyanı güncelleyebilirsin.');
 });
 
 document.getElementById('exportBtn').addEventListener('click', () => {
+  normalizeDb();
   persist();
   const blob = new Blob([JSON.stringify(db, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
@@ -102,8 +100,7 @@ document.getElementById('importInput').addEventListener('change', async (e) => {
 });
 
 async function init() {
-  const local = localStorage.getItem(STORAGE_KEY);
-  db = local ? JSON.parse(local) : await loadRemoteData();
+  db = await loadRemoteData();
   normalizeDb();
   renderSettings();
 }
