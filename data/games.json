@@ -52,6 +52,53 @@
   },
   "games": [
     {
+      "id": "3c07f58a-1489-4807-bcf3-3b236f41975e",
+      "title": "Pretty Soldier Sailor Moon",
+      "slug": "pretty-soldier-sailor-moon",
+      "category": "arcade",
+      "segment": "Retro Port",
+      "platform": "Arcade",
+      "genre": "Beat 'em up",
+      "year": 1995,
+      "developer": "Gazelle",
+      "publisher": "Banpresto",
+      "metacritic": 80,
+      "players": "1-2",
+      "series": "Sailor Moon",
+      "heroTitle": "Moon Power ile arcade salonlarını sallayan anime dövüş klasiği.",
+      "shortDescription": "Pretty Soldier Sailor Moon, 1995 yılında arcade salonları için çıkmış ve popüler anime serisini dövüş oyunu formatına taşıyan nostaljik bir yapımdır. Renkli görselleri, özel saldırıları ve ikonik karakterleriyle özellikle anime severler için unutulmaz bir deneyim sunar. AltDünya Pack ile modern sistemlerde tek tıkla oynayabilirsiniz.",
+      "cover": "https://altdunya.github.io/assets/images/sailor-moon-hero.jpg",
+      "videoUrl": null,
+      "tags": [
+        "sailor moon",
+        "pretty soldier sailor moon",
+        "arcade",
+        "fighting game",
+        "anime game",
+        "retro gaming",
+        "finalburn neo",
+        "arcade pack",
+        "altdunya",
+        "sailor moon game"
+      ],
+      "screenshots": [],
+      "story": "Pretty Soldier Sailor Moon, anime dünyasının en ikonik serilerinden birini arcade dövüş arenasına taşıyan özel bir yapımdır. Sailor Moon ve diğer savaşçılar, kötü güçlere karşı bu kez bire bir mücadele ediyor. Hızlı oynanışı, renkli animasyonları ve animeye sadık karakter tasarımlarıyla 90’ların arcade salonlarında dikkat çekmiştir.\n\nHer karakterin kendine özgü saldırıları ve özel hareketleri bulunur. Özellikle Sailor Moon hayranları için nostaljik ve farklı bir arcade deneyim sunar.",
+      "pack": {
+        "version": "v1.0",
+        "size": "27.9 MB",
+        "controls": "Gamepad / Klavye",
+        "notes": "FinalBurn Neo emülatörü önceden ayarlanmıştır. Tek tıkla çalışır. Kurulum gerektirmez.",
+        "steps": [
+          "Zip dosyasını çıkarın",
+          "START.bat dosyasını çalıştırın",
+          "Oyunun açılmasını bekleyin",
+          "İsterseniz gamepad bağlayın",
+          "Moon Power ile dövüşe başlayın"
+        ],
+        "archiveUrl": "https://archive.org/details/pretty-soldier-sailor-moon-alt-dunya-pack-v-1.0"
+      }
+    },
+    {
       "id": "d04e3762-427e-4291-9fa4-466aff107bef",
       "title": "Gaia Crusaders",
       "slug": "gaia-crusaders",
