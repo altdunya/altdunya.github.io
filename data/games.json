@@ -52,6 +52,53 @@
   },
   "games": [
     {
+      "id": "62a29e28-9205-4ade-b1b6-0656bcaf9892",
+      "title": "Aero Fighters",
+      "slug": "aero-fighters",
+      "category": "arcade",
+      "segment": "Retro Port",
+      "platform": "Arcade",
+      "genre": "Shoot 'em Up",
+      "year": 1992,
+      "developer": "Video System",
+      "publisher": "Video System",
+      "metacritic": 90,
+      "players": "1-2",
+      "series": "Aero Fighters / Sonic Wings",
+      "heroTitle": "90’ların efsane dikey shooter klasiği yeniden havalanıyor.",
+      "shortDescription": "Aero Fighters, hızlı tempolu oynanışı, farklı pilot seçenekleri ve patlayıcı arcade aksiyonuyla öne çıkan klasik bir shoot 'em up oyunudur. Düşman filolarına karşı savaşırken refleksleriniz sınanır. AltDünya Pack ile modern sistemlerde tek tıkla oynayabilirsiniz.",
+      "cover": "https://altdunya.github.io/assets/images/aero-fighters-hero.jpg",
+      "videoUrl": null,
+      "tags": [
+        "aero fighters",
+        "sonic wings",
+        "arcade shooter",
+        "shoot em up",
+        "shmup",
+        "retro gaming",
+        "finalburn neo",
+        "arcade game",
+        "altdunya",
+        "vertical shooter"
+      ],
+      "screenshots": [],
+      "story": "Aero Fighters, 90’ların arcade salonlarında büyük ilgi gören hızlı tempolu bir hava savaş oyunudur. Dünyanın farklı ülkelerinden pilotlar kendi özel savaş uçaklarıyla düşman ordularına karşı mücadele eder.\n\nYoğun mermi yağmuru, büyük patlamalar, yaratıcı bölüm sonu boss savaşları ve akıcı kontrolleri sayesinde türünün unutulmaz yapımlarından biri haline gelmiştir. Refleks, dikkat ve cesaret isteyen gerçek bir arcade klasiğidir.",
+      "pack": {
+        "version": "v1.0",
+        "size": "16.4 MB",
+        "controls": "Gamepad / Klavye",
+        "notes": "FinalBurn Neo emülatörü önceden ayarlanmıştır. Tek tıkla çalışır. Kurulum gerektirmez.",
+        "steps": [
+          "Zip dosyasını çıkarın",
+          "START.bat dosyasını çalıştırın",
+          "Oyunun açılmasını bekleyin",
+          "İsterseniz gamepad bağlayın",
+          "Uçağınızı seçin ve göreve başlayın"
+        ],
+        "archiveUrl": "https://archive.org/details/aero-fighters-alt-dunya-pack-v-1.0"
+      }
+    },
+    {
       "id": "3c07f58a-1489-4807-bcf3-3b236f41975e",
       "title": "Pretty Soldier Sailor Moon",
       "slug": "pretty-soldier-sailor-moon",
