@@ -52,6 +52,53 @@
   },
   "games": [
     {
+      "id": "c451f515-cbe7-46f2-9e67-728bde324869",
+      "title": "Bucky O'Hare",
+      "slug": "bucky-o-hare",
+      "category": "arcade",
+      "segment": "Retro Port",
+      "platform": "Arcade",
+      "genre": "Run and Gun",
+      "year": 1992,
+      "developer": "Konami",
+      "publisher": "Konami",
+      "metacritic": 85,
+      "players": "1-2",
+      "series": "Bucky O'Hare",
+      "heroTitle": "Konami’nin unutulmaz uzay macerası yeniden sahnede.",
+      "shortDescription": "Bucky O'Hare, çizgi dizi atmosferini hızlı arcade aksiyonuyla birleştiren klasik bir run and gun oyunudur. Farklı karakterler, co-op destekli oynanış ve renkli bölümleriyle 90’ların sevilen Konami yapımlarından biridir. AltDünya Pack ile modern sistemlerde tek tıkla oynayabilirsiniz.",
+      "cover": "https://altdunya.github.io/assets/images/bucky-o-hare-hero.jpg",
+      "videoUrl": null,
+      "tags": [
+        "bucky o hare",
+        "konami arcade",
+        "run and gun",
+        "arcade game",
+        "retro gaming",
+        "finalburn neo",
+        "co op arcade",
+        "bucky ohare game",
+        "altdunya",
+        "retro port"
+      ],
+      "screenshots": [],
+      "story": "Bucky O'Hare, galaksiyi ele geçirmeye çalışan Toad Empire'a karşı verilen büyük savaşı konu alan hızlı tempolu bir arcade macerasıdır. Bucky ve ekibi, farklı gezegenlerde düşman ordularına karşı savaşırken esir düşen takım arkadaşlarını kurtarmaya çalışır.\n\nRenkli görselleri, akıcı animasyonları, karakter değiştirme sistemi ve co-op desteği sayesinde Konami’nin en sevilen arcade yapımlarından biri olmuştur. Özellikle Contra tarzı aksiyon sevenler için gizli bir hazinedir.",
+      "pack": {
+        "version": "v1.0",
+        "size": "20.2 MB",
+        "controls": "Gamepad / Klavye",
+        "notes": "FinalBurn Neo emülatörü önceden ayarlanmıştır. Tek tıkla çalışır. Kurulum gerektirmez.",
+        "steps": [
+          "Zip dosyasını çıkarın",
+          "START.bat dosyasını çalıştırın",
+          "Oyunun açılmasını bekleyin",
+          "İsterseniz gamepad bağlayın",
+          "Karakterinizi seçin ve göreve başlayın"
+        ],
+        "archiveUrl": "https://archive.org/details/bucky-o-hare-alt-dunya-pack-v-1.0"
+      }
+    },
+    {
       "id": "62a29e28-9205-4ade-b1b6-0656bcaf9892",
       "title": "Aero Fighters",
       "slug": "aero-fighters",
