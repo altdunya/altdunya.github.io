@@ -227,3 +227,21 @@ input,select,textarea{background:#0e1530;color:#fff;border:1px solid var(--line)
 @media (max-width:1100px){.site-search{width:220px}.showcase-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:860px){.topbar{flex-wrap:wrap}.site-search{order:3;max-width:none;width:100%}.site-search-results{left:0;right:auto;width:100%}.hero-slider{height:auto;min-height:0}.hero-slide{grid-template-columns:1fr;position:relative;display:none}.hero-slide.active{display:grid}.hero-slider .hero-copy{min-height:auto;max-height:none;padding:28px}.hero-slider .hero-image{min-height:260px;height:260px}.hero-dots{left:28px}.showcase-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:520px){.showcase-grid{grid-template-columns:1fr}.hero-arrow{display:none}}
+
+
+/* AltDünya v7: hero başlık görünürlüğü + kompakt seçki kartları */
+.hero-slider .hero-copy{justify-content:center;gap:12px;padding:32px 72px 32px 40px}
+.hero-slider .hero-copy h1{font-size:clamp(2.05rem,3.25vw,3.7rem);line-height:1.02;letter-spacing:-.045em;-webkit-line-clamp:3;max-height:3.15em;margin-bottom:2px}
+.hero-slider .hero-badges{gap:8px}
+.hero-slider .hero-badges .badge{padding:7px 11px;font-size:.88rem}
+.hero-slider .cta-row{margin-top:10px}
+.showcase-grid .game-card{min-height:96px;border-radius:16px}
+.showcase-grid .game-card-link{display:grid;grid-template-columns:74px 1fr;align-items:center;gap:12px;padding:12px;height:100%}
+.showcase-grid .game-thumb{width:74px;height:74px;aspect-ratio:auto;border-radius:14px;box-shadow:0 10px 24px rgba(0,0,0,.25)}
+.showcase-grid .game-body{padding:0;min-width:0}
+.showcase-grid .game-body h3{font-size:1rem;line-height:1.18;margin:0 0 6px;min-height:0;-webkit-line-clamp:2}
+.showcase-grid .meta-row{gap:5px}
+.showcase-grid .meta-row .badge{background:transparent;border:0;padding:0;border-radius:0;color:#b9c8ff;font-size:.9rem}
+.showcase-grid .meta-row .badge:not(:last-child)::after{content:'|';margin-left:5px;color:#7480aa}
+@media (max-width:1100px){.showcase-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.showcase-grid{grid-template-columns:1fr}.showcase-grid .game-card-link{grid-template-columns:64px 1fr}.showcase-grid .game-thumb{width:64px;height:64px}.hero-slider .hero-copy h1{font-size:2rem}}
