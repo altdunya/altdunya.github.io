@@ -10,44 +10,38 @@
     a{color:inherit;text-decoration:none} button,input,select{font:inherit}
     .layout{display:grid;grid-template-columns:260px 1fr;min-height:100vh}.sidebar{padding:24px;border-right:1px solid var(--line);background:rgba(255,255,255,.02);display:grid;align-content:start;gap:18px}.main{padding:24px}
     .brand{font-size:2rem;font-weight:900}.note{color:var(--muted);line-height:1.5}.menu{display:grid;gap:10px}.menu a{padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid transparent;font-weight:700}.menu a.active,.menu a:hover{background:rgba(255,155,69,.12);border-color:rgba(255,155,69,.35)}
-    .card{max-width:960px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border:1px solid var(--line);box-shadow:var(--shadow);border-radius:24px;padding:24px;display:grid;gap:18px}
+    .card{max-width:1080px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border:1px solid var(--line);box-shadow:var(--shadow);border-radius:24px;padding:24px;display:grid;gap:22px}
     .toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.toolbar h1{margin:0}.muted{color:var(--muted)}
     label{display:grid;gap:8px;color:#d8dff8}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.full{grid-column:1/-1}
     select{width:100%;background:#0e1530;color:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
     .btn,.btn-secondary{border:none;cursor:pointer;border-radius:14px;padding:12px 16px;font-weight:800}.btn{background:linear-gradient(90deg,var(--accent),#ffb970);color:#1d1204}.btn-secondary{background:rgba(255,255,255,.08);color:#fff}
-    .actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.section-title{margin:10px 0 0}.section-title h2{margin:0 0 4px}
     @media (max-width:860px){.layout{grid-template-columns:1fr}.sidebar{border-right:none;border-bottom:1px solid var(--line)}.grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
   <div class="layout">
     <aside class="sidebar">
-      <div>
-        <div class="brand">AltDünya</div>
-        <div class="note">Yönetim paneli</div>
-      </div>
+      <div><div class="brand">AltDünya</div><div class="note">Yönetim paneli</div></div>
       <nav class="menu">
         <a href="admin.html">Oyun Ekle / Düzenle</a>
         <a class="active" href="settings.html">Site Ayarları</a>
         <a href="index.html">Siteye Dön</a>
       </nav>
-      <div class="note">Hero oyunu ve popüler oyun sıralamasını burada yönet.</div>
+      <div class="note">Hero slider, Featured oyunlar ve AltDünya Seçkisi sıralamasını burada yönet.</div>
     </aside>
     <main class="main">
       <section class="card">
-        <div class="toolbar">
-          <div><h1>Site Ayarları</h1><div class="muted">Ana sayfa hero slider, featured oyunlar ve popüler oyun sıralaması</div></div>
-        </div>
-        <div class="muted">Ana sayfada ilk slot otomatik olarak en son eklenen oyunu gösterir. Aşağıdaki 4 slot ise döngüde yer alacak manuel featured oyunlardır.</div>
-        <div class="grid" id="featuredHeroSlots"></div>
-        <div class="muted" style="margin-top:8px">Popüler oyun listesi</div>
+        <div class="toolbar"><div><h1>Site Ayarları</h1><div class="muted">Ana sayfa vitrini, dönen hero ve seçki sıralaması</div></div></div>
+        <label><span>Eski / Yedek Hero Oyunu</span><select id="heroSelect"></select></label>
+        <div class="section-title"><h2>Featured Hero Slider</h2><div class="muted">En son eklenen oyun otomatik gelir. Buradan 4 manuel oyun daha seçilir.</div></div>
+        <div class="grid" id="featuredSlots"></div>
+        <div class="section-title"><h2>AltDünya Seçkisi</h2><div class="muted">Ana sayfada 12 oyunluk seçki olarak görünür.</div></div>
         <div class="grid" id="popularSlots"></div>
         <div class="actions">
           <button id="saveSettingsBtn" class="btn" type="button">Ayarları Kaydet</button>
           <button id="exportBtn" class="btn-secondary" type="button">JSON Dışa Aktar</button>
-          <label class="btn-secondary" style="display:inline-flex;align-items:center;gap:10px;cursor:pointer;">
-            JSON İçe Aktar <input id="importInput" type="file" accept="application/json" style="display:none">
-          </label>
+          <label class="btn-secondary" style="display:inline-flex;align-items:center;gap:10px;cursor:pointer;">JSON İçe Aktar <input id="importInput" type="file" accept="application/json" style="display:none"></label>
         </div>
       </section>
     </main>
