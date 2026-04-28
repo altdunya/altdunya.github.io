@@ -45,7 +45,9 @@
         "bloody-roar-hyper-beast-duel",
         "dead-or-alive-1996",
         "abuse",
-        "one-must-fall-2097"
+        "one-must-fall-2097",
+        "bloody-roar-ii",
+        "aero-fighters"
       ],
       "heroSlug": "cadillacs-and-dinosaurs",
       "featuredHeroSlugs": [
@@ -53,6 +55,12 @@
         "tekken-3",
         "punisher-1993",
         "tiberian-sun"
+      ],
+      "featuredSlugs": [
+        "tekken-3",
+        "cadillacs-and-dinosaurs",
+        "tiberian-sun",
+        "punisher-1993"
       ]
     }
   },
