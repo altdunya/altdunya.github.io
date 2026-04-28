@@ -1,5 +1,6 @@
 const STORAGE_KEY = 'altdunyaSiteData';
 let siteData = null;
+let homeHeroTimer = null;
 
 const app = document.getElementById('app');
 const mainNav = document.getElementById('mainNav');
@@ -277,8 +278,26 @@ function getGameBySlug(slug) {
   return siteData.games.find(g => g.slug === slug);
 }
 
+function uniqueGames(games) {
+  const seen = new Set();
+  return games.filter(game => {
+    if (!game || seen.has(game.slug)) return false;
+    seen.add(game.slug);
+    return true;
+  });
+}
+
 function getHomeHero() {
-  return getGameBySlug(siteData.site?.home?.heroSlug) || siteData.games[0];
+  return getHomeHeroGames()[0] || siteData.games[0];
+}
+
+function getHomeHeroGames() {
+  const latest = siteData.games[0];
+  const manualSlugs = siteData.site?.home?.featuredHeroSlugs || siteData.site?.home?.heroSlugs || [];
+  const legacyHero = siteData.site?.home?.heroSlug ? [siteData.site.home.heroSlug] : [];
+  const selected = [...manualSlugs, ...legacyHero].map(getGameBySlug).filter(Boolean);
+  const fallback = siteData.games.filter(g => g.slug !== latest?.slug);
+  return uniqueGames([latest, ...selected, ...fallback]).slice(0, 5);
 }
 
 function getHomePopular() {
@@ -321,28 +340,35 @@ function miniGame(game) {
 
 function renderHome() {
   setActiveNav('home');
-  const featured = getHomeHero();
+  const heroGames = getHomeHeroGames();
+  const featured = heroGames[0];
   const latest = [...siteData.games].slice(0, 5);
   const popular = getHomePopular();
   const videoGames = siteData.games.filter(g => g.videoUrl).slice(0,4);
+  const heroDotsHtml = heroGames.map((game, index) => '<button type="button" class="hero-dot ' + (index === 0 ? 'active' : '') + '" data-index="' + index + '" aria-label="' + game.title + '"></button>').join('');
+  const categoryCardsHtml = siteData.site.categories.filter(c => ['freeware','arcade','konsol'].includes(c.id)).map(c => '<a class="segment-card" href="#/category/' + c.id + '"><div><div class="kicker">Kategori</div><div>' + c.name + '</div></div></a>').join('');
+  const videoSectionHtml = videoGames.length ? '<section class="section"><div class="section-head"><h2>Videolu Oyunlar</h2></div><div class="card-grid">' + videoGames.map(gameCard).join('') + '</div></section>' : '';
 
   app.innerHTML = `
-    <section class="hero-card">
+    <section class="hero-card hero-slider" id="homeHeroSlider" aria-label="Öne çıkan oyunlar">
       <div class="hero-copy">
-        <div class="kicker">AltDünya</div>
-        <h1>${featured.title}</h1>
-        <div class="hero-badges">
+        <div class="kicker" id="heroKicker">${heroGames.length > 1 ? 'Yeni Eklenen' : 'AltDünya'}</div>
+        <h1 id="heroTitle">${featured.title}</h1>
+        <div class="hero-badges" id="heroBadges">
           <span class="badge">${featured.platform || '—'}</span>
           <span class="badge">${featured.genre || '—'}</span>
           <span class="badge">${featured.segment || '—'}</span>
         </div>
-        <p>${featured.shortDescription || ''}</p>
+        <p id="heroDescription">${featured.shortDescription || ''}</p>
         <div class="cta-row">
-          <a class="primary-btn" href="#/game/${featured.slug}">Oyuna Git</a>
-          <a class="secondary-btn" href="#/category/${featured.category}">${labelForCategory(featured.category)}</a>
+          <a class="primary-btn" id="heroGameLink" href="#/game/${featured.slug}">Oyuna Git</a>
+          <a class="secondary-btn" id="heroCategoryLink" href="#/category/${featured.category}">${labelForCategory(featured.category)}</a>
         </div>
       </div>
-      <div class="hero-image" style="background-image:linear-gradient(90deg,rgba(9,11,24,.1),rgba(9,11,24,.05)),url('${featured.cover}')"></div>
+      <div class="hero-image" id="heroImage" style="background-image:linear-gradient(90deg,rgba(9,11,24,.1),rgba(9,11,24,.05)),url('${featured.cover}')"></div>
+      <button class="hero-arrow hero-arrow-prev" id="heroPrev" type="button" aria-label="Önceki oyun">‹</button>
+      <button class="hero-arrow hero-arrow-next" id="heroNext" type="button" aria-label="Sonraki oyun">›</button>
+      <div class="hero-dots" id="heroDots">${heroDotsHtml}</div>
     </section>
 
     <div class="section home-sections">
@@ -353,47 +379,27 @@ function renderHome() {
 
       <div class="section">
         <div class="section-head"><h2>Kategoriler</h2></div>
-        <div class="segment-grid">
-          ${siteData.site.categories.filter(c => ['freeware','arcade','konsol'].includes(c.id)).map(c => `
-            <a class="segment-card" href="#/category/${c.id}">
-              <div>
-                <div class="kicker">Kategori</div>
-                <div>${c.name}</div>
-              </div>
-            </a>
-          `).join('')}
-        </div>
+        <div class="segment-grid">${categoryCardsHtml}</div>
       </div>
 
       <section class="panel section" style="padding:20px">
         <div class="section-head"><h2>Popüler Oyunlar</h2></div>
         <div class="popular-layout">
-          <aside class="side-card compact-side-card">
-            <h3>Hızlı Liste</h3>
-            <div class="mini-list link-list">${popular.map(game => `<a href="#/game/${game.slug}">${game.title}</a>`).join('')}</div>
-          </aside>
-          <div class="card-grid">${popular.map(gameCard).join('')}</div>
+          <div class="side-card" style="padding:16px">
+            <div class="kicker">AltDünya Seçimi</div>
+            <h3>Featured Liste</h3>
+            <p class="muted">Öne çıkan oyunlar ve kanal için güçlü vitrin adayları.</p>
+          </div>
+          <div class="mini-list">
+            ${popular.map(miniGame).join('')}
+          </div>
         </div>
       </section>
 
-      <div class="grid-home">
-        <section class="panel section" style="padding:20px">
-          <div class="section-head"><h2>Son Videolar</h2></div>
-          <div class="mini-list">${videoGames.map(miniGame).join('') || '<div class="search-empty">Henüz video eklenmedi.</div>'}</div>
-        </section>
-        <aside class="side-stack">
-          <div class="side-card">
-            <h3>Neden AltDünya?</h3>
-            <ul class="trust-list">
-              <li>🎮 Retro oyunları modern sistemlerde kolayca oynayabilirsin.</li>
-              <li>⚖️ İçerikler güvenli ve sürdürülebilir şekilde hazırlanır.</li>
-              <li>⚡ Tek tıkla çalışan paketlerle uğraşmadan direkt oyuna girersin.</li>
-            </ul>
-          </div>
-        </aside>
-      </div>
+      ${videoSectionHtml}
     </div>
   `;
+  setupHomeHeroSlider(heroGames);
 }
 
 function renderGames() {
@@ -607,6 +613,62 @@ function renderGallery(game) {
     <div class="gallery-main" id="galleryMain" style="background-image:url('${game.screenshots[0]}')"></div>
     <div class="gallery-thumbs">${game.screenshots.map((src, idx) => `<button class="gallery-thumb" data-src="${src}" aria-label="Ekran görüntüsü ${idx+1}" style="background-image:url('${src}')"></button>`).join('')}</div>
   `;
+}
+
+function setupHomeHeroSlider(heroGames) {
+  if (homeHeroTimer) {
+    clearInterval(homeHeroTimer);
+    homeHeroTimer = null;
+  }
+  const slider = document.getElementById('homeHeroSlider');
+  const prev = document.getElementById('heroPrev');
+  const next = document.getElementById('heroNext');
+  if (!Array.isArray(heroGames) || heroGames.length <= 1) {
+    prev?.classList.add('hidden');
+    next?.classList.add('hidden');
+    document.getElementById('heroDots')?.classList.add('hidden');
+    return;
+  }
+
+  let activeIndex = 0;
+  const kicker = document.getElementById('heroKicker');
+  const title = document.getElementById('heroTitle');
+  const badges = document.getElementById('heroBadges');
+  const description = document.getElementById('heroDescription');
+  const image = document.getElementById('heroImage');
+  const gameLink = document.getElementById('heroGameLink');
+  const categoryLink = document.getElementById('heroCategoryLink');
+  const dots = Array.from(document.querySelectorAll('.hero-dot'));
+
+  function renderSlide(index) {
+    activeIndex = (index + heroGames.length) % heroGames.length;
+    const game = heroGames[activeIndex];
+    slider?.classList.add('is-changing');
+    window.setTimeout(() => slider?.classList.remove('is-changing'), 220);
+    kicker.textContent = activeIndex === 0 ? 'Yeni Eklenen' : 'Featured';
+    title.textContent = game.title || '';
+    badges.innerHTML = `
+      <span class="badge">${game.platform || '—'}</span>
+      <span class="badge">${game.genre || '—'}</span>
+      <span class="badge">${game.segment || '—'}</span>
+    `;
+    description.textContent = game.shortDescription || '';
+    image.style.backgroundImage = `linear-gradient(90deg,rgba(9,11,24,.1),rgba(9,11,24,.05)),url('${game.cover}')`;
+    gameLink.href = `#/game/${game.slug}`;
+    categoryLink.href = `#/category/${game.category}`;
+    categoryLink.textContent = labelForCategory(game.category);
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === activeIndex));
+  }
+
+  function restartTimer() {
+    if (homeHeroTimer) clearInterval(homeHeroTimer);
+    homeHeroTimer = setInterval(() => renderSlide(activeIndex + 1), 7000);
+  }
+
+  prev?.addEventListener('click', () => { renderSlide(activeIndex - 1); restartTimer(); });
+  next?.addEventListener('click', () => { renderSlide(activeIndex + 1); restartTimer(); });
+  dots.forEach(dot => dot.addEventListener('click', () => { renderSlide(Number(dot.dataset.index)); restartTimer(); }));
+  restartTimer();
 }
 
 function bindGallery() {

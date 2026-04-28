@@ -1,7 +1,6 @@
-
 const STORAGE_KEY = 'altdunyaSiteData';
 let db = null;
-const heroSelect = document.getElementById('heroSelect');
+const featuredHeroSlots = document.getElementById('featuredHeroSlots');
 const popularSlots = document.getElementById('popularSlots');
 
 async function loadRemoteData() {
@@ -13,7 +12,7 @@ async function loadRemoteData() {
     const res = await fetch('data/games.json', { cache: 'no-store' });
     if (res.ok) return await res.json();
   } catch (e) {}
-  return { site: { home: { heroSlug: '', popularSlugs: [] }, categories: [] }, games: [] };
+  return { site: { home: { featuredHeroSlugs: [], popularSlugs: [] }, categories: [] }, games: [] };
 }
 
 function normalizeDb() {
@@ -21,7 +20,13 @@ function normalizeDb() {
   db.site ||= {};
   db.site.home ||= {};
   db.games ||= [];
-  if (!db.site.home.heroSlug) db.site.home.heroSlug = db.games[0]?.slug || '';
+
+  if (!Array.isArray(db.site.home.featuredHeroSlugs)) {
+    db.site.home.featuredHeroSlugs = db.site.home.heroSlug ? [db.site.home.heroSlug] : [];
+  }
+  db.site.home.featuredHeroSlugs = db.site.home.featuredHeroSlugs.filter(Boolean).slice(0, 4);
+  while (db.site.home.featuredHeroSlugs.length < 4) db.site.home.featuredHeroSlugs.push('');
+
   if (!Array.isArray(db.site.home.popularSlugs)) db.site.home.popularSlugs = [];
   db.site.home.popularSlugs = db.site.home.popularSlugs.filter(Boolean).slice(0,10);
   while (db.site.home.popularSlugs.length < 10) db.site.home.popularSlugs.push('');
@@ -39,14 +44,28 @@ function optionsHtml() {
 
 function renderSettings() {
   const options = optionsHtml();
-  heroSelect.innerHTML = options;
-  heroSelect.value = db.site.home.heroSlug || '';
+
+  featuredHeroSlots.innerHTML = Array.from({ length: 4 }).map((_, i) => `
+    <label>
+      <span>Featured Hero #${i+1}</span>
+      <select data-featured-slot="${i}">${options}</select>
+    </label>
+  `).join('');
+
+  [...featuredHeroSlots.querySelectorAll('select')].forEach((el, i) => {
+    el.value = db.site.home.featuredHeroSlugs[i] || '';
+    el.addEventListener('change', e => {
+      db.site.home.featuredHeroSlugs[i] = e.target.value;
+    });
+  });
+
   popularSlots.innerHTML = Array.from({ length: 10 }).map((_, i) => `
     <label>
       <span>Popüler #${i+1}</span>
       <select data-slot="${i}">${options}</select>
     </label>
   `).join('');
+
   [...popularSlots.querySelectorAll('select')].forEach((el, i) => {
     el.value = db.site.home.popularSlugs[i] || '';
     el.addEventListener('change', e => {
@@ -55,11 +74,9 @@ function renderSettings() {
   });
 }
 
-heroSelect.addEventListener('change', e => { db.site.home.heroSlug = e.target.value; });
-
 document.getElementById('saveSettingsBtn').addEventListener('click', () => {
   persist();
-  alert('Site ayarları kaydedildi.');
+  alert('Site ayarları kaydedildi. JSON dışa aktararak games.json dosyasını güncellemeyi unutma.');
 });
 
 document.getElementById('exportBtn').addEventListener('click', () => {
