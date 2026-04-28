@@ -382,17 +382,17 @@ function renderHome() {
         <div class="segment-grid">${categoryCardsHtml}</div>
       </div>
 
-      <section class="panel section" style="padding:20px">
-        <div class="section-head"><h2>Popüler Oyunlar</h2></div>
-        <div class="popular-layout">
-          <div class="side-card" style="padding:16px">
+      <section class="panel section popular-panel">
+        <div class="section-head popular-head">
+          <div>
             <div class="kicker">AltDünya Seçimi</div>
-            <h3>Featured Liste</h3>
-            <p class="muted">Öne çıkan oyunlar ve kanal için güçlü vitrin adayları.</p>
+            <h2>Popüler Oyunlar</h2>
+            <p class="muted">Kanalda öne çıkarmak istediğimiz güçlü vitrin oyunları.</p>
           </div>
-          <div class="mini-list">
-            ${popular.map(miniGame).join('')}
-          </div>
+          <a class="secondary-btn" href="#/games">Tüm Oyunlar</a>
+        </div>
+        <div class="popular-grid">
+          ${popular.map(miniGame).join('')}
         </div>
       </section>
 
