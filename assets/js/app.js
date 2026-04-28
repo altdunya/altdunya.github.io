@@ -387,7 +387,7 @@ function renderHome() {
           <div>
             <div class="kicker">AltDünya Seçimi</div>
             <h2>Popüler Oyunlar</h2>
-            <p class="muted">Kanalda öne çıkarmak istediğimiz güçlü vitrin oyunları.</p>
+            <p class="muted">Seçilmiş klasikler. Zamanın testinden geçenler.</p>
           </div>
           <a class="secondary-btn" href="#/games">Tüm Oyunlar</a>
         </div>
