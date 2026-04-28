@@ -52,6 +52,53 @@
   },
   "games": [
     {
+      "id": "ce19e638-5024-49c5-a63e-c4b9f411fb87",
+      "title": "Bloody Roar II",
+      "slug": "bloody-roar-ii",
+      "category": "arcade",
+      "segment": "Retro Port",
+      "platform": "PlayStation (PS1)",
+      "genre": "Dövüş",
+      "year": 1999,
+      "developer": "Eighting",
+      "publisher": "Hudson Soft",
+      "metacritic": 90,
+      "players": "1-2",
+      "series": "Bloody Roar",
+      "heroTitle": "İnsan mı beast mi? 90’ların vahşi dövüş klasiği geri döndü.",
+      "shortDescription": "Bloody Roar II, hızlı tempolu dövüş sistemi ve karakterlerin hayvan formlarına dönüşebildiği eşsiz yapısıyla türünün en unutulmaz oyunlarından biridir. Agresif komboları ve karizmatik kadrosuyla arcade salonlarının yıldızlarından biri olmuştur. AltDünya Pack ile modern sistemlerde tek tıkla oynayabilirsiniz.",
+      "cover": "https://altdunya.github.io/assets/images/bloody_roar_2_hero.jpg",
+      "videoUrl": null,
+      "tags": [
+        "bloody roar ii",
+        "bloody roar 2",
+        "arcade fighting game",
+        "beast fighter",
+        "retro gaming",
+        "finalburn neo",
+        "hudson soft",
+        "eighting",
+        "altdunya",
+        "retro port"
+      ],
+      "screenshots": [],
+      "story": "Bloody Roar II, sıradan dövüş turnuvalarının ötesine geçen vahşi bir mücadeleyi konu alır. Dövüşçüler yalnızca insan değildir; içlerindeki beast gücünü açığa çıkararak kaplan, kurt, yarasa ve daha birçok güçlü forma dönüşebilirler.\n\nHızlı tempolu savaş sistemi, agresif komboları ve karizmatik karakter kadrosuyla 90’ların en unutulmaz arcade dövüş oyunlarından biri olmuştur. Özellikle farklı mekanik arayan fighting game severler için gerçek bir klasiktir.",
+      "pack": {
+        "version": "v1.0",
+        "size": "377.1 MB",
+        "controls": "Gamepad / Klavye",
+        "notes": "DuckStation emülatörü önceden ayarlanmıştır. Tek tıkla çalışır. Kurulum gerektirmez.",
+        "steps": [
+          "Zip dosyasını çıkarın",
+          "START.bat dosyasını çalıştırın",
+          "Oyunun açılmasını bekleyin",
+          "İsterseniz gamepad bağlayın",
+          "Karakterinizi seçin ve dövüşe başlayın"
+        ],
+        "archiveUrl": "https://archive.org/details/bloody-roar-ii-alt-dunya-pack-v-1.0"
+      }
+    },
+    {
       "id": "c451f515-cbe7-46f2-9e67-728bde324869",
       "title": "Bucky O'Hare",
       "slug": "bucky-o-hare",
