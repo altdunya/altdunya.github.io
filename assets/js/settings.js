@@ -38,24 +38,38 @@ function persist() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
 }
 
-function optionsHtml() {
+function optionsHtml(excludeSlugs = [], currentValue = '') {
+  const exclude = new Set(excludeSlugs.filter(Boolean).filter(slug => slug !== currentValue));
   return ['<option value="">— Seçiniz —</option>']
-    .concat(db.games.map(g => `<option value="${g.slug}">${g.title}</option>`))
+    .concat(db.games
+      .filter(g => !exclude.has(g.slug))
+      .map(g => `<option value="${g.slug}">${g.title}</option>`))
     .join('');
 }
 
 function renderSlotGroup(container, key, count, label) {
-  const options = optionsHtml();
-  container.innerHTML = Array.from({ length: count }).map((_, i) => `
-    <label>
-      <span>${label} #${i+1}</span>
-      <select data-slot="${i}">${options}</select>
-    </label>
-  `).join('');
+  container.innerHTML = Array.from({ length: count }).map((_, i) => {
+    const currentValue = db.site.home[key][i] || '';
+    const selectedInOtherSlots = db.site.home[key].filter((slug, idx) => idx !== i && slug);
+    return `
+      <label>
+        <span>${label} #${i+1}</span>
+        <select data-slot="${i}">${optionsHtml(selectedInOtherSlots, currentValue)}</select>
+      </label>
+    `;
+  }).join('');
+
   [...container.querySelectorAll('select')].forEach((el, i) => {
     el.value = db.site.home[key][i] || '';
     el.addEventListener('change', e => {
-      db.site.home[key][i] = e.target.value;
+      const value = e.target.value;
+      if (value && db.site.home[key].some((slug, idx) => idx !== i && slug === value)) {
+        alert('Bu oyun zaten bu listede seçili. Aynı oyunu iki kez ekleyemezsin.');
+        renderSlotGroup(container, key, count, label);
+        return;
+      }
+      db.site.home[key][i] = value;
+      renderSlotGroup(container, key, count, label);
     });
   });
 }
