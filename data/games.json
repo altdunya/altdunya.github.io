@@ -47,7 +47,13 @@
         "abuse",
         "one-must-fall-2097"
       ],
-      "heroSlug": "cadillacs-and-dinosaurs"
+      "heroSlug": "cadillacs-and-dinosaurs",
+      "featuredHeroSlugs": [
+        "cadillacs-and-dinosaurs",
+        "tekken-3",
+        "tiberian-sun",
+        "championship-manager-01-02"
+      ]
     }
   },
   "games": [
