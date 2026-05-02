@@ -66,6 +66,51 @@
   },
   "games": [
     {
+      "id": "1bdb249b-e45e-4886-a299-3591e296388b",
+      "title": "X-Men: Mutant Academy",
+      "slug": "x-men-mutant-academy",
+      "category": "konsol",
+      "segment": "Retro Port",
+      "platform": "PlayStation (PS1)",
+      "genre": "Dövüş",
+      "year": 2000,
+      "developer": "Paradox Development",
+      "publisher": "Activision",
+      "metacritic": 69,
+      "players": "1-2",
+      "series": "Marvel Comics",
+      "heroTitle": "Marvel’ın mutantları arenada karşı karşıya – X-Men dövüş deneyiminin ilk adımı",
+      "shortDescription": "X-Men Mutant Academy, Marvel’ın ikonik mutant karakterlerini bir araya getiren klasik bir PS1 dövüş oyunudur. Wolverine, Cyclops, Storm ve Magneto gibi karakterlerin kendine özgü mutant güçleriyle savaşabildiği bu yapım, arena tabanlı dövüş sistemiyle türüne farklı bir yaklaşım sunar. Retro dövüş oyunları sevenler için hâlâ oynanabilir bir klasik.",
+      "cover": "https://altdunya.github.io/assets/images/xmen-hero.jpg",
+      "videoUrl": null,
+      "tags": [
+        "x-men",
+        "mutant academy",
+        "ps1",
+        "dövüş oyunu",
+        "marvel",
+        "retro oyun",
+        "wolverine",
+        "magneto",
+        "storm"
+      ],
+      "screenshots": [],
+      "story": "X-Men Mutant Academy, Marvel evreninin en popüler mutant kahramanlarını bir araya getiren klasik bir PlayStation dövüş oyunudur. 2000 yılında çıkan bu yapım, Wolverine, Cyclops, Storm, Phoenix ve Magneto gibi karakterlerin kendine özgü mutant güçlerini kullanarak arena tabanlı dövüşler yaptığı bir sistem sunar.\n\nOyunun en dikkat çeken yönü, klasik dövüş oyunlarından farklı olarak karakterlerin özel güçlerinin ön planda olmasıdır. Uzaktan saldırılar, enerji patlamaları ve karaktere özel yetenekler, dövüşleri daha dinamik ve stratejik hale getirir.\n\nRetro dövüş oyunları arasında farklı bir yere sahip olan X-Men Mutant Academy, özellikle Marvel hayranları için nostaljik ve keyifli bir deneyim sunar. Bugün bile basit oynanışı ve hızlı temposu sayesinde hâlâ oynanabilirliğini koruyan bir klasik olarak öne çıkar.",
+      "pack": {
+        "version": "v1.0",
+        "size": "472.3 MB",
+        "controls": "Gamepad / Klavye",
+        "notes": "Bu paket, oyunun modern sistemlerde sorunsuz çalışabilmesi için özel olarak hazırlanmıştır. Tüm ayarlar önceden yapılandırılmıştır. Herhangi bir kurulum gerektirmez.  Bu içerik arşivleme ve erişilebilirlik amacıyla sunulmaktadır. Tüm haklar ilgili sahiplerine aittir.",
+        "steps": [
+          "Oyunu indir",
+          "Arşivi çıkart",
+          "START.bat dosyasını çalıştır",
+          "Oyunun keyfini çıkar"
+        ],
+        "archiveUrl": "https://archive.org/details/x-men-mutant-academy-alt-dunya-pack-v-1.0"
+      }
+    },
+    {
       "id": "ce19e638-5024-49c5-a63e-c4b9f411fb87",
       "title": "Bloody Roar II",
       "slug": "bloody-roar-ii",
