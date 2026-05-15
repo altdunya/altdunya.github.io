@@ -8,7 +8,7 @@
       "segment": "Kahraman Kimlikleri",
       "date": "Eski arşiv",
       "featured": false,
-      "cover": "assets/images/logo.png",
+      "cover": "https://altdunya.github.io/blogimages/heman-filmation-kahraman-kimlikleri-cover.jpg",
       "sourceUrl": "https://web.archive.org/web/20240418012326/http://altdunya.com/kahraman-kimlikleri-he-man-filmation/",
       "excerpt": "He-Man’in orijini, Güç Kılıcı, Skeletor ilişkisi, She-Ra bağlantısı ve 80’ler oyuncak kültüründeki yeri üzerine nostaljik bir Kahraman Kimlikleri dosyası.",
       "content": [
@@ -349,6 +349,11 @@
           "type": "heading",
           "level": 1,
           "text": "Kostümleri"
+        },
+        {
+          "type": "image",
+          "alt": "He-Man Costumes",
+          "src": "https://altdunya.github.io/blogimages/heman-adam-costume-comparison.jpg"
         },
         {
           "type": "paragraph",
