@@ -7,11 +7,11 @@
   <style>
     :root{--bg:#080b14;--card:#111827;--card2:#0f172a;--line:#253045;--text:#e5e7eb;--muted:#9ca3af;--brand:#7dd3fc;--danger:#fb7185;--ok:#86efac;--warn:#facc15}
     *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(circle at top,#172554 0,#080b14 42%);color:var(--text)}
-    .wrap{max-width:1100px;margin:0 auto;padding:28px 16px 60px}.top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}.brand h1{margin:0;font-size:28px}.brand p{margin:5px 0 0;color:var(--muted)}
-    .grid{display:grid;grid-template-columns:320px 1fr;gap:18px}.card{background:linear-gradient(180deg,rgba(17,24,39,.96),rgba(15,23,42,.96));border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:0 18px 50px rgba(0,0,0,.25)}
-    label{display:block;font-size:13px;color:var(--muted);margin:12px 0 6px} input,textarea{width:100%;background:#020617;color:var(--text);border:1px solid #334155;border-radius:12px;padding:10px 12px;font:inherit} textarea{min-height:260px;resize:vertical;line-height:1.55}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.btn{border:0;border-radius:12px;padding:10px 13px;font-weight:700;cursor:pointer;color:#06111a;background:var(--brand)}.btn.secondary{background:#334155;color:var(--text)}.btn.danger{background:var(--danger);color:#fff}.btn.ok{background:var(--ok);color:#052e16}.btn.warn{background:var(--warn);color:#422006}.btn:disabled{opacity:.45;cursor:not-allowed}
-    .hint{font-size:13px;color:var(--muted);line-height:1.5}.list{display:flex;flex-direction:column;gap:8px;max-height:520px;overflow:auto}.item{border:1px solid #263244;background:#07111f;border-radius:14px;padding:10px;cursor:pointer}.item:hover,.item.active{border-color:var(--brand)}.item strong{display:block;font-size:14px}.item span{display:block;color:var(--muted);font-size:12px;margin-top:4px}.mini{font-size:12px;color:var(--muted)}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}.toolbar button{background:#1e293b;color:var(--text);border:1px solid #334155;border-radius:10px;padding:7px 10px;cursor:pointer}.status{margin-top:12px;font-size:13px;color:var(--ok)}.preview{border:1px dashed #334155;border-radius:14px;padding:14px;margin-top:12px;background:#020617}.preview img{max-width:100%;border-radius:12px}.hidden{display:none}.filebox{border:1px dashed #334155;border-radius:14px;padding:12px;background:#020617;margin-bottom:12px}
-    @media(max-width:860px){.grid{grid-template-columns:1fr}.top{display:block}.row{grid-template-columns:1fr}}
+    .wrap{max-width:1220px;margin:0 auto;padding:28px 16px 60px}.top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}.brand h1{margin:0;font-size:28px}.brand p{margin:5px 0 0;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:330px 1fr;gap:18px}.card{background:linear-gradient(180deg,rgba(17,24,39,.96),rgba(15,23,42,.96));border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:0 18px 50px rgba(0,0,0,.25)}
+    label{display:block;font-size:13px;color:var(--muted);margin:12px 0 6px} input,textarea,select{width:100%;background:#020617;color:var(--text);border:1px solid #334155;border-radius:12px;padding:10px 12px;font:inherit} textarea{min-height:340px;resize:vertical;line-height:1.55}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.row3{display:grid;grid-template-columns:1fr 1fr 150px;gap:10px}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.btn{border:0;border-radius:12px;padding:10px 13px;font-weight:700;cursor:pointer;color:#06111a;background:var(--brand)}.btn.secondary{background:#334155;color:var(--text)}.btn.danger{background:var(--danger);color:#fff}.btn.ok{background:var(--ok);color:#052e16}.btn.warn{background:var(--warn);color:#422006}.btn:disabled{opacity:.45;cursor:not-allowed}
+    .hint{font-size:13px;color:var(--muted);line-height:1.5}.list{display:flex;flex-direction:column;gap:8px;max-height:560px;overflow:auto}.item{border:1px solid #263244;background:#07111f;border-radius:14px;padding:10px;cursor:pointer}.item:hover,.item.active{border-color:var(--brand)}.item strong{display:block;font-size:14px}.item span{display:block;color:var(--muted);font-size:12px;margin-top:4px}.mini{font-size:12px;color:var(--muted)}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}.toolbar button{background:#1e293b;color:var(--text);border:1px solid #334155;border-radius:10px;padding:7px 10px;cursor:pointer}.status{margin-top:12px;font-size:13px;color:var(--ok)}.preview{border:1px dashed #334155;border-radius:14px;padding:18px;margin-top:12px;background:#020617;line-height:1.75}.preview img{max-width:100%;border-radius:12px}.preview h1,.preview h2,.preview h3{color:#fff}.preview blockquote{border-left:4px solid var(--brand);margin:16px 0;padding:10px 14px;background:#07111f;border-radius:10px}.hidden{display:none}.filebox{border:1px dashed #334155;border-radius:14px;padding:12px;background:#020617;margin-bottom:12px}.checkline{display:flex;gap:8px;align-items:center;margin-top:33px}.checkline input{width:auto}.split{display:grid;grid-template-columns:1fr 1fr;gap:12px}.copybox{background:#020617;border:1px solid #334155;border-radius:12px;padding:10px;color:#cbd5e1;font-size:12px;white-space:pre-wrap;max-height:220px;overflow:auto}
+    @media(max-width:900px){.grid{grid-template-columns:1fr}.top{display:block}.row,.row3,.split{grid-template-columns:1fr}.checkline{margin-top:8px}}
   </style>
 </head>
 <body>
@@ -19,7 +19,7 @@
     <div class="top">
       <div class="brand">
         <h1>🛸 AltDünya Blog Yazı Paneli</h1>
-        <p>Mevcut blog.json dosyanı yükle, yazı ekle/düzenle/sil, güncel blog.json olarak indir. Kategori ve görseller serbesttir.</p>
+        <p>Markdown yapıştır, yazı ekle/düzenle/sil, mevcut kategori yapısını koruyarak güncel blog.json indir.</p>
       </div>
       <button class="btn ok" id="downloadBtn">Güncel blog.json indir</button>
     </div>
@@ -29,7 +29,7 @@
         <div class="filebox">
           <label>Mevcut blog.json yükle</label>
           <input type="file" id="jsonFile" accept="application/json,.json" />
-          <p class="hint">Sitedeki <b>data/blog.json</b> dosyasını seç. Dosya sadece bu tarayıcıda okunur; internete gönderilmez.</p>
+          <p class="hint">Sitedeki <b>data/blog.json</b> dosyasını seç. Kategoriler ve yazılar korunur; dosya internete gönderilmez.</p>
         </div>
         <div class="actions">
           <button class="btn" id="newBtn">Yeni yazı</button>
@@ -43,37 +43,55 @@
         <div class="row">
           <div>
             <label>Başlık</label>
-            <input id="title" placeholder="Örn: Superman Hakkında Az Bilinen 12 Gerçek" />
+            <input id="title" placeholder="Örn: He-Man Kimdir?" />
           </div>
           <div>
-            <label>Kategori</label>
-            <input id="category" placeholder="Örn: AltFacts, AltHistory, Çizgi Roman, FilmYorum" />
+            <label>Kategori ID</label>
+            <input id="category" list="categoryList" placeholder="altfacts, althistory, altreview..." />
+            <datalist id="categoryList"></datalist>
           </div>
         </div>
 
-        <div class="row">
+        <div class="row3">
           <div>
             <label>Slug / URL adı</label>
             <input id="slug" placeholder="otomatik oluşur" />
           </div>
           <div>
-            <label>Kapak görseli tam linki</label>
-            <input id="image" placeholder="https://altdunya.github.io/blogimages/dosyaadi.jpg" />
+            <label>Segment</label>
+            <input id="segment" placeholder="Kahraman Kimlikleri, AltFacts..." />
+          </div>
+          <label class="checkline"><input type="checkbox" id="featured"> Öne çıkan</label>
+        </div>
+
+        <div class="row">
+          <div>
+            <label>Tarih</label>
+            <input id="date" placeholder="2026-05-15 veya Eski arşiv" />
+          </div>
+          <div>
+            <label>Kapak görseli</label>
+            <input id="cover" placeholder="https://altdunya.github.io/blogimages/dosyaadi.jpg" />
           </div>
         </div>
 
-        <label>Kısa açıklama</label>
-        <textarea id="excerpt" style="min-height:80px" placeholder="Yazı listesinde görünecek kısa açıklama..."></textarea>
+        <label>Kaynak / Wayback linki</label>
+        <input id="sourceUrl" placeholder="https://web.archive.org/..." />
 
-        <label>Yazı içeriği</label>
+        <label>Kısa açıklama</label>
+        <textarea id="excerpt" style="min-height:82px" placeholder="Yazı listesinde görünecek kısa açıklama..."></textarea>
+
+        <label>Yazı içeriği — Markdown olarak yapıştır</label>
         <div class="toolbar">
-          <button type="button" data-tag="h2">Başlık</button>
-          <button type="button" data-tag="p">Paragraf</button>
-          <button type="button" data-tag="strong">Kalın</button>
-          <button type="button" id="imgBtn">Yazı içine resim ekle</button>
+          <button type="button" data-md="## ">H2</button>
+          <button type="button" data-md="### ">H3</button>
+          <button type="button" id="boldBtn">Kalın</button>
+          <button type="button" id="quoteBtn">Alıntı</button>
+          <button type="button" id="imgBtn">Görsel</button>
+          <button type="button" id="templateBtn">Kahraman Kimlikleri Şablonu</button>
         </div>
-        <textarea id="content" placeholder="Yazını buraya yaz. İstersen HTML kullanabilirsin."></textarea>
-        <p class="hint">Kapak görseli ve yazı içi görseller için tam URL kullanabilirsin. Örn: <b>https://altdunya.github.io/blogimages/theme-hospital-01.jpg</b>. Görselleri GitHub'da <b>blogimages</b> klasörüne atıp bu tam linki yazman yeterli.</p>
+        <textarea id="content" placeholder="# Özgeçmiş / Origin&#10;&#10;Metin...&#10;&#10;## Yardımcı Karakterler&#10;&#10;Metin..."></textarea>
+        <p class="hint">Kaydederken Markdown otomatik olarak blog.json içindeki <b>content bloklarına</b> çevrilir. Böylece sitede format bozulmadan görünür.</p>
 
         <div class="actions">
           <button class="btn ok" id="saveBtn">Yazıyı kaydet</button>
@@ -87,11 +105,12 @@
   </div>
 
   <script>
-    let posts = [];
+    let blogData = { categories: [], posts: [] };
+    let posts = blogData.posts;
     let selectedIndex = -1;
 
     const $ = (id) => document.getElementById(id);
-    const fields = ['title','slug','category','image','excerpt','content'];
+    const fields = ['title','slug','category','segment','date','cover','sourceUrl','excerpt','content'];
 
     function slugify(text){
       return (text || '')
@@ -101,20 +120,115 @@
     }
 
     function normalizeLoaded(data){
-      if(Array.isArray(data)) return data;
-      if(data && Array.isArray(data.posts)) return data.posts;
-      return [];
+      if(Array.isArray(data)) return { categories: [], posts: data };
+      return {
+        categories: Array.isArray(data?.categories) ? data.categories : [],
+        posts: Array.isArray(data?.posts) ? data.posts : []
+      };
+    }
+
+    function escapeHtml(str){ return String(str ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); }
+
+    function inlineMarkdown(text){
+      return escapeHtml(text)
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/`(.+?)`/g, '<code>$1</code>');
+    }
+
+    function contentToMarkdown(content){
+      if(typeof content === 'string') return content;
+      if(!Array.isArray(content)) return '';
+      return content.map(block => {
+        if(!block) return '';
+        if(block.type === 'heading') return `${'#'.repeat(Math.min(Math.max(Number(block.level || 2),1),4))} ${block.text || ''}`;
+        if(block.type === 'quote') return `> ${block.text || ''}`;
+        if(block.type === 'list') return (block.items || []).map(item => `- ${item}`).join('\n');
+        if(block.type === 'orderedList') return (block.items || []).map((item, i) => `${i+1}. ${item}`).join('\n');
+        if(block.type === 'image') return `![${block.alt || block.caption || ''}](${block.src || block.url || ''})${block.caption ? `\n_${block.caption}_` : ''}`;
+        if(block.type === 'hr') return '---';
+        if(block.type === 'html') return block.html || '';
+        return block.text || '';
+      }).join('\n\n');
+    }
+
+    function markdownToBlocks(markdown){
+      const lines = String(markdown || '').replace(/\r\n/g,'\n').split('\n');
+      const blocks = [];
+      let paragraph = [];
+      let list = [];
+      let ordered = [];
+
+      function flushParagraph(){
+        if(paragraph.length){ blocks.push({ type:'paragraph', text: paragraph.join(' ').trim() }); paragraph = []; }
+      }
+      function flushList(){
+        if(list.length){ blocks.push({ type:'list', items:[...list] }); list = []; }
+        if(ordered.length){ blocks.push({ type:'orderedList', items:[...ordered] }); ordered = []; }
+      }
+
+      for(const raw of lines){
+        const line = raw.trimEnd();
+        const trimmed = line.trim();
+        if(!trimmed){ flushParagraph(); flushList(); continue; }
+
+        const img = trimmed.match(/^!\[(.*?)\]\((.*?)\)$/);
+        if(img){ flushParagraph(); flushList(); blocks.push({ type:'image', alt:img[1], src:img[2] }); continue; }
+
+        if(/^---+$/.test(trimmed)){ flushParagraph(); flushList(); blocks.push({ type:'hr' }); continue; }
+
+        const heading = trimmed.match(/^(#{1,4})\s+(.+)$/);
+        if(heading){ flushParagraph(); flushList(); blocks.push({ type:'heading', level:heading[1].length, text:heading[2].trim() }); continue; }
+
+        if(trimmed.startsWith('> ')){ flushParagraph(); flushList(); blocks.push({ type:'quote', text:trimmed.replace(/^>\s?/, '').trim() }); continue; }
+
+        const bullet = trimmed.match(/^[-*]\s+(.+)$/);
+        if(bullet){ flushParagraph(); ordered = []; list.push(bullet[1].trim()); continue; }
+
+        const orderedItem = trimmed.match(/^\d+[.)]\s+(.+)$/);
+        if(orderedItem){ flushParagraph(); list = []; ordered.push(orderedItem[1].trim()); continue; }
+
+        flushList();
+        paragraph.push(trimmed);
+      }
+      flushParagraph();
+      flushList();
+      return blocks.filter(block => block.text || block.items?.length || block.src || block.type === 'hr');
+    }
+
+    function renderBlocks(blocks){
+      return (blocks || []).map(block => {
+        if(block.type === 'heading'){
+          const level = Math.min(Math.max(Number(block.level || 2),1),4);
+          return `<h${level}>${inlineMarkdown(block.text || '')}</h${level}>`;
+        }
+        if(block.type === 'quote') return `<blockquote>${inlineMarkdown(block.text || '')}</blockquote>`;
+        if(block.type === 'list') return `<ul>${(block.items || []).map(item => `<li>${inlineMarkdown(item)}</li>`).join('')}</ul>`;
+        if(block.type === 'orderedList') return `<ol>${(block.items || []).map(item => `<li>${inlineMarkdown(item)}</li>`).join('')}</ol>`;
+        if(block.type === 'image') return `<figure><img src="${escapeHtml(block.src || '')}" alt="${escapeHtml(block.alt || '')}">${block.caption ? `<figcaption>${escapeHtml(block.caption)}</figcaption>` : ''}</figure>`;
+        if(block.type === 'hr') return '<hr>';
+        if(block.type === 'html') return block.html || '';
+        return `<p>${inlineMarkdown(block.text || '')}</p>`;
+      }).join('');
+    }
+
+    function renderCategoryOptions(){
+      $('categoryList').innerHTML = (blogData.categories || []).map(cat => `<option value="${escapeHtml(cat.id)}">${escapeHtml(cat.name || cat.id)}</option>`).join('');
     }
 
     function getPostFromForm(){
+      const old = selectedIndex >= 0 ? posts[selectedIndex] : {};
       return {
-        title: $('title').value.trim(),
+        ...old,
         slug: $('slug').value.trim() || slugify($('title').value),
-        category: $('category').value.trim() || 'Blog',
-        image: $('image').value.trim(),
+        title: $('title').value.trim(),
+        category: $('category').value.trim() || 'altfacts',
+        segment: $('segment').value.trim() || $('category').value.trim() || 'Yazı',
+        date: $('date').value.trim() || old.date || new Date().toISOString().slice(0,10),
+        featured: $('featured').checked,
+        cover: $('cover').value.trim() || 'assets/images/logo.png',
+        sourceUrl: $('sourceUrl').value.trim(),
         excerpt: $('excerpt').value.trim(),
-        content: $('content').value.trim(),
-        date: (selectedIndex >= 0 && posts[selectedIndex] && posts[selectedIndex].date) ? posts[selectedIndex].date : new Date().toISOString().slice(0,10)
+        content: markdownToBlocks($('content').value)
       };
     }
 
@@ -122,14 +236,19 @@
       $('title').value = post.title || '';
       $('slug').value = post.slug || '';
       $('category').value = post.category || '';
-      $('image').value = post.image || '';
+      $('segment').value = post.segment || '';
+      $('date').value = post.date || '';
+      $('featured').checked = !!post.featured;
+      $('cover').value = post.cover || post.image || '';
+      $('sourceUrl').value = post.sourceUrl || '';
       $('excerpt').value = post.excerpt || '';
-      $('content').value = post.content || '';
+      $('content').value = contentToMarkdown(post.content);
     }
 
     function clearForm(){
       selectedIndex = -1;
       fields.forEach(id => $(id).value = '');
+      $('featured').checked = false;
       $('deleteBtn').disabled = true;
       $('preview').classList.add('hidden');
       renderList();
@@ -137,40 +256,37 @@
     }
 
     function renderList(){
-      const list = $('postList');
-      list.innerHTML = '';
+      const listEl = $('postList');
+      listEl.innerHTML = '';
       $('countText').textContent = posts.length ? posts.length + ' yazı yüklendi.' : 'Henüz yazı yok.';
       posts.forEach((post, i) => {
         const div = document.createElement('div');
         div.className = 'item' + (i === selectedIndex ? ' active' : '');
-        div.innerHTML = `<strong>${escapeHtml(post.title || 'Başlıksız')}</strong><span>${escapeHtml(post.category || 'Blog')} · #/blog/${escapeHtml(post.slug || '')}</span>`;
+        div.innerHTML = `<strong>${escapeHtml(post.title || 'Başlıksız')}</strong><span>${escapeHtml(post.category || 'Blog')} · #/post/${escapeHtml(post.slug || '')}</span>`;
         div.onclick = () => { selectedIndex = i; fillForm(posts[i]); $('deleteBtn').disabled = false; $('preview').classList.add('hidden'); renderList(); setStatus('Yazı düzenleniyor.'); };
-        list.appendChild(div);
+        listEl.appendChild(div);
       });
     }
 
     function setStatus(msg){ $('status').textContent = msg || ''; }
-    function escapeHtml(str){ return (str || '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); }
 
     $('jsonFile').addEventListener('change', async (e) => {
       const file = e.target.files[0];
       if(!file) return;
       try{
         const text = await file.text();
-        posts = normalizeLoaded(JSON.parse(text));
+        blogData = normalizeLoaded(JSON.parse(text));
+        posts = blogData.posts;
         selectedIndex = -1;
+        renderCategoryOptions();
         clearForm();
-        renderList();
         setStatus('blog.json yüklendi.');
       }catch(err){
         alert('JSON okunamadı. Dosyayı kontrol et.');
       }
     });
 
-    $('title').addEventListener('input', () => {
-      if(!$('slug').value.trim()) $('slug').value = slugify($('title').value);
-    });
-
+    $('title').addEventListener('input', () => { if(!$('slug').value.trim()) $('slug').value = slugify($('title').value); });
     $('newBtn').onclick = clearForm;
     $('clearBtn').onclick = clearForm;
 
@@ -178,13 +294,12 @@
       const post = getPostFromForm();
       if(!post.title){ alert('Başlık gerekli.'); return; }
       if(!post.slug){ alert('Slug gerekli.'); return; }
-      if(!post.content){ alert('Yazı içeriği boş olmasın.'); return; }
-
+      if(!post.content.length){ alert('Yazı içeriği boş olmasın.'); return; }
       const duplicate = posts.findIndex((p, i) => (p.slug || '') === post.slug && i !== selectedIndex);
       if(duplicate >= 0){ alert('Bu slug başka bir yazıda kullanılıyor.'); return; }
-
       if(selectedIndex >= 0) posts[selectedIndex] = post;
       else { posts.unshift(post); selectedIndex = 0; }
+      blogData.posts = posts;
       $('deleteBtn').disabled = false;
       renderList();
       setStatus('Yazı kaydedildi. Şimdi güncel blog.json indirebilirsin.');
@@ -195,14 +310,15 @@
       const title = posts[selectedIndex]?.title || 'bu yazı';
       if(confirm(`“${title}” silinsin mi?`)){
         posts.splice(selectedIndex,1);
+        blogData.posts = posts;
         clearForm();
-        renderList();
         setStatus('Yazı silindi. Güncel blog.json indirmeyi unutma.');
       }
     };
 
     $('downloadBtn').onclick = () => {
-      const json = JSON.stringify(posts, null, 2);
+      blogData.posts = posts;
+      const json = JSON.stringify(blogData, null, 2);
       const blob = new Blob([json], {type:'application/json'});
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
@@ -216,40 +332,45 @@
 
     $('previewBtn').onclick = () => {
       const p = getPostFromForm();
-      const html = `
-        ${p.image ? `<img src="${escapeHtml(p.image)}" alt="">` : ''}
+      $('preview').innerHTML = `
+        ${p.cover ? `<img src="${escapeHtml(p.cover)}" alt="">` : ''}
         <h1>${escapeHtml(p.title)}</h1>
-        <p><b>${escapeHtml(p.category)}</b> · ${escapeHtml(p.date)}</p>
+        <p><b>${escapeHtml(p.segment || p.category)}</b> · ${escapeHtml(p.date)}</p>
         <p>${escapeHtml(p.excerpt)}</p>
         <hr>
-        <div>${p.content}</div>
+        ${renderBlocks(p.content)}
       `;
-      $('preview').innerHTML = html;
       $('preview').classList.remove('hidden');
     };
 
-    document.querySelectorAll('[data-tag]').forEach(btn => {
-      btn.onclick = () => {
-        const tag = btn.dataset.tag;
-        const t = $('content');
-        const start = t.selectionStart, end = t.selectionEnd;
-        const selected = t.value.slice(start,end) || (tag === 'h2' ? 'Ara başlık' : tag === 'p' ? 'Paragraf metni' : 'kalın metin');
-        const insert = tag === 'strong' ? `<strong>${selected}</strong>` : `<${tag}>${selected}</${tag}>`;
-        t.setRangeText(insert, start, end, 'end');
-        t.focus();
-      };
+    document.querySelectorAll('[data-md]').forEach(btn => {
+      btn.onclick = () => insertText(btn.dataset.md + selectedTextOr('Ara başlık'));
     });
 
+    function selectedTextOr(fallback){
+      const t = $('content');
+      return t.value.slice(t.selectionStart, t.selectionEnd) || fallback;
+    }
+    function insertText(insert){
+      const t = $('content');
+      t.setRangeText(insert, t.selectionStart, t.selectionEnd, 'end');
+      t.focus();
+    }
+
+    $('boldBtn').onclick = () => insertText(`**${selectedTextOr('kalın metin')}**`);
+    $('quoteBtn').onclick = () => insertText(`> ${selectedTextOr('Alıntı metni')}`);
     $('imgBtn').onclick = () => {
       const path = prompt('Yazı içine eklenecek görsel tam linki:', 'https://altdunya.github.io/blogimages/gorsel-adi.jpg');
       if(!path) return;
       const alt = prompt('Görsel açıklaması:', '') || '';
-      const insert = `\n<figure>\n  <img src="${path}" alt="${alt}">\n  <figcaption>${alt}</figcaption>\n</figure>\n`;
-      const t = $('content');
-      t.setRangeText(insert, t.selectionStart, t.selectionEnd, 'end');
-      t.focus();
+      insertText(`\n![${alt}](${path})\n`);
+    };
+    $('templateBtn').onclick = () => {
+      const template = `# Özgeçmiş / Origin\n\nKarakterin kökeni ve temel hikâyesi.\n\n# Yardımcı Karakterler\n\n## Mentor / Ekip / Aile\n\nKarakterle ilişkili önemli isimler.\n\n# Baş Düşmanlar\n\n## Ana Düşman\n\nKarakterin baş düşmanı ve amacı.\n\n# Güçleri ve Ekipmanları\n\n## Temel Güçler\n\n- Güç 1\n- Güç 2\n- Güç 3\n\n# Kostümleri\n\nKostüm/tasarım yorumu.\n\n# Karakterin Yaratılışı\n\nKarakterin gerçek dünyadaki yaratılış hikâyesi.\n\n# Son Yorumlar\n\nAltDünya yorumu ve kapanış.`;
+      if(!$('content').value.trim() || confirm('Mevcut yazı içeriğinin sonuna şablon eklensin mi?')) insertText(( $('content').value.trim() ? '\n\n' : '') + template);
     };
 
+    renderCategoryOptions();
     clearForm();
   </script>
 </body>
