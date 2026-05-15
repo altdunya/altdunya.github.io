@@ -3,62 +3,115 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AltDünya Blog Yazı Hazırlayıcı</title>
+  <title>AltDünya Blog Yazısı Hazırlayıcı</title>
   <style>
-    :root{
-      --bg:#070a12; --panel:#101827; --panel2:#0d1320; --line:rgba(255,255,255,.12);
-      --text:#f3f7ff; --muted:#9aa8bd; --accent:#7cf7ff; --accent2:#ffdf6e; --bad:#ff6b7a;
-      --ok:#8dffb0; --shadow:0 20px 70px rgba(0,0,0,.38); --radius:22px;
-    }
-    *{box-sizing:border-box} body{margin:0;background:radial-gradient(circle at 20% 0%,rgba(124,247,255,.12),transparent 34%),radial-gradient(circle at 80% 10%,rgba(255,223,110,.1),transparent 28%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;line-height:1.55}
-    header{position:sticky;top:0;z-index:10;backdrop-filter:blur(16px);background:rgba(7,10,18,.78);border-bottom:1px solid var(--line)}
-    .wrap{max-width:1180px;margin:auto;padding:22px}.top{display:flex;gap:16px;align-items:center;justify-content:space-between}.brand{display:flex;gap:12px;align-items:center}.ufo{width:46px;height:46px;border:1px solid var(--line);border-radius:16px;display:grid;place-items:center;background:linear-gradient(145deg,rgba(124,247,255,.18),rgba(255,255,255,.04));box-shadow:0 0 28px rgba(124,247,255,.18)}
-    h1{font-size:clamp(24px,4vw,42px);line-height:1.05;margin:0}.sub{color:var(--muted);margin:4px 0 0}.grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);gap:18px;align-items:start}.card{background:linear-gradient(180deg,rgba(16,24,39,.94),rgba(13,19,32,.94));border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin-bottom:18px}.card h2{margin:0 0 12px;font-size:19px}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{margin:0 0 12px}label{display:block;font-weight:700;font-size:13px;margin:0 0 6px;color:#dbe7ff}input,select,textarea{width:100%;border:1px solid var(--line);background:#080d17;color:var(--text);border-radius:14px;padding:12px 13px;font:inherit;outline:none}textarea{min-height:120px;resize:vertical}input:focus,select:focus,textarea:focus{border-color:rgba(124,247,255,.55);box-shadow:0 0 0 4px rgba(124,247,255,.08)}.hint{font-size:12px;color:var(--muted);margin-top:5px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}button{border:0;border-radius:14px;padding:11px 14px;font-weight:800;cursor:pointer;color:#07101a;background:var(--accent)}button.secondary{background:#1d2a3d;color:var(--text);border:1px solid var(--line)}button.warn{background:var(--accent2)}button.bad{background:#341a23;color:#ffd7de;border:1px solid rgba(255,107,122,.35)}.blocks{display:grid;gap:10px}.block{border:1px solid var(--line);border-radius:18px;padding:12px;background:rgba(255,255,255,.03)}.block-head{display:flex;gap:8px;align-items:center;justify-content:space-between;margin-bottom:8px}.block-title{font-weight:900;color:var(--accent2)}.mini{font-size:12px;padding:7px 9px;border-radius:10px}.output{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre;min-height:260px}.preview{overflow:hidden}.cover{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:18px;border:1px solid var(--line);background:#070a12}.badge{display:inline-flex;border:1px solid rgba(124,247,255,.35);color:var(--accent);border-radius:999px;padding:5px 10px;font-size:12px;font-weight:900;margin:12px 0}.article h2{font-size:28px;line-height:1.1}.article h3{font-size:22px;color:var(--accent2)}.article p{color:#d9e4f5}.article blockquote{border-left:4px solid var(--accent);margin:12px 0;padding:10px 14px;background:rgba(124,247,255,.06);border-radius:12px;color:#eefcff}.article img{max-width:100%;border-radius:16px;border:1px solid var(--line);display:block;margin:14px 0}.notice{border:1px solid rgba(255,223,110,.3);background:rgba(255,223,110,.08);padding:12px;border-radius:16px;color:#fff4c2}.ok{color:var(--ok)}.error{color:var(--bad)}@media(max-width:900px){.grid,.row{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}}
+    :root{--bg:#070b14;--panel:#101827;--panel2:#151f33;--text:#e9f2ff;--muted:#91a4bd;--accent:#7cffd4;--line:#26344d;--danger:#ff6b6b}
+    *{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at top,#12203a,#070b14 55%);color:var(--text);min-height:100vh;padding:24px}
+    .wrap{max-width:860px;margin:0 auto}.card{background:rgba(16,24,39,.94);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 18px 50px rgba(0,0,0,.35)}
+    h1{font-size:26px;margin:0 0 8px}.sub{color:var(--muted);margin:0 0 22px;line-height:1.5}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.full{grid-column:1/-1}
+    label{display:block;font-weight:bold;font-size:13px;margin-bottom:7px;color:#c9d8ef} input,select,textarea{width:100%;background:var(--panel2);border:1px solid var(--line);border-radius:12px;color:var(--text);padding:12px;font-size:15px;outline:none} textarea{min-height:260px;resize:vertical;line-height:1.55} input:focus,select:focus,textarea:focus{border-color:var(--accent)}
+    .hint{font-size:12px;color:var(--muted);margin-top:6px}.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}button{border:0;border-radius:12px;padding:12px 16px;font-weight:bold;cursor:pointer;background:var(--accent);color:#062018}button.secondary{background:#22314d;color:var(--text);border:1px solid var(--line)}
+    pre{white-space:pre-wrap;word-break:break-word;background:#050914;border:1px solid var(--line);border-radius:14px;padding:14px;min-height:120px;color:#dfffee}.note{margin-top:16px;color:var(--muted);font-size:13px;line-height:1.45}.warn{color:#ffd38a}
+    @media(max-width:700px){body{padding:14px}.grid{grid-template-columns:1fr}.card{padding:16px}}
   </style>
 </head>
 <body>
-<header><div class="wrap top"><div class="brand"><div class="ufo">🛸</div><div><h1>AltDünya Blog Yazı Hazırlayıcı</h1><p class="sub">Siteye yazı eklemek için JSON üretir. Ziyaretçiler buradan yazı yayınlayamaz.</p></div></div><button class="secondary" onclick="resetForm()">Formu Temizle</button></div></header>
-<main class="wrap">
-  <div class="notice"><strong>Not:</strong> Bu sayfa güvenli bir “backend admin” değildir; GitHub Pages statik çalıştığı için siteye doğrudan yazamaz. En güvenli kullanım: Bu dosyayı bilgisayarında aç, yazıyı hazırla, oluşturulan kaydı <code>data/blog.json</code> içine ekle veya güncellenmiş JSON'u indirip yükle.</div>
-  <div class="grid" style="margin-top:18px">
-    <section>
-      <div class="card"><h2>1) Yazı Bilgileri</h2>
-        <div class="field"><label>Başlık</label><input id="title" placeholder="Superman Hakkında Az Bilinen 12 Gerçek" oninput="syncAll()"></div>
-        <div class="row"><div class="field"><label>Slug / URL</label><input id="slug" placeholder="superman-hakkinda-az-bilinen-12-gercek" oninput="syncAll()"><div class="hint">Boş bırakırsan başlıktan otomatik üretir.</div></div><div class="field"><label>Kategori</label><select id="category" onchange="syncAll()"><option value="altfacts">AltFacts</option><option value="althistory">AltHistory</option><option value="altreview">AltReview</option><option value="altlist">AltList</option><option value="oyunyorum">OyunYorum</option></select></div></div>
-        <div class="row"><div class="field"><label>Tarih</label><input id="date" placeholder="2026" oninput="syncAll()"></div><div class="field"><label>Kapak Görseli</label><input id="cover" placeholder="assets/images/blog/superman.jpg" oninput="syncAll()"></div></div>
-        <div class="field"><label>Kaynak / Wayback URL</label><input id="sourceUrl" placeholder="https://web.archive.org/..." oninput="syncAll()"></div>
-        <div class="field"><label>Kısa Açıklama</label><textarea id="excerpt" placeholder="Yazı kartlarında görünen kısa açıklama..." oninput="syncAll()"></textarea></div>
-        <div class="field"><label><input type="checkbox" id="featured" onchange="syncAll()" style="width:auto;margin-right:8px"> Öne çıkan yazı olarak işaretle</label></div>
+  <main class="wrap">
+    <section class="card">
+      <h1>🛸 AltDünya Blog Yazısı Hazırlayıcı</h1>
+      <p class="sub">Sadece yazıyı hazırlar. Siteye otomatik eklemez. Çıkan JSON bloğunu <strong>data/blog.json</strong> içine yapıştırırsın.</p>
+
+      <div class="grid">
+        <div class="full">
+          <label>Başlık</label>
+          <input id="title" placeholder="Örn: Superman Hakkında Az Bilinen 12 Gerçek" />
+        </div>
+        <div>
+          <label>Kategori</label>
+          <select id="category">
+            <option>AltFacts</option>
+            <option>AltHistory</option>
+            <option>AltReview</option>
+            <option>AltList</option>
+            <option>AltStory</option>
+            <option>Blog</option>
+          </select>
+        </div>
+        <div>
+          <label>Kapak Görseli</label>
+          <input id="image" placeholder="images/blog/superman.jpg" />
+        </div>
+        <div class="full">
+          <label>Kısa Açıklama</label>
+          <input id="excerpt" placeholder="Yazı kartında görünecek kısa açıklama" />
+        </div>
+        <div class="full">
+          <label>Yazı</label>
+          <textarea id="content" placeholder="Yazını buraya düz metin olarak yapıştır. Paragrafları boş satırla ayırman yeterli."></textarea>
+          <div class="hint">Boş satırlar otomatik paragraf yapılır. HTML bilmen gerekmez.</div>
+        </div>
       </div>
-      <div class="card"><h2>2) Yazı İçeriği</h2><div class="actions"><button onclick="addBlock('heading')">Başlık Ekle</button><button onclick="addBlock('paragraph')">Paragraf Ekle</button><button onclick="addBlock('quote')">Alıntı Ekle</button><button onclick="addBlock('image')">Görsel Ekle</button></div><div id="blocks" class="blocks" style="margin-top:14px"></div></div>
-      <div class="card"><h2>3) Mevcut blog.json ile birleştir</h2><div class="field"><label>Mevcut <code>data/blog.json</code> dosyanı seç</label><input type="file" id="jsonFile" accept="application/json,.json"></div><div class="actions"><button class="warn" onclick="downloadMergedJson()">Güncel blog.json İndir</button><button class="secondary" onclick="downloadSinglePost()">Sadece Yazı Kaydını İndir</button></div><p id="mergeStatus" class="hint">Dosya seçmezsen sadece bu yazıyı içeren temel JSON üretilir.</p></div>
+
+      <div class="row">
+        <button onclick="makeJson()">JSON Oluştur</button>
+        <button class="secondary" onclick="copyJson()">Kopyala</button>
+        <button class="secondary" onclick="downloadJson()">Tek Yazıyı İndir</button>
+        <button class="secondary" onclick="clearForm()">Temizle</button>
+      </div>
+
+      <p class="note warn">Not: Birden fazla yazıyı otomatik birleştirme yok. Bu özellikle sade tutuldu.</p>
+      <pre id="output">JSON çıktısı burada görünecek.</pre>
+      <p class="note">Kullanım: JSON Oluştur → Kopyala → <strong>data/blog.json</strong> dosyasında köşeli parantezlerin içine yeni obje olarak ekle.</p>
     </section>
-    <aside>
-      <div class="card"><h2>Önizleme</h2><div id="preview" class="preview article"></div></div>
-      <div class="card"><h2>JSON Çıktısı</h2><textarea id="output" class="output" readonly></textarea><div class="actions"><button onclick="copyJson()">JSON'u Kopyala</button><button class="secondary" onclick="syncAll()">Yenile</button></div><p id="copyStatus" class="hint"></p></div>
-    </aside>
-  </div>
-</main>
+  </main>
+
 <script>
-const categoryNames={altfacts:'AltFacts',althistory:'AltHistory',altreview:'AltReview',altlist:'AltList',oyunyorum:'OyunYorum'};let blockCounter=0;
-function trSlug(s){return (s||'').toLowerCase().trim().replace(/ğ/g,'g').replace(/ü/g,'u').replace(/ş/g,'s').replace(/ı/g,'i').replace(/ö/g,'o').replace(/ç/g,'c').replace(/[^a-z0-9\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'')}
-function addBlock(type,text=''){blockCounter++;const el=document.createElement('div');el.className='block';el.dataset.type=type;el.innerHTML=`<div class="block-head"><span class="block-title">${typeLabel(type)}</span><div><button class="secondary mini" onclick="moveBlock(this,-1)">↑</button> <button class="secondary mini" onclick="moveBlock(this,1)">↓</button> <button class="bad mini" onclick="this.closest('.block').remove();syncAll()">Sil</button></div></div>${fieldFor(type,text)}`;document.getElementById('blocks').appendChild(el);syncAll()}
-function typeLabel(t){return {heading:'Ara Başlık',paragraph:'Paragraf',quote:'Alıntı',image:'Görsel'}[t]||t}
-function fieldFor(t,text){if(t==='image')return `<input class="block-text" placeholder="assets/images/blog/gorsel.jpg" value="${escapeAttr(text)}" oninput="syncAll()"><div class="hint">Görsel yolunu yaz. Örn: assets/images/blog/superman-01.jpg</div>`;return `<textarea class="block-text" placeholder="${t==='heading'?'Ara başlık':'Metin'}" oninput="syncAll()">${escapeHtml(text)}</textarea>`}
-function moveBlock(btn,dir){const b=btn.closest('.block'),p=b.parentElement;if(dir<0&&b.previousElementSibling)p.insertBefore(b,b.previousElementSibling);if(dir>0&&b.nextElementSibling)p.insertBefore(b.nextElementSibling,b);syncAll()}
-function getPost(){const title=document.getElementById('title').value.trim();const slugInput=document.getElementById('slug');if(!slugInput.value.trim()&&title)slugInput.value=trSlug(title);const cat=document.getElementById('category').value;const content=[...document.querySelectorAll('.block')].map(b=>({type:b.dataset.type,text:b.querySelector('.block-text').value.trim()})).filter(x=>x.text);return {slug:slugInput.value.trim(),title,category:cat,segment:categoryNames[cat]||cat,date:document.getElementById('date').value.trim()||new Date().getFullYear().toString(),featured:document.getElementById('featured').checked,cover:document.getElementById('cover').value.trim()||'assets/images/logo.png',sourceUrl:document.getElementById('sourceUrl').value.trim(),excerpt:document.getElementById('excerpt').value.trim(),content}}
-function syncAll(){const post=getPost();document.getElementById('output').value=JSON.stringify(post,null,2);renderPreview(post)}
-function renderPreview(p){const cover=p.cover||'assets/images/logo.png';let html=`<img class="cover" src="${escapeAttr(cover)}" onerror="this.style.display='none'"><span class="badge">${escapeHtml(p.segment||'AltDünya')}</span><h2>${escapeHtml(p.title||'Başlık')}</h2><p>${escapeHtml(p.excerpt||'Kısa açıklama burada görünecek.')}</p>`;p.content.forEach(b=>{if(b.type==='heading')html+=`<h3>${escapeHtml(b.text)}</h3>`;if(b.type==='paragraph')html+=`<p>${escapeHtml(b.text).replace(/\n/g,'<br>')}</p>`;if(b.type==='quote')html+=`<blockquote>${escapeHtml(b.text).replace(/\n/g,'<br>')}</blockquote>`;if(b.type==='image')html+=`<img src="${escapeAttr(b.text)}" alt="">`});document.getElementById('preview').innerHTML=html}
-async function copyJson(){await navigator.clipboard.writeText(document.getElementById('output').value);document.getElementById('copyStatus').textContent='Kopyalandı.';setTimeout(()=>document.getElementById('copyStatus').textContent='',1800)}
-function baseCategories(){return [{id:'altfacts',name:'AltFacts',label:'Bilgi / Trivia',description:'Oyun, çizgi roman ve geek kültürü hakkında az bilinen gerçekler.'},{id:'althistory',name:'AltHistory',label:'Retrospektif',description:'Eski oyunlar, çizgi filmler, filmler ve dönem kültürleri üzerine nostaljik dosyalar.'},{id:'altreview',name:'AltReview',label:'Yorum / İnceleme',description:'Film, çizgi roman, oyun ve animasyonları AltDünya tonuyla yeniden değerlendiren yazılar.'},{id:'altlist',name:'AltList',label:'Liste',description:'Geek kültürü ve retro oyunlar üzerine liste içerikleri.'},{id:'oyunyorum',name:'OyunYorum',label:'Retro Oyun Yazıları',description:'Eski AltDünya ruhundaki kişisel retro oyun yazıları ve deneyimler.'}]}
-function readSelectedJson(){return new Promise((res)=>{const f=document.getElementById('jsonFile').files[0];if(!f)return res(null);const r=new FileReader();r.onload=()=>{try{res(JSON.parse(r.result))}catch(e){document.getElementById('mergeStatus').innerHTML='<span class="error">JSON okunamadı.</span>';res(null)}};r.readAsText(f)})}
-async function downloadMergedJson(){const current=await readSelectedJson();const post=getPost();let data=current&&Array.isArray(current.posts)?current:{categories:baseCategories(),posts:[]};data.posts=data.posts.filter(x=>x.slug!==post.slug);data.posts.unshift(post);downloadText('blog.json',JSON.stringify(data,null,2));document.getElementById('mergeStatus').innerHTML='<span class="ok">Güncel blog.json indirildi. Bunu data/blog.json olarak yükle.</span>'}
-function downloadSinglePost(){downloadText((getPost().slug||'blog-yazisi')+'.json',JSON.stringify(getPost(),null,2))}
-function downloadText(name,text){const blob=new Blob([text],{type:'application/json;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();URL.revokeObjectURL(a.href)}
-function resetForm(){if(!confirm('Form temizlensin mi?'))return;document.querySelectorAll('input,textarea').forEach(i=>{if(i.type==='checkbox')i.checked=false;else if(i.type!=='file')i.value=''});document.getElementById('category').value='altfacts';document.getElementById('blocks').innerHTML='';addBlock('paragraph')}
-function escapeHtml(s){return (s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
-function escapeAttr(s){return escapeHtml(s).replace(/"/g,'&quot;')}
-addBlock('paragraph');document.getElementById('date').value=new Date().getFullYear();syncAll();
+function slugify(str){
+  const tr = {'ş':'s','Ş':'s','ı':'i','İ':'i','ğ':'g','Ğ':'g','ü':'u','Ü':'u','ö':'o','Ö':'o','ç':'c','Ç':'c'};
+  return (str || '').replace(/[şŞıİğĞüÜöÖçÇ]/g, ch => tr[ch] || ch)
+    .toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+}
+function textToHtml(txt){
+  return (txt || '').split(/\n\s*\n/).map(p => '<p>' + escapeHtml(p.trim()).replace(/\n/g,'<br>') + '</p>').join('\n');
+}
+function escapeHtml(s){
+  return s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+}
+function makeJson(){
+  const title = document.getElementById('title').value.trim();
+  if(!title){ alert('Başlık gerekli.'); return; }
+  const item = {
+    title,
+    slug: slugify(title),
+    category: document.getElementById('category').value,
+    image: document.getElementById('image').value.trim(),
+    excerpt: document.getElementById('excerpt').value.trim(),
+    content: textToHtml(document.getElementById('content').value.trim())
+  };
+  document.getElementById('output').textContent = JSON.stringify(item, null, 2);
+}
+async function copyJson(){
+  const out = document.getElementById('output').textContent;
+  if(!out || out.includes('JSON çıktısı')) makeJson();
+  await navigator.clipboard.writeText(document.getElementById('output').textContent);
+  alert('Kopyalandı.');
+}
+function downloadJson(){
+  const out = document.getElementById('output').textContent;
+  if(!out || out.includes('JSON çıktısı')) makeJson();
+  const title = document.getElementById('title').value.trim() || 'blog-yazisi';
+  const blob = new Blob([document.getElementById('output').textContent], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = slugify(title) + '.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+function clearForm(){
+  ['title','image','excerpt','content'].forEach(id => document.getElementById(id).value='');
+  document.getElementById('category').selectedIndex = 0;
+  document.getElementById('output').textContent = 'JSON çıktısı burada görünecek.';
+}
 </script>
 </body>
 </html>
