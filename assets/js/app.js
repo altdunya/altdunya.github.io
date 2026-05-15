@@ -378,9 +378,71 @@ function safeUrl(value) {
   return '';
 }
 
+function renderInlineMarkdown(text) {
+  return esc(text)
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*([^*]+)\*/g, '<em>$1</em>');
+}
+
+function renderSmartParagraph(text) {
+  const raw = String(text || '').trim();
+  const identityMatches = [...raw.matchAll(/\*\*([^*]+?):\*\*\s*([\s\S]*?)(?=\s*\*\*[^*]+?:\*\*|$)/g)];
+  if (identityMatches.length >= 2) {
+    return `<div class="identity-card">${identityMatches.map(match => `
+      <div class="identity-row"><span>${esc(match[1])}</span><strong>${renderInlineMarkdown(match[2].trim())}</strong></div>
+    `).join('')}</div>`;
+  }
+  return `<p>${renderInlineMarkdown(raw).replace(/\n/g, '<br>')}</p>`;
+}
+
+function renderMarkdown(md) {
+  const lines = String(md || '').replace(/\r\n/g, '\n').split('\n');
+  const html = [];
+  let paragraph = [];
+  let list = [];
+
+  const flushParagraph = () => {
+    if (!paragraph.length) return;
+    html.push(renderSmartParagraph(paragraph.join('\n')));
+    paragraph = [];
+  };
+  const flushList = () => {
+    if (!list.length) return;
+    html.push(`<ul>${list.map(item => `<li>${renderInlineMarkdown(item)}</li>`).join('')}</ul>`);
+    list = [];
+  };
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (!trimmed) { flushParagraph(); flushList(); continue; }
+    if (/^---+$/.test(trimmed)) { flushParagraph(); flushList(); html.push('<hr>'); continue; }
+    const img = trimmed.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+    if (img) { flushParagraph(); flushList(); html.push(`<figure><img src="${esc(img[2])}" alt="${esc(img[1])}">${img[1] ? `<figcaption>${esc(img[1])}</figcaption>` : ''}</figure>`); continue; }
+    const heading = trimmed.match(/^(#{1,4})\s+(.+)$/);
+    if (heading) {
+      flushParagraph(); flushList();
+      const level = Math.min(heading[1].length + 1, 4);
+      html.push(`<h${level}>${renderInlineMarkdown(heading[2])}</h${level}>`);
+      continue;
+    }
+    if (trimmed.startsWith('>')) {
+      flushParagraph(); flushList();
+      html.push(`<blockquote>${renderInlineMarkdown(trimmed.replace(/^>\s*/, ''))}</blockquote>`);
+      continue;
+    }
+    const bullet = trimmed.match(/^[-*]\s+(.+)$/);
+    if (bullet) { flushParagraph(); list.push(bullet[1]); continue; }
+    flushList();
+    paragraph.push(trimmed);
+  }
+  flushParagraph();
+  flushList();
+  return html.join('');
+}
+
 function renderPostContent(content) {
   if (!content) return '';
-  if (typeof content === 'string') return content;
+  if (typeof content === 'string') return renderMarkdown(content);
   if (!Array.isArray(content)) return '';
 
   return content.map(block => {
@@ -389,10 +451,10 @@ function renderPostContent(content) {
     const text = block.text || '';
     const level = Math.min(Math.max(Number(block.level || 2), 2), 4);
 
-    if (type === 'heading') return `<h${level}>${esc(text)}</h${level}>`;
-    if (type === 'quote') return `<blockquote>${esc(text)}</blockquote>`;
-    if (type === 'list') return `<ul>${(block.items || []).map(item => `<li>${esc(item)}</li>`).join('')}</ul>`;
-    if (type === 'orderedList') return `<ol>${(block.items || []).map(item => `<li>${esc(item)}</li>`).join('')}</ol>`;
+    if (type === 'heading') return `<h${level}>${renderInlineMarkdown(text)}</h${level}>`;
+    if (type === 'quote') return `<blockquote>${renderInlineMarkdown(text)}</blockquote>`;
+    if (type === 'list') return `<ul>${(block.items || []).map(item => `<li>${renderInlineMarkdown(item)}</li>`).join('')}</ul>`;
+    if (type === 'orderedList') return `<ol>${(block.items || []).map(item => `<li>${renderInlineMarkdown(item)}</li>`).join('')}</ol>`;
     if (type === 'image') {
       const src = safeUrl(block.src || block.url);
       if (!src) return '';
@@ -401,7 +463,7 @@ function renderPostContent(content) {
     }
     if (type === 'html') return String(block.html || '');
     if (type === 'hr') return '<hr>';
-    return `<p>${esc(text)}</p>`;
+    return renderSmartParagraph(text);
   }).join('');
 }
 
@@ -855,13 +917,16 @@ function renderBlogPost(slug) {
   app.innerHTML = `
     <article class="blog-post-layout">
       <header class="blog-post-hero">
-        <div class="kicker">${esc(category.name || 'AltDünya Website')}</div>
-        <h1>${esc(post.title)}</h1>
-        <p>${esc(post.excerpt || '')}</p>
-        <div class="hero-badges">
-          <span class="badge">${esc(post.segment || category.name || 'Yazı')}</span>
-          <span class="badge">${esc(post.date || 'Arşiv')}</span>
-          ${post.sourceUrl ? `<a class="badge" href="${esc(post.sourceUrl)}" target="_blank" rel="noopener noreferrer">Wayback Kaynağı</a>` : ''}
+        ${post.cover ? `<div class="blog-post-cover" style="background-image:url('${esc(post.cover)}')" role="img" aria-label="${esc(post.title)} kapak görseli"></div>` : ''}
+        <div class="blog-post-hero-copy">
+          <div class="kicker">${esc(category.name || 'AltDünya Website')}</div>
+          <h1>${esc(post.title)}</h1>
+          <p>${esc(post.excerpt || '')}</p>
+          <div class="hero-badges">
+            <span class="badge">${esc(post.segment || category.name || 'Yazı')}</span>
+            <span class="badge">${esc(post.date || 'Arşiv')}</span>
+            ${post.sourceUrl ? `<a class="badge subtle-badge" href="${esc(post.sourceUrl)}" target="_blank" rel="noopener noreferrer">Wayback Kaynağı</a>` : ''}
+          </div>
         </div>
       </header>
 
