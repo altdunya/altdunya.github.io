@@ -469,10 +469,12 @@ function renderPostContent(content) {
 
 function blogCard(post) {
   const category = getBlogCategory(post.category);
+  const cover = safeUrl(post.cover || 'assets/images/logo.png') || 'assets/images/logo.png';
   return `
     <article class="blog-card">
       <a class="blog-card-link" href="#/post/${esc(post.slug)}">
-        <div class="blog-thumb" style="background-image:url('${esc(post.cover || 'assets/images/logo.png')}')">
+        <div class="blog-thumb">
+          <img src="${esc(cover)}" alt="${esc(post.title)} kapak görseli" loading="lazy">
           <span>${esc(category.name || 'Yazı')}</span>
         </div>
         <div class="blog-card-body">
@@ -917,7 +919,7 @@ function renderBlogPost(slug) {
   app.innerHTML = `
     <article class="blog-post-layout">
       <header class="blog-post-hero">
-        ${post.cover ? `<div class="blog-post-cover" style="background-image:url('${esc(post.cover)}')" role="img" aria-label="${esc(post.title)} kapak görseli"></div>` : ''}
+        ${post.cover ? `<figure class="blog-post-cover"><img src="${esc(safeUrl(post.cover) || post.cover)}" alt="${esc(post.title)} kapak görseli"></figure>` : ''}
         <div class="blog-post-hero-copy">
           <div class="kicker">${esc(category.name || 'AltDünya Website')}</div>
           <h1>${esc(post.title)}</h1>
