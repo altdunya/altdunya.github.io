@@ -1,0 +1,139 @@
+{
+  "categories": [
+    {
+      "id": "altfacts",
+      "name": "AltFacts",
+      "label": "Bilgi / Trivia",
+      "description": "Oyun, çizgi roman ve geek kültürü hakkında az bilinen gerçekler."
+    },
+    {
+      "id": "althistory",
+      "name": "AltHistory",
+      "label": "Retrospektif",
+      "description": "Eski oyunlar, çizgi filmler, filmler ve dönem kültürleri üzerine nostaljik dosyalar."
+    },
+    {
+      "id": "altreview",
+      "name": "AltReview",
+      "label": "Yorum / İnceleme",
+      "description": "Film, çizgi roman, oyun ve animasyonları AltDünya tonuyla yeniden değerlendiren yazılar."
+    },
+    {
+      "id": "oyunyorum",
+      "name": "OyunYorum",
+      "label": "Retro Oyun Yazıları",
+      "description": "Eski AltDünya ruhundaki kişisel retro oyun yazıları ve deneyimler."
+    }
+  ],
+  "posts": [
+    {
+      "slug": "altfacts-starcraft-hakkinda-10-az-bilinen-gercek",
+      "title": "StarCraft Hakkında Az Bilinen 10 Gerçek",
+      "category": "altfacts",
+      "segment": "AltFacts",
+      "date": "2024 arşivi",
+      "featured": true,
+      "cover": "assets/images/logo.png",
+      "sourceUrl": "https://web.archive.org/web/20240616223551/http://altdunya.com/altfacts-starcraft-hakkinda-10-az-bilinen-gercek/",
+      "excerpt": "Blizzard'ın strateji klasiğine dair trivia, geliştirme süreci ve nostalji notları.",
+      "content": [
+        { "type": "heading", "text": "AltFacts formatı" },
+        { "type": "paragraph", "text": "Bu yazı AltDünya'nın eski arşivinden yeni siteye taşınacak AltFacts formatı için örnek kayıt olarak eklendi." },
+        { "type": "paragraph", "text": "Tam metin daha sonra eski siteden aktarılabilir. Bu yapı; başlık, kategori, özet, Wayback kaynağı ve video adaptasyonu için hazır şekilde çalışır." }
+      ]
+    },
+    {
+      "slug": "altfacts-superman-hakkinda-az-bilinen-12-gercek",
+      "title": "Superman Hakkında Az Bilinen 12 Gerçek",
+      "category": "altfacts",
+      "segment": "AltFacts",
+      "date": "2023 arşivi",
+      "featured": true,
+      "cover": "assets/images/logo.png",
+      "sourceUrl": "https://web.archive.org/web/20230924003421/https://altdunya.com/altfacts-superman-hakkinda-az-bilinen-12-gercek/",
+      "excerpt": "Superman'in yıllar içinde değişen güçleri, garip dönemleri ve popüler kültürde bıraktığı izler.",
+      "content": [
+        { "type": "heading", "text": "Az bilinen gerçekler" },
+        { "type": "paragraph", "text": "Superman yazısı, AltFacts videolarına doğrudan uyarlanabilecek türde kısa ve merak uyandıran bilgi maddeleri taşıyan arşiv içeriklerinden biri." },
+        { "type": "quote", "text": "Bu bölüm oyun arşivinden bağımsızdır; video ve blog tarafında kendi ritmiyle büyür." }
+      ]
+    },
+    {
+      "slug": "marvel-animated-universe-mcudan-once-gelen-birlesik-evren",
+      "title": "Marvel Animated Universe: MCU'dan Önce Gelen Birleşik Evren",
+      "category": "althistory",
+      "segment": "AltHistory",
+      "date": "2023 arşivi",
+      "featured": true,
+      "cover": "assets/images/logo.png",
+      "sourceUrl": "https://web.archive.org/web/20230923232740/https://altdunya.com/marvel-animated-universe-mcudan-once-gelen-birlesik-evren/",
+      "excerpt": "90'lar Marvel animasyonlarının aslında nasıl bağlantılı bir evren hissi verdiğini anlatan nostaljik dosya.",
+      "content": [
+        { "type": "heading", "text": "AltHistory örneği" },
+        { "type": "paragraph", "text": "Bu yazı AltHistory segmenti için çok uygun: dönem anlatısı, çizgi film hafızası ve geek kültürü aynı yerde buluşuyor." },
+        { "type": "paragraph", "text": "Tam metin eklendiğinde bu sayfa video embed'i, görsel bloklar ve ilgili yazılarla genişletilebilir." }
+      ]
+    },
+    {
+      "slug": "altlist-eski-spider-man-filmlerinin-yaptigi-5-yanlis",
+      "title": "Eski Spider-Man Filmlerinin Yaptığı 5 Yanlış",
+      "category": "althistory",
+      "segment": "AltHistory",
+      "date": "2023 arşivi",
+      "featured": false,
+      "cover": "assets/images/logo.png",
+      "sourceUrl": "https://web.archive.org/web/20230923231519/https://altdunya.com/altlist-eski-spider-man-filmlerinin-yaptigi-5-yanlis/",
+      "excerpt": "Eski Spider-Man filmlerine bugünden bakınca göze çarpan tercihleri nostaljik bir gözle ele alan liste.",
+      "content": [
+        { "type": "paragraph", "text": "Bu kayıt AltHistory veya AltList altında kullanılabilecek eski site yazısı için yer tutucu olarak eklendi." }
+      ]
+    },
+    {
+      "slug": "cizgiromanyorum-venom-vs-carnage",
+      "title": "Venom vs. Carnage",
+      "category": "altreview",
+      "segment": "AltReview",
+      "date": "2023 arşivi",
+      "featured": true,
+      "cover": "assets/images/logo.png",
+      "sourceUrl": "https://web.archive.org/web/20231204183114/https://altdunya.com/cizgiromanyorum-venom-vs-carnage/",
+      "excerpt": "Venom ve Carnage ekseninde çizgi roman yorumuna dönüşebilecek karanlık, kaotik ve nostaljik bir AltReview adayı.",
+      "content": [
+        { "type": "heading", "text": "AltReview alanı" },
+        { "type": "paragraph", "text": "Bu tarz içerikler belirli bir çizgi romanı, filmi veya oyunu yorumlamak için AltReview etiketiyle ayrılabilir." },
+        { "type": "paragraph", "text": "AltHistory dönem anlatırken, AltReview tek bir ürüne veya hikâyeye odaklanır." }
+      ]
+    },
+    {
+      "slug": "filmyorum-batman-1989",
+      "title": "Batman (1989)",
+      "category": "altreview",
+      "segment": "AltReview",
+      "date": "2022 arşivi",
+      "featured": false,
+      "cover": "assets/images/logo.png",
+      "sourceUrl": "https://web.archive.org/web/20220810173227/http://altdunya.com/filmyorum-batman-1989/",
+      "excerpt": "Tim Burton'ın Batman yorumuna AltDünya arşivinden nostaljik bir bakış.",
+      "content": [
+        { "type": "paragraph", "text": "Batman 1989 yazısı, film yorumu tarafının AltReview altında nasıl duracağını test etmek için eklendi." }
+      ]
+    },
+    {
+      "slug": "oyunyorum-theme-hospital",
+      "title": "Theme Hospital",
+      "category": "oyunyorum",
+      "segment": "OyunYorum",
+      "date": "Eski arşiv",
+      "featured": false,
+      "cover": "assets/images/logo.png",
+      "excerpt": "GOG versiyonu üzerinden yeniden oynanan Theme Hospital'a dair kişisel, mizahi ve nostaljik bir yazı.",
+      "content": [
+        { "type": "heading", "text": "Künye" },
+        { "type": "list", "items": ["Firma: Bullfrog", "Çıkış Yılı: 1997", "Tür: Tycoon, Simülasyon", "Platform: PC"] },
+        { "type": "heading", "text": "Giriş" },
+        { "type": "paragraph", "text": "Theme Hospital, Bullfrog mizahının en güzel örneklerinden biri. Eski AltDünya yazılarındaki samimi tonla yeni sitedeki blog alanında yaşatılabilecek güçlü bir örnek." },
+        { "type": "paragraph", "text": "Tam yazı aktarılırken metin korunup sadece paragraflar, ara başlıklar ve görsel alanları daha okunabilir hale getirilebilir." }
+      ]
+    }
+  ]
+}
