@@ -1,138 +1,464 @@
 {
-  "categories": [
-    {
-      "id": "altfacts",
-      "name": "AltFacts",
-      "label": "Bilgi / Trivia",
-      "description": "Oyun, çizgi roman ve geek kültürü hakkında az bilinen gerçekler."
-    },
-    {
-      "id": "althistory",
-      "name": "AltHistory",
-      "label": "Retrospektif",
-      "description": "Eski oyunlar, çizgi filmler, filmler ve dönem kültürleri üzerine nostaljik dosyalar."
-    },
-    {
-      "id": "altreview",
-      "name": "AltReview",
-      "label": "Yorum / İnceleme",
-      "description": "Film, çizgi roman, oyun ve animasyonları AltDünya tonuyla yeniden değerlendiren yazılar."
-    },
-    {
-      "id": "oyunyorum",
-      "name": "OyunYorum",
-      "label": "Retro Oyun Yazıları",
-      "description": "Eski AltDünya ruhundaki kişisel retro oyun yazıları ve deneyimler."
-    }
-  ],
+  "categories": [],
   "posts": [
     {
-      "slug": "altfacts-starcraft-hakkinda-10-az-bilinen-gercek",
-      "title": "StarCraft Hakkında Az Bilinen 10 Gerçek",
-      "category": "altfacts",
-      "segment": "AltFacts",
-      "date": "2024 arşivi",
-      "featured": true,
-      "cover": "assets/images/logo.png",
-      "sourceUrl": "https://web.archive.org/web/20240616223551/http://altdunya.com/altfacts-starcraft-hakkinda-10-az-bilinen-gercek/",
-      "excerpt": "Blizzard'ın strateji klasiğine dair trivia, geliştirme süreci ve nostalji notları.",
-      "content": [
-        { "type": "heading", "text": "AltFacts formatı" },
-        { "type": "paragraph", "text": "Bu yazı AltDünya'nın eski arşivinden yeni siteye taşınacak AltFacts formatı için örnek kayıt olarak eklendi." },
-        { "type": "paragraph", "text": "Tam metin daha sonra eski siteden aktarılabilir. Bu yapı; başlık, kategori, özet, Wayback kaynağı ve video adaptasyonu için hazır şekilde çalışır." }
-      ]
-    },
-    {
-      "slug": "altfacts-superman-hakkinda-az-bilinen-12-gercek",
-      "title": "Superman Hakkında Az Bilinen 12 Gerçek",
-      "category": "altfacts",
-      "segment": "AltFacts",
-      "date": "2023 arşivi",
-      "featured": true,
-      "cover": "assets/images/logo.png",
-      "sourceUrl": "https://web.archive.org/web/20230924003421/https://altdunya.com/altfacts-superman-hakkinda-az-bilinen-12-gercek/",
-      "excerpt": "Superman'in yıllar içinde değişen güçleri, garip dönemleri ve popüler kültürde bıraktığı izler.",
-      "content": [
-        { "type": "heading", "text": "Az bilinen gerçekler" },
-        { "type": "paragraph", "text": "Superman yazısı, AltFacts videolarına doğrudan uyarlanabilecek türde kısa ve merak uyandıran bilgi maddeleri taşıyan arşiv içeriklerinden biri." },
-        { "type": "quote", "text": "Bu bölüm oyun arşivinden bağımsızdır; video ve blog tarafında kendi ritmiyle büyür." }
-      ]
-    },
-    {
-      "slug": "marvel-animated-universe-mcudan-once-gelen-birlesik-evren",
-      "title": "Marvel Animated Universe: MCU'dan Önce Gelen Birleşik Evren",
-      "category": "althistory",
-      "segment": "AltHistory",
-      "date": "2023 arşivi",
-      "featured": true,
-      "cover": "assets/images/logo.png",
-      "sourceUrl": "https://web.archive.org/web/20230923232740/https://altdunya.com/marvel-animated-universe-mcudan-once-gelen-birlesik-evren/",
-      "excerpt": "90'lar Marvel animasyonlarının aslında nasıl bağlantılı bir evren hissi verdiğini anlatan nostaljik dosya.",
-      "content": [
-        { "type": "heading", "text": "AltHistory örneği" },
-        { "type": "paragraph", "text": "Bu yazı AltHistory segmenti için çok uygun: dönem anlatısı, çizgi film hafızası ve geek kültürü aynı yerde buluşuyor." },
-        { "type": "paragraph", "text": "Tam metin eklendiğinde bu sayfa video embed'i, görsel bloklar ve ilgili yazılarla genişletilebilir." }
-      ]
-    },
-    {
-      "slug": "altlist-eski-spider-man-filmlerinin-yaptigi-5-yanlis",
-      "title": "Eski Spider-Man Filmlerinin Yaptığı 5 Yanlış",
-      "category": "althistory",
-      "segment": "AltHistory",
-      "date": "2023 arşivi",
-      "featured": false,
-      "cover": "assets/images/logo.png",
-      "sourceUrl": "https://web.archive.org/web/20230923231519/https://altdunya.com/altlist-eski-spider-man-filmlerinin-yaptigi-5-yanlis/",
-      "excerpt": "Eski Spider-Man filmlerine bugünden bakınca göze çarpan tercihleri nostaljik bir gözle ele alan liste.",
-      "content": [
-        { "type": "paragraph", "text": "Bu kayıt AltHistory veya AltList altında kullanılabilecek eski site yazısı için yer tutucu olarak eklendi." }
-      ]
-    },
-    {
-      "slug": "cizgiromanyorum-venom-vs-carnage",
-      "title": "Venom vs. Carnage",
-      "category": "altreview",
-      "segment": "AltReview",
-      "date": "2023 arşivi",
-      "featured": true,
-      "cover": "assets/images/logo.png",
-      "sourceUrl": "https://web.archive.org/web/20231204183114/https://altdunya.com/cizgiromanyorum-venom-vs-carnage/",
-      "excerpt": "Venom ve Carnage ekseninde çizgi roman yorumuna dönüşebilecek karanlık, kaotik ve nostaljik bir AltReview adayı.",
-      "content": [
-        { "type": "heading", "text": "AltReview alanı" },
-        { "type": "paragraph", "text": "Bu tarz içerikler belirli bir çizgi romanı, filmi veya oyunu yorumlamak için AltReview etiketiyle ayrılabilir." },
-        { "type": "paragraph", "text": "AltHistory dönem anlatırken, AltReview tek bir ürüne veya hikâyeye odaklanır." }
-      ]
-    },
-    {
-      "slug": "filmyorum-batman-1989",
-      "title": "Batman (1989)",
-      "category": "altreview",
-      "segment": "AltReview",
-      "date": "2022 arşivi",
-      "featured": false,
-      "cover": "assets/images/logo.png",
-      "sourceUrl": "https://web.archive.org/web/20220810173227/http://altdunya.com/filmyorum-batman-1989/",
-      "excerpt": "Tim Burton'ın Batman yorumuna AltDünya arşivinden nostaljik bir bakış.",
-      "content": [
-        { "type": "paragraph", "text": "Batman 1989 yazısı, film yorumu tarafının AltReview altında nasıl duracağını test etmek için eklendi." }
-      ]
-    },
-    {
-      "slug": "oyunyorum-theme-hospital",
-      "title": "Theme Hospital",
-      "category": "oyunyorum",
-      "segment": "OyunYorum",
+      "slug": "he-man-filmation-kahraman-kimlikleri",
+      "title": "He-Man (Filmation) | Kahraman Kimlikleri",
+      "category": "kahramankimlikleri",
+      "segment": "Kahraman Kimlikleri",
       "date": "Eski arşiv",
       "featured": false,
       "cover": "assets/images/logo.png",
-      "excerpt": "GOG versiyonu üzerinden yeniden oynanan Theme Hospital'a dair kişisel, mizahi ve nostaljik bir yazı.",
+      "sourceUrl": "https://web.archive.org/web/20240418012326/http://altdunya.com/kahraman-kimlikleri-he-man-filmation/",
+      "excerpt": "He-Man’in orijini, Güç Kılıcı, Skeletor ilişkisi, She-Ra bağlantısı ve 80’ler oyuncak kültüründeki yeri üzerine nostaljik bir Kahraman Kimlikleri dosyası.",
       "content": [
-        { "type": "heading", "text": "Künye" },
-        { "type": "list", "items": ["Firma: Bullfrog", "Çıkış Yılı: 1997", "Tür: Tycoon, Simülasyon", "Platform: PC"] },
-        { "type": "heading", "text": "Giriş" },
-        { "type": "paragraph", "text": "Theme Hospital, Bullfrog mizahının en güzel örneklerinden biri. Eski AltDünya yazılarındaki samimi tonla yeni sitedeki blog alanında yaşatılabilecek güçlü bir örnek." },
-        { "type": "paragraph", "text": "Tam yazı aktarılırken metin korunup sadece paragraflar, ara başlıklar ve görsel alanları daha okunabilir hale getirilebilir." }
+        {
+          "type": "quote",
+          "text": "Bu yazı orijinal olarak 2013 yılında AltDünya'da yayınlanmıştır. Bazı bilgiler günümüzde değişmiş veya genişletilmiş olabilir."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Kimlik Kartı"
+        },
+        {
+          "type": "paragraph",
+          "text": "**Gerçek Adı:** Prince Adam **Irk:** İnsan **Vatandaşlık:** Eternia **Cinsiyet:** Erkek **Durumu:** Yaşıyor"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Ünvanları"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Prens",
+            "He-Man",
+            "Evrendeki En Güçlü Adam",
+            "The Most Powerful Man in the Universe"
+          ]
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 1,
+          "text": "Özgeçmiş / Origin"
+        },
+        {
+          "type": "paragraph",
+          "text": "İlk ortaya çıktığında kendisine farklı bir geçmiş yazılmış olsa da bizim baz alacağımız versiyon Filmation çizgi dizisindeki hali olacak."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bu versiyonda He-Man aslında Eternia Krallığı’nın prenslerinden biri olan Prens Adam’dır. Kendisi Kral Randor ve Kraliçe Marlena’nın ikiz çocuklarından biri olarak dünyaya gelir. Kraliçe Marlena’nın olayı ayrıca ilginç çünkü kendisi aslında Dünya’dan gelen bir astronottur. Eternia’ya geldikten sonra Randor’a aşık olup burada kalmıştır."
+        },
+        {
+          "type": "paragraph",
+          "text": "Adam, Gölgeler Şatosu’nun Büyücüsü tarafından verilen Güç Kılıcı’nı göğe kaldırıp:"
+        },
+        {
+          "type": "quote",
+          "text": "“Gölgelerin gücü adına… Güç bende artık!”"
+        },
+        {
+          "type": "paragraph",
+          "text": "diye bağırdığında He-Man’e dönüşür."
+        },
+        {
+          "type": "paragraph",
+          "text": "(Bu arada orijinal replik “By the power of Grayskull… I have the power.” olsa da bizim çeviri her türlü daha havalı 🙂)"
+        },
+        {
+          "type": "paragraph",
+          "text": "Dönüşüm kısmında dürüst olalım: Adam ile He-Man arasında görünüş olarak devasa bir fark yok 😄"
+        },
+        {
+          "type": "paragraph",
+          "text": "He-Man biraz daha koyu saçlı, biraz daha bronz ve biraz daha kalın sesli… o kadar. İnsanların bunu anlayamaması Superman’in gözlük olayına rakip seviyede bir gizem."
+        },
+        {
+          "type": "paragraph",
+          "text": "Prens Adam’ın ayrıca Titrek adlı yeşil bir kaplanı vardır. Adam dönüşünce Güç Kılıcı onu da Atılgan’a dönüştürür."
+        },
+        {
+          "type": "paragraph",
+          "text": "Açık konuşmak gerekirse onun dönüşümü daha mantıklı:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Boy büyüyor",
+            "Cesurlaşıyor",
+            "Zırh geliyor",
+            "Gerçekten savaş kedisine dönüşüyor"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "He-Man’inkinde ise olay biraz daha “kaslar %40 arttı” seviyesinde 😄"
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 1,
+          "text": "Yardımcı Karakterler"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Büyücü / The Sorceress"
+        },
+        {
+          "type": "paragraph",
+          "text": "He-Man’in güçlerinin kaynağı Gölgeler Şatosu’dur ve bu gücü kontrol eden kişi de Büyücü’dür. Kendisi He-Man’in sırrını bilen ilk kişidir. Aralarında telepatik bir bağ da bulunmaktadır."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Duncan / Man-At-Arms"
+        },
+        {
+          "type": "paragraph",
+          "text": "Eternia ordularının generali olan Duncan aynı zamanda teknoloji ve silah uzmanıdır."
+        },
+        {
+          "type": "paragraph",
+          "text": "(Bu arada “Man-At-Arms” ismini koyarken gerçekten hiç mi toplantı yapmamışlar acaba? 😄)"
+        },
+        {
+          "type": "paragraph",
+          "text": "Duncan, Adam’ın mentor figürü gibidir ve He-Man’in gizli kimliğini bilen kişilerden biridir."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Orko"
+        },
+        {
+          "type": "paragraph",
+          "text": "Dizinin komedi unsuru olan Orko da sırrı bilen karakterler arasındadır."
+        },
+        {
+          "type": "paragraph",
+          "text": "Kendisi klasik “büyüleri ters giden sihirbaz” karakteridir. Bugün biraz klişe görünse de dönemin çocuk çizgi filmlerinde oldukça yaygın bir karakter tipi."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Teela"
+        },
+        {
+          "type": "paragraph",
+          "text": "Duncan’ın üvey kızı olan Teela Eternia ordusunda yüzbaşıdır. Güçlü bir kadın savaşçı olarak yazılmıştır."
+        },
+        {
+          "type": "paragraph",
+          "text": "Buna rağmen çocukluğundan beri tanıdığı Adam’ın güneşte biraz yanmış hâlini tanıyamaması oldukça etkileyici bir başarı 😄"
+        },
+        {
+          "type": "paragraph",
+          "text": "Üstelik Adam’ı sürekli “narin” diye küçümsemesi de cabası."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 1,
+          "text": "Baş Düşmanlar"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "İskeletor / Skeletor"
+        },
+        {
+          "type": "paragraph",
+          "text": "He-Man’in baş düşmanı olan İskeletor kara büyü ve dövüş konusunda oldukça tehlikelidir."
+        },
+        {
+          "type": "paragraph",
+          "text": "Evet, planlarının büyük kısmı patlar. Ama evren hâlâ onun çok zeki olduğunu söylüyor 😄"
+        },
+        {
+          "type": "paragraph",
+          "text": "Filmation dizisinde tam orijini net değildir. Genelde başka bir boyuttan gelen şeytani bir varlık gibi anlatılır. Daha sonraki bazı çizgi romanlarda gerçek kimliğinin Randor’un kardeşi Keldor olduğu söylenmiştir."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ayrıca Hordak’ın eski sağ kolu olduğu bilgisi de vardır."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ama dürüst olayım: Ben her türlü Skeletor tarafındayım 😄"
+        },
+        {
+          "type": "paragraph",
+          "text": "Karizma olarak fazla güçlü."
+        },
+        {
+          "type": "paragraph",
+          "text": "Temel amacı Gölgeler Şatosu’nu ele geçirip Eternia’yı fethetmektir. Tabii çevresinde de birbirinden kötü isimli yardımcı kötü adamlar bulunur."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Hordak"
+        },
+        {
+          "type": "paragraph",
+          "text": "She-Ra tarafının ana kötüsü olan Hordak aynı zamanda İskeletor’un eski efendisidir."
+        },
+        {
+          "type": "paragraph",
+          "text": "He-Man çizgi filminde çok büyük yer kaplamasa da evrenin önemli karakterlerinden biridir."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 1,
+          "text": "She-Ra Bağlantısı"
+        },
+        {
+          "type": "paragraph",
+          "text": "Gerçek adı Adora olan She-Ra, Adam’ın ikiz kardeşidir."
+        },
+        {
+          "type": "paragraph",
+          "text": "Doğum sırasında Hordak tarafından kaçırılmış ve Etheria’da yetiştirilmiştir. Daha sonra He-Man sayesinde gerçekleri öğrenip Hordak’a karşı başlatılan ayaklanmaya katılır."
+        },
+        {
+          "type": "paragraph",
+          "text": "Kendisi de He-Man’e benzer bir dönüşüm sistemi kullanır ve kendi Güç Kılıcı’na sahiptir."
+        },
+        {
+          "type": "paragraph",
+          "text": "Netflix dizisine ayrıca gireriz çünkü o başlı başına ayrı bir yazı konusu 🙂"
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 1,
+          "text": "Güçleri ve Ekipmanları"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Güç Kılıcı"
+        },
+        {
+          "type": "paragraph",
+          "text": "He-Man’in en önemli ekipmanı tartışmasız Güç Kılıcı’dır."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bu kılıç:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "neredeyse yok edilemez,",
+            "enerji saldırılarını yansıtabilir,",
+            "Adam’ı He-Man’e dönüştürür,",
+            "Titrek’i Atılgan’a çevirir."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Kılıç aslında Gölgeler Şatosu’nun gücünü kullanıcıya aktarır."
+        },
+        {
+          "type": "paragraph",
+          "text": "He-Man’in göğüs zırhı da Eternia’nın özel minerali olan Corodite’tan yapılmıştır ve gücünü artırır."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Fiziksel Güçleri"
+        },
+        {
+          "type": "paragraph",
+          "text": "Kısa cevap: Çok güçlü 😄"
+        },
+        {
+          "type": "paragraph",
+          "text": "Dağ taşıyor. Metalleri çıplak elle büküyor. Patlamalara dayanıyor."
+        },
+        {
+          "type": "paragraph",
+          "text": "Hatta bazı çizgi romanlarda Superman ile kapışabilecek seviyede gösterilmişliği bile var."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bunun dışında:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "insanüstü hız,",
+            "çeviklik,",
+            "yüksek sıçrama yeteneği,",
+            "dayanıklılık,",
+            "telepatik iletişim"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "gibi güçleri de bulunmaktadır."
+        },
+        {
+          "type": "paragraph",
+          "text": "En ilginç noktalardan biri ise karakterin sadece kaba kuvvetle çözüm üretmemesi. Dizi boyunca sık sık olayları şiddete başvurmadan çözmeye çalıştığı vurgulanır."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bu durum dönemin televizyon standartlarıyla da bağlantılıdır. He-Man’in kılıcıyla insanlara ciddi zarar vermesi pek gösterilmez. O yüzden çoğu bölümde düşmanları sağa sola fırlatarak etkisiz hale getirir."
+        },
+        {
+          "type": "paragraph",
+          "text": "Robotlar hariç tabii 😄"
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 1,
+          "text": "Kostümleri"
+        },
+        {
+          "type": "paragraph",
+          "text": "He-Man’in kostümü tam anlamıyla bir 80’ler ürünü 😄"
+        },
+        {
+          "type": "paragraph",
+          "text": "Adam tarafında:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "pembe tonlu kıyafetler,",
+            "daha “yumuşak” bir görünüm,",
+            "dönemine göre oldukça metroseksüel bir tarz vardır."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "He-Man tarafında ise:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "çıplak üst vücut,",
+            "tüylü şort,",
+            "tüylü botlar,",
+            "maksimum testosteron 😄"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Sanırım tasarımcılar iki karakter arasında mümkün olduğunca sert bir kontrast yaratmaya çalışmış."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ve evet… İnsanların anlayamaması artık biraz daha mantıklı geliyor."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 1,
+          "text": "Karakterin Yaratılışı"
+        },
+        {
+          "type": "paragraph",
+          "text": "He-Man aslında çizgi film için yaratılmış bir karakter değildir."
+        },
+        {
+          "type": "paragraph",
+          "text": "Karakterin kökeni doğrudan Mattel’in oyuncak serisine dayanır. O dönemde Conan the Barbarian benzeri barbar karakterlerin popülerleşmesiyle Mattel kendi aksiyon figürü markasını oluşturmak istemiştir."
+        },
+        {
+          "type": "paragraph",
+          "text": "İlk versiyonlarda:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "He-Man daha barbar tarzı bir karakterdi,",
+            "baltası vardı,",
+            "Güç Kılıcı iki parçadan oluşuyordu,",
+            "Gölgeler Şatosu’nun gücünü ele geçirme hikâyesi kullanılıyordu."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Filmation çizgi dizisiyle birlikte karakter bugünkü hâline daha yakın bir forma dönüştü."
+        },
+        {
+          "type": "paragraph",
+          "text": "Netflix’teki “The Toys That Made Us” belgeseli bu süreci detaylı şekilde anlatıyor. Retro oyuncak kültürüyle ilgilenenlerin kesinlikle izlemesini öneririm."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 1,
+          "text": "Son Yorumlar"
+        },
+        {
+          "type": "paragraph",
+          "text": "He-Man bugün hâlâ pop kültürünün en ikonik karakterlerinden biri olmaya devam ediyor."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bir yanda:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "metroseksüel prens Adam,",
+            "diğer yanda evrenin en güçlü barbarı 😄"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Ve işin ilginç tarafı bu konsept hâlâ çalışıyor."
+        },
+        {
+          "type": "paragraph",
+          "text": "Çocukluğumuzun televizyon başı çizgi film dönemlerinden kalan en büyük ikonlardan biri olmayı başarmış durumda."
+        },
+        {
+          "type": "paragraph",
+          "text": "Kahraman Kimlikleri serisinde görmek istediğiniz başka karakterler varsa onları da paylaşmayı unutmayın 🙂"
+        }
       ]
     }
   ]
