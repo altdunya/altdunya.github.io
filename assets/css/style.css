@@ -283,3 +283,14 @@ input,select,textarea{background:#0e1530;color:#fff;border:1px solid var(--line)
 .blog-side-links{display:grid;gap:8px}
 @media (max-width:1100px){.website-hero,.blog-post-grid{grid-template-columns:1fr}.blog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.website-orbit{min-height:220px}.orbit-ring{width:200px;height:200px}}
 @media (max-width:620px){.website-hero{padding:24px}.blog-grid{grid-template-columns:1fr}.blog-post-body{padding:22px}.orbit-title{font-size:.9rem}.orbit-ufo{font-size:3.8rem}}
+
+
+/* Blog yazı gövdesi: Markdown bloklarından gelen uzun yazılar için */
+.blog-post-body h3{font-size:1.35rem;margin:24px 0 10px;color:#fff;letter-spacing:-.02em}
+.blog-post-body h4{font-size:1.15rem;margin:20px 0 8px;color:#f4f7ff}
+.blog-post-body ul,.blog-post-body ol{margin:0 0 20px;padding-left:24px;color:#dbe2ff;line-height:1.85}
+.blog-post-body hr{border:0;border-top:1px solid var(--line);margin:28px 0}
+.blog-post-body figure{margin:26px 0;padding:0}
+.blog-post-body figure img{width:100%;max-width:100%;border-radius:18px;border:1px solid var(--line);display:block;background:#0e1530}
+.blog-post-body figcaption{margin-top:8px;color:var(--muted);font-size:.92rem;text-align:center}
+.blog-post-body strong{color:#fff}
