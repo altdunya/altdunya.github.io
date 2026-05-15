@@ -1,5 +1,6 @@
 const STORAGE_KEY = 'altdunyaSiteData';
 let siteData = null;
+let blogData = { categories: [], posts: [] };
 
 const app = document.getElementById('app');
 const mainNav = document.getElementById('mainNav');
@@ -225,6 +226,18 @@ function closePanel() {
   panelBackdrop.classList.remove('show');
 }
 
+async function loadBlogData() {
+  try {
+    const res = await fetch('data/blog.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error('Blog data not found');
+    blogData = await res.json();
+  } catch (e) {
+    blogData = { categories: [], posts: [] };
+  }
+  blogData.categories ||= [];
+  blogData.posts ||= [];
+}
+
 async function loadData() {
   const local = localStorage.getItem(STORAGE_KEY);
   if (local) {
@@ -239,6 +252,7 @@ async function loadData() {
     }
   }
   normalizeSiteData();
+  await loadBlogData();
   buildNav();
   initSiteSearch();
   renderRoute();
@@ -284,6 +298,7 @@ function buildNav() {
       .filter(c => ['konsol', 'arcade', 'freeware'].includes(c.id))
       .map(c => ({ id: c.id, label: c.name, href: `#/category/${c.id}` })),
     { id: 'videolar', label: 'Videolar', href: '#/category/videolar' },
+    { id: 'website', label: 'Website', href: '#/website' },
   ];
   mainNav.innerHTML = links.map(link => `<a class="nav-link" data-id="${link.id}" href="${link.href}">${link.label}</a>`).join('');
 }
@@ -306,6 +321,8 @@ function renderRoute() {
   if (parts[0] === 'games') return renderGames();
   if (parts[0] === 'category' && parts[1]) return renderCategory(parts[1]);
   if (parts[0] === 'game' && parts[1]) return renderGame(parts[1]);
+  if (parts[0] === 'website') return parts[1] ? renderWebsiteCategory(parts[1]) : renderWebsiteHome();
+  if (parts[0] === 'post' && parts[1]) return renderBlogPost(parts[1]);
   if (STATIC_PAGES[parts[0]]) return renderStaticPage(parts[0]);
   return renderHome();
 }
@@ -332,6 +349,61 @@ function getHomePopular() {
     .filter(Boolean);
   const fallback = siteData.games.filter(g => !selected.some(s => s.slug === g.slug));
   return [...selected, ...fallback].slice(0, 12);
+}
+
+
+function getBlogCategory(id) {
+  return blogData.categories.find(c => c.id === id) || { id, name: id, description: '' };
+}
+
+function getBlogPost(slug) {
+  return blogData.posts.find(post => post.slug === slug);
+}
+
+function getFeaturedBlogPosts(limit = 3) {
+  const posts = [...(blogData.posts || [])];
+  if (!posts.length) return [];
+  const daySeed = Math.floor(Date.now() / 86400000);
+  return posts
+    .map((post, index) => ({ post, score: Math.sin((index + 1) * 999 + daySeed) }))
+    .sort((a, b) => b.score - a.score)
+    .map(entry => entry.post)
+    .slice(0, limit);
+}
+
+function blogCard(post) {
+  const category = getBlogCategory(post.category);
+  return `
+    <article class="blog-card">
+      <a class="blog-card-link" href="#/post/${esc(post.slug)}">
+        <div class="blog-thumb" style="background-image:url('${esc(post.cover || 'assets/images/logo.png')}')">
+          <span>${esc(category.name || 'Yazı')}</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="kicker">${esc(category.name || 'AltDünya Website')}</div>
+          <h3>${esc(post.title)}</h3>
+          <p>${esc(post.excerpt || '')}</p>
+          <div class="meta-row">
+            <span class="badge">${esc(post.segment || category.name || 'Yazı')}</span>
+            <span class="badge">${esc(post.date || 'Arşiv')}</span>
+          </div>
+        </div>
+      </a>
+    </article>
+  `;
+}
+
+function miniPost(post) {
+  const category = getBlogCategory(post.category);
+  return `
+    <a class="mini-item mini-post" href="#/post/${esc(post.slug)}">
+      <div class="mini-thumb blog-mini-thumb">${esc((post.segment || category.name || 'Y')[0])}</div>
+      <div>
+        <strong>${esc(post.title)}</strong>
+        <div class="muted">${esc(category.name || 'Website')} | ${esc(post.date || 'Arşiv')}</div>
+      </div>
+    </a>
+  `;
 }
 
 function gameCard(game) {
@@ -447,6 +519,13 @@ function renderHome() {
               <li>⚖️ İçerikler güvenli ve sürdürülebilir şekilde hazırlanır.</li>
               <li>⚡ Tek tıkla çalışan paketlerle uğraşmadan direkt oyuna girersin.</li>
             </ul>
+          </div>
+          <div class="side-card">
+            <div class="section-head compact-head">
+              <h3>Website Arşivinden</h3>
+              <a class="tiny-link" href="#/website">Tümü</a>
+            </div>
+            <div class="mini-list">${getFeaturedBlogPosts(3).map(miniPost).join('') || '<div class="search-empty">Blog yazıları yakında.</div>'}</div>
           </div>
         </aside>
       </div>
@@ -659,6 +738,123 @@ function renderGame(slug) {
   document.getElementById('packJumpBtnSide')?.addEventListener('click', () => document.getElementById('packSection').scrollIntoView({behavior:'smooth'}));
   bindGallery();
   loadDisqus(slug);
+}
+
+
+function renderWebsiteHome() {
+  setActiveNav('website');
+  const posts = blogData.posts || [];
+  const latest = posts.slice(0, 6);
+  const featured = posts.filter(p => p.featured).slice(0, 4);
+  app.innerHTML = `
+    <section class="website-hero">
+      <div class="website-hero-copy">
+        <div class="kicker">AltDünya Website</div>
+        <h1>Blog, arşiv yazıları ve geek kültürü dosyaları.</h1>
+        <p>Bu bölüm oyun indirme arşivinden bağımsız çalışır. Eski AltDünya yazıları, AltFacts, AltHistory, AltReview ve nostaljik yorumlar burada kendi alanında döner.</p>
+        <div class="cta-row">
+          <a class="primary-btn" href="#/website/altfacts">AltFacts</a>
+          <a class="secondary-btn" href="#/website/althistory">AltHistory</a>
+          <a class="secondary-btn" href="#/website/altreview">AltReview</a>
+        </div>
+      </div>
+      <div class="website-orbit" aria-hidden="true">
+        <div class="orbit-ring"></div>
+        <div class="orbit-ufo">🛸</div>
+        <div class="orbit-title">WEBSITE</div>
+      </div>
+    </section>
+
+    <section class="section website-categories">
+      <div class="section-head"><h2>Website Bölümleri</h2></div>
+      <div class="segment-grid">
+        ${blogData.categories.map(category => `
+          <a class="segment-card website-segment" href="#/website/${esc(category.id)}">
+            <div>
+              <div class="kicker">${esc(category.label || 'Yazı')}</div>
+              <div>${esc(category.name)}</div>
+              <p>${esc(category.description || '')}</p>
+            </div>
+          </a>
+        `).join('')}
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>Öne Çıkan Yazılar</h2></div>
+      <div class="blog-grid">${(featured.length ? featured : latest).map(blogCard).join('') || '<div class="search-empty">Henüz yazı eklenmedi.</div>'}</div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>Son Yazılar</h2></div>
+      <div class="blog-grid">${latest.map(blogCard).join('') || '<div class="search-empty">Henüz yazı eklenmedi.</div>'}</div>
+    </section>
+  `;
+}
+
+function renderWebsiteCategory(categoryId) {
+  setActiveNav('website');
+  const category = getBlogCategory(categoryId);
+  const posts = (blogData.posts || []).filter(post => post.category === categoryId);
+  app.innerHTML = `
+    <section class="category-hero website-category-hero">
+      <div class="kicker">AltDünya Website</div>
+      <h1>${esc(category.name)}</h1>
+      <p>${esc(category.description || 'AltDünya arşivinden seçilmiş yazılar.')}</p>
+      <div class="breadcrumb"><a href="#/website">Website</a> / ${esc(category.name)} / Toplam ${posts.length} yazı</div>
+    </section>
+    <section class="section">
+      <div class="blog-grid">${posts.map(blogCard).join('') || '<div class="search-empty">Bu bölümde henüz yazı yok.</div>'}</div>
+    </section>
+  `;
+}
+
+function renderBlogPost(slug) {
+  setActiveNav('website');
+  const post = getBlogPost(slug);
+  if (!post) {
+    app.innerHTML = '<div class="search-empty">Yazı bulunamadı.</div>';
+    return;
+  }
+  const category = getBlogCategory(post.category);
+  const related = (blogData.posts || []).filter(p => p.slug !== post.slug && p.category === post.category).slice(0, 3);
+  app.innerHTML = `
+    <article class="blog-post-layout">
+      <header class="blog-post-hero">
+        <div class="kicker">${esc(category.name || 'AltDünya Website')}</div>
+        <h1>${esc(post.title)}</h1>
+        <p>${esc(post.excerpt || '')}</p>
+        <div class="hero-badges">
+          <span class="badge">${esc(post.segment || category.name || 'Yazı')}</span>
+          <span class="badge">${esc(post.date || 'Arşiv')}</span>
+          ${post.sourceUrl ? `<a class="badge" href="${esc(post.sourceUrl)}" target="_blank" rel="noopener noreferrer">Wayback Kaynağı</a>` : ''}
+        </div>
+      </header>
+
+      <div class="blog-post-grid">
+        <main class="blog-post-body panel">
+          ${(post.content || []).map(block => {
+            if (block.type === 'heading') return `<h2>${esc(block.text)}</h2>`;
+            if (block.type === 'quote') return `<blockquote>${esc(block.text)}</blockquote>`;
+            if (block.type === 'list') return `<ul>${(block.items || []).map(item => `<li>${esc(item)}</li>`).join('')}</ul>`;
+            return `<p>${esc(block.text || '')}</p>`;
+          }).join('')}
+        </main>
+        <aside class="side-stack">
+          <div class="side-card">
+            <h3>Website Bölümleri</h3>
+            <div class="footer-links blog-side-links">
+              ${blogData.categories.map(cat => `<a href="#/website/${esc(cat.id)}">${esc(cat.name)}</a>`).join('')}
+            </div>
+          </div>
+          <div class="side-card">
+            <h3>Benzer Yazılar</h3>
+            <div class="mini-list">${related.map(miniPost).join('') || '<div class="search-empty">Benzer yazı yok.</div>'}</div>
+          </div>
+        </aside>
+      </div>
+    </article>
+  `;
 }
 
 function renderStaticPage(pageId) {
