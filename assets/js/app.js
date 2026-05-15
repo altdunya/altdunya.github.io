@@ -371,6 +371,40 @@ function getFeaturedBlogPosts(limit = 3) {
     .slice(0, limit);
 }
 
+function safeUrl(value) {
+  const url = String(value || '').trim();
+  if (!url) return '';
+  if (/^(https?:)?\/\//i.test(url) || url.startsWith('assets/') || url.startsWith('blogimages/') || url.startsWith('./') || url.startsWith('../')) return url;
+  return '';
+}
+
+function renderPostContent(content) {
+  if (!content) return '';
+  if (typeof content === 'string') return content;
+  if (!Array.isArray(content)) return '';
+
+  return content.map(block => {
+    if (!block) return '';
+    const type = block.type || 'paragraph';
+    const text = block.text || '';
+    const level = Math.min(Math.max(Number(block.level || 2), 2), 4);
+
+    if (type === 'heading') return `<h${level}>${esc(text)}</h${level}>`;
+    if (type === 'quote') return `<blockquote>${esc(text)}</blockquote>`;
+    if (type === 'list') return `<ul>${(block.items || []).map(item => `<li>${esc(item)}</li>`).join('')}</ul>`;
+    if (type === 'orderedList') return `<ol>${(block.items || []).map(item => `<li>${esc(item)}</li>`).join('')}</ol>`;
+    if (type === 'image') {
+      const src = safeUrl(block.src || block.url);
+      if (!src) return '';
+      const alt = block.alt || block.caption || '';
+      return `<figure><img src="${esc(src)}" alt="${esc(alt)}">${block.caption ? `<figcaption>${esc(block.caption)}</figcaption>` : ''}</figure>`;
+    }
+    if (type === 'html') return String(block.html || '');
+    if (type === 'hr') return '<hr>';
+    return `<p>${esc(text)}</p>`;
+  }).join('');
+}
+
 function blogCard(post) {
   const category = getBlogCategory(post.category);
   return `
@@ -833,12 +867,7 @@ function renderBlogPost(slug) {
 
       <div class="blog-post-grid">
         <main class="blog-post-body panel">
-          ${(post.content || []).map(block => {
-            if (block.type === 'heading') return `<h2>${esc(block.text)}</h2>`;
-            if (block.type === 'quote') return `<blockquote>${esc(block.text)}</blockquote>`;
-            if (block.type === 'list') return `<ul>${(block.items || []).map(item => `<li>${esc(item)}</li>`).join('')}</ul>`;
-            return `<p>${esc(block.text || '')}</p>`;
-          }).join('')}
+          ${renderPostContent(post.content)}
         </main>
         <aside class="side-stack">
           <div class="side-card">
