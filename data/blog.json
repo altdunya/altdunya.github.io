@@ -2,6 +2,777 @@
   "categories": [],
   "posts": [
     {
+      "slug": "hellboy-kahraman-kimlikleri",
+      "title": "Hellboy (Comics) | Kahraman Kimlikleri",
+      "category": "kahramankimlikleri",
+      "segment": "Kahraman Kimlikleri",
+      "date": "Eski Arşiv",
+      "featured": false,
+      "cover": "https://altdunya.github.io/blogimages/hellboy-comics-kahraman-kimlikleri-cover.jpg",
+      "sourceUrl": "https://web.archive.org/web/20240519072323/http://altdunya.com/kahraman-kimlikleri-hellboy-dark-horse/",
+      "excerpt": "Hellboy’un orijini, Anung Un Rama kimliği, B.P.R.D. geçmişi, Kıyamet’in Sağ Eli, güçleri, ekipmanları ve sinema uyarlamaları üzerine nostaljik bir Kahraman Kimlikleri dosyası.",
+      "content": [
+        {
+          "type": "quote",
+          "text": "AltDünya Arşivi — Bu yazı orijinal olarak eski AltDünya döneminde yayınlanmıştır. İçerikte dönemin bilgi ve yorumları korunmuş, bazı bölümler yeni formata uygun şekilde düzenlenmiştir."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Kimlik Kartı"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Gerçek Adı:** Anung Un Rama",
+            "**Takma Adları:** Hellboy, Koca Kırmızı / Big Red, Peanut",
+            "**Irk:** Cambion / Yarı iblis, yarı insan",
+            "**Vatandaşlık:** ABD",
+            "**Cinsiyet:** Erkek",
+            "**Durumu:** Yaşıyor"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Katıldığı Ekipler"
+        },
+        {
+          "type": "list",
+          "items": [
+            "B.P.R.D. – Saha Ajanı",
+            "Luchador"
+          ]
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 1,
+          "text": "Özgeçmiş / Origin"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hellboy’un orijini biraz karışık."
+        },
+        {
+          "type": "paragraph",
+          "text": "Kendisi Azzael adlı büyük bir iblis ile Kral Arthur’un soyundan gelen Sarah Hughes’ın oğludur. Kral Arthur bağlantısı ise ayrıca karışık bir mesele. Sarah’ın büyük büyük babası Mordred, Kral Arthur’un kız kardeşi Morgana Le Fay’den olan gayrimeşru çocuğudur. Mordred aynı zamanda Kral Arthur’un ölümünde de rol oynamış kişidir."
+        },
+        {
+          "type": "paragraph",
+          "text": "Buradaki ilginç detay şu: Hellboy, Kral Arthur’un soyundan geldiği için aslında İngiltere Kralı olma hakkına da sahiptir."
+        },
+        {
+          "type": "paragraph",
+          "text": "Hatta çizgi romanlarda ve reboot filmde sıkça kullanılan “kader” temasında Hellboy’un Excalibur’u taştan çıkarması, tacı takması ve ölülerden oluşan Britanya ordusunu yönetmesi yer alır."
+        },
+        {
+          "type": "paragraph",
+          "text": "Yani adamın bir tarafında cehennem, diğer tarafında kraliyet var. Aile ağacı biraz fazla yoğun anlayacağınız."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 1,
+          "text": "Cehennem Tarafı"
+        },
+        {
+          "type": "paragraph",
+          "text": "Olayın Azzael tarafı ise şöyle gelişir:"
+        },
+        {
+          "type": "paragraph",
+          "text": "Sarah Hughes aynı zamanda bir cadıdır. Azzael’i dünyaya çağırır, ondan üç çocuk sahibi olur ve sonra bu işlere tövbe eder."
+        },
+        {
+          "type": "paragraph",
+          "text": "Hellboy dışındaki diğer iki çocuğu, biri rahibe diğeri rahip olarak annelerini korumaya çalışırken ölür. Azzael ise durmaz; Sarah’ı zincirlerle bağlar ve cehenneme sürükler."
+        },
+        {
+          "type": "paragraph",
+          "text": "Cehennem tarafındaki kader meselesi de pek iç açıcı değildir."
+        },
+        {
+          "type": "paragraph",
+          "text": "Hellboy’un “Kıyamet’in Yaratığı” olduğu söylenir. Sağ eli, yani **Right Hand of Doom / Kıyamet’in Sağ Eli**, korkunç yaratıkları hapishanelerinden uyandırmak ve insanlığın sonunu getirmek için kullanılacaktır."
+        },
+        {
+          "type": "paragraph",
+          "text": "Kısacası Hellboy’un iki taraftan da gelen kaderi pek parlak değildir."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bir taraf:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "“Tahta geç, kral ol.”"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Diğer taraf:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "“Kıyameti başlat.”"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Arada kalınacak gibi değil gerçekten."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 1,
+          "text": "Dünyaya Gelişi"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hellboy’un dünyamıza ilk gelişi 23 Aralık 1944 gecesi olur."
+        },
+        {
+          "type": "paragraph",
+          "text": "Grigori Rasputin adlı kötü büyücü, Third Reich için düzenlenen bir ayinde Hellboy’u dünyaya çağırır. O sırada Hellboy henüz bebek halindedir."
+        },
+        {
+          "type": "paragraph",
+          "text": "Nazi ayinlerini araştıran Amerikalı askerler tarafından bulunur."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ekipte:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Başçavuş George Whitman,",
+            "Profesör Malcolm Frost,",
+            "Cynthia Eden-Jones,",
+            "Torch of Liberty / Özgürlük Meşalesi,",
+            "ve B.P.R.D.’den Profesör Trevor Bruttenholm"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "yer almaktadır."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bruttenholm bu küçük yaratıkla arkadaş olur ve ona Hellboy adını verir."
+        },
+        {
+          "type": "paragraph",
+          "text": "Sonrasında Hellboy, Amerikan hükümeti tarafından paranormal olayları incelemesi amacıyla yetiştirilir. 1952 yılında tam zamanlı ajan olarak resmen B.P.R.D.’ye katılır."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 1,
+          "text": "B.P.R.D. Dönemi"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hellboy fiziksel olarak çok hızlı gelişir ama zihinsel olarak aynı hızda olgunlaşmaz."
+        },
+        {
+          "type": "paragraph",
+          "text": "Orta yaşlı bir adamın bedenine sahip olmasına rağmen yer yer ergen davranışlar gösterir, asi çıkışlar yapar ve çoğu zaman olaylara “yumruğu vur, sonra düşünürüz” mantığıyla yaklaşır."
+        },
+        {
+          "type": "paragraph",
+          "text": "Yine de paranormal olaylar konusunda oldukça deneyimlidir."
+        },
+        {
+          "type": "paragraph",
+          "text": "Zaman içinde:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "ele geçirilme vakaları,",
+            "şeytan çıkarma ritüelleri,",
+            "kutsal muskalar,",
+            "büyülü eserler,",
+            "vampirler,",
+            "kurt adamlar,",
+            "halk efsaneleri,",
+            "Baba Yaga gibi mitolojik figürler"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "konusunda ciddi bilgi ve saha tecrübesi kazanır."
+        },
+        {
+          "type": "orderedList",
+          "items": [
+            "Dünya Savaşı ve Nazi rejiminin bitişinden sonra Hellboy dünyanın birçok yerini gezerek doğaüstü varlıkların def edilmesinde önemli rol oynar."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "1952 yılında Birleşmiş Milletler tarafından kendisine “Onursal İnsan” statüsü verilir."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bundan sonra Hellboy’un B.P.R.D. ile çıktığı pek çok macera var ama açıkçası o kısmı çizgi romanlardan okumak çok daha keyifli olacaktır."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 1,
+          "text": "Yardımcı Karakterler"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Profesör Trevor Bruttenholm"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hellboy’u bulan ve ona adını veren kişidir."
+        },
+        {
+          "type": "paragraph",
+          "text": "Hellboy için sadece bir bilim insanı ya da B.P.R.D. yetkilisi değil, aynı zamanda baba figürüdür. Hellboy’un insan tarafıyla bağ kurmasında en önemli karakterlerden biridir."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "B.P.R.D."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bureau for Paranormal Research and Defense, yani Paranormal Araştırma ve Savunma Bürosu, Hellboy’un uzun yıllar saha ajanı olarak görev yaptığı organizasyondur."
+        },
+        {
+          "type": "paragraph",
+          "text": "B.P.R.D., doğaüstü olayları araştırır, yaratıklarla mücadele eder ve insanlığın anlayamadığı paranormal tehditlerle ilgilenir."
+        },
+        {
+          "type": "paragraph",
+          "text": "Hellboy’un “iş yeri” diyebiliriz."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ama tabii normal mesai kavramı yok. Bir gün vampir, ertesi gün cadı, sonra cehennem kapısı."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 1,
+          "text": "Baş Düşmanlar ve Büyük Tehditler"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Azzael"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hellboy’un iblis babasıdır."
+        },
+        {
+          "type": "paragraph",
+          "text": "Cehennem tarafındaki kaderin temel kaynaklarından biridir. Hellboy’un sadece doğumunda değil, onun kıyametle bağlantılı rolünde de önemli bir yere sahiptir."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Grigori Rasputin"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hellboy’un dünyaya gelişinde doğrudan rol oynayan kötü büyücüdür."
+        },
+        {
+          "type": "paragraph",
+          "text": "Third Reich adına yapılan ayinle Hellboy’u dünyaya çağıran kişidir. Hellboy evreninde Nazi okültizmi, karanlık büyüler ve kıyamet temalarının merkezindeki önemli karakterlerden biridir."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Kader"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hellboy’da en büyük düşmanlardan biri aslında tek bir kişi değildir."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bizzat kaderin kendisidir."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bir tarafta Kral Arthur soyu, Excalibur ve Britanya tahtı vardır. Diğer tarafta cehennem, Kıyamet’in Sağ Eli ve insanlığın sonunu getirme kehaneti vardır."
+        },
+        {
+          "type": "paragraph",
+          "text": "Hellboy’un en güçlü tarafı da burada ortaya çıkar:"
+        },
+        {
+          "type": "paragraph",
+          "text": "Kendisine biçilen rolü kabul etmemesi."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 1,
+          "text": "Güçleri ve Ekipmanları"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Yarı İblis Fizyolojisi"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hellboy’un yarı iblis olmasından kaynaklanan çok güçlü fiziksel özellikleri vardır."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "İnsanüstü Dayanıklılık"
+        },
+        {
+          "type": "paragraph",
+          "text": "Normal bir insanı öldürecek pek çok yara Hellboy’u fazla etkilemez."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ciddi darbeler, yüksek kalibreli mermiler, yüksek mesafeden düşmeler ve aşırı sıcak ya da soğuk gibi koşullara karşı oldukça dayanıklıdır."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ayrıca yaralanmalardan inanılmaz hızlı iyileşir."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "İnsanüstü Güç"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hellboy’un gücünün sınırı net olarak bilinmez."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ancak 5 tona kadar ağırlık kaldırabildiği görülmüştür. Çok büyük ağaçları söküp fırlattığı durumlar da vardır."
+        },
+        {
+          "type": "paragraph",
+          "text": "Yani kendisi “kapıyı açmak” yerine genelde duvarı yıkmayı tercih edebilecek bir fiziksel kapasiteye sahiptir."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Yavaş Yaşlanma"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hellboy normal insanlardan farklı şekilde yaşlanır."
+        },
+        {
+          "type": "paragraph",
+          "text": "Teknik olarak 2 yaşındayken 6 yaşındaki bir çocuğun fiziğine sahipti. 10 yaşına geldiğinde ise tam teşekküllü bir yetişkin görünümüne ulaşmıştı."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ancak hızlı büyümesine rağmen yaşlanması sonrasında oldukça yavaşlar."
+        },
+        {
+          "type": "paragraph",
+          "text": "Fiziksel yetişkinliğini tamamladıktan sonra uzun yıllar boyunca belirgin bir yaşlanma belirtisi göstermez."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Doğuştan Çok Dillilik"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hellboy çok eski ve büyülü dilleri doğuştan anlayabilir."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bu da paranormal araştırmalar sırasında ciddi avantaj sağlar."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Gelişmiş Görüş"
+        },
+        {
+          "type": "paragraph",
+          "text": "Normal bir insandan çok daha uzağı görebilir."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Şeytani Dönüşüm"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hellboy bazı koşullarda daha şeytani bir forma dönüşebilir."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bu formda:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "boynuzları tam haline gelir,",
+            "kanat çıkarabilir,",
+            "normalden çok daha güçlü olur,",
+            "çeşitli büyüler kullanabilir,",
+            "boyutunu büyütebilir,",
+            "cehennem ateşini kontrol edebilir,",
+            "şimşek benzeri güçler kullanabilir,",
+            "uçabilir."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Tabii Hellboy genelde bu tarafa fazla yanaşmak istemez."
+        },
+        {
+          "type": "paragraph",
+          "text": "Çünkü mesele sadece güçlenmek değil; kıyamet tarafına biraz daha yaklaşmaktır."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 1,
+          "text": "Yetenekleri"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Yakın Dövüş"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hellboy silah kullanabilse de çoğu zaman insanüstü gücünü kullanarak düşmanlarını etkisiz hale getirmeyi tercih eder."
+        },
+        {
+          "type": "paragraph",
+          "text": "Yakın dövüşte oldukça etkilidir."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ayrıca kılıçları ve eline geçen nesneleri de başarıyla kullanabilir."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Doğaüstü Bilgisi"
+        },
+        {
+          "type": "paragraph",
+          "text": "Paranormal araştırmacı olarak uzun süre görev yaptığı için halk masalları, büyü ayinleri, lanetler, doğaüstü yaratıklar ve okült nesneler konusunda geniş bilgi sahibidir."
+        },
+        {
+          "type": "paragraph",
+          "text": "Yani dışarıdan bakınca kaba kuvvet gibi görünse de Hellboy aslında işinin uzmanıdır."
+        },
+        {
+          "type": "paragraph",
+          "text": "Sadece yöntemleri biraz fazla “kırmızı yumruk” ağırlıklıdır."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 1,
+          "text": "Silahları ve Ekipmanları"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Tabanca"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hellboy uzun süre Torch of Liberty tarafından verilen bir tabanca kullanır."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bu silah okyanusta kaybolduktan sonra yerini 1941 yılında Harry Middleton’ın hayaletinin verdiği ABD Ordusu yapımı M1911A1 model .45 kalibrelik tabanca alır."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Kemer"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hellboy kemerinde pek çok ıvır zıvır taşır."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bu nesneler:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "ölüleri diriltmek,",
+            "kötü varlıklardan korunmak,",
+            "arkadaşlarını korumak,",
+            "iyileştirme sağlamak"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "gibi amaçlarla kullanılabilir."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ayrıca kemerinde B.P.R.D. tarafından bulunmasını sağlayan bir takip cihazı da vardır."
+        },
+        {
+          "type": "paragraph",
+          "text": "Yani Hellboy’un kemeri biraz paranormal çanta gibi çalışır."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Excalibur"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hellboy kısa bir süre için Kral Arthur efsanelerinden Excalibur kılıcını da kullanmıştır."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bu da onun Arthur soyuyla bağlantısının en net sembollerinden biridir."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Right Hand of Doom / Kıyamet’in Sağ Eli"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hellboy’un en önemli fiziksel özelliği ve kaderinin merkezindeki semboldür."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bu devasa sağ el, kıyametle bağlantılı kozmik bir anahtar olarak görülür. Hellboy’un insanlığın sonunu getirme kehanetindeki rolü doğrudan bu elle bağlantılıdır."
+        },
+        {
+          "type": "paragraph",
+          "text": "Yani sadece büyük bir yumruk değildir."
+        },
+        {
+          "type": "paragraph",
+          "text": "Gerçi Hellboy çoğu zaman onu büyük bir yumruk olarak kullanır. O ayrı."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 1,
+          "text": "Kostümleri"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hellboy hemen hemen bütün maceralarında diz altına kadar uzanan uzun bir ceket giyer."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bu ceketin cepleri paranormal koruma sağlaması amacıyla çeşitli takılar, muskalar ve totemlerle doludur."
+        },
+        {
+          "type": "paragraph",
+          "text": "Orijinal cekette B.P.R.D. logosu yer alır. Ancak Hellboy Büro’dan ayrıldıktan sonra bu logoyu yok eder."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ceket pek çok kez hasar görmüş olmasına rağmen her yeni macerada yeniden hasarsız şekilde karşımıza çıkar."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bu da bize Hellboy’un gizli bir dikiş yeteneği olabileceğine dair ciddi bir emare vermektedir."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 1,
+          "text": "Karakterin Yaratılışı"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hellboy’un yaratıcısı Mike Mignola, karakteri yaratırken babasını temel aldığını söyler."
+        },
+        {
+          "type": "paragraph",
+          "text": "Babası sürekli yaralı bereli olarak eve gelmesine rağmen kuru mizahıyla dikkat çeken bir adammış. Bu özellik Hellboy’un kişiliğinde de net şekilde hissedilir."
+        },
+        {
+          "type": "paragraph",
+          "text": "Mignola, Hellboy’u başlangıçta bir süper kahraman takımının üyesi olarak düşünmüştür. Ancak diğer kahramanlar için isim bulmakta zorlanınca bu proje rafa kalkar."
+        },
+        {
+          "type": "paragraph",
+          "text": "Hellboy’un görsel ve anlatısal yapısında farklı etkiler vardır."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bunlar arasında:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Jack Kirby,",
+            "Gustav Doré,",
+            "H. P. Lovecraft,",
+            "Bram Stoker’ın Dracula’sı"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "sayılabilir."
+        },
+        {
+          "type": "paragraph",
+          "text": "Hellboy ismi de aslında bir şaka olarak başlamış, sonra karakterin gerçek adı haline gelmiştir."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bazen en iyi fikirler gerçekten şaka diye başlıyor."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 1,
+          "text": "Sinema ve Yayınlar"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hellboy’un bugüne kadar çekilmiş üç filmi vardır."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bu filmlerden ikisi Guillermo del Toro tarafından yönetilmiştir ve gerçekten izlemeye değer işlerdir. Del Toro, Pan’ın Labirenti’ne yakın, hatta bazı açılardan çizgi romandakinden bile daha güzel görünen bir dünya yaratmıştır."
+        },
+        {
+          "type": "paragraph",
+          "text": "Reboot filmi ise maalesef aynı başarıyı gösteremedi."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bu yazıyı yazma sebeplerinden biri de o film olsa da, açıkçası filmi ayrıca uzun uzun yazmak yerine Hellboy’un kendisine dönmek daha mantıklı geldi."
+        },
+        {
+          "type": "paragraph",
+          "text": "Hellboy çizgi romanları Türkiye’de önce İthaki tarafından yayınlanıyordu. Daha sonra yayın hakları JBC Yayıncılık’a geçti."
+        },
+        {
+          "type": "paragraph",
+          "text": "An itibariyle kitapçılarda bulunabilen Hellboy çizgi romanları, hem karakteri tanımak hem de Mignola’nın dünyasına girmek için oldukça keyifli işlerdir."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 1,
+          "text": "Son Yorumlar"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hellboy, klasik süper kahramanlardan biraz farklı bir karakter."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bir tarafta iblis kökeni, kıyamet kehaneti ve cehennem bağlantısı var. Diğer tarafta insanlara yardım eden, paranormal olayları çözen, kuru mizahlı, huysuz ama iyi kalpli bir saha ajanı var."
+        },
+        {
+          "type": "paragraph",
+          "text": "Karakteri ilginç yapan şey de bu çelişki."
+        },
+        {
+          "type": "paragraph",
+          "text": "Hellboy aslında kendisine biçilen kaderi reddeden bir karakter."
+        },
+        {
+          "type": "paragraph",
+          "text": "Cehennem ona “kıyameti getir” diyor. Arthur soyu ona “tahta geç” diyor. Hellboy ise büyük ihtimalle “ben bir kahve içip yaratık döveyim” diyor."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ve dürüst olmak gerekirse bu tavır baya çalışıyor."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bir başka yazıda görüşene dek, esen kalın."
+        }
+      ]
+    },
+    {
       "slug": "he-man-filmation-kahraman-kimlikleri",
       "title": "He-Man (Filmation) | Kahraman Kimlikleri",
       "category": "kahramankimlikleri",
