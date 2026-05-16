@@ -321,7 +321,7 @@ function renderRoute() {
   if (parts[0] === 'games') return renderGames();
   if (parts[0] === 'category' && parts[1]) return renderCategory(parts[1]);
   if (parts[0] === 'game' && parts[1]) return renderGame(parts[1]);
-  if (parts[0] === 'library-category' && parts[1]) return renderWebsiteCategory(parts[1]);
+  if (parts[0] === 'library-category' && parts[1]) return renderLibraryCategory(parts[1]);
   if (parts[0] === 'website') return renderWebsiteHome();
   if (parts[0] === 'post' && parts[1]) return renderBlogPost(parts[1]);
   if (STATIC_PAGES[parts[0]]) return renderStaticPage(parts[0]);
@@ -1114,6 +1114,63 @@ function bindLibraryFilters(posts) {
   [categoryFilter, tagFilter].forEach(el => el?.addEventListener('change', render));
   render();
 }
+
+
+function renderLibraryCategory(categoryId) {
+  setActiveNav('website');
+  clearInterval(homeHeroTimer);
+
+  const category = getBlogCategory(categoryId);
+  const posts = getSortedBlogPosts().filter(post => post.category === categoryId);
+  const tags = [...new Set(posts.flatMap(post => [
+    post.segment,
+    ...(Array.isArray(post.tags) ? post.tags : []),
+    ...(typeof post.tags === 'string' ? post.tags.split(',') : [])
+  ].filter(Boolean).map(tag => String(tag).trim())))];
+
+  app.innerHTML = `
+    <section class="altlibrary-hero library-category-hero">
+      <div class="altlibrary-hero-copy">
+        <div class="kicker">AltLibrary Kategorisi</div>
+        <h1>${esc(category.name || categoryId)}</h1>
+        <p>${esc(category.description || 'Bu kategoriye ait AltDünya yazıları.')}</p>
+        <div class="cta-row">
+          <a class="secondary-btn" href="#/website">AltLibrary Ana Sayfa</a>
+          <a class="primary-btn" href="#library-category-list">Yazılara Git</a>
+        </div>
+      </div>
+      <div class="altlibrary-stats">
+        <div><strong>${posts.length}</strong><span>Yazı</span></div>
+        <div><strong>${tags.length}</strong><span>Etiket / Segment</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="library-category-list">
+      <div class="section-head">
+        <div>
+          <h2>${esc(category.name || categoryId)} Yazıları</h2>
+          <p class="muted">Bu kategoriye bağlı tüm yazılar.</p>
+        </div>
+      </div>
+      <div class="library-list">
+        ${posts.map(post => {
+          const cat = getBlogCategory(post.category);
+          return `
+            <a class="library-row" href="#/post/${esc(post.slug)}">
+              <img src="${esc(getBlogCover(post))}" alt="${esc(post.title)}">
+              <div>
+                <div class="library-row-meta">${esc(post.segment || cat.name || 'Yazı')} · ${esc(post.date || 'Arşiv')}</div>
+                <h3>${esc(post.title)}</h3>
+                <p>${esc(post.excerpt || '')}</p>
+              </div>
+            </a>
+          `;
+        }).join('') || '<div class="search-empty">Bu kategoride henüz yazı yok.</div>'}
+      </div>
+    </section>
+  `;
+}
+
 
 function renderWebsiteCategory(categoryId) {
   setActiveNav('website');
