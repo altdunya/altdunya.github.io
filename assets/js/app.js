@@ -321,7 +321,6 @@ function renderRoute() {
   if (parts[0] === 'games') return renderGames();
   if (parts[0] === 'category' && parts[1]) return renderCategory(parts[1]);
   if (parts[0] === 'game' && parts[1]) return renderGame(parts[1]);
-  if (parts[0] === 'library-category' && parts[1]) return renderLibraryCategory(parts[1]);
   if (parts[0] === 'website') return renderWebsiteHome();
   if (parts[0] === 'post' && parts[1]) return renderBlogPost(parts[1]);
   if (STATIC_PAGES[parts[0]]) return renderStaticPage(parts[0]);
@@ -370,7 +369,11 @@ function normalizeBlogDateValue(dateValue, index = 0) {
 
 function getSortedBlogPosts() {
   return [...(blogData.posts || [])]
-    .map((post, index) => ({ post, index, score: normalizeBlogDateValue(post.date, index) }))
+    .map((post, index) => {
+      const dateScore = normalizeBlogDateValue(post.date, index);
+      const hasRealDate = !Number.isNaN(Date.parse(String(post.date || '').trim())) || /(19|20)\d{2}/.test(String(post.date || ''));
+      return { post, index, score: hasRealDate ? dateScore : -index };
+    })
     .sort((a, b) => b.score - a.score)
     .map(entry => entry.post);
 }
@@ -510,9 +513,8 @@ function getBlogPost(slug) {
 function getFeaturedBlogPosts(limit = 3) {
   const posts = [...(blogData.posts || [])];
   if (!posts.length) return [];
-  const daySeed = Math.floor(Date.now() / 86400000);
   return posts
-    .map((post, index) => ({ post, score: Math.sin((index + 1) * 999 + daySeed) }))
+    .map(post => ({ post, score: Math.random() }))
     .sort((a, b) => b.score - a.score)
     .map(entry => entry.post)
     .slice(0, limit);
@@ -996,6 +998,7 @@ function renderWebsiteHome() {
   const categories = getDynamicBlogCategories();
   const tags = getBlogTags();
   const suggested = getFeaturedBlogPosts(5);
+  const latest = posts.slice(0, 8);
 
   app.innerHTML = `
     <section class="altlibrary-hero">
@@ -1005,7 +1008,7 @@ function renderWebsiteHome() {
         <p>Eski AltDünya yazıları, Kahraman Kimlikleri, çizgi roman dosyaları, oyun kültürü, nostalji ve arşiv içerikleri burada toplanır.</p>
         <div class="cta-row">
           <a class="primary-btn" href="#library-all">Tüm Yazılar</a>
-          <a class="secondary-btn" href="#library-categories">Kategoriler</a>
+          <a class="secondary-btn" href="#library-latest">Son Eklenenler</a>
         </div>
       </div>
       <div class="altlibrary-stats">
@@ -1018,28 +1021,34 @@ function renderWebsiteHome() {
     <section class="section library-suggested">
       <div class="section-head">
         <div>
-          <h2>Sizin İçin Önerilenler</h2>
-          <p class="muted">Arşivden rastgele seçilmiş birkaç dosya.</p>
+          <h2>Sizin İçin Seçtiklerimiz</h2>
+          <p class="muted">AltLibrary arşivinden rastgele seçilen birkaç yazı.</p>
         </div>
       </div>
       <div class="library-compact-grid">${suggested.map(blogCard).join('') || '<div class="search-empty">Henüz yazı yok.</div>'}</div>
     </section>
 
-    <section class="section" id="library-categories">
+    <section class="section" id="library-latest">
       <div class="section-head">
         <div>
-          <h2>Kategoriler</h2>
-          <p class="muted">Kategoriler blog.json içindeki yazılardan otomatik oluşur.</p>
+          <h2>Son Eklenenler</h2>
+          <p class="muted">AltLibrary’ye en son eklenen yazılar.</p>
         </div>
       </div>
-      <div class="library-category-grid">
-        ${categories.map(cat => `
-          <a class="library-category-card" href="#/library-category/${esc(cat.id)}">
-            <div class="library-category-count">${cat.count || 0}</div>
-            <h3>${esc(cat.name || cat.id)}</h3>
-            <p>${esc(cat.description || 'Bu kategoriye ait yazılar.')}</p>
-          </a>
-        `).join('') || '<div class="search-empty">Henüz kategori yok.</div>'}
+      <div class="library-list">
+        ${latest.map(post => {
+          const category = getBlogCategory(post.category);
+          return `
+            <a class="library-row" href="#/post/${esc(post.slug)}">
+              <img src="${esc(getBlogCover(post))}" alt="${esc(post.title)}">
+              <div>
+                <div class="library-row-meta">${esc(post.segment || category.name || 'Yazı')} · ${esc(post.date || 'Arşiv')}</div>
+                <h3>${esc(post.title)}</h3>
+                <p>${esc(post.excerpt || '')}</p>
+              </div>
+            </a>
+          `;
+        }).join('') || '<div class="search-empty">Henüz yazı yok.</div>'}
       </div>
     </section>
 
@@ -1047,7 +1056,7 @@ function renderWebsiteHome() {
       <div class="section-head">
         <div>
           <h2>Tüm Yazılar</h2>
-          <p class="muted">Yazıları kategori, segment/etiket veya arama ile filtreleyebilirsin.</p>
+          <p class="muted">Yazıları kategori, segment/etiket veya arama ile filtreleyebilirsin. En yeni yazılar üstte görünür.</p>
         </div>
       </div>
 
@@ -1055,7 +1064,7 @@ function renderWebsiteHome() {
         <input id="librarySearchInput" class="library-filter-input" type="search" placeholder="Yazı ara..." autocomplete="off">
         <select id="libraryCategoryFilter" class="library-filter-select">
           <option value="">Tüm kategoriler</option>
-          ${categories.map(cat => `<option value="${esc(cat.id)}">${esc(cat.name || cat.id)}</option>`).join('')}
+          ${categories.map(cat => `<option value="${esc(cat.id)}">${esc(cat.name || cat.id)} (${cat.count || 0})</option>`).join('')}
         </select>
         <select id="libraryTagFilter" class="library-filter-select">
           <option value="">Tüm segment/etiketler</option>
@@ -1115,63 +1124,6 @@ function bindLibraryFilters(posts) {
   render();
 }
 
-
-function renderLibraryCategory(categoryId) {
-  setActiveNav('website');
-  clearInterval(homeHeroTimer);
-
-  const category = getBlogCategory(categoryId);
-  const posts = getSortedBlogPosts().filter(post => post.category === categoryId);
-  const tags = [...new Set(posts.flatMap(post => [
-    post.segment,
-    ...(Array.isArray(post.tags) ? post.tags : []),
-    ...(typeof post.tags === 'string' ? post.tags.split(',') : [])
-  ].filter(Boolean).map(tag => String(tag).trim())))];
-
-  app.innerHTML = `
-    <section class="altlibrary-hero library-category-hero">
-      <div class="altlibrary-hero-copy">
-        <div class="kicker">AltLibrary Kategorisi</div>
-        <h1>${esc(category.name || categoryId)}</h1>
-        <p>${esc(category.description || 'Bu kategoriye ait AltDünya yazıları.')}</p>
-        <div class="cta-row">
-          <a class="secondary-btn" href="#/website">AltLibrary Ana Sayfa</a>
-          <a class="primary-btn" href="#library-category-list">Yazılara Git</a>
-        </div>
-      </div>
-      <div class="altlibrary-stats">
-        <div><strong>${posts.length}</strong><span>Yazı</span></div>
-        <div><strong>${tags.length}</strong><span>Etiket / Segment</span></div>
-      </div>
-    </section>
-
-    <section class="section" id="library-category-list">
-      <div class="section-head">
-        <div>
-          <h2>${esc(category.name || categoryId)} Yazıları</h2>
-          <p class="muted">Bu kategoriye bağlı tüm yazılar.</p>
-        </div>
-      </div>
-      <div class="library-list">
-        ${posts.map(post => {
-          const cat = getBlogCategory(post.category);
-          return `
-            <a class="library-row" href="#/post/${esc(post.slug)}">
-              <img src="${esc(getBlogCover(post))}" alt="${esc(post.title)}">
-              <div>
-                <div class="library-row-meta">${esc(post.segment || cat.name || 'Yazı')} · ${esc(post.date || 'Arşiv')}</div>
-                <h3>${esc(post.title)}</h3>
-                <p>${esc(post.excerpt || '')}</p>
-              </div>
-            </a>
-          `;
-        }).join('') || '<div class="search-empty">Bu kategoride henüz yazı yok.</div>'}
-      </div>
-    </section>
-  `;
-}
-
-
 function renderWebsiteCategory(categoryId) {
   setActiveNav('website');
   const category = getBlogCategory(categoryId);
@@ -1222,7 +1174,7 @@ function renderBlogPost(slug) {
           <div class="side-card">
             <h3>Website Bölümleri</h3>
             <div class="footer-links blog-side-links">
-              ${blogData.categories.map(cat => `<a href="#/library-category/${esc(cat.id)}">${esc(cat.name)}</a>`).join('')}
+              ${blogData.categories.map(cat => `<a href="#/website/${esc(cat.id)}">${esc(cat.name)}</a>`).join('')}
             </div>
           </div>
           <div class="side-card">
