@@ -2,6 +2,177 @@
   "categories": [],
   "posts": [
     {
+      "slug": "karabasan-comics-kahraman-kimlikleri",
+      "title": "Karabasan (Comics) | Kahraman Kimlikleri",
+      "category": "kahramankimlikleri",
+      "segment": "Kahraman Kimlikleri",
+      "date": "Eski Arşiv",
+      "featured": false,
+      "cover": "https://altdunya.github.io/blogimages/karabasan_cover_optimized.jpg",
+      "sourceUrl": "https://web.archive.org/web/20211208114918/http://altdunya.com/kahraman-kimlikleri-karabasan/",
+      "excerpt": "Türk çizgi roman sahnesinin kült karakterlerinden Karabasan’ın kökeni, muskası, kabus güçleri ve Arkabahçe dönemindeki nostaljik hikayesi üzerine bir Kahraman Kimlikleri dosyası.",
+      "content": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Kimlik Kartı"
+        },
+        {
+          "type": "paragraph",
+          "text": "**Gerçek Adı:** Mustafa **Irk:** İnsan **Vatandaşlık:** Türkiye Cumhuriyeti **Cinsiyet:** Erkek **Durumu:** Yaşıyor"
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Ünvanları"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Karabasan"
+          ]
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Katıldığı Ekipler"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Bilinen bir ekip bağlantısı bulunmuyor."
+          ]
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Özgeçmiş / Origin"
+        },
+        {
+          "type": "paragraph",
+          "text": "Karabasan’ın geçmişi oldukça gizemli. Kahramanımız Mustafa’yı ilk kez gizli bir örgüt tarafından kaçırılırken görüyoruz. Ancak taşıyan aracın yaptığı kaza sonucunda kaçmayı başarıyor."
+        },
+        {
+          "type": "paragraph",
+          "text": "Tam bu sırada Sir Lawrence adlı gizemli bir adam, karanlık güçleri uyandırmaya çalışmaktadır. Açılan geçitlerden çıkan yaratıklar Dilek isimli genç bir kadını takip ederken yolları Mustafa ile kesişir."
+        },
+        {
+          "type": "paragraph",
+          "text": "Mustafa çocukken dedesinin verdiği muskayı elinde cisimleştirir ve doğaüstü bir dönüşüm geçirir. Dilek ve kardeşi tarafından “Karabasan” olarak adlandırılan bu varlık, adeta kabusların içinden çıkmış gibidir."
+        },
+        {
+          "type": "paragraph",
+          "text": "Karabasan’ın ilk büyük macerası da Sir Lawrence’ın dünyaya getirmeye çalıştığı kıyameti durdurmak olur."
+        },
+        {
+          "type": "paragraph",
+          "text": "Serinin ilerleyen dönemlerinde Gulyabani gibi farklı doğaüstü tehditlerle kısa mücadeleler yaşansa da karakter uzun süredir sessizliğini koruyor."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Güçleri ve Ekipmanları"
+        },
+        {
+          "type": "paragraph",
+          "text": "Karabasan gücünü boynundaki muskadan alır."
+        },
+        {
+          "type": "paragraph",
+          "text": "Dönüştüğünde bedeni “kabus maddesi” benzeri karanlık ve şekil değiştirebilen bir yapıya dönüşür. Bu sayede:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Maddeler üzerinde telekinetik etkiler oluşturabilir.",
+            "Vücudunu biçimlendirebilir.",
+            "İnsanların suçlarını ve günahlarını hissedebilir.",
+            "İnsanların vicdanlarına dokunabilir."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Doğaüstü yapısı sayesinde fiziksel olarak oldukça dayanıklıdır ve korku temelli atmosferlerde çok daha güçlü görünür."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Kostümleri"
+        },
+        {
+          "type": "paragraph",
+          "text": "Karabasan’ın görünümü oldukça sade ama akılda kalıcıdır."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Boynunda sürekli duran muskası",
+            "Siyah organik görünümlü vücut kaplaması",
+            "Sadece göz bölgesinin görünmesi"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "karakterin temel tasarımını oluşturur."
+        },
+        {
+          "type": "paragraph",
+          "text": "Klasik süper kahraman kostümlerinden çok korku çizgi romanlarını andıran bir havası vardır."
+        },
+        {
+          "type": "hr"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Yorumlar"
+        },
+        {
+          "type": "paragraph",
+          "text": "Karabasan ilk kez 2003 yılında Arkabahçe Yayıncılık ve Çapa Çizgiroman Grubu ortaklığıyla yayınlandı."
+        },
+        {
+          "type": "paragraph",
+          "text": "Hikaye Hakan Tacal tarafından yazılırken çizimler Yıldıray Çınar tarafından hazırlanmıştı. Grafik uygulamalarda ise Gameshow dergisinden tanıdığımız Engin Süzen’in imzası vardı."
+        },
+        {
+          "type": "paragraph",
+          "text": "Döneminde zaman zaman “ilk Türk süper kahramanı” gibi iddialarla tanıtılmış olsa da Karabasan’ı asıl özel yapan şey, Amerikan tarzı süper kahraman anlayışını Türk korku ve şehir efsaneleriyle birleştirmeye çalışmasıydı."
+        },
+        {
+          "type": "paragraph",
+          "text": "İkinci sayının kapağında ünlü çizer Bill Sienkiewicz’in katkısı bulunurken, Giovanni Scognamillo da seride konuk karakter olarak yer almıştı."
+        },
+        {
+          "type": "paragraph",
+          "text": "Yıllar sonra karakter 2016’da “Yabani” dergisinde tekrar ortaya çıktı ancak sonrasında büyük bir devam gelmedi."
+        },
+        {
+          "type": "paragraph",
+          "text": "Yine de İstanbul sokaklarında geçen, yerel korku öğelerini süper kahraman yapısıyla harmanlayan böylesi bir karakterin AltDünya arşivinde mutlaka yer alması gerekiyordu 😄"
+        },
+        {
+          "type": "paragraph",
+          "text": "Eski sayıları sahaflarda ya da koleksiyoncularda bulabilirseniz kesinlikle göz atın."
+        }
+      ]
+    },
+    {
       "slug": "the-phantom-comics-kahraman-kimlikleri",
       "title": "The Phantom (Comics) | Kahraman Kimlikleri",
       "category": "kahramankimlikleri",
