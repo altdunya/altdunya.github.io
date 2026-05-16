@@ -321,7 +321,7 @@ function renderRoute() {
   if (parts[0] === 'games') return renderGames();
   if (parts[0] === 'category' && parts[1]) return renderCategory(parts[1]);
   if (parts[0] === 'game' && parts[1]) return renderGame(parts[1]);
-  if (parts[0] === 'website' && parts[1] === 'library-category' && parts[2]) return renderWebsiteCategory(parts[2]);
+  if (parts[0] === 'library-category' && parts[1]) return renderWebsiteCategory(parts[1]);
   if (parts[0] === 'website') return renderWebsiteHome();
   if (parts[0] === 'post' && parts[1]) return renderBlogPost(parts[1]);
   if (STATIC_PAGES[parts[0]]) return renderStaticPage(parts[0]);
@@ -1034,7 +1034,7 @@ function renderWebsiteHome() {
       </div>
       <div class="library-category-grid">
         ${categories.map(cat => `
-          <a class="library-category-card" href="#/website/library-category/${esc(cat.id)}">
+          <a class="library-category-card" href="#/library-category/${esc(cat.id)}">
             <div class="library-category-count">${cat.count || 0}</div>
             <h3>${esc(cat.name || cat.id)}</h3>
             <p>${esc(cat.description || 'Bu kategoriye ait yazılar.')}</p>
@@ -1165,7 +1165,7 @@ function renderBlogPost(slug) {
           <div class="side-card">
             <h3>Website Bölümleri</h3>
             <div class="footer-links blog-side-links">
-              ${blogData.categories.map(cat => `<a href="#/website/library-category/${esc(cat.id)}">${esc(cat.name)}</a>`).join('')}
+              ${blogData.categories.map(cat => `<a href="#/library-category/${esc(cat.id)}">${esc(cat.name)}</a>`).join('')}
             </div>
           </div>
           <div class="side-card">
