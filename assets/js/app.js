@@ -298,7 +298,7 @@ function buildNav() {
       .filter(c => ['konsol', 'arcade', 'freeware'].includes(c.id))
       .map(c => ({ id: c.id, label: c.name, href: `#/category/${c.id}` })),
     { id: 'videolar', label: 'Videolar', href: '#/category/videolar' },
-    { id: 'website', label: 'Website', href: '#/website' },
+    { id: 'website', label: 'AltLibrary', href: '#/website' },
   ];
   mainNav.innerHTML = links.map(link => `<a class="nav-link" data-id="${link.id}" href="${link.href}">${link.label}</a>`).join('');
 }
@@ -847,9 +847,9 @@ function renderWebsiteHome() {
   app.innerHTML = `
     <section class="website-hero">
       <div class="website-hero-copy">
-        <div class="kicker">AltDünya Website</div>
-        <h1>Blog, arşiv yazıları ve geek kültürü dosyaları.</h1>
-        <p>Bu bölüm oyun indirme arşivinden bağımsız çalışır. Eski AltDünya yazıları, AltFacts, AltHistory, AltReview ve nostaljik yorumlar burada kendi alanında döner.</p>
+        <div class="kicker">AltLibrary</div>
+        <h1>Retro kültür, çizgi roman, oyun tarihi ve AltDünya yazı arşivi.</h1>
+        <p>AltLibrary; eski AltDünya yazıları, Kahraman Kimlikleri, AltFacts, AltHistory ve geek kültürü içeriklerini tek yerde toplar. Yeni yazılar, arşiv içerikleri ve nostaljik dosyalar burada yaşar.</p>
         <div class="cta-row">
           <a class="primary-btn" href="#/website/altfacts">AltFacts</a>
           <a class="secondary-btn" href="#/website/althistory">AltHistory</a>
@@ -861,10 +861,23 @@ function renderWebsiteHome() {
         <div class="orbit-ufo">🛸</div>
         <div class="orbit-title">WEBSITE</div>
       </div>
+    
+</section>
+
+    <section class="section updates-feed">
+      <div class="section-head"><h2>Son Gelişmeler</h2></div>
+      <div class="updates-list">
+        <div class="update-item">🎮 Yeni Oyun Eklendi: Mortal Kombat 4</div>
+        <div class="update-item">📚 Yeni Yazı Eklendi: Kahraman Kimlikleri - The Phantom</div>
+        <div class="update-item">🛠️ Oyun Güncellendi: Abuse</div>
+        <div class="update-item">🖼️ Oyun Ekran Görüntüsü Eklendi: Abuse</div>
+        <div class="update-item">🎥 Oyun Video Eklendi: Abuse</div>
+      </div>
     </section>
 
     <section class="section website-categories">
-      <div class="section-head"><h2>Website Bölümleri</h2></div>
+
+      <div class="section-head"><h2>Kategoriler</h2></div>
       <div class="segment-grid">
         ${blogData.categories.map(category => `
           <a class="segment-card website-segment" href="#/website/${esc(category.id)}">
@@ -879,12 +892,12 @@ function renderWebsiteHome() {
     </section>
 
     <section class="section">
-      <div class="section-head"><h2>Öne Çıkan Yazılar</h2></div>
+      <div class="section-head"><h2>Sizin İçin Önerilenler</h2></div>
       <div class="blog-grid">${(featured.length ? featured : latest).map(blogCard).join('') || '<div class="search-empty">Henüz yazı eklenmedi.</div>'}</div>
     </section>
 
     <section class="section">
-      <div class="section-head"><h2>Son Yazılar</h2></div>
+      <div class="section-head"><h2>Son Eklenen Yazılar</h2></div>
       <div class="blog-grid">${latest.map(blogCard).join('') || '<div class="search-empty">Henüz yazı eklenmedi.</div>'}</div>
     </section>
   `;
@@ -899,7 +912,7 @@ function renderWebsiteCategory(categoryId) {
       <div class="kicker">AltDünya Website</div>
       <h1>${esc(category.name)}</h1>
       <p>${esc(category.description || 'AltDünya arşivinden seçilmiş yazılar.')}</p>
-      <div class="breadcrumb"><a href="#/website">Website</a> / ${esc(category.name)} / Toplam ${posts.length} yazı</div>
+      <div class="breadcrumb"><a href="#/website">AltLibrary</a> / ${esc(category.name)} / Toplam ${posts.length} yazı</div>
     </section>
     <section class="section">
       <div class="blog-grid">${posts.map(blogCard).join('') || '<div class="search-empty">Bu bölümde henüz yazı yok.</div>'}</div>
@@ -938,7 +951,7 @@ function renderBlogPost(slug) {
         </main>
         <aside class="side-stack">
           <div class="side-card">
-            <h3>Website Bölümleri</h3>
+            <h3>Kategoriler</h3>
             <div class="footer-links blog-side-links">
               ${blogData.categories.map(cat => `<a href="#/website/${esc(cat.id)}">${esc(cat.name)}</a>`).join('')}
             </div>
