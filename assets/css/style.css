@@ -617,3 +617,81 @@ input,select,textarea{background:#0e1530;color:#fff;border:1px solid var(--line)
 #library-latest .library-list{
   margin-top:4px;
 }
+
+
+/* Refined AltLibrary hero */
+.minimal-library-hero{
+  position:relative;
+  overflow:hidden;
+  min-height:260px;
+  display:flex;
+  align-items:flex-end;
+  padding:38px;
+  background:
+    radial-gradient(circle at top left, rgba(255,140,47,.18), transparent 28%),
+    radial-gradient(circle at top right, rgba(127,92,255,.20), transparent 30%),
+    linear-gradient(135deg,#0d1120 0%,#090b15 100%);
+}
+
+.minimal-library-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top, rgba(0,0,0,.55), transparent 50%);
+  pointer-events:none;
+}
+
+.minimal-library-hero .altlibrary-hero-copy{
+  position:relative;
+  z-index:2;
+  max-width:900px;
+}
+
+.minimal-library-hero h1{
+  margin:10px 0 10px;
+  font-size:clamp(2.3rem,4vw,4.6rem);
+  line-height:1;
+  letter-spacing:-.05em;
+}
+
+.minimal-library-hero p{
+  max-width:760px;
+  font-size:1.02rem;
+  line-height:1.7;
+  color:#d6dbef;
+}
+
+.library-mini-stats{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:20px;
+}
+
+.library-mini-stats span{
+  padding:10px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.08);
+  color:#f0f2ff;
+  font-weight:700;
+  font-size:.92rem;
+}
+
+/* Son gelişmeler less dominant */
+.latest-updates-panel{
+  margin-top:36px;
+  opacity:.92;
+}
+
+.latest-updates-panel .section-head h2{
+  font-size:1.3rem;
+}
+
+.updates-list{
+  grid-template-columns:1fr;
+}
+
+.update-item{
+  padding:12px 14px;
+  font-size:.94rem;
+}
