@@ -1001,20 +1001,18 @@ function renderWebsiteHome() {
   const latest = posts.slice(0, 8);
 
   app.innerHTML = `
-    <section class="altlibrary-hero">
+    <section class="altlibrary-hero minimal-library-hero">
+      <div class="minimal-library-overlay"></div>
       <div class="altlibrary-hero-copy">
         <div class="kicker">AltLibrary</div>
-        <h1>AltDünya yazı arşivi, karakter dosyaları ve geek kültürü kütüphanesi.</h1>
-        <p>Eski AltDünya yazıları, Kahraman Kimlikleri, çizgi roman dosyaları, oyun kültürü, nostalji ve arşiv içerikleri burada toplanır.</p>
-        <div class="cta-row">
-          <a class="primary-btn" href="#library-all">Tüm Yazılar</a>
-          <a class="secondary-btn" href="#library-latest">Son Eklenenler</a>
+        <h1>AltDünya’nın retro kültür ve geek arşivi.</h1>
+        <p>Kahraman Kimlikleri, çizgi roman dosyaları, oyun kültürü, nostaljik yazılar ve eski AltDünya içerikleri.</p>
+
+        <div class="library-mini-stats">
+          <span>${posts.length} Yazı</span>
+          <span>${categories.length} Kategori</span>
+          <span>${tags.length} Etiket</span>
         </div>
-      </div>
-      <div class="altlibrary-stats">
-        <div><strong>${posts.length}</strong><span>Yazı</span></div>
-        <div><strong>${categories.length}</strong><span>Kategori</span></div>
-        <div><strong>${tags.length}</strong><span>Etiket / Segment</span></div>
       </div>
     </section>
 
